@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/core.dart';
+import 'package:nobook/ui/pages/dashboard/view/dashboard_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-      /*
+        /*
         please read this before we progress
 
         i created a widget called AppStructure in core.dart that contains
@@ -27,12 +28,13 @@ class MyApp extends StatelessWidget {
       */
         primarySwatch: Colors.blue,
       ),
-      home: const AppStructure( backgroundColor:  Colors.red,
-      rightBar: Text("rightbar"),
-      leftBar: Text("leftbar"),
-      body: Text("body"),
-      appBar: Text("appbar"),),
+      home: const AppStructure(
+        backgroundColor: Colors.red,
+        rightBar: Text("rightbar"),
+        leftBar: Text("leftbar"),
+        body: DashboardPage(),
+        appBar: Text("appbar"),
+      ),
     );
   }
 }
-
