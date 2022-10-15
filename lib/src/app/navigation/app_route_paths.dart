@@ -1,10 +1,15 @@
-class AppRoutes{
+part of 'app_router.dart';
+
+
+class AppRoutePath{
 
 
   //Begin : Note section
   static const String dashboard= 'dashboard';
    //End : Note section
-   
+
+
+
   //Begin : Note section
   static const String note = 'note';
    //End : Note section
