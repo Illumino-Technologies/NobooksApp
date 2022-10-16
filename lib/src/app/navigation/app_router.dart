@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:nobook/src/app/navigation/app_routes.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_screen.dart';
+import 'package:nobook/src/features/notes/view/screen/note_screen.dart';
 part 'app_route_paths.dart';
 class AppRouter{
   static GoRouter get router => _router;
@@ -30,6 +31,12 @@ final  GoRouter _router = GoRouter(
         return const DashboardScreen();
       },
     ),
-
+ GoRoute(
+      path: AppRoutePath.note,
+      name: AppRoutes.note,
+      builder: (context, state) {
+        return const NoteScreen();
+      },
+    ),
     ]
 );
