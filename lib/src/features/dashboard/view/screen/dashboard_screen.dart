@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/parser.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nobook/src/app/navigation/app_routes.dart';
 import 'package:nobook/src/app/themes/colors.dart';
@@ -20,7 +22,7 @@ class DashboardScreen extends StatelessWidget {
       height: context.height * 0.1,width: context.height* 0.1,),
       YMargin(40),
     SizedBox(height: 40,),
-  //Image.asset(Assets.logo),
+SvgPicture.asset(Assets.logo),
     ElevatedButton(onPressed: (){context.goNamed(AppRoutes.note);}, child: AppText.bold('nnn'))
       
    ]),);

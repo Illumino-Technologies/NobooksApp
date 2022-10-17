@@ -1,3 +1,13 @@
 class Assets{
-  static const String logo = 'assets/images/logo.svg';
+  //icons
+  static const String logo = 'assets/icons/logo.svg';
+
+
+
+
+
+
+
+
+  //images 
 }
