@@ -4,7 +4,9 @@ import 'package:nobook/src/app/themes/colors.dart';
 import 'package:nobook/src/features/dashboard/view/widget/dash_icon.dart';
 import 'package:nobook/src/features/dashboard/view/widget/dash_icon_with_name.dart';
 import 'package:nobook/src/utils/constants/assets.dart';
+import 'package:nobook/src/utils/extensions/size_extension.dart';
 import 'package:nobook/src/utils/sizing/sizing.dart';
+import 'package:nobook/src/utils/widgets/text/app_text.dart';
 
 class DashBoardPage extends StatefulWidget {
   const DashBoardPage({Key? key}) : super(key: key);
@@ -14,44 +16,74 @@ class DashBoardPage extends StatefulWidget {
 }
 
 class _DashBoardPageState extends State<DashBoardPage> {
-    bool isSelected = false;
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
-        child:
-          Column(
-            children: [
-                        //  AppText('')
-//         Row(children: [
-//           AppText('Hi, Boluwatife🧑'),
-//          // SvgPicture.asset(Assets.logo)
-//          SizedBox(width: context.width * 0.4,
-//            child: TextFormField(decoration: InputDecoration(prefixIcon: Icon(Icons.search,color: Colors.black,),
-//            hintText: 'Search for anything',hintStyle: TextStyle(fontSize: 20,color: Colors.black)),),
-//          ),
-// SvgPicture.asset(Assets.libraryIcon),
-//  SvgPicture.asset(Assets.notificationIcon),
-//   Image.asset(Assets.dp)
-//         ],)
-              YMargin(20),
-              InkWell(onTap: (){
-                setState(() {
-                  isSelected = !isSelected;
-                });
-              },
-                child: isSelected  ?SvgPicture.asset(Assets.drawerIcon):
-                 SvgPicture.asset(Assets.drawerLeft)),
-              AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 100),
-                    reverseDuration: const Duration(milliseconds:100),
-                    child:
-                        isSelected ? const DashIconWithName() : const DashIcon(),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              children: [
+                const YMargin(10),
+                InkWell(
+                    onTap: () {
+                      setState(() {
+                        isSelected = !isSelected;
+                      });
+                    },
+                    child: isSelected
+                        ? Padding(
+                            padding: const EdgeInsets.only(left: 140),
+                            child: SvgPicture.asset(Assets.drawerIcon),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.only(right: 0),
+                            child: SvgPicture.asset(Assets.drawerLeft),
+                          )),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 100),
+                  reverseDuration: const Duration(milliseconds: 100),
+                  child:
+                      isSelected ? const DashIconWithName() : const DashIcon(),
+                ),
+              ],
+            ),
+            const XMargin(30),
+            Row(
+              children: [
+                AppText.semiBold('Hi, Boluwatife🧑'),
+                const XMargin(220),
+                SizedBox(
+                  width: context.width * 0.3,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                          size: 10,
+                        ),
+                        hintText: 'Search for anything',
+                        hintStyle:
+                            TextStyle(fontSize: 10, color: Colors.black)),
                   ),
-            ],
-          ),
-        
+                ),
+                SvgPicture.asset(Assets.libraryIcon),
+                const XMargin(30),
+                SvgPicture.asset(Assets.notificationIcon),
+                const XMargin(30),
+                Image.asset(
+                  Assets.dp,
+                  width: 70,
+                  height: 30,
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

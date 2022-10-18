@@ -21,7 +21,7 @@ class _DashIconState extends State<DashIcon> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const YMargin(20),
-          SvgPicture.asset(Assets.emptyLogo),
+          SvgPicture.asset(Assets.emptyLogo,width: 30,),
           const YMargin(40),
           InkWell(
             onTap: () {
@@ -31,11 +31,11 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.11,
+              width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 0 ? AppColors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(5)),
+                  borderRadius: BorderRadius.circular(3)),
               child: Row(children: [
                 const XMargin(10),
                 SvgPicture.asset(Assets.dashboardIcon,
@@ -54,7 +54,7 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.11,
+              width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 1 ? AppColors.blue : Colors.transparent,
@@ -79,7 +79,7 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.11,
+              width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 2 ? AppColors.blue : Colors.transparent,
@@ -104,7 +104,7 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.11,
+              width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 3 ? AppColors.blue : Colors.transparent,
@@ -129,7 +129,7 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.11,
+              width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 4 ? AppColors.blue : Colors.transparent,
@@ -155,7 +155,7 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.11,
+              width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 5 ? AppColors.blue : Colors.transparent,
@@ -180,7 +180,7 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.11,
+              width: context.width *0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 6 ? AppColors.blue : Colors.transparent,

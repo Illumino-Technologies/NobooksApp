@@ -31,7 +31,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
           },
           child: Container(
             height: context.height * 0.04,
-            width: context.height * 0.3,
+            width: context.height * 0.25,
             decoration: BoxDecoration(
                 color: selectedIndex == 0 ? AppColors.blue : Colors.transparent,
                 borderRadius: BorderRadius.circular(5)),
@@ -40,7 +40,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
               SvgPicture.asset(Assets.dashboardIcon,
                   color:
                       selectedIndex == 0 ? AppColors.white : AppColors.grey100),
-              const XMargin(20),
+              const XMargin(15),
               AppText.medium('Dashboard',
                   color:
                       selectedIndex == 0 ? AppColors.white : AppColors.grey100)
@@ -56,7 +56,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
           },
           child: Container(
             height: context.height * 0.04,
-            width: context.height * 0.3,
+            width: context.height * 0.25,
             decoration: BoxDecoration(
                 color: selectedIndex == 1 ? AppColors.blue : Colors.transparent,
                 borderRadius: BorderRadius.circular(5)),
@@ -67,7 +67,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                     color: selectedIndex == 1
                         ? AppColors.white
                         : AppColors.grey100),
-                const XMargin(20),
+                const XMargin(15),
                 AppText.medium('Notes',
                     color: selectedIndex == 1
                         ? AppColors.white
@@ -85,7 +85,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
           },
           child: Container(
             height: context.height * 0.04,
-            width: context.height * 0.3,
+            width: context.height * 0.25,
             decoration: BoxDecoration(
                 color: selectedIndex == 2 ? AppColors.blue : Colors.transparent,
                 borderRadius: BorderRadius.circular(5)),
@@ -96,7 +96,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                     color: selectedIndex == 2
                         ? AppColors.white
                         : AppColors.grey100),
-                const XMargin(20),
+                const XMargin(15),
                 AppText.medium('Assignments',
                     color: selectedIndex == 2
                         ? AppColors.white
@@ -114,7 +114,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
           },
           child: Container(
             height: context.height * 0.04,
-            width: context.height * 0.3,
+            width: context.height * 0.25,
             decoration: BoxDecoration(
                 color: selectedIndex == 3 ? AppColors.blue : Colors.transparent,
                 borderRadius: BorderRadius.circular(5)),
@@ -125,7 +125,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                     color: selectedIndex == 3
                         ? AppColors.white
                         : AppColors.grey100),
-                const XMargin(20),
+                const XMargin(15),
                 AppText.medium('Tests & Exams',
                     color: selectedIndex == 3
                         ? AppColors.white
@@ -143,7 +143,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
           },
           child: Container(
             height: context.height * 0.04,
-            width: context.height * 0.3,
+            width: context.height * 0.25,
             decoration: BoxDecoration(
                 color: selectedIndex == 4 ? AppColors.blue : Colors.transparent,
                 borderRadius: BorderRadius.circular(5)),
@@ -154,7 +154,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                     color: selectedIndex == 4
                         ? AppColors.white
                         : AppColors.grey100),
-                const XMargin(20),
+                const XMargin(15),
                 AppText.medium('Records',
                     color: selectedIndex == 4
                         ? AppColors.white
@@ -172,7 +172,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
           },
           child: Container(
             height: context.height * 0.04,
-            width: context.height * 0.3,
+            width: context.height * 0.25,
             decoration: BoxDecoration(
                 color: selectedIndex == 5 ? AppColors.blue : Colors.transparent,
                 borderRadius: BorderRadius.circular(5)),
@@ -183,7 +183,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                     color: selectedIndex == 5
                         ? AppColors.white
                         : AppColors.grey100),
-                const XMargin(20),
+                const XMargin(15),
                 AppText.medium('Arena',
                     color: selectedIndex == 5
                         ? AppColors.white
@@ -201,7 +201,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
           },
           child: Container(
             height: context.height * 0.04,
-            width: context.height * 0.3,
+            width: context.height * 0.25,
             decoration: BoxDecoration(
                 color: selectedIndex == 6 ? AppColors.blue : Colors.transparent,
                 borderRadius: BorderRadius.circular(5)),
@@ -212,7 +212,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                     color: selectedIndex == 6
                         ? AppColors.white
                         : AppColors.grey100),
-                const XMargin(20),
+                const XMargin(15),
                 AppText.medium('Forum',
                     color: selectedIndex == 6
                         ? AppColors.white
