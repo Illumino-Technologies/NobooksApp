@@ -1,30 +1,72 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/parser.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nobook/src/app/navigation/app_routes.dart';
-import 'package:nobook/src/app/themes/colors.dart';
-import 'package:nobook/src/utils/constants/assets.dart';
-import 'package:nobook/src/utils/extensions/size_extension.dart';
-import 'package:nobook/src/utils/sizing/sizing.dart';
-import 'package:nobook/src/utils/widgets/text/app_text.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
+import 'package:nobook/src/features/dashboard/view/widgets/graphwidget.dart';
+import 'package:nobook/src/features/dashboard/view/widgets/reusable_card_widget.dart';
+import 'package:nobook/src/utils/constants/constants.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
+  @override
+  DashboardScreenState createState() => DashboardScreenState();
+}
 
+class DashboardScreenState extends ConsumerState<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
-   return Scaffold(backgroundColor: AppColors.white,
-    body: Column(children: [
-      YMargin(40),
-      AppText.medium('NNKKK',),
-      Container(color: Colors.yellow,
-      height: context.height * 0.1,width: context.height* 0.1,),
-      YMargin(40),
-    SizedBox(height: 40,),
-SvgPicture.asset(Assets.logo),
-    ElevatedButton(onPressed: (){context.goNamed(AppRoutes.note);}, child: AppText.bold('nnn'))
-      
-   ]),);
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          color: mBackgroundColor,
+        ),
+        child: SingleChildScrollView(
+          child: Column(children: [
+            const SizedBox(height: 40),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 200,
+              child: const Center(child: DashboardWidget()),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 280,
+              child: const Center(
+                child: CardWidgets(),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 280,
+              child: const Center(
+                child: CardWidgets2(),
+              ),
+            ),
+            // SizedBox(
+            //   width: MediaQuery.of(context).size.width,
+            //   height: 480,
+            //   child: Center(
+            //     child: Column(
+            //       // ignore: prefer_const_literals_to_create_immutables
+            //       children: [
+            //         const Align(
+            //           alignment: Alignment.centerLeft,
+            //           child: Text("Your Results"),
+            //         ),
+            //         const Padding(
+            //           padding: EdgeInsets.all(8.0),
+            //           child: Center(
+            //             child: GraphWidget(),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+          ]),
+        ),
+      ),
+    );
   }
-}  
+}

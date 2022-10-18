@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nobook/src/app/navigation/app_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +31,9 @@ class MyApp extends StatelessWidget {
         just use this so that the whole program similar and you dont need
         to recreate that
       */
- 
+        textTheme: GoogleFonts.nunitoTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       // home: const AppStructure( backgroundColor:  Colors.red,
       // rightBar: Text("rightbar"),
