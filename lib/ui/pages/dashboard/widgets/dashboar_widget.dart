@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/utilities/constants.dart';
 
-class DashboardWidget extends StatelessWidget {
+class DashboardWidget extends ConsumerWidget {
   const DashboardWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Container(
       height: 200,
       width: 694,
