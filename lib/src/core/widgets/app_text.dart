@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/app/themes/colors.dart';
+
 
 ///This is the general widget for text in this app
 ///use this rather than the flutter provided text widget
@@ -94,7 +94,7 @@ class AppText extends StatelessWidget {
   ///color: #FFFFFF
   static AppText button(
     String text, {
-    Color color = AppColors.white,
+    Color color = Colors.white,
     double fontSize = 20,
     TextAlign? alignment,
     TextDecoration? decoration,
