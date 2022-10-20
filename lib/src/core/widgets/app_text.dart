@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/app/themes/colors.dart';
+
 
 ///This is the general widget for text in this app
 ///use this rather than the flutter provided text widget
@@ -40,131 +40,53 @@ class AppText extends StatelessWidget {
     this.decoration,
   }) : super(key: key);
 
-  ///fontSize: 14
-  ///fontStyle: italic
-  ///weight: w400
-  static AppText italic(
-    String text, {
-    Color? color,
-    FontWeight? weight,
-  }) =>
-      AppText(
-        text,
-        weight: weight,
-        color: color,
-        style: FontStyle.italic,
-      );
 
-  ///fontSize: 16
-  ///weight: w400
-  static AppText bodyMedium(
-    String text, {
-    Color? color,
-    double? fontSize = 15,
-
-  }) =>
-      AppText(
-        text,
-        weight: FontWeight.w400,
-        fontSize: fontSize,
-        color: color,
-      );
-
-  ///fontSize: 15
+  ///fontSize: 18
   ///weight: w700
   static AppText bold(
     String text, {
     Color? color,
-    double? fontSize = 15,
+    double? fontSize = 18,
+
   }) =>
       AppText(
         text,
         weight: FontWeight.w700,
-        color: color,
         fontSize: fontSize,
+        color: color,
       );
 
-  ///fontSize: 15
-  ///weight: w700
-  static AppText boldItalic(
-    String text, {
-    Color? color,
-    double? fontSize = 15,
-  }) =>
-      AppText(
-        text,
-        weight: FontWeight.w700,
-        color: color,
-        fontSize: fontSize,
-        style: FontStyle.italic,
-      );
-
-  ///fontSize: 15
+  ///fontSize: 14
   ///weight: w600
   static AppText semiBold(
     String text, {
     Color? color,
-    double? fontSize = 15,
-    TextAlign? alignment,
-    TextDecoration? decoration,
+    double? fontSize = 14,
   }) =>
       AppText(
         text,
-        decoration: decoration,
         weight: FontWeight.w600,
-        alignment: alignment,
         color: color,
         fontSize: fontSize,
       );
 
-  ///fontSize: 15
-  ///weight: w600
-  static AppText semiBoldItalic(
-    String text, {
-    Color? color,
-    double? fontSize,
-    TextAlign? alignment,
-    TextDecoration? decoration,
-  }) =>
-      AppText(
-        text,
-        decoration: decoration,
-        weight: FontWeight.w600,
-        alignment: alignment,
-        color: color,
-        style: FontStyle.italic,
-        fontSize: fontSize,
-      );
 
-  ///weight: w500
+  ///fontSize: 12
+  ///weight: w400
   static AppText medium(
     String text, {
     Color? color,
-    double? fontSize,
+    double? fontSize = 12,
     TextAlign? alignment,
     TextDecoration? decoration,
   }) =>
       AppText(
         text,
-        fontSize: fontSize,
-        weight: FontWeight.w500,
         decoration: decoration,
+        weight: FontWeight.w400,
         alignment: alignment,
         color: color,
-      );
-
-  ///weight: w500
-  static AppText mediumItalic(
-    String text, {
-    Color? color,
-    double? fontSize,
-  }) =>
-      AppText(
-        text,
         fontSize: fontSize,
-        style: FontStyle.italic,
-        weight: FontWeight.w500,
-        color: color,
       );
 
   ///weight: w500
@@ -172,7 +94,7 @@ class AppText extends StatelessWidget {
   ///color: #FFFFFF
   static AppText button(
     String text, {
-    Color color = AppColors.white,
+    Color color = Colors.white,
     double fontSize = 20,
     TextAlign? alignment,
     TextDecoration? decoration,

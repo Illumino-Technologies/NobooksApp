@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nobook/src/app/themes/colors.dart';
-import 'package:nobook/src/utils/constants/assets.dart';
-import 'package:nobook/src/utils/extensions/size_extension.dart';
-import 'package:nobook/src/utils/sizing/sizing.dart';
+import 'package:nobook/src/core/constants/assets.dart';
+import 'package:nobook/src/core/extensions/size_extension.dart';
+import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/core/utils/sizing/sizing.dart';
+
 
 class DashIcon extends StatefulWidget {
   const DashIcon({Key? key}) : super(key: key);

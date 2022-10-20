@@ -1,15 +1,9 @@
-import 'dart:html';
+
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nobook/src/core/extensions/size_extension.dart';
 
-import 'package:nobook/src/app/themes/colors.dart';
-import 'package:nobook/src/features/dashboard/view/widget/dash_icon.dart';
-import 'package:nobook/src/features/dashboard/view/widget/dash_icon_with_name.dart';
-import 'package:nobook/src/utils/constants/assets.dart';
-import 'package:nobook/src/utils/extensions/size_extension.dart';
-import 'package:nobook/src/utils/sizing/sizing.dart';
-import 'package:nobook/src/utils/widgets/text/app_text.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -22,15 +16,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-               
-          ],
-        ),
-      ),
-    );
+   return Scaffold(backgroundColor: Colors.white,
+    body: Column(children: [
+ 
+      Container(height: 200.h,
+      width: 200.w,),
+      Text('nnn',style: TextStyle(fontSize: 12.fontSize),)
+   ]),);
   }
 }
