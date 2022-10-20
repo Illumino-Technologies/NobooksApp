@@ -7,10 +7,9 @@ extension BuildContextExtension on BuildContext {
   double get width => size.width;
 }
 
-// extension ResponsivenessExtension on num {
-//   double get height => h;
-//   double get width => w;
-//   double get fontSize => sp + ScreenUtil().setSp(toInt());
-//  // ScreenUtil().setSp(28) 
+extension ResponsivenessExtension on num {
+  double get height => h;
+  double get width => w;
+  double get fontSize => sp + ScreenUtil().setSp(toInt());
 
-//}
+}

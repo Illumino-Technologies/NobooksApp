@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nobook/src/core/extensions/size_extension.dart';
 
 
 class DashboardScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class DashboardScreen extends StatelessWidget {
  
       Container(height: 200.h,
       width: 200.w,),
-      Text('nnn',style: TextStyle(fontSize: 12.sp),)
+      Text('nnn',style: TextStyle(fontSize: 12.fontSize),)
    ]),);
   }
 }  
