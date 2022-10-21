@@ -43,7 +43,7 @@ class DashboardWidget extends ConsumerWidget {
                         height: 8,
                       ),
                       const SizedBox(
-                        height: 51,
+                        height: 53,
                         width: 389,
                         child: Align(
                           alignment: Alignment.centerLeft,

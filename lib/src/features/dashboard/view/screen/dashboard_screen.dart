@@ -1,9 +1,8 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
-import 'package:nobook/src/features/dashboard/view/widgets/graphwidget.dart';
+
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_card_widget.dart';
 import 'package:nobook/src/utils/constants/constants.dart';
 
@@ -23,29 +22,36 @@ class DashboardScreenState extends ConsumerState<DashboardScreen> {
         ),
         child: SingleChildScrollView(
           child: Column(children: [
-            const SizedBox(height: 40),
+            SizedBox(height: 40.h),
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: 200,
+              height: 200.h,
               child: const Center(child: DashboardWidget()),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: 280,
+              height: 280.h,
               child: const Center(
                 child: CardWidgets(),
               ),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: 280,
+              height: 280.h,
+              child: const Center(
+                child: CardWidgets2(),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 280.h,
               child: const Center(
                 child: CardWidgets2(),
               ),
             ),
             // SizedBox(
             //   width: MediaQuery.of(context).size.width,
-            //   height: 480,
+            //   height: 480.h,
             //   child: Center(
             //     child: Column(
             //       // ignore: prefer_const_literals_to_create_immutables

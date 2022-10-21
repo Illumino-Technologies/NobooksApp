@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_tile%20widgets.dart';
 import 'package:nobook/src/utils/constants/constants.dart';
 
@@ -9,17 +10,17 @@ class CardWidgets extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     return SizedBox(
-      height: 280,
-      width: 694,
+      height: 280.h,
+      width: 694.w,
       child: Column(
         children: [
           // ignore: prefer_const_constructors
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
           const ReusableTileWidget1(),
-          const SizedBox(
-            height: 24,
+          SizedBox(
+            height: 24.h,
           ),
           GridView.builder(
             itemCount: 4,
@@ -42,17 +43,17 @@ class CardWidgets2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     return SizedBox(
-      height: 280,
-      width: 694,
+      height: 280.h,
+      width: 694.w,
       child: Column(
         children: [
           // ignore: prefer_const_constructors
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
           const ReusableTileWidget2(),
-          const SizedBox(
-            height: 24,
+          SizedBox(
+            height: 24.h,
           ),
           GridView.builder(
             itemCount: 4,
