@@ -1,4 +1,6 @@
-import 'package:nobook/src/utils/constants/assets.dart';
+
+
+import 'package:nobook/src/core/constants/assets.dart';
 
 class TimeTable {
   final String subject;

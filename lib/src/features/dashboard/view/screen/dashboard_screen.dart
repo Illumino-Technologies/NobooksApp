@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/app/themes/colors.dart';
+import 'package:nobook/src/core/themes/color.dart';
+
 import 'package:nobook/src/features/notification/notification.dart';
 import 'package:nobook/src/model/subjects.dart';
 import 'package:table_calendar/table_calendar.dart';
