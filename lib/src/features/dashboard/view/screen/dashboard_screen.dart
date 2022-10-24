@@ -1,80 +1,110 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/features/dashboard/view/widgets/calendar.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nobook/src/core/themes/color.dart';
 
-import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
+import 'package:nobook/src/model/subjects.dart';
+import 'package:table_calendar/table_calendar.dart';
 
-import 'package:nobook/src/features/dashboard/view/widgets/card_widget.dart';
-import 'package:nobook/src/utils/constants/constants.dart';
-
-class DashboardScreen extends ConsumerStatefulWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
+
   @override
-  DashboardScreenState createState() => DashboardScreenState();
+  State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class DashboardScreenState extends ConsumerState<DashboardScreen> {
+class _DashboardScreenState extends State<DashboardScreen> {
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+  DateTime selectedDay = DateTime.now();
+  DateTime focusedDay = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+    final querywidth = MediaQuery.of(context).size.width / 5;
+    // final queryheight = MediaQuery.of(context).size.height/3;
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  color: mBackgroundColor,
-                ),
-                child: SingleChildScrollView(
-                  child: Column(children: [
-                    const SizedBox(height: 40),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 200,
-                      child: const Center(child: DashboardWidget()),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 280,
-                      child: const Center(
-                        child: CardWidgets(),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 280,
-                      child: const Center(
-                        child: CardWidgets2(),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 480,
-                      child: Center(
-                        child: Container(
-                          width: 694,
-                          height: 433,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: mCardColor,
+          SizedBox(
+            width: querywidth + 100,
+            // height: queryheight,
+            child: Stack(children: [
+              Column(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TableCalendar(
+                        calendarFormat: _calendarFormat,
+                        focusedDay: DateTime.now(),
+                        firstDay: DateTime(1990),
+                        lastDay: DateTime(2050),
+                        onFormatChanged: (format) {
+                          setState(() {
+                            _calendarFormat = format;
+                          });
+                        },
+                        daysOfWeekVisible: true,
+                        startingDayOfWeek: StartingDayOfWeek.sunday,
+                        calendarStyle: CalendarStyle(
+                          isTodayHighlighted: true,
+                          selectedDecoration: BoxDecoration(
+                            color: Colors.blue,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          selectedTextStyle:
+                              const TextStyle(color: Colors.white),
+                          todayDecoration: BoxDecoration(
+                            color: Colors.purpleAccent,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          defaultDecoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          weekendDecoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
-                      ),
-                    ),
+                        headerStyle: const HeaderStyle(
+                          formatButtonVisible: false,
+                          titleCentered: true,
+                          formatButtonTextStyle: TextStyle(color: Colors.white),
+                        ),
+                        onDaySelected: (DateTime selectDay, DateTime focusDay) {
+                          setState(() {
+                            selectedDay = selectDay;
+                            focusedDay = focusDay;
+                          });
+                        },
+                        selectedDayPredicate: (DateTime date) {
+                          return isSameDay(selectedDay, date);
+                        }),
+                    Expanded(
+                        child: ListView.builder(
+                      itemCount: timeTable.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          leading: Image.asset(timeTable[index].subjectLogo),
+                          title: Text(timeTable[index].subject),
+                          subtitle: Row(
+                            children: [
+                              Text(timeTable[index].startTime),
+                              const Text(" - "),
+                              Text(timeTable[index].endTime),
+                            ],
+                          ),
+                          trailing: const Icon(Icons.arrow_forward_ios),
+                        );
+                      },
+                    ))
                   ]),
-                ),
-              ),
-            ],
+              // const Positioned(
+              //     // top: 1,
+              //     // left: 2,
+              //     child: Notifications())
+            ]),
           ),
-          // Column(
-          //   // ignore: prefer_const_literals_to_create_immutables
-          //   children: [
-          //     const CalendarWidget(),
-          //   ],
-          // )
         ],
       ),
     );

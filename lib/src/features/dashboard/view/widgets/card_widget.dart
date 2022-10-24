@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nobook/src/core/themes/color.dart';
 //import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import 'package:nobook/src/features/dashboard/models/cardinfo.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_tile%20widgets.dart';
-import 'package:nobook/src/utils/constants/constants.dart';
 
 class CardWidgets extends ConsumerWidget {
   const CardWidgets({super.key});
@@ -29,7 +29,7 @@ class CardWidgets extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: const BoxDecoration(
-                    color: mCardColor,
+                    color: AppColors.mCardColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     )),
@@ -69,7 +69,7 @@ class CardWidgets extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: const BoxDecoration(
-                    color: mCardColor,
+                    color: AppColors.mCardColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     )),
@@ -168,7 +168,7 @@ class CardWidgets extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: const BoxDecoration(
-                    color: mCardColor,
+                    color: AppColors.mCardColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     )),
@@ -267,7 +267,7 @@ class CardWidgets extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: const BoxDecoration(
-                    color: mCardColor,
+                    color: AppColors.mCardColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     )),
@@ -425,7 +425,7 @@ class CardWidgets2 extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: const BoxDecoration(
-                    color: mCardColor,
+                    color: AppColors.mCardColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     )),
@@ -524,7 +524,7 @@ class CardWidgets2 extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: const BoxDecoration(
-                    color: mCardColor,
+                    color: AppColors.mCardColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     )),
@@ -623,7 +623,7 @@ class CardWidgets2 extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: const BoxDecoration(
-                    color: mCardColor,
+                    color: AppColors.mCardColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     )),
@@ -722,7 +722,7 @@ class CardWidgets2 extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: const BoxDecoration(
-                    color: mCardColor,
+                    color: AppColors.mCardColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     )),

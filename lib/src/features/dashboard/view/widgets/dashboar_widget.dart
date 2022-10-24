@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/utils/constants/constants.dart';
+import 'package:nobook/src/core/themes/color.dart';
 
 class DashboardWidget extends ConsumerWidget {
   const DashboardWidget({Key? key}) : super(key: key);
@@ -11,11 +11,11 @@ class DashboardWidget extends ConsumerWidget {
       height: 200,
       width: 694,
       decoration: const BoxDecoration(
-          color: mBackgroundColor, //kDashWidgetColor
+          color: AppColors.mBackgroundColor, //kDashWidgetColor
           borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Container(
         decoration: const BoxDecoration(
-            color: kDashWidgetColor,
+            color: AppColors.blue,
             borderRadius: BorderRadius.all(Radius.circular(8))),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 29),
