@@ -13,7 +13,8 @@ class Assets{
   static const String notificationIcon = 'assets/icons/notification.svg';
   static const String emptyLogo ='assets/icons/empty_logo.svg'; 
   static const String drawerLeft = 'assets/icons/drawer_left.svg';     
-
+  static const String mt = 'assets/images/40px.png';
+  static const String book = 'assets/images/books.png';
  
 
 
