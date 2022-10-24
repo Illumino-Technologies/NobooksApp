@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/core.dart';
+import 'package:nobook/src/core/navigation/app_router.dart'; 
+
 import 'package:nobook/ui/pages/dashboard/view/dashboard_page.dart';
 
 void main() {
@@ -9,14 +10,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'No books',
+      debugShowCheckedModeBanner: false,
+      routerDelegate: AppRouter.router.routerDelegate,
+      routeInformationParser: AppRouter.router.routeInformationParser,
+      routeInformationProvider: AppRouter.router.routeInformationProvider,
       theme: ThemeData(
-        /*
+      /*
         please read this before we progress
 
         i created a widget called AppStructure in core.dart that contains
@@ -29,13 +32,12 @@ class MyApp extends StatelessWidget {
       */
         primarySwatch: Colors.blue,
       ),
-      home: const AppStructure(
-        backgroundColor: Colors.red,
-        rightBar: Text("rightbar"),
-        leftBar: Text("leftbar"),
-        body: DashboardPage(),
-        appBar: Text("appbar"),
-      ),
+      home: const AppStructure( backgroundColor:  Colors.red,
+      rightBar: Text("rightbar"),
+      leftBar: Text("leftbar"),
+      body: Text("body"),
+      appBar: Text("appbar"),),
     );
   }
 }
+
