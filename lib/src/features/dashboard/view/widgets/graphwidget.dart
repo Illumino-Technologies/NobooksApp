@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, duplicate_ignore
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +42,7 @@ class GraphWidgetState extends ConsumerState<GraphWidget> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 40, vertical: 29),
                 child: Column(
+                  // ignore: duplicate_ignore
                   children: [
                     // ignore: prefer_const_constructors
                     SizedBox(height: 21.5),

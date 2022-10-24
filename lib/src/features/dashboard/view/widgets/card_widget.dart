@@ -19,7 +19,7 @@ class CardWidgets extends ConsumerWidget {
           SizedBox(
             height: 20,
           ),
-          const ReusableTileWidget2(),
+          const ReusableTileWidget1(),
           const SizedBox(
             height: 24,
           ),

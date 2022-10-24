@@ -8,7 +8,6 @@ import 'package:nobook/src/core/widgets/app_text.dart';
 import 'package:nobook/src/features/dashboard/view/widget/dash_icon.dart';
 import 'package:nobook/src/features/dashboard/view/widget/dash_icon_with_name.dart';
 
-
 class DashBoardPage extends StatefulWidget {
   const DashBoardPage({Key? key}) : super(key: key);
 
