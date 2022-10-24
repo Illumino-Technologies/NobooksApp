@@ -28,7 +28,7 @@ final  GoRouter _router = GoRouter(
       path: AppRoutePath.dashboard,
       name: AppRoutes.dashboard,
       builder: (context, state) {
-        return const DashboardScreen();
+        return const DashBoardScreen();
       },
     ),
  GoRoute(
