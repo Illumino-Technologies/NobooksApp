@@ -44,7 +44,7 @@ class AppStructure extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              children:  [
+              children: [
                 _AppBar(
                   color: appBarBackgroundColor,
                   child: appBar,
@@ -69,7 +69,7 @@ class AppStructure extends StatelessWidget {
 class _AppBar extends StatelessWidget {
   final Color? color;
   final Widget? child;
-  const _AppBar({this.color,  this.child, Key? key}) : super(key: key);
+  const _AppBar({this.color, this.child, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +91,7 @@ class _AppBar extends StatelessWidget {
 class _Body extends StatelessWidget {
   final Color? color;
   final Widget? child;
-  const _Body({this.color,  this.child, Key? key}) : super(key: key);
+  const _Body({this.color, this.child, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +113,7 @@ class _Body extends StatelessWidget {
 class _LeftBar extends StatelessWidget {
   final Color? color;
   final Widget? child;
-  const _LeftBar({this.color,  this.child, Key? key}) : super(key: key);
+  const _LeftBar({this.color, this.child, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,7 @@ class _RightBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var Size = MediaQuery.of(context).size;
-    return  Container(
+    return Container(
       decoration: BoxDecoration(
           color: color ?? Colors.white,
           border: Border.all(

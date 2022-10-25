@@ -53,7 +53,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               TextStyle(fontSize: 10, color: Colors.black)),
                     ),
                   ),
-                    const XMargin(10),
+                  const XMargin(10),
                   SvgPicture.asset(Assets.libraryIcon),
                   const XMargin(10),
                   SvgPicture.asset(Assets.notificationIcon),
