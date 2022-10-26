@@ -11,7 +11,7 @@ class Note {
       this.noteColor = 'red'});
 
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> data = Map<String, dynamic>();
+    Map<String, dynamic> data = <String, dynamic>{};
     if (id != null) {
       data['id'] = id;
     }

@@ -51,9 +51,11 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                   width: 694,
                   height: 433,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: AppColors.mCardColor,
-                  ),
+                      borderRadius: BorderRadius.circular(8),
+                      image: const DecorationImage(
+                        image: AssetImage("assets/graph.png"),
+                        fit: BoxFit.fill,
+                      )),
                 ),
               ),
             ),

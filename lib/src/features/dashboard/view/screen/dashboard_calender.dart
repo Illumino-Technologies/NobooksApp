@@ -46,7 +46,7 @@ class _DashboardCalenderState extends State<DashboardCalender> {
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(5.0),
                       ),
-                      selectedTextStyle: TextStyle(color: Colors.white),
+                      selectedTextStyle: const TextStyle(color: Colors.white),
                       todayDecoration: BoxDecoration(
                         color: Colors.purpleAccent,
                         shape: BoxShape.rectangle,

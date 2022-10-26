@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/core/constants/assets.dart';
-import 'package:nobook/src/core/extensions/size_extension.dart';
-import 'package:nobook/src/core/themes/color.dart';
+
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
-import 'package:nobook/src/core/widgets/app_text.dart';
+
 import 'package:nobook/src/features/dashboard/view/widget/dash_icon.dart';
 import 'package:nobook/src/features/dashboard/view/widget/dash_icon_with_name.dart';
 
@@ -43,35 +42,34 @@ class _DashBoardNavigationState extends State<DashBoardNavigation> {
           child: isSelected ? const DashIconWithName() : const DashIcon(),
         ),
         // Row(
-      //     children: [
-      //       AppText.semiBold('Hi, Boluwatife🧑'),
-      //       const XMargin(220),
-      //       SizedBox(
-      //         width: context.width * 0.3,
-      //         child: TextFormField(
-      //           decoration: const InputDecoration(
-      //               border: InputBorder.none,
-      //               prefixIcon: Icon(
-      //                 Icons.search,
-      //                 color: Colors.black,
-      //                  size: 10,
-      //               ),
-      //               hintText: 'Search for anything',
-      //               hintStyle: TextStyle(fontSize: 10, color: Colors.black)),
-      //         ),
-      //       ),
-      //       SvgPicture.asset(Assets.libraryIcon),
-      //       const XMargin(30),
-      //       SvgPicture.asset(Assets.notificationIcon),
-      //       const XMargin(30),
-      //       Image.asset(
-      //         Assets.dp,
-      //         width: 70,
-      //         height: 30,
-      //       )
-      //     ],
-      //  ),
-
+        //     children: [
+        //       AppText.semiBold('Hi, Boluwatife🧑'),
+        //       const XMargin(220),
+        //       SizedBox(
+        //         width: context.width * 0.3,
+        //         child: TextFormField(
+        //           decoration: const InputDecoration(
+        //               border: InputBorder.none,
+        //               prefixIcon: Icon(
+        //                 Icons.search,
+        //                 color: Colors.black,
+        //                  size: 10,
+        //               ),
+        //               hintText: 'Search for anything',
+        //               hintStyle: TextStyle(fontSize: 10, color: Colors.black)),
+        //         ),
+        //       ),
+        //       SvgPicture.asset(Assets.libraryIcon),
+        //       const XMargin(30),
+        //       SvgPicture.asset(Assets.notificationIcon),
+        //       const XMargin(30),
+        //       Image.asset(
+        //         Assets.dp,
+        //         width: 70,
+        //         height: 30,
+        //       )
+        //     ],
+        //  ),
       ],
     );
   }
