@@ -5,7 +5,6 @@ import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
 
-
 class DashIcon extends StatefulWidget {
   const DashIcon({Key? key}) : super(key: key);
 
@@ -22,7 +21,10 @@ class _DashIconState extends State<DashIcon> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const YMargin(20),
-          SvgPicture.asset(Assets.emptyLogo,width: 30,),
+          SvgPicture.asset(
+            Assets.emptyLogo,
+            width: 30,
+          ),
           const YMargin(40),
           InkWell(
             onTap: () {
@@ -37,7 +39,8 @@ class _DashIconState extends State<DashIcon> {
                   color:
                       selectedIndex == 0 ? AppColors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(3)),
-              child: Row(children: [
+              child:
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 const XMargin(10),
                 SvgPicture.asset(Assets.dashboardIcon,
                     color: selectedIndex == 0
@@ -61,6 +64,7 @@ class _DashIconState extends State<DashIcon> {
                       selectedIndex == 1 ? AppColors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const XMargin(10),
                   SvgPicture.asset(Assets.noteIcon,
@@ -86,6 +90,7 @@ class _DashIconState extends State<DashIcon> {
                       selectedIndex == 2 ? AppColors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const XMargin(10),
                   SvgPicture.asset(Assets.assignmentIcon,
@@ -105,12 +110,13 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.04,
+              // width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 3 ? AppColors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const XMargin(10),
                   SvgPicture.asset(Assets.examIcon,
@@ -130,12 +136,13 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width * 0.04,
+              // width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 4 ? AppColors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const XMargin(10),
                   SvgPicture.asset(Assets.recordIcon,
@@ -162,6 +169,7 @@ class _DashIconState extends State<DashIcon> {
                       selectedIndex == 5 ? AppColors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const XMargin(10),
                   SvgPicture.asset(Assets.arenaIcon,
@@ -187,6 +195,7 @@ class _DashIconState extends State<DashIcon> {
                       selectedIndex == 6 ? AppColors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const XMargin(10),
                   SvgPicture.asset(Assets.forumIcon,
