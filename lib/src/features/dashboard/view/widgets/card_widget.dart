@@ -90,7 +90,7 @@ class CardWidgets extends ConsumerWidget {
                                 Radius.circular(4),
                               ),
                               image: DecorationImage(
-                                image: AssetImage('assets/mt.png'),
+                                image: AssetImage('assets/subjects/mt.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -189,7 +189,7 @@ class CardWidgets extends ConsumerWidget {
                                 Radius.circular(4),
                               ),
                               image: DecorationImage(
-                                image: AssetImage('assets/bi.png'),
+                                image: AssetImage('assets/subjects/bi.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -288,7 +288,7 @@ class CardWidgets extends ConsumerWidget {
                                 Radius.circular(4),
                               ),
                               image: DecorationImage(
-                                image: AssetImage('assets/fm.png'),
+                                image: AssetImage('assets/subjects/fm.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -446,7 +446,7 @@ class CardWidgets2 extends ConsumerWidget {
                                 Radius.circular(4),
                               ),
                               image: DecorationImage(
-                                image: AssetImage('assets/ec.png'),
+                                image: AssetImage('assets/subjects/ec.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -545,7 +545,7 @@ class CardWidgets2 extends ConsumerWidget {
                                 Radius.circular(4),
                               ),
                               image: DecorationImage(
-                                image: AssetImage('assets/bi.png'),
+                                image: AssetImage('assets/subjects/bi.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -644,7 +644,7 @@ class CardWidgets2 extends ConsumerWidget {
                                 Radius.circular(4),
                               ),
                               image: DecorationImage(
-                                image: AssetImage('assets/fm.png'),
+                                image: AssetImage('assets/subjects/fm.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -743,7 +743,7 @@ class CardWidgets2 extends ConsumerWidget {
                                 Radius.circular(4),
                               ),
                               image: DecorationImage(
-                                image: AssetImage('assets/en.png'),
+                                image: AssetImage('assets/subjects/en.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
