@@ -29,7 +29,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          DashBoardNavigation(),
+          const DashBoardNavigation(),
           Expanded(
               child: Column(
             children: [
@@ -67,13 +67,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   )
                 ],
               ),
-              Text(
+              const Text(
                 'kush',
                 textAlign: TextAlign.center,
               ),
             ],
           )),
-          DashboardCalender()
+          const DashboardCalender()
         ],
       )),
     );
