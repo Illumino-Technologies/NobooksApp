@@ -13,7 +13,7 @@ class DashboardScreen extends StatelessWidget {
    return Scaffold(backgroundColor: Colors.white,
     body: Column(children: [
  
-      SizedBox(height: 200.h,
+      Container(height: 200.h,
       width: 200.w,),
       Text('nnn',style: TextStyle(fontSize: 12.fontSize),)
    ]),);
