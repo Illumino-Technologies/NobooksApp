@@ -1,8 +1,8 @@
-// ignore_for_file: non_constant_identifier_names, unused_element
+// ignore_for_file: non_constant_identifier_names, unused_element, must_be_immutable
 
 import 'package:flutter/material.dart';
 
-class AppStructure extends StatelessWidget {
+class Structure extends StatelessWidget {
   final Color? backgroundColor;
   final Color? bodyBackgroundColor;
   final Color? rightBarBackgroundColor;
@@ -12,10 +12,12 @@ class AppStructure extends StatelessWidget {
   final Widget? leftBar;
   final Widget? rightBar;
   final Widget? body;
-  const AppStructure(
+  final bool? expandLeftBar;
+  const Structure(
       {this.backgroundColor,
       this.body,
       this.leftBar,
+      this.expandLeftBar,
       this.rightBar,
       this.appBar,
       this.bodyBackgroundColor,
@@ -27,6 +29,9 @@ class AppStructure extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool left = leftBar == null ? false : true;
+    bool right = rightBar == null ? false : true;
+    bool top = appBar == null ? false : true;
     var Size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -39,18 +44,24 @@ class AppStructure extends StatelessWidget {
           children: [
             _LeftBar(
               color: leftBarBackgroundColor,
+              expanded: expandLeftBar == null ? true : expandLeftBar!,
               child: leftBar,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              children:  [
+              children: [
                 _AppBar(
+                  expanded: expandLeftBar == null ? true : expandLeftBar!,
                   color: appBarBackgroundColor,
                   child: appBar,
                 ),
                 _Body(
+                  expanded: expandLeftBar == null ? true : expandLeftBar!,
                   color: bodyBackgroundColor,
+                  top: top,
+                  left: left,
+                  right: right,
                   child: body,
                 ),
               ],
@@ -69,7 +80,9 @@ class AppStructure extends StatelessWidget {
 class _AppBar extends StatelessWidget {
   final Color? color;
   final Widget? child;
-  const _AppBar({this.color,  this.child, Key? key}) : super(key: key);
+  bool expanded;
+  _AppBar({this.color, this.child, this.expanded = true, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +95,9 @@ class _AppBar extends StatelessWidget {
             color: color ?? Colors.white,
           )),
       height: Size.height * 0.1,
-      width: (Size.width * 0.6),
+      width: expanded
+          ? (Size.width * 0.6)
+          : (Size.width * 0.6) + (Size.width * 0.15),
       child: child,
     );
   }
@@ -91,7 +106,12 @@ class _AppBar extends StatelessWidget {
 class _Body extends StatelessWidget {
   final Color? color;
   final Widget? child;
-  const _Body({this.color,  this.child, Key? key}) : super(key: key);
+  bool? left;
+  bool? right;
+  bool? top;
+  bool expanded;
+  _Body({this.color, this.child, this.expanded = true, this.left, this.right, this.top, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +124,9 @@ class _Body extends StatelessWidget {
             color: color ?? Colors.white,
           )),
       height: Size.height * 0.9,
-      width: (Size.width * 0.6),
+      width: (expanded
+          ? (Size.width * 0.6)
+          : (Size.width * 0.6) + (Size.width * 0.15)),
       child: child,
     );
   }
@@ -113,20 +135,24 @@ class _Body extends StatelessWidget {
 class _LeftBar extends StatelessWidget {
   final Color? color;
   final Widget? child;
-  const _LeftBar({this.color,  this.child, Key? key}) : super(key: key);
+  bool expanded;
+  _LeftBar({this.color, this.child, this.expanded = true, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var Size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
-          color: color ?? Colors.white,
+          color: color ?? Colors.red,
           border: Border.all(
             width: 0,
             color: color ?? Colors.white,
           )),
       height: Size.height,
-      width: Size.width * 0.2,
+      width: child == null
+          ? Size.width * 0
+          : (expanded ? Size.width * 0.2 : Size.width * 0.05),
       child: child,
     );
   }
@@ -140,7 +166,7 @@ class _RightBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var Size = MediaQuery.of(context).size;
-    return  Container(
+    return Container(
       decoration: BoxDecoration(
           color: color ?? Colors.white,
           border: Border.all(
@@ -148,7 +174,7 @@ class _RightBar extends StatelessWidget {
             color: color ?? Colors.white,
           )),
       height: Size.height,
-      width: Size.width * 0.2,
+      width: child == null ? Size.width * 0 : Size.width * 0.2,
       child: child,
     );
   }
