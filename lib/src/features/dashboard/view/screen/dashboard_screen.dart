@@ -9,9 +9,12 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Structure(
-        // expandLeftBar: false,
+        expandLeftBar: false,
         bodyBackgroundColor: Colors.green ,
         rightBarBackgroundColor: Colors.brown,
+        appBarBackgroundColor: Colors.yellowAccent,
+        leftBar: const Text("hi"),
+        rightBar: Text("me"),
         appBar: Row(
       children: const [Text("hello"), Icon(Icons.abc)],
     ));

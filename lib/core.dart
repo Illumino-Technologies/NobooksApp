@@ -27,6 +27,22 @@ class Structure extends StatelessWidget {
       Key? key})
       : super(key: key);
 
+  getwidth (expanded, top, left, right, size) {
+    if (left == false && right == false) {
+      return size.width;
+    } else if (left == false && right == true) {
+      return (size.width * 0.6) + (size.width * 0.2);
+    } else if (left == true && right == false) {
+      return (expanded
+          ? (size.width * 0.6) + (size.width * 0.2)
+          : (size.width * 0.6) + (size.width * 0.15) + (size.width * 0.2));
+    } else {
+      return (expanded
+          ? (size.width * 0.6)
+          : (size.width * 0.6) + (size.width * 0.15));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     bool left = leftBar == null ? false : true;
@@ -54,13 +70,19 @@ class Structure extends StatelessWidget {
                 _AppBar(
                   expanded: expandLeftBar == null ? true : expandLeftBar!,
                   color: appBarBackgroundColor,
+                  top: top,
+                  left: left,
+                  right: right,
+                  getwidth : getwidth,
                   child: appBar,
+
                 ),
                 _Body(
                   expanded: expandLeftBar == null ? true : expandLeftBar!,
                   color: bodyBackgroundColor,
                   top: top,
                   left: left,
+                  getwidth : getwidth,
                   right: right,
                   child: body,
                 ),
@@ -80,8 +102,20 @@ class Structure extends StatelessWidget {
 class _AppBar extends StatelessWidget {
   final Color? color;
   final Widget? child;
+  bool left;
+  bool right;
+  bool top;
+  dynamic getwidth;
   bool expanded;
-  _AppBar({this.color, this.child, this.expanded = true, Key? key})
+  _AppBar(
+      {this.color,
+      this.child,
+      this.getwidth,
+      this.left = false,
+      this.right = false,
+      this.top = false,
+      this.expanded = true,
+      Key? key})
       : super(key: key);
 
   @override
@@ -95,9 +129,7 @@ class _AppBar extends StatelessWidget {
             color: color ?? Colors.white,
           )),
       height: Size.height * 0.1,
-      width: expanded
-          ? (Size.width * 0.6)
-          : (Size.width * 0.6) + (Size.width * 0.15),
+      width:  getwidth(expanded, top, left, right, Size),
       child: child,
     );
   }
@@ -106,11 +138,20 @@ class _AppBar extends StatelessWidget {
 class _Body extends StatelessWidget {
   final Color? color;
   final Widget? child;
-  bool? left;
-  bool? right;
-  bool? top;
+  bool left;
+  bool right;
+  bool top;
   bool expanded;
-  _Body({this.color, this.child, this.expanded = true, this.left, this.right, this.top, Key? key})
+  dynamic getwidth;
+  _Body(
+      {this.color,
+      this.child,
+      this.expanded = true,
+      this.left = false,
+      this.right = false,
+      this.top = false,
+      this.getwidth,
+      Key? key})
       : super(key: key);
 
   @override
@@ -124,9 +165,7 @@ class _Body extends StatelessWidget {
             color: color ?? Colors.white,
           )),
       height: Size.height * 0.9,
-      width: (expanded
-          ? (Size.width * 0.6)
-          : (Size.width * 0.6) + (Size.width * 0.15)),
+      width: getwidth(expanded, top, left, right, Size),
       child: child,
     );
   }
