@@ -21,9 +21,13 @@ class _DashIconState extends State<DashIcon> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const YMargin(20),
-          SvgPicture.asset(
-            Assets.emptyLogo,
-            width: 30,
+          Padding(
+
+            padding: const EdgeInsets.only(left: 10),
+            child: SvgPicture.asset(
+              Assets.emptyLogo,
+              width: 30,
+            ),
           ),
           const YMargin(40),
           InkWell(
@@ -136,7 +140,7 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              // width: context.width * 0.04,
+              width: context.width * 0.38,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 4 ? AppColors.blue : Colors.transparent,
@@ -149,7 +153,6 @@ class _DashIconState extends State<DashIcon> {
                       color: selectedIndex == 4
                           ? AppColors.white
                           : AppColors.grey100),
-                  const XMargin(20),
                 ],
               ),
             ),
@@ -189,7 +192,7 @@ class _DashIconState extends State<DashIcon> {
             },
             child: Container(
               height: context.height * 0.04,
-              width: context.width *0.04,
+              width: context.width * 0.04,
               decoration: BoxDecoration(
                   color:
                       selectedIndex == 6 ? AppColors.blue : Colors.transparent,

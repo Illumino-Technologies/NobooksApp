@@ -8,6 +8,8 @@ import 'package:nobook/src/core/widgets/app_text.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 
+import 'package:nobook/core.dart';
+
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
 
@@ -16,66 +18,58 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
+  bool expand = true;
+
+  toggleminimize() {
+    expand = !expand;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title:AppText.semiBold('Hi, Boluwatife🧑'),
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      // ),
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-          child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Structure(
+      animateDuration: const Duration(milliseconds: 100) , // no need to add animation inside Dashboard navigation widget use this animateDuration instead
+      animateReverseDuration: const Duration(milliseconds: 100),
+      expandLeftBar: expand,
+      appBar: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const DashBoardNavigation(),
-          Expanded(
-              child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  AppText.semiBold('Hi, Boluwatife🧑'),
-                  // const XMargin(220),
-                  SizedBox(
-                    width: context.width * 0.3,
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.black,
-                            size: 10,
-                          ),
-                          hintText: 'Search for anything',
-                          hintStyle:
-                              TextStyle(fontSize: 10, color: Colors.black)),
-                    ),
+          AppText.semiBold('Hi, Boluwatife🧑'),
+          // const XMargin(220),
+          SizedBox(
+            width: context.width * 0.3,
+            child: TextFormField(
+              decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                    size: 10,
                   ),
-                  const XMargin(10),
-                  SvgPicture.asset(Assets.libraryIcon),
-                  const XMargin(10),
-                  SvgPicture.asset(Assets.notificationIcon),
-                  const XMargin(10),
-                  Expanded(
-                    child: Image.asset(
-                      Assets.dp,
-                      width: 70,
-                      height: 30,
-                    ),
-                  )
-                ],
-              ),
-              const Text(
-                'kush',
-                textAlign: TextAlign.center,
-              ),
-            ],
-          )),
-          const DashboardCalender()
+                  hintText: 'Search for anything',
+                  hintStyle: TextStyle(fontSize: 10, color: Colors.black)),
+            ),
+          ),
+          const XMargin(10),
+          SvgPicture.asset(Assets.libraryIcon),
+          const XMargin(10),
+          SvgPicture.asset(Assets.notificationIcon),
+          const XMargin(10),
+          Expanded(
+            child: Image.asset(
+              Assets.dp,
+              width: 70,
+              height: 30,
+            ),
+          )
         ],
-      )),
+      ),
+      leftBar: DashBoardNavigation(expand: toggleminimize, isSelected : expand),
+      rightBar: const DashboardCalender(),
+      body: const Text(
+        'kush',
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
