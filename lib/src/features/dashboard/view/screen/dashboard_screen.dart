@@ -36,7 +36,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  AppText.semiBold('Hi, Boluwatife🧑'),
+                  // AppText.semiBold('Hi, Boluwatife🧑'),
                   // const XMargin(220),
                   SizedBox(
                     width: context.width * 0.3,
