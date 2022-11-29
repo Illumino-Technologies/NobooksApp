@@ -17,6 +17,7 @@ dependencies:
   flutter_screenutil: ^5.5.4
   fl_chart: ^0.55.2
   google_fonts: ^3.0.1
+  flutter_quill: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+    - assets/subjects/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
