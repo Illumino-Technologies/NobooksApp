@@ -28,55 +28,7 @@ class _DashboardCalenderState extends State<DashboardCalender> {
             // height: queryheight,
             child: Column(
                 // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TableCalendar(
-                      calendarFormat: _calendarFormat,
-                      focusedDay: DateTime.now(),
-                      firstDay: DateTime(1990),
-                      lastDay: DateTime(2050),
-                      onFormatChanged: (format) {
-                        setState(() {
-                          _calendarFormat = format;
-                        });
-                      },
-                      daysOfWeekVisible: true,
-                      startingDayOfWeek: StartingDayOfWeek.sunday,
-                      calendarStyle: CalendarStyle(
-                        isTodayHighlighted: true,
-                        selectedDecoration: BoxDecoration(
-                          color: Colors.blue,
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        selectedTextStyle: TextStyle(color: Colors.white),
-                        todayDecoration: BoxDecoration(
-                          color: Colors.purpleAccent,
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        defaultDecoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        weekendDecoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                      ),
-                      headerStyle: const HeaderStyle(
-                        formatButtonVisible: false,
-                        titleCentered: true,
-                        formatButtonTextStyle: TextStyle(color: Colors.white),
-                      ),
-                      onDaySelected: (DateTime selectDay, DateTime focusDay) {
-                        setState(() {
-                          selectedDay = selectDay;
-                          focusedDay = focusDay;
-                        });
-                      },
-                      selectedDayPredicate: (DateTime date) {
-                        return isSameDay(selectedDay, date);
-                      }),
+                children: [                
                   Expanded(
                       child: ListView.builder(
                     itemCount: timeTable.length,
