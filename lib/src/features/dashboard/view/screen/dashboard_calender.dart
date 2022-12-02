@@ -18,7 +18,7 @@ class _DashboardCalenderState extends State<DashboardCalender> {
   DateTime focusedDay = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    final querywidth = MediaQuery.of(context).size.width / 5;
+    final querywidth = MediaQuery.of(context).size.width / 6;
     // final queryheight = MediaQuery.of(context).size.height/3;
     return  Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -36,13 +36,6 @@ class _DashboardCalenderState extends State<DashboardCalender> {
                       return ListTile(
                         leading: Image.asset(timeTable[index].subjectLogo),
                         title: Text(timeTable[index].subject),
-                        subtitle: Row(
-                          children: [
-                            Text(timeTable[index].startTime),
-                            const Text(" - "),
-                            Text(timeTable[index].endTime),
-                          ],
-                        ),
                         trailing: const Icon(Icons.arrow_forward_ios),
                       );
                     },

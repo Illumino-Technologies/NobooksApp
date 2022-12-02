@@ -29,7 +29,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          DashBoardNavigation(),
+         const  DashBoardNavigation(),
           Expanded(
               child: Column(
             children: [
