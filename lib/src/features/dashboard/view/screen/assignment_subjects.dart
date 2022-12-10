@@ -24,11 +24,12 @@ class _DashboardCalenderState extends State<DashboardCalender> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           SizedBox(
-            width: querywidth + 100,
+            width: querywidth + 120,
             // height: queryheight,
             child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [                
+              // mainAxisSize:MainAxisSize.min ,
+                children: [  
+                 const  Text('Your Subjects'),              
                   Expanded(
                       child: ListView.builder(
                     itemCount: timeTable.length,
