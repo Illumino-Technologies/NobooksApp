@@ -7,6 +7,7 @@ import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/core/widgets/app_text.dart';
 import 'package:nobook/src/features/dashboard/view/screen/assignment_subjects.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
+import 'package:nobook/src/model/assignments_model.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -29,10 +30,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-         const  DashBoardNavigation(),
+          const DashBoardNavigation(),
           Expanded(
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.max,
             children: [
               Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -40,7 +41,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   AppText.semiBold('Hi, Boluwatife🧑'),
                   // const XMargin(220),
                   SizedBox(
-                    width: context.width*0.5,
+                    width: context.width * 0.5,
                     child: TextFormField(
                       textAlign: TextAlign.center,
                       decoration: const InputDecoration(
@@ -71,22 +72,46 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children:const  [
-                        Text(
-                  'kush',
-                  textAlign: TextAlign.center,
-                ),
-                      ],
+                    Container(
+                      height: 200,
+                      width: context.width * 0.6,
+                      child: ListView.builder(
+                          itemCount: assignments.length,
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              width: 300,
+                              child: Card(
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Image.asset(assignments[index].image!),
+                                        Column(
+                                          children:  [
+                                            Text(assignments[index].subject!),
+                                            Text(assignments[index].topic!),
+                                            Text(assignments[index].date!),
+                                            Text(assignments[index].expire!),
+                                            Text(assignments[index].status!),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }),
                     ),
-                DashboardCalender()
+                    const DashboardCalender()
                   ],
                 ),
               )
             ],
           )),
-         
         ],
       )),
     );
