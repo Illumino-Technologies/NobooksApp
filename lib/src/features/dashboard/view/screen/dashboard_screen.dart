@@ -72,41 +72,238 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 200,
-                      width: context.width * 0.6,
-                      child: ListView.builder(
-                          itemCount: assignments.length,
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              width: 300,
-                              child: Card(
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 200,
+                            width: context.width * 0.6,
+                            child: ListView.builder(
+                                itemCount: assignments.length,
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return SizedBox(
+                                    width: 200,
+                                    child: Stack(
                                       children: [
-                                        Image.asset(assignments[index].image!),
-                                        Column(
-                                          children:  [
-                                            Text(assignments[index].subject!),
-                                            Text(assignments[index].topic!),
-                                            Text(assignments[index].date!),
-                                            Text(assignments[index].expire!),
-                                            Text(assignments[index].status!),
-                                          ],
+                                        Card(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0, right: 8.0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              // crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(assignments[index]
+                                                            .subject!),
+                                                        SizedBox(height: 20),
+                                                        Text(assignments[index]
+                                                            .topic!),
+                                                        SizedBox(height: 10),
+                                                        Text(
+                                                            assignments[index].date!),
+                                                        SizedBox(height: 5),
+                                                        Text(assignments[index]
+                                                            .expire!),
+                                                        SizedBox(height: 20),
+                                                        // Text(assignments[index].status!),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
+                                        Positioned(
+                                            top: 10,
+                                            right: 0,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.only(right: 8.0),
+                                              child: Text(assignments[index].status!,
+                                                  style: TextStyle(
+                                                      color: assignments[index]
+                                                                  .status
+                                                                  ?.contains(
+                                                                      'Submitted') ==
+                                                              true
+                                                          ? Colors.green
+                                                          : Colors.red,
+                                                      fontWeight: FontWeight.bold)),
+                                            )),
+                                        Positioned(
+                                            top: 20,
+                                            left: 10,
+                                            child: Image.asset(
+                                                assignments[index].image!)),
                                       ],
                                     ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }),
+                                  );
+                                }),
+                          ),
+                                   SizedBox(
+                            height: 200,
+                            width: context.width * 0.6,
+                            child: ListView.builder(
+                                itemCount: assignments.length,
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return SizedBox(
+                                    width: 200,
+                                    child: Stack(
+                                      children: [
+                                        Card(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0, right: 8.0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              // crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(assignments[index]
+                                                            .subject!),
+                                                        SizedBox(height: 20),
+                                                        Text(assignments[index]
+                                                            .topic!),
+                                                        SizedBox(height: 10),
+                                                        Text(
+                                                            assignments[index].date!),
+                                                        SizedBox(height: 5),
+                                                        Text(assignments[index]
+                                                            .expire!),
+                                                        SizedBox(height: 20),
+                                                        // Text(assignments[index].status!),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned(
+                                            top: 10,
+                                            right: 0,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.only(right: 8.0),
+                                              child: Text(assignments[index].status!,
+                                                  style: TextStyle(
+                                                      color: assignments[index]
+                                                                  .status
+                                                                  ?.contains(
+                                                                      'Submitted') ==
+                                                              true
+                                                          ? Colors.green
+                                                          : Colors.red,
+                                                      fontWeight: FontWeight.bold)),
+                                            )),
+                                        Positioned(
+                                            top: 20,
+                                            left: 10,
+                                            child: Image.asset(
+                                                assignments[index].image!)),
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ),
+                                    SizedBox(
+                            height: 200,
+                            width: context.width * 0.6,
+                            child: ListView.builder(
+                                itemCount: assignments.length,
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return SizedBox(
+                                    width: 200,
+                                    child: Stack(
+                                      children: [
+                                        Card(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0, right: 8.0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              // crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(assignments[index]
+                                                            .subject!),
+                                                        SizedBox(height: 20),
+                                                        Text(assignments[index]
+                                                            .topic!),
+                                                        SizedBox(height: 10),
+                                                        Text(
+                                                            assignments[index].date!),
+                                                        SizedBox(height: 5),
+                                                        Text(assignments[index]
+                                                            .expire!),
+                                                        SizedBox(height: 20),
+                                                        // Text(assignments[index].status!),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned(
+                                            top: 10,
+                                            right: 0,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.only(right: 8.0),
+                                              child: Text(assignments[index].status!,
+                                                  style: TextStyle(
+                                                      color: assignments[index]
+                                                                  .status
+                                                                  ?.contains(
+                                                                      'Submitted') ==
+                                                              true
+                                                          ? Colors.green
+                                                          : Colors.red,
+                                                      fontWeight: FontWeight.bold)),
+                                            )),
+                                        Positioned(
+                                            top: 20,
+                                            left: 10,
+                                            child: Image.asset(
+                                                assignments[index].image!)),
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ), 
+                        ],
+                      ),
                     ),
-                    const DashboardCalender()
+                    const Expanded(child: DashboardCalender())
                   ],
                 ),
               )
