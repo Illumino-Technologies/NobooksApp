@@ -37,7 +37,7 @@ class _DashboardCalenderState extends State<DashboardCalender> {
                       return ListTile(
                         leading: Image.asset(timeTable[index].subjectLogo),
                         title: Text(timeTable[index].subject),
-                        trailing: const Icon(Icons.arrow_forward_ios),
+                        trailing: const Icon(Icons.keyboard_arrow_down),
                       );
                     },
                   ))

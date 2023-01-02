@@ -78,14 +78,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const XMargin(40),
-                         const Text('Your Assignments',
+                          const Text('Your Assignments',
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                           const YMargin(20),
-                       const   Text('Biology',
+                          const Text('Biology',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold)),
-                                  const YMargin(10),
+                          const YMargin(10),
                           SizedBox(
                             height: 200,
                             width: context.width * 0.6,
@@ -114,17 +114,37 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        Text(assignments[index]
-                                                            .subject!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .subject!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF383F4D)),
+                                                        ),
                                                         SizedBox(height: 20),
-                                                        Text(assignments[index]
-                                                            .topic!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .topic!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF898C94)),
+                                                        ),
                                                         SizedBox(height: 10),
-                                                        Text(assignments[index]
-                                                            .date!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .date!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF999EAA)),
+                                                        ),
                                                         SizedBox(height: 5),
-                                                        Text(assignments[index]
-                                                            .expire!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .expire!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF636876)),
+                                                        ),
                                                         SizedBox(height: 20),
                                                         // Text(assignments[index].status!),
                                                       ],
@@ -139,15 +159,17 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                             top: 10,
                                             right: 10,
                                             child: Container(
-                                                padding:const EdgeInsets.all(2),
+                                              padding: const EdgeInsets.all(2),
                                               decoration: BoxDecoration(
                                                   color: assignments[index]
-                                                                  .status
-                                                                  ?.contains(
-                                                                      'Submitted') ==
-                                                              true
-                                                          ? Colors.green.withOpacity(0.2)
-                                                          : Colors.red.withOpacity(0.2),
+                                                              .status
+                                                              ?.contains(
+                                                                  'Submitted') ==
+                                                          true
+                                                      ? Colors.green
+                                                          .withOpacity(0.2)
+                                                      : Colors.red
+                                                          .withOpacity(0.2),
                                                   borderRadius:
                                                       BorderRadius.circular(5)),
                                               child: Text(
@@ -174,10 +196,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 }),
                           ),
                           const YMargin(20),
-                       const   Text('Biology',
+                          const Text('Biology',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold)),
-                              const YMargin(10),
+                          const YMargin(10),
                           SizedBox(
                             height: 200,
                             width: context.width * 0.6,
@@ -206,17 +228,37 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        Text(assignments[index]
-                                                            .subject!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .subject!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF383F4D)),
+                                                        ),
                                                         SizedBox(height: 20),
-                                                        Text(assignments[index]
-                                                            .topic!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .topic!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF898C94)),
+                                                        ),
                                                         SizedBox(height: 10),
-                                                        Text(assignments[index]
-                                                            .date!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .date!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF999EAA)),
+                                                        ),
                                                         SizedBox(height: 5),
-                                                        Text(assignments[index]
-                                                            .expire!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .expire!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF636876)),
+                                                        ),
                                                         SizedBox(height: 20),
                                                         // Text(assignments[index].status!),
                                                       ],
@@ -234,12 +276,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                               padding: EdgeInsets.all(2),
                                               decoration: BoxDecoration(
                                                   color: assignments[index]
-                                                                  .status
-                                                                  ?.contains(
-                                                                      'Submitted') ==
-                                                              true
-                                                          ? Colors.green.withOpacity(0.2)
-                                                          : Colors.red.withOpacity(0.2),
+                                                              .status
+                                                              ?.contains(
+                                                                  'Submitted') ==
+                                                          true
+                                                      ? Colors.green
+                                                          .withOpacity(0.2)
+                                                      : Colors.red
+                                                          .withOpacity(0.2),
                                                   borderRadius:
                                                       BorderRadius.circular(5)),
                                               child: Text(
@@ -265,11 +309,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   );
                                 }),
                           ),
-                            const YMargin(20),
-                       const   Text('Biology',
+                          const YMargin(20),
+                          const Text('Biology',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold)),
-                                  const YMargin(10),
+                          const YMargin(10),
                           SizedBox(
                             height: 200,
                             width: context.width * 0.6,
@@ -298,17 +342,37 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        Text(assignments[index]
-                                                            .subject!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .subject!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF383F4D)),
+                                                        ),
                                                         SizedBox(height: 20),
-                                                        Text(assignments[index]
-                                                            .topic!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .topic!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF898C94)),
+                                                        ),
                                                         SizedBox(height: 10),
-                                                        Text(assignments[index]
-                                                            .date!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .date!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF999EAA)),
+                                                        ),
                                                         SizedBox(height: 5),
-                                                        Text(assignments[index]
-                                                            .expire!),
+                                                        Text(
+                                                          assignments[index]
+                                                              .expire!,
+                                                          style: const TextStyle(
+                                                              color: Color(
+                                                                  0xFF636876)),
+                                                        ),
                                                         SizedBox(height: 20),
                                                         // Text(assignments[index].status!),
                                                       ],
@@ -323,15 +387,17 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                             top: 10,
                                             right: 10,
                                             child: Container(
-                                                padding:const EdgeInsets.all(2),
+                                              padding: const EdgeInsets.all(2),
                                               decoration: BoxDecoration(
                                                   color: assignments[index]
-                                                                  .status
-                                                                  ?.contains(
-                                                                      'Submitted') ==
-                                                              true
-                                                          ? Colors.green.withOpacity(0.2)
-                                                          : Colors.red.withOpacity(0.2),
+                                                              .status
+                                                              ?.contains(
+                                                                  'Submitted') ==
+                                                          true
+                                                      ? Colors.green
+                                                          .withOpacity(0.2)
+                                                      : Colors.red
+                                                          .withOpacity(0.2),
                                                   borderRadius:
                                                       BorderRadius.circular(5)),
                                               child: Text(
