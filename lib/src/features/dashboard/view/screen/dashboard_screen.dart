@@ -69,12 +69,23 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 ],
               ),
               Expanded(
+                flex: 2,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SingleChildScrollView(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          const XMargin(40),
+                         const Text('Your Assignments',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
+                          const YMargin(20),
+                       const   Text('Biology',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
+                                  const YMargin(10),
                           SizedBox(
                             height: 200,
                             width: context.width * 0.6,
@@ -100,7 +111,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                   children: [
                                                     Column(
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(assignments[index]
                                                             .subject!),
@@ -108,8 +120,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                         Text(assignments[index]
                                                             .topic!),
                                                         SizedBox(height: 10),
-                                                        Text(
-                                                            assignments[index].date!),
+                                                        Text(assignments[index]
+                                                            .date!),
                                                         SizedBox(height: 5),
                                                         Text(assignments[index]
                                                             .expire!),
@@ -125,11 +137,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                         ),
                                         Positioned(
                                             top: 10,
-                                            right: 0,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.only(right: 8.0),
-                                              child: Text(assignments[index].status!,
+                                            right: 10,
+                                            child: Container(
+                                                padding:const EdgeInsets.all(2),
+                                              decoration: BoxDecoration(
+                                                  color: assignments[index]
+                                                                  .status
+                                                                  ?.contains(
+                                                                      'Submitted') ==
+                                                              true
+                                                          ? Colors.green.withOpacity(0.2)
+                                                          : Colors.red.withOpacity(0.2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5)),
+                                              child: Text(
+                                                  assignments[index].status!,
                                                   style: TextStyle(
                                                       color: assignments[index]
                                                                   .status
@@ -138,7 +160,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                               true
                                                           ? Colors.green
                                                           : Colors.red,
-                                                      fontWeight: FontWeight.bold)),
+                                                      fontWeight:
+                                                          FontWeight.w400)),
                                             )),
                                         Positioned(
                                             top: 20,
@@ -150,7 +173,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   );
                                 }),
                           ),
-                                   SizedBox(
+                          const YMargin(20),
+                       const   Text('Biology',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
+                              const YMargin(10),
+                          SizedBox(
                             height: 200,
                             width: context.width * 0.6,
                             child: ListView.builder(
@@ -175,7 +203,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                   children: [
                                                     Column(
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(assignments[index]
                                                             .subject!),
@@ -183,8 +212,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                         Text(assignments[index]
                                                             .topic!),
                                                         SizedBox(height: 10),
-                                                        Text(
-                                                            assignments[index].date!),
+                                                        Text(assignments[index]
+                                                            .date!),
                                                         SizedBox(height: 5),
                                                         Text(assignments[index]
                                                             .expire!),
@@ -200,11 +229,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                         ),
                                         Positioned(
                                             top: 10,
-                                            right: 0,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.only(right: 8.0),
-                                              child: Text(assignments[index].status!,
+                                            right: 10,
+                                            child: Container(
+                                              padding: EdgeInsets.all(2),
+                                              decoration: BoxDecoration(
+                                                  color: assignments[index]
+                                                                  .status
+                                                                  ?.contains(
+                                                                      'Submitted') ==
+                                                              true
+                                                          ? Colors.green.withOpacity(0.2)
+                                                          : Colors.red.withOpacity(0.2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5)),
+                                              child: Text(
+                                                  assignments[index].status!,
                                                   style: TextStyle(
                                                       color: assignments[index]
                                                                   .status
@@ -213,7 +252,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                               true
                                                           ? Colors.green
                                                           : Colors.red,
-                                                      fontWeight: FontWeight.bold)),
+                                                      fontWeight:
+                                                          FontWeight.w400)),
                                             )),
                                         Positioned(
                                             top: 20,
@@ -225,7 +265,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   );
                                 }),
                           ),
-                                    SizedBox(
+                            const YMargin(20),
+                       const   Text('Biology',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
+                                  const YMargin(10),
+                          SizedBox(
                             height: 200,
                             width: context.width * 0.6,
                             child: ListView.builder(
@@ -250,7 +295,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                   children: [
                                                     Column(
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(assignments[index]
                                                             .subject!),
@@ -258,8 +304,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                         Text(assignments[index]
                                                             .topic!),
                                                         SizedBox(height: 10),
-                                                        Text(
-                                                            assignments[index].date!),
+                                                        Text(assignments[index]
+                                                            .date!),
                                                         SizedBox(height: 5),
                                                         Text(assignments[index]
                                                             .expire!),
@@ -275,11 +321,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                         ),
                                         Positioned(
                                             top: 10,
-                                            right: 0,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.only(right: 8.0),
-                                              child: Text(assignments[index].status!,
+                                            right: 10,
+                                            child: Container(
+                                                padding:const EdgeInsets.all(2),
+                                              decoration: BoxDecoration(
+                                                  color: assignments[index]
+                                                                  .status
+                                                                  ?.contains(
+                                                                      'Submitted') ==
+                                                              true
+                                                          ? Colors.green.withOpacity(0.2)
+                                                          : Colors.red.withOpacity(0.2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5)),
+                                              child: Text(
+                                                  assignments[index].status!,
                                                   style: TextStyle(
                                                       color: assignments[index]
                                                                   .status
@@ -288,7 +344,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                               true
                                                           ? Colors.green
                                                           : Colors.red,
-                                                      fontWeight: FontWeight.bold)),
+                                                      fontWeight:
+                                                          FontWeight.w400)),
                                             )),
                                         Positioned(
                                             top: 20,
@@ -299,7 +356,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                     ),
                                   );
                                 }),
-                          ), 
+                          ),
                         ],
                       ),
                     ),
