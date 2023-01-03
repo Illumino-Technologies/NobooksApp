@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/core/constants/assets.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
-import 'package:nobook/src/core/themes/color.dart';
+//import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/core/widgets/app_text.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
-
+import 'package:nobook/src/features/dashboard/view/screen/dashboard_board.dart';
 import 'package:nobook/core.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -28,7 +28,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     return Structure(
-      animateDuration: const Duration(milliseconds: 100) , // no need to add animation inside Dashboard navigation widget use this animateDuration instead
+      animateDuration: const Duration(
+          milliseconds:
+              100), // no need to add animation inside Dashboard navigation widget use this animateDuration instead
       animateReverseDuration: const Duration(milliseconds: 100),
       expandLeftBar: expand,
       appBar: Row(
@@ -64,12 +66,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           )
         ],
       ),
-      leftBar: DashBoardNavigation(expand: toggleminimize, isSelected : expand),
+      leftBar: DashBoardNavigation(expand: toggleminimize, isSelected: expand),
       rightBar: const DashboardCalender(),
-      body: const Text(
-        'kush',
-        textAlign: TextAlign.center,
-      ),
+      body: const DashboardBoard(),
     );
   }
 }

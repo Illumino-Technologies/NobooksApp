@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:nobook/src/core/navigation/app_router.dart';
 
@@ -11,14 +12,19 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'No books',
-      debugShowCheckedModeBanner: false,
-      routerDelegate: AppRouter.router.routerDelegate,
-      routeInformationParser: AppRouter.router.routeInformationParser,
-      routeInformationProvider: AppRouter.router.routeInformationProvider,
-      theme: ThemeData(
-          /*
+    return ScreenUtilInit(
+        designSize: const Size(1366, 1306),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp.router(
+            title: 'No books',
+            debugShowCheckedModeBanner: false,
+            routerDelegate: AppRouter.router.routerDelegate,
+            routeInformationParser: AppRouter.router.routeInformationParser,
+            routeInformationProvider: AppRouter.router.routeInformationProvider,
+            theme: ThemeData(
+                /*
         please read this before we progress
 
         i created a widget called AppStructure in core.dart that contains
@@ -30,12 +36,13 @@ class MyApp extends StatelessWidget {
         to recreate that
       */
 
-          ),
-      // home: const AppStructure( backgroundColor:  Colors.red,
-      // rightBar: Text("rightbar"),
-      // leftBar: Text("leftbar"),
-      // body: Text("body"),
-      // appBar: Text("appbar"),),
-    );
+                ),
+            // home: const AppStructure( backgroundColor:  Colors.red,
+            // rightBar: Text("rightbar"),
+            // leftBar: Text("leftbar"),
+            // body: Text("body"),
+            // appBar: Text("appbar"),),
+          );
+        });
   }
 }

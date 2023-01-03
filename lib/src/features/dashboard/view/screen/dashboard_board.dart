@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/core/themes/color.dart';
 //import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,48 +21,42 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: 761.w,
         decoration: const BoxDecoration(
           color: AppColors.mBackgroundColor,
         ),
-        child: SingleChildScrollView(
-          child: Column(children: [
-            const SizedBox(height: 40),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 200,
-              child: const Center(child: DashboardWidget()),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 280,
-              child: const Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32),
+          child: SingleChildScrollView(
+            child: Column(children: [
+              SizedBox(height: 32.h),
+              Center(child: DashboardWidget()),
+              SizedBox(height: 32.h),
+              Center(
                 child: CardWidgets(),
               ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 280,
-              child: const Center(
+              SizedBox(height: 32.h),
+              Center(
                 child: CardWidgets2(),
               ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 480,
-              child: Center(
-                child: Container(
-                  width: 694,
-                  height: 433,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      image: const DecorationImage(
-                        image: AssetImage("assets/graph.png"),
-                        fit: BoxFit.fill,
-                      )),
+              SizedBox(height: 32.h),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Container(
+                    width: 694.w,
+                    height: 433.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        image: const DecorationImage(
+                          image: AssetImage("assets/graph.png"),
+                          fit: BoxFit.fill,
+                        )),
+                  ),
                 ),
               ),
-            ),
-          ]),
+            ]),
+          ),
         ),
       ),
     );
