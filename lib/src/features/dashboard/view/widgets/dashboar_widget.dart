@@ -90,7 +90,7 @@ class DashboardWidget extends ConsumerWidget {
                 width: 166.w,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/books.png"),
+                    image: AssetImage("assets/subjects/books.png"),
                     fit: BoxFit.cover,
                   ),
                 ),

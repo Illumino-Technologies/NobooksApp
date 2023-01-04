@@ -72,7 +72,7 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ],
                   ),
-
+                  SizedBox(height: 20),
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
@@ -86,16 +86,26 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardBio(),
-                      ReusedCardBio(),
-                      ReusedCardBio(),
-                    ],
-                  ),
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          ReusedCardPlus(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          ReusedCardBio(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          ReusedCardBio(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          ReusedCardBio(),
+                        ],
+                      )),
                   SizedBox(
                     height: 48,
                   ),
@@ -112,15 +122,20 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardBk(),
-                      ReusedCardBk(),
-                      ReusedCardBk(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(width: 8),
+                        ReusedCardBk(),
+                        SizedBox(width: 8),
+                        ReusedCardBk(),
+                        SizedBox(width: 8),
+                        ReusedCardBk(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -139,15 +154,21 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardCh(),
-                      ReusedCardCh(),
-                      ReusedCardCh(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(width: 8),
+                        ReusedCardCh(),
+                        SizedBox(width: 8),
+                        ReusedCardCh(),
+                        SizedBox(width: 8),
+                        ReusedCardCh(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -165,15 +186,21 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardCv(),
-                      ReusedCardCv(),
-                      ReusedCardCv(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(width: 8),
+                        ReusedCardCv(),
+                        SizedBox(width: 8),
+                        ReusedCardCv(),
+                        SizedBox(width: 8),
+                        ReusedCardCv(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -191,15 +218,21 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardEc(),
-                      ReusedCardEc(),
-                      ReusedCardEc(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(width: 8),
+                        ReusedCardEc(),
+                        SizedBox(width: 8),
+                        ReusedCardEc(),
+                        SizedBox(width: 8),
+                        ReusedCardEc(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -217,15 +250,21 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardEn(),
-                      ReusedCardEn(),
-                      ReusedCardEn(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(width: 8),
+                        ReusedCardEn(),
+                        SizedBox(width: 8),
+                        ReusedCardEn(),
+                        SizedBox(width: 8),
+                        ReusedCardEn(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -243,15 +282,21 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardFm(),
-                      ReusedCardFm(),
-                      ReusedCardFm(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(width: 8),
+                        ReusedCardFm(),
+                        SizedBox(width: 8),
+                        ReusedCardFm(),
+                        SizedBox(width: 8),
+                        ReusedCardFm(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -269,15 +314,21 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardGe(),
-                      ReusedCardGe(),
-                      ReusedCardGe(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(width: 8),
+                        ReusedCardGe(),
+                        SizedBox(width: 8),
+                        ReusedCardGe(),
+                        SizedBox(width: 8),
+                        ReusedCardGe(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -295,15 +346,21 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardMt(),
-                      ReusedCardMt(),
-                      ReusedCardMt(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(width: 8),
+                        ReusedCardMt(),
+                        SizedBox(width: 8),
+                        ReusedCardMt(),
+                        SizedBox(width: 8),
+                        ReusedCardMt(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -321,15 +378,18 @@ class DashboardScreenState extends ConsumerState<NoteScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      ReusedCardPlus(),
-                      ReusedCardPh(),
-                      ReusedCardPh(),
-                      ReusedCardPh(),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        ReusedCardPh(),
+                        ReusedCardPh(),
+                        ReusedCardPh(),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 48,

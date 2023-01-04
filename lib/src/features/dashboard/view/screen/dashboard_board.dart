@@ -25,37 +25,39 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
         decoration: const BoxDecoration(
           color: AppColors.mBackgroundColor,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: SingleChildScrollView(
-            child: Column(children: [
-              SizedBox(height: 32.h),
-              Center(child: DashboardWidget()),
-              SizedBox(height: 32.h),
-              Center(
-                child: CardWidgets(),
-              ),
-              SizedBox(height: 32.h),
-              Center(
-                child: CardWidgets2(),
-              ),
-              SizedBox(height: 32.h),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Container(
-                    width: 694.w,
-                    height: 433.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        image: const DecorationImage(
-                          image: AssetImage("assets/graph.png"),
-                          fit: BoxFit.fill,
-                        )),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: SingleChildScrollView(
+              child: Column(children: [
+                SizedBox(height: 32.h),
+                Center(child: DashboardWidget()),
+                SizedBox(height: 32.h),
+                Center(
+                  child: CardWidgets(),
+                ),
+                SizedBox(height: 32.h),
+                Center(
+                  child: CardWidgets2(),
+                ),
+                SizedBox(height: 32.h),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Container(
+                      width: 694,
+                      height: 433,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/graph.png"),
+                            fit: BoxFit.fill,
+                          )),
+                    ),
                   ),
                 ),
-              ),
-            ]),
+              ]),
+            ),
           ),
         ),
       ),
