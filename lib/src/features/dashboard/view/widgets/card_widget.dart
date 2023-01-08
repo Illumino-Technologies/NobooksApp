@@ -69,7 +69,7 @@ class CardWidgets extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                const ReuseableCard(
+                 ReuseableCard(
                   title: 'Math',
                   subTitle: 'Set Theory',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -80,7 +80,7 @@ class CardWidgets extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                const ReuseableCard(
+                 ReuseableCard(
                   title: 'Biology',
                   subTitle: 'Cell Theory',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -91,7 +91,7 @@ class CardWidgets extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                const ReuseableCard(
+                 ReuseableCard(
                   title: 'Further Maths',
                   subTitle: 'Differentiation',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -165,7 +165,7 @@ class CardWidgets2 extends ConsumerWidget {
             child: Row(
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                const ReuseableCard(
+                 ReuseableCard(
                   title: 'Economics',
                   subTitle: 'Demand and Supply',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -176,7 +176,7 @@ class CardWidgets2 extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                const ReuseableCard(
+                 ReuseableCard(
                   title: 'Biology',
                   subTitle: 'Cell Theory',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -187,7 +187,7 @@ class CardWidgets2 extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                const ReuseableCard(
+                 ReuseableCard(
                   title: 'Further Maths',
                   subTitle: 'Differentiation',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -198,7 +198,7 @@ class CardWidgets2 extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                const ReuseableCard(
+                 ReuseableCard(
                   title: 'English',
                   subTitle: 'Phrases and Clauses',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -209,7 +209,7 @@ class CardWidgets2 extends ConsumerWidget {
               ],
             ),
           ),
-        ],
+        ]
       ),
     );
   }

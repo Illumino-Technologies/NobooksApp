@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
 
 class ReuseableCard extends StatelessWidget {
-  final String? title;
-  final String? subTitle;
-  final String? bottomtitle;
-  final String? bottomsubTitle;
-  final String? firstImage;
-  final String? secondImage;
+final String title;
+  final String subTitle;
+  final String bottomtitle;
+  final String bottomsubTitle;
+  final String firstImage;
+  final String secondImage;
 
-  // ignore: use_key_in_widget_constructors
-  const ReuseableCard({
-    Key? key,
-    this.title,
-    this.subTitle,
-    this.bottomtitle,
-    this.bottomsubTitle,
-    this.firstImage,
-    this.secondImage,
-  });
+
+   ReuseableCard({super.key, required this.title,
+    required this.subTitle, required this.bottomtitle,
+     required this.bottomsubTitle, required this.firstImage, required this.secondImage,});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +43,7 @@ class ReuseableCard extends StatelessWidget {
                       Radius.circular(4),
                     ),
                     image: DecorationImage(
-                      image: AssetImage(firstImage!),
+                      image: AssetImage(firstImage),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -64,7 +59,7 @@ class ReuseableCard extends StatelessWidget {
                       Radius.circular(4),
                     ),
                     image: DecorationImage(
-                      image: AssetImage(secondImage!),
+                      image: AssetImage(secondImage),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -78,7 +73,7 @@ class ReuseableCard extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: RichText(
                   text: TextSpan(
-                      text: title!,
+                      text: title,
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
@@ -101,7 +96,7 @@ class ReuseableCard extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: RichText(
                   text: TextSpan(
-                      text: bottomtitle!,
+                      text: bottomtitle,
                       style: const TextStyle(
                         fontWeight: FontWeight.w400,
                         color: Colors.grey,
@@ -109,7 +104,7 @@ class ReuseableCard extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                     TextSpan(
-                        text: '\n$bottomsubTitle',
+                        text:'\n$bottomsubTitle',
                         style: const TextStyle(
                             fontSize: 8,
                             fontWeight: FontWeight.w600,
