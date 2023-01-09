@@ -6,6 +6,7 @@ import 'package:nobook/src/core/themes/color.dart';
 //import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/core/widgets/app_text.dart';
+import 'package:nobook/src/features/assignments/view/screen/assignment_board.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_board.dart';
@@ -70,7 +71,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
       ),
       leftBar: DashBoardNavigation(expand: toggleminimize, isSelected: expand),
       //rightBar: const DashboardCalender(),
-      body: const DashboardBoard(),
+      body: const AssignmentBoard(),
     );
   }
 }

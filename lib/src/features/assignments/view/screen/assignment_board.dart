@@ -4,8 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
-import 'package:nobook/src/model/assignments_model.dart';
-import 'package:nobook/src/model/subjects.dart';
+import 'package:nobook/src/features/assignments/models/assignments_model.dart';
+import 'package:nobook/src/features/assignments/models/subjects.dart';
 
 class AssignmentBoard extends StatelessWidget {
   const AssignmentBoard({super.key});
@@ -13,127 +13,133 @@ class AssignmentBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
+        body: SingleChildScrollView(
+      child: (
+        Row(
           children: [
-            Row(
+            Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               
-                Column(
-      children: [
-            Row(
+                Text('Your Assignments',
+                    style: TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold)),
+                YMargin(20),
+                Text('Biology',
+                    style: TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold)),
+                const YMargin(10),
+                SizedBox(
+                  height: context.height * 0.25,
+                  width: context.width * 0.55,
+                  child: ListView.builder(
+                      itemCount: assignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        return AssignmentTile(
+                          status: assignments[index].status,
+                          subject: assignments[index].subject,
+                          topic: assignments[index].topic,
+                          expire: assignments[index].expire,
+                          image: assignments[index].image,
+                          date: assignments[index].date,
+                        );
+                      }),
+                ),
               
-              children: [
-                 Text('Your Assignments',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                 YMargin(20),
-                 Text('Biology',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              ],
-            ),
-            const YMargin(10),
-            SizedBox(
-              height: context.height * 0.25,
-              width: context.width * 0.55,
-              child: ListView.builder(
-                  itemCount: assignments.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return AssignmentTile(
-                      status: assignments[index].status,
-                      subject: assignments[index].subject,
-                      topic: assignments[index].topic,
-                      expire: assignments[index].expire,
-                      image: assignments[index].image,
-                      date: assignments[index].date,
-                    );
-                  }),
-            ),
-            const YMargin(20),
-             Row(
-              
-              children: [
-                 Text('Your Assignments',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                 YMargin(20),
-                 Text('Biology',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              ],
-            ),
-            const YMargin(10),
-            SizedBox(
-              height: context.height * 0.25,
-              width: context.width * 0.55,
-              child: ListView.builder(
-                  itemCount: assignments.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return AssignmentTile(
-                      status: assignments[index].status,
-                      subject: assignments[index].subject,
-                      topic: assignments[index].topic,
-                      expire: assignments[index].expire,
-                      image: assignments[index].image,
-                      date: assignments[index].date,
-                    );
-                  }),
-            ),
-             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              
-              children: [
-                 Text('Your Assignments',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                 YMargin(20),
-                 Text('Biology',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              ],
-            ),
-            const YMargin(10),
-            SizedBox(
-              height: context.height * 0.25,
-              width: context.width * 0.55,
-              child: ListView.builder(
-                  itemCount: assignments.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return AssignmentTile(
-                      status: assignments[index].status,
-                      subject: assignments[index].subject,
-                      topic: assignments[index].topic,
-                      expire: assignments[index].expire,
-                      image: assignments[index].image,
-                      date: assignments[index].date,
-                    );
-                  }),
-            ),
             
-      ],
-    ),
-      Column(
-       
-                children: [  
-                 const  Text('Your Subjects'),              
-                  SizedBox(
-                     height: context.height * 0.85,
-                     width: context.height * 0.35,
-                    child: ListView.builder(
+                YMargin(20),
+                Text('Biology',
+                    style: TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold)),
+                const YMargin(10),
+                SizedBox(
+                  height: context.height * 0.25,
+                  width: context.width * 0.55,
+                  child: ListView.builder(
+                      itemCount: assignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        return AssignmentTile(
+                          status: assignments[index].status,
+                          subject: assignments[index].subject,
+                          topic: assignments[index].topic,
+                          expire: assignments[index].expire,
+                          image: assignments[index].image,
+                          date: assignments[index].date,
+                        );
+                      }),
+                ),
+                
+                YMargin(20),
+                Text('Biology',
+                    style: TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold)),
+                const YMargin(10),
+                SizedBox(
+                  height: context.height * 0.25,
+                  width: context.width * 0.55,
+                  child: ListView.builder(
+                      itemCount: assignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        return AssignmentTile(
+                          status: assignments[index].status,
+                          subject: assignments[index].subject,
+                          topic: assignments[index].topic,
+                          expire: assignments[index].expire,
+                          image: assignments[index].image,
+                          date: assignments[index].date,
+                        );
+                      }),
+                ),
+                  YMargin(20),
+                Text('Biology',
+                    style: TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold)),
+                const YMargin(10),
+                SizedBox(
+                  height: context.height * 0.25,
+                  width: context.width * 0.55,
+                  child: ListView.builder(
+                      itemCount: assignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        return AssignmentTile(
+                          status: assignments[index].status,
+                          subject: assignments[index].subject,
+                          topic: assignments[index].topic,
+                          expire: assignments[index].expire,
+                          image: assignments[index].image,
+                          date: assignments[index].date,
+                        );
+                      }),
+                ),
+              ],
+            ),
+            Column(children: [
+              const Text('Your Subjects'),
+              SizedBox(
+                height: context.height * 0.85,
+                width: context.height * 0.35,
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
 
-                      itemCount: timeTable.length,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
+                  itemCount: timeTable.length,
+                  // scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
                     return ListTile(
                       leading: Image.asset(timeTable[index].subjectLogo),
                       title: Text(timeTable[index].subject),
                       trailing: const Icon(Icons.keyboard_arrow_down),
                     );
-                      },
-                    ),
-                  )
-                ]),
-              ],
-            ),
+                  },
+                ),
+              )
+            ]),
           ],
-        ));
+        )),
+    
+    ));
   }
 }
 
@@ -163,7 +169,7 @@ class AssignmentTile extends StatelessWidget {
           decoration: BoxDecoration(
               color: AppColors.white, borderRadius: BorderRadius.circular(10)),
           padding: EdgeInsets.symmetric(horizontal: 10),
-           margin: EdgeInsets.symmetric(horizontal: 7),
+          margin: EdgeInsets.symmetric(horizontal: 7),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

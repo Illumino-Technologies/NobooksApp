@@ -26,4 +26,10 @@ final List<Assignments> assignments = [
       '18th April, 2022, 09:31am', 'Expires 19th April, 8:00am','Submitted'),
   Assignments(Assets.mt, 'Economics', 'Demand and Supply',
       '18th April, 2022, 09:31am', 'Expires 19th April, 8:00am','Submitted'),
+        Assignments(Assets.mt, 'Economics', 'Demand and Supply',
+      '18th April, 2022, 09:31am', 'Expires 19th April, 8:00am','Undone'),
+  Assignments(Assets.mt, 'Economics', 'Demand and Supply',
+      '18th April, 2022, 09:31am', 'Expires 19th April, 8:00am','Submitted'),
+  Assignments(Assets.mt, 'Economics', 'Demand and Supply',
+      '18th April, 2022, 09:31am', 'Expires 19th April, 8:00am','Submitted'),
 ];

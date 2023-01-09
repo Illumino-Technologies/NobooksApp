@@ -54,7 +54,7 @@ class DashboardWidget extends ConsumerWidget {
                         onPressed: () {})
                   ]),
        
-             Image.asset('assets/images/books.png', width: 100,)
+            Image.asset('assets/images/books.png')
             ],
           ),
         ),

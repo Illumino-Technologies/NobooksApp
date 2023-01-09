@@ -6,8 +6,8 @@ import 'package:nobook/src/core/constants/assets.dart';
 
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
 
-import 'package:nobook/src/features/dashboard/view/widget/dash_icon.dart';
-import 'package:nobook/src/features/dashboard/view/widget/dash_icon_with_name.dart';
+import 'package:nobook/src/features/dashboard/view/widgets/dash_icon.dart';
+import 'package:nobook/src/features/dashboard/view/widgets/dash_icon_with_name.dart';
 
 class DashBoardNavigation extends StatefulWidget {
   dynamic expand;

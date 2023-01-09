@@ -8,11 +8,11 @@ import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/core/widgets/app_text.dart';
 import 'package:nobook/src/features/assignments/view/screen/assignment_board.dart';
 import 'package:nobook/src/features/assignments/view/screen/assignments.dart';
-import 'package:nobook/src/features/dashboard/view/screen/assignment_subjects.dart';
+
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_board.dart';
 import 'package:nobook/core.dart';
-import 'package:nobook/src/model/assignments_model.dart';
+import 'package:nobook/src/features/assignments/models/assignments_model.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -72,7 +72,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
       leftBar: DashBoardNavigation(expand: toggleminimize, isSelected: expand),
       //rightBar: const DashboardCalender(),
-      body: NoteScreen()
+      body: DashboardBoard()
     );
   }
 }
