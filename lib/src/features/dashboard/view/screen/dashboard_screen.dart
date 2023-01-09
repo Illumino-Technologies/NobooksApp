@@ -5,6 +5,7 @@ import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/core/widgets/app_text.dart';
 import 'package:nobook/src/features/assignments/view/screen/assignments.dart';
+import 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 import 'package:nobook/core.dart';
 
@@ -65,8 +66,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           ),]),
 
       leftBar: DashBoardNavigation(expand: toggleminimize, isSelected: expand),
-      //rightBar: const DashboardCalender(),
-      body: DashBoardScreen()
+      rightBar: const DashboardCalender(),
+      body: NoteScreen()
     );
   }
 }

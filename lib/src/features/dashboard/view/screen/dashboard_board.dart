@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
@@ -104,7 +103,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                       );
                     }),
               ),
-              SizedBox(height: 32.h),
+              SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
@@ -112,7 +111,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                     width: 694,
                     height: 433,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
+                        borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
                           image: AssetImage("assets/graph.png"),
                           fit: BoxFit.fill,

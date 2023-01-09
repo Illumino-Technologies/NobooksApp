@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/features/notes/widgets/reused_card_widget.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class NoteScreen extends ConsumerStatefulWidget {
   const NoteScreen({Key? key}) : super(key: key);

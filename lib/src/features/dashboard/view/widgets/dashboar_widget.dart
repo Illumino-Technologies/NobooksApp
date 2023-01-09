@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/themes/color.dart';
 
@@ -36,7 +35,7 @@ class DashboardWidget extends ConsumerWidget {
                           fontSize: 12,
                           color: Color.fromRGBO(234, 235, 237, 1)),
                     ),
-                    SizedBox(height: 8.h),
+                    SizedBox(height: 10),
                     MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(2.0)),
