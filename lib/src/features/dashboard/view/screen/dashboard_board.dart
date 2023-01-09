@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,13 +6,9 @@ import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
-
-import 'package:nobook/src/features/dashboard/view/widgets/card_widget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
-import 'package:nobook/src/utils/constants/constants.dart';
+
 
 class DashboardBoard extends ConsumerStatefulWidget {
   const DashboardBoard({Key? key}) : super(key: key);
@@ -24,7 +19,7 @@ class DashboardBoard extends ConsumerStatefulWidget {
 class DashboardScreenState extends ConsumerState<DashboardBoard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor:mBackgroundColor ,
+    return Scaffold(backgroundColor:AppColors.mBackgroundColor,
       body: SingleChildScrollView(
         child: Container(
           width: context.width * 0.50,
@@ -35,12 +30,12 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
             padding: const EdgeInsets.symmetric(horizontal: 0),
             child: Column(children: [
               //YMargin(10),
-              DashboardWidget(),
-              YMargin(20),
+              const DashboardWidget(),
+              const YMargin(20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Your Notes',
                     style: TextStyle(
                         color: Colors.black,
@@ -76,7 +71,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
            Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Your Assignments',
                     style: TextStyle(
                         color: Colors.black,

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
@@ -19,11 +17,11 @@ class AssignmentBoard extends StatelessWidget {
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Your Assignments',
+                const Text('Your Assignments',
                     style: TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold)),
-                YMargin(20),
-                Text('Biology',
+                const YMargin(20),
+                const Text('Biology',
                     style: TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold)),
                 const YMargin(10),
@@ -46,8 +44,8 @@ class AssignmentBoard extends StatelessWidget {
                 ),
               
             
-                YMargin(20),
-                Text('Biology',
+                const YMargin(20),
+                const Text('Biology',
                     style: TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold)),
                 const YMargin(10),
@@ -69,8 +67,8 @@ class AssignmentBoard extends StatelessWidget {
                       }),
                 ),
                 
-                YMargin(20),
-                Text('Biology',
+                const YMargin(20),
+                const Text('Biology',
                     style: TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold)),
                 const YMargin(10),
@@ -91,8 +89,8 @@ class AssignmentBoard extends StatelessWidget {
                         );
                       }),
                 ),
-                  YMargin(20),
-                Text('Biology',
+                  const YMargin(20),
+                const Text('Biology',
                     style: TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold)),
                 const YMargin(10),
@@ -121,7 +119,7 @@ class AssignmentBoard extends StatelessWidget {
                 height: context.height * 0.85,
                 width: context.height * 0.35,
                 child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
 
                   itemCount: timeTable.length,
                   // scrollDirection: Axis.vertical,
@@ -168,21 +166,21 @@ class AssignmentTile extends StatelessWidget {
           height: context.height * 0.25,
           decoration: BoxDecoration(
               color: AppColors.white, borderRadius: BorderRadius.circular(10)),
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          margin: EdgeInsets.symmetric(horizontal: 7),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 7),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              YMargin(15),
+              const YMargin(15),
               Container(
                 height: context.height * 0.06,
                 width: context.height * 0.06,
-                child: Center(child: Text('FM')),
+                child: const Center(child: Text('FM')),
                 decoration: BoxDecoration(
                     color: AppColors.grey,
                     borderRadius: BorderRadius.circular(7)),
               ),
-              YMargin(10),
+              const YMargin(10),
               Text(
                 subject,
                 style: const TextStyle(fontSize: 15, color: Color(0xFF383F4D)),
@@ -192,12 +190,12 @@ class AssignmentTile extends StatelessWidget {
                 topic,
                 style: const TextStyle(fontSize: 11, color: Color(0xFF898C94)),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 date,
                 style: const TextStyle(fontSize: 11, color: Color(0xFF999EAA)),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Text(
                 expire,
                 style: const TextStyle(fontSize: 11, color: Color(0xFF636876)),

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart';
-//import 'package:nobook/src/features/dashboard/models/cardinfo.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_tile%20widgets.dart';
-
 
 
 class CardWidgets2 extends ConsumerWidget {
@@ -30,9 +25,8 @@ class CardWidgets2 extends ConsumerWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                 ReuseableCard(
+              children: const [
+                  ReuseableCard(
                   title: 'Economics',
                   subTitle: 'Demand and Supply',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -40,10 +34,10 @@ class CardWidgets2 extends ConsumerWidget {
                   firstImage: 'assets/subjects/ec.png',
                   secondImage: 'assets/undone.png',
                 ),
-                const SizedBox(
+                 SizedBox(
                   width: 16,
                 ),
-                 ReuseableCard(
+                  ReuseableCard(
                   title: 'Biology',
                   subTitle: 'Cell Theory',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -51,10 +45,10 @@ class CardWidgets2 extends ConsumerWidget {
                   firstImage: 'assets/subjects/bi.png',
                   secondImage: 'assets/undone.png',
                 ),
-                const SizedBox(
+                 SizedBox(
                   width: 16,
                 ),
-                 ReuseableCard(
+                  ReuseableCard(
                   title: 'Further Maths',
                   subTitle: 'Differentiation',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -62,10 +56,10 @@ class CardWidgets2 extends ConsumerWidget {
                   firstImage: 'assets/subjects/fm.png',
                   secondImage: 'assets/submitted.png',
                 ),
-                const SizedBox(
+                 SizedBox(
                   width: 16,
                 ),
-                 ReuseableCard(
+                  ReuseableCard(
                   title: 'English',
                   subTitle: 'Phrases and Clauses',
                   bottomtitle: '18th April, 2022 . 09:31am',

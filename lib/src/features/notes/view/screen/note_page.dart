@@ -45,7 +45,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                 const SizedBox(
                   height: 50,
                 ),
-                 Padding(
+                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: ListTile(
                       leading: Text('Maths',
@@ -68,7 +68,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                     child: Row(
                         
                         children: [
-                           Text(
+                           const Text(
                             'Topic:',
                             style: TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.w400),
@@ -82,7 +82,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                         ]),
                   ),
                 ),
-                 Padding(
+                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: SizedBox(
                     child: Text(
