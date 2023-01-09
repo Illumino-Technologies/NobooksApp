@@ -13,8 +13,8 @@ class Assets{
   static const String notificationIcon = 'assets/icons/notification.svg';
   static const String emptyLogo ='assets/icons/empty_logo.svg'; 
   static const String drawerLeft = 'assets/icons/drawer_left.svg';     
-  static const String mt = 'assets/images/40px.png';
-  static const String book = 'assets/images/books.png';
+  static const String mt = 'assets/40px.png';
+  static const String book = 'assets/books.png';
  
 
 
@@ -23,5 +23,5 @@ class Assets{
 
 
   //images 
-    static const String dp = 'assets/images/dp.png';
+    static const String dp = 'assets/dp.png';
 }
