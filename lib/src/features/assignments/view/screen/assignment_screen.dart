@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/core/constants/assets.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
+
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/core/widgets/app_text.dart';
-import 'package:nobook/src/features/assignments/view/screen/assignments.dart';
-import 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
+import 'package:nobook/src/features/assignments/view/screen/assignment_board.dart';
+
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
+
 import 'package:nobook/core.dart';
 
-class DashBoardScreen extends StatefulWidget {
-  const DashBoardScreen({Key? key}) : super(key: key);
+class AssignmentScreen extends StatefulWidget {
+  const AssignmentScreen({Key? key}) : super(key: key);
 
   @override
-  State<DashBoardScreen> createState() => _DashBoardScreenState();
+  State<AssignmentScreen> createState() => _AssignmentScreenState();
 }
 
-class _DashBoardScreenState extends State<DashBoardScreen> {
+class _AssignmentScreenState extends State<AssignmentScreen> {
   bool expand = true;
 
   toggleminimize() {
@@ -39,9 +41,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           const XMargin(250),
           SizedBox(
             width: context.width * 0.25,
-           height: context.height * 0.065,
-            child: 
-            TextFormField(
+            height: context.height * 0.065,
+            child: TextFormField(
               decoration: const InputDecoration(
                   border: InputBorder.none,
                   fillColor: Colors.red,
@@ -59,15 +60,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           SvgPicture.asset(Assets.libraryIcon),
           //const XMargin(10),
           SvgPicture.asset(Assets.notificationIcon),
-         // const XMargin(10),
+          // const XMargin(10),
           Image.asset(
             Assets.dp,
             height: 30,
-          ),]),
-
+          )
+        ],
+      ),
       leftBar: DashBoardNavigation(expand: toggleminimize, isSelected: expand),
-      rightBar: const DashboardCalender(),
-      body: NoteScreen()
+      //rightBar: const DashboardCalender(),
+      body: const AssignmentBoard(),
     );
   }
 }

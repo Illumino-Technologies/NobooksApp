@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:nobook/src/model/subjects.dart';
+import 'package:nobook/src/features/assignments/models/subjects.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DashboardCalender extends StatefulWidget {
@@ -82,13 +82,13 @@ class _DashboardCalenderState extends State<DashboardCalender> {
                     return ListTile(
                       leading: Image.asset(timeTable[index].subjectLogo),
                       title: Text(timeTable[index].subject),
-                      subtitle: Row(
-                        children: [
-                          Text(timeTable[index].startTime),
-                          const Text(" - "),
-                          Text(timeTable[index].endTime),
-                        ],
-                      ),
+                      // subtitle: Row(
+                      //   children: [
+                      //     Text(timeTable[index].startTime),
+                      //     const Text(" - "),
+                      //     Text(timeTable[index].endTime),
+                      //   ],
+                      // ),
                       trailing: const Icon(Icons.arrow_forward_ios),
                     );
                   },

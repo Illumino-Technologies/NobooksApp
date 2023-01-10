@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
+// import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/core/themes/color.dart';
 
@@ -44,7 +45,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                 const SizedBox(
                   height: 50,
                 ),
-                const Padding(
+                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: ListTile(
                       leading: Text('Maths',
@@ -65,9 +66,9 @@ class _NotePageState extends ConsumerState<NotePage> {
                   child: SizedBox(
                     height: 32,
                     child: Row(
-                        // ignore: prefer_const_literals_to_create_immutables
+                        
                         children: [
-                          const Text(
+                           const Text(
                             'Topic:',
                             style: TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.w400),
@@ -81,7 +82,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                         ]),
                   ),
                 ),
-                const Padding(
+                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: SizedBox(
                     child: Text(
