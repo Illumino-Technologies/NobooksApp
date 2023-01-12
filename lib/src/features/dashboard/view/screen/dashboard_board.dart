@@ -18,7 +18,8 @@ class DashboardBoard extends ConsumerStatefulWidget {
 class DashboardScreenState extends ConsumerState<DashboardBoard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor:AppColors.mBackgroundColor,
+    return Scaffold(
+      backgroundColor:AppColors.mBackgroundColor,
       body: SingleChildScrollView(
         child: Container(
           width: context.width * 0.50,
@@ -27,7 +28,8 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 0),
-            child: Column(children: [
+            child: Column(
+              children: [
               //YMargin(10),
               const DashboardWidget(),
               const YMargin(20),
@@ -67,7 +69,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                       );
                     }),
               ),
-           Row(
+                     Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(

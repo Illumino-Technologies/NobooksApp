@@ -64,7 +64,7 @@ class Structure extends StatelessWidget {
   Column _MiddleWidget (top, left, right) {
     return  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   _AppBar(
                     expanded: expandLeftBar == null ? true : expandLeftBar!,
@@ -95,7 +95,7 @@ class Structure extends StatelessWidget {
           color: backgroundColor ?? Colors.white,
 
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // _left_bar
@@ -117,13 +117,15 @@ class Structure extends StatelessWidget {
               duration: animateDuration!,
               reverseDuration: animateReverseDuration,
               child: _MiddleWidget( top, left, right)),
-          
-             
 
-              _RightBar(
-                color: rightBarBackgroundColor,
-                child: rightBar,
-              )
+          // _right_bar
+              // const SizedBox(height: 40,),
+               Expanded(
+                 child: _RightBar(
+                   color: rightBarBackgroundColor,
+                   child: rightBar,
+                 ),
+               )
             ],
           ),
         );
@@ -160,6 +162,7 @@ class _AppBar extends StatelessWidget {
             color: color ?? Colors.white,
           )),
       height: Size.height * 0.1,
+      // width: MediaQuery.of(context).size.width,
       width: getwidth(expanded, top, left, right, Size),
       child: child,
     );

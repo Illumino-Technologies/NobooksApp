@@ -113,7 +113,8 @@ class AssignmentBoard extends StatelessWidget {
                 ),
               ],
             ),
-            Column(children: [
+            Column(
+              children: [
               const Text('Your Subjects'),
               SizedBox(
                 height: context.height * 0.85,
