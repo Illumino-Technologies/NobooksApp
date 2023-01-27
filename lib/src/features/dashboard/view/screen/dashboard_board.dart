@@ -11,7 +11,6 @@ import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
 
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
 
-import 'package:nobook/src/features/dashboard/view/widgets/card_widget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
 
 class DashboardBoard extends ConsumerStatefulWidget {
@@ -31,7 +30,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
         ),
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SingleChildScrollView(
               child: Column(children: [
                 //YMargin(10),
@@ -56,24 +55,27 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                     ),
                   ],
                 ),
-            
+
                 SizedBox(
                   height: context.height * 0.25,
                   child: ListView.builder(
                       itemCount: dashBoard.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return ReuseableCard(
-                          firstImage: dashBoard[index].firstImage,
-                          secondImage: dashBoard[index].secondImage,
-                          title: dashBoard[index].title,
-                          subTitle: dashBoard[index].subTitle,
-                          bottomsubTitle: dashBoard[index].bottomsubTitle,
-                          bottomtitle: dashBoard[index].bottomtitle,
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReuseableCard(
+                            firstImage: dashBoard[index].firstImage,
+                            secondImage: dashBoard[index].secondImage,
+                            title: dashBoard[index].title,
+                            subTitle: dashBoard[index].subTitle,
+                            bottomsubTitle: dashBoard[index].bottomsubTitle,
+                            bottomtitle: dashBoard[index].bottomtitle,
+                          ),
                         );
                       }),
                 ),
-         Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -92,20 +94,23 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                     ),
                   ],
                 ),
-               
+
                 SizedBox(
                   height: context.height * 0.25,
                   child: ListView.builder(
                       itemCount: dashBoard.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return ReuseableCard(
-                          firstImage: dashBoard[index].firstImage,
-                          secondImage: dashBoard[index].secondImage,
-                          title: dashBoard[index].title,
-                          subTitle: dashBoard[index].subTitle,
-                          bottomsubTitle: dashBoard[index].bottomsubTitle,
-                          bottomtitle: dashBoard[index].bottomtitle,
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReuseableCard(
+                            firstImage: dashBoard[index].firstImage,
+                            secondImage: dashBoard[index].secondImage,
+                            title: dashBoard[index].title,
+                            subTitle: dashBoard[index].subTitle,
+                            bottomsubTitle: dashBoard[index].bottomsubTitle,
+                            bottomtitle: dashBoard[index].bottomtitle,
+                          ),
                         );
                       }),
                 ),

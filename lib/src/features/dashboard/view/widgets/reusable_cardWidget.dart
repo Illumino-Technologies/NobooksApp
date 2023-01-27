@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/core/themes/color.dart';
-import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
+//import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
 
 class ReuseableCard extends StatelessWidget {
-final String title;
+  final String title;
   final String subTitle;
   final String bottomtitle;
   final String bottomsubTitle;
   final String firstImage;
   final String secondImage;
 
-
-   ReuseableCard({super.key, required this.title,
-    required this.subTitle, required this.bottomtitle,
-     required this.bottomsubTitle, required this.firstImage, required this.secondImage,});
+  const ReuseableCard({
+    super.key,
+    required this.title,
+    required this.subTitle,
+    required this.bottomtitle,
+    required this.bottomsubTitle,
+    required this.firstImage,
+    required this.secondImage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +109,7 @@ final String title;
                       ),
                       children: <TextSpan>[
                     TextSpan(
-                        text:'\n$bottomsubTitle',
+                        text: '\n$bottomsubTitle',
                         style: const TextStyle(
                             fontSize: 8,
                             fontWeight: FontWeight.w600,

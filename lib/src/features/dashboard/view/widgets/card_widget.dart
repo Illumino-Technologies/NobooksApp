@@ -69,7 +69,7 @@ class CardWidgets extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                 ReuseableCard(
+                const ReuseableCard(
                   title: 'Math',
                   subTitle: 'Set Theory',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -80,7 +80,7 @@ class CardWidgets extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                 ReuseableCard(
+                const ReuseableCard(
                   title: 'Biology',
                   subTitle: 'Cell Theory',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -91,7 +91,7 @@ class CardWidgets extends ConsumerWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                 ReuseableCard(
+                const ReuseableCard(
                   title: 'Further Maths',
                   subTitle: 'Differentiation',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -150,67 +150,65 @@ class CardWidgets2 extends ConsumerWidget {
     return SizedBox(
       height: 280,
       width: 694,
-      child: Column(
-        children: [
-          // ignore: prefer_const_constructors
-          SizedBox(
-            height: 20,
+      child: Column(children: [
+        // ignore: prefer_const_constructors
+        SizedBox(
+          height: 20,
+        ),
+        const ReusableTileWidget2(),
+        // SizedBox(
+        //   height: 15.h,
+        // ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              const ReuseableCard(
+                title: 'Economics',
+                subTitle: 'Demand and Supply',
+                bottomtitle: '18th April, 2022 . 09:31am',
+                bottomsubTitle: 'Expires 19th April, 8:00am',
+                firstImage: 'assets/subjects/ec.png',
+                secondImage: 'assets/undone.png',
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              const ReuseableCard(
+                title: 'Biology',
+                subTitle: 'Cell Theory',
+                bottomtitle: '18th April, 2022 . 09:31am',
+                bottomsubTitle: 'Expires 19th April, 8:00am',
+                firstImage: 'assets/subjects/bi.png',
+                secondImage: 'assets/undone.png',
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              const ReuseableCard(
+                title: 'Further Maths',
+                subTitle: 'Differentiation',
+                bottomtitle: '18th April, 2022 . 09:31am',
+                bottomsubTitle: 'Expires 19th April, 8:00am',
+                firstImage: 'assets/subjects/fm.png',
+                secondImage: 'assets/submitted.png',
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              const ReuseableCard(
+                title: 'English',
+                subTitle: 'Phrases and Clauses',
+                bottomtitle: '18th April, 2022 . 09:31am',
+                bottomsubTitle: 'Expires 19th April, 8:00am',
+                firstImage: 'assets/subjects/en.png',
+                secondImage: 'assets/expired.png',
+              ),
+            ],
           ),
-          const ReusableTileWidget2(),
-          // SizedBox(
-          //   height: 15.h,
-          // ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                 ReuseableCard(
-                  title: 'Economics',
-                  subTitle: 'Demand and Supply',
-                  bottomtitle: '18th April, 2022 . 09:31am',
-                  bottomsubTitle: 'Expires 19th April, 8:00am',
-                  firstImage: 'assets/subjects/ec.png',
-                  secondImage: 'assets/undone.png',
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                 ReuseableCard(
-                  title: 'Biology',
-                  subTitle: 'Cell Theory',
-                  bottomtitle: '18th April, 2022 . 09:31am',
-                  bottomsubTitle: 'Expires 19th April, 8:00am',
-                  firstImage: 'assets/subjects/bi.png',
-                  secondImage: 'assets/undone.png',
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                 ReuseableCard(
-                  title: 'Further Maths',
-                  subTitle: 'Differentiation',
-                  bottomtitle: '18th April, 2022 . 09:31am',
-                  bottomsubTitle: 'Expires 19th April, 8:00am',
-                  firstImage: 'assets/subjects/fm.png',
-                  secondImage: 'assets/submitted.png',
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                 ReuseableCard(
-                  title: 'English',
-                  subTitle: 'Phrases and Clauses',
-                  bottomtitle: '18th April, 2022 . 09:31am',
-                  bottomsubTitle: 'Expires 19th April, 8:00am',
-                  firstImage: 'assets/subjects/en.png',
-                  secondImage: 'assets/expired.png',
-                ),
-              ],
-            ),
-          ),
-        ]
-      ),
+        ),
+      ]),
     );
   }
 }
