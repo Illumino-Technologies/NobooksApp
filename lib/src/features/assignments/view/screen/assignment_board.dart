@@ -176,10 +176,10 @@ class AssignmentTile extends StatelessWidget {
               Container(
                 height: context.height * 0.06,
                 width: context.height * 0.06,
-                child: const Center(child: Text('FM')),
                 decoration: BoxDecoration(
                     color: AppColors.grey,
                     borderRadius: BorderRadius.circular(7)),
+                child: const Center(child: Text('FM')),
               ),
               const YMargin(10),
               Text(

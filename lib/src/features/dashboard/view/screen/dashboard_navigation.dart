@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/core/constants/assets.dart';
@@ -36,9 +38,7 @@ class _DashBoardNavigationState extends State<DashBoardNavigation> {
                     padding: const EdgeInsets.only(right: 0),
                     child: SvgPicture.asset(Assets.drawerLeft),
                   )),
-
         widget.isSelected ? const DashIconWithName() : const DashIcon(),
-
       ],
     );
   }
