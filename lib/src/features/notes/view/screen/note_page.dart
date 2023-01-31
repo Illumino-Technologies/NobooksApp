@@ -45,7 +45,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                 const SizedBox(
                   height: 50,
                 ),
-                const Padding(
+                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: ListTile(
                       leading: Text('Maths',
@@ -65,22 +65,24 @@ class _NotePageState extends ConsumerState<NotePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     height: 32,
-                    child: Row(children: [
-                      const Text(
-                        'Topic:',
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.w400),
-                      ),
-                      const SizedBox(width: 5),
-                      SizedBox(
-                        width: 800,
-                        child: QuillEditor.basic(
-                            controller: _titleController, readOnly: false),
-                      )
-                    ]),
+                    child: Row(
+                        
+                        children: [
+                           const Text(
+                            'Topic:',
+                            style: TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.w400),
+                          ),
+                          const SizedBox(width: 5),
+                          SizedBox(
+                            width: 800,
+                            child: QuillEditor.basic(
+                                controller: _titleController, readOnly: false),
+                          )
+                        ]),
                   ),
                 ),
-                const Padding(
+                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: SizedBox(
                     child: Text(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/core/constants/assets.dart';
-import 'package:nobook/src/model/notification.dart';
+import 'package:nobook/src/features/dashboard/models/notification.dart';
 
 class Notifications extends StatelessWidget {
   const Notifications({Key? key}) : super(key: key);

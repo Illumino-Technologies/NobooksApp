@@ -3,7 +3,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/utils/constants/constants.dart';
+import 'package:nobook/src/core/themes/color.dart';
+
 
 class GraphWidget extends ConsumerStatefulWidget {
   const GraphWidget({super.key});
@@ -26,7 +27,7 @@ class GraphWidgetState extends ConsumerState<GraphWidget> {
     return Container(
       width: 694,
       height: 433,
-      color: mBackgroundColor,
+      color: AppColors.mBackgroundColor,
       child: Stack(
         children: <Widget>[
           AspectRatio(

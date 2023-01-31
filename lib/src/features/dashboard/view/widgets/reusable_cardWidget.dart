@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/core/themes/color.dart';
-//import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
+
 
 class ReuseableCard extends StatelessWidget {
   final String title;
@@ -10,15 +10,10 @@ class ReuseableCard extends StatelessWidget {
   final String firstImage;
   final String secondImage;
 
-  const ReuseableCard({
-    super.key,
-    required this.title,
-    required this.subTitle,
-    required this.bottomtitle,
-    required this.bottomsubTitle,
-    required this.firstImage,
-    required this.secondImage,
-  });
+
+   const ReuseableCard({super.key, required this.title,
+    required this.subTitle, required this.bottomtitle,
+     required this.bottomsubTitle, required this.firstImage, required this.secondImage,});
 
   @override
   Widget build(BuildContext context) {
