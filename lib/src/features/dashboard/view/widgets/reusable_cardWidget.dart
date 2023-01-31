@@ -3,7 +3,7 @@ import 'package:nobook/src/core/themes/color.dart';
 
 
 class ReuseableCard extends StatelessWidget {
-  final String title;
+final String title;
   final String subTitle;
   final String bottomtitle;
   final String bottomsubTitle;
@@ -104,7 +104,7 @@ class ReuseableCard extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                     TextSpan(
-                        text: '\n$bottomsubTitle',
+                        text:'\n$bottomsubTitle',
                         style: const TextStyle(
                             fontSize: 8,
                             fontWeight: FontWeight.w600,
