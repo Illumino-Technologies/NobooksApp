@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
@@ -7,7 +6,6 @@ import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
-
 
 class DashboardBoard extends ConsumerStatefulWidget {
   const DashboardBoard({Key? key}) : super(key: key);
@@ -19,7 +17,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:AppColors.mBackgroundColor,
+      backgroundColor: AppColors.mBackgroundColor,
       body: SingleChildScrollView(
         child: Container(
           width: context.width * 0.50,
@@ -28,8 +26,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 0),
-            child: Column(
-              children: [
+            child: Column(children: [
               //YMargin(10),
               const DashboardWidget(),
               const YMargin(20),
@@ -52,7 +49,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                   ),
                 ],
               ),
-            
+
               SizedBox(
                 height: context.height * 0.25,
                 child: ListView.builder(
@@ -69,7 +66,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                       );
                     }),
               ),
-                     Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
@@ -88,7 +85,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                   ),
                 ],
               ),
-             
+
               SizedBox(
                 height: context.height * 0.25,
                 child: ListView.builder(
@@ -105,7 +102,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                       );
                     }),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
