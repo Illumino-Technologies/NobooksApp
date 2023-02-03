@@ -30,6 +30,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     return Structure(
+      // height: context.height,
       animateDuration: const Duration(
           milliseconds:
               100), // no need to add animation inside Dashboard navigation widget use this animateDuration instead
@@ -72,7 +73,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       
       leftBar: DashBoardNavigation(expand: toggleminimize, isSelected: expand),
       rightBar: const DashboardCalender(),
-      body: const DashboardBoard()
+      body: const NotePage()
     );
   }
 }

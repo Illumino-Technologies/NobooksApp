@@ -74,10 +74,12 @@ class _NotePageState extends ConsumerState<NotePage> {
                                 fontSize: 24, fontWeight: FontWeight.w400),
                           ),
                           const SizedBox(width: 5),
-                          SizedBox(
-                            width: 800,
-                            child: QuillEditor.basic(
-                                controller: _titleController, readOnly: false),
+                          Expanded(
+                            child: SizedBox(
+                              width: 800,
+                              child: QuillEditor.basic(
+                                  controller: _titleController, readOnly: false),
+                            ),
                           )
                         ]),
                   ),

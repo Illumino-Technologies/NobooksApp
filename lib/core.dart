@@ -56,79 +56,85 @@ class Structure extends StatelessWidget {
     var Size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body:  _StructureWidget(Size, top, left, right),
+      body: _StructureWidget(Size, top, left, right),
     );
   }
 
-
-  Column _MiddleWidget (top, left, right) {
-    return  Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                // mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  _AppBar(
-                    expanded: expandLeftBar == null ? true : expandLeftBar!,
-                    color: appBarBackgroundColor,
-                    top: top,
-                    left: left,
-                    right: right,
-                    getwidth: getwidth,
-                    child: appBar,
-                  ),
-                  _Body(
-                    expanded: expandLeftBar == null ? true : expandLeftBar!,
-                    color: bodyBackgroundColor,
-                    top: top,
-                    left: left,
-                    getwidth: getwidth,
-                    right: right,
-                    child: body,
-                  ),
-                ],
-              );
+  Widget _MiddleWidget(
+    top,
+    left,
+    right,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      // mainAxisAlignment: MainAxisAlignment.,
+      children: [
+        _AppBar(
+          expanded: expandLeftBar == null ? true : expandLeftBar!,
+          color: appBarBackgroundColor,
+          top: top,
+          left: left,
+          right: right,
+          getwidth: getwidth,
+          child: appBar,
+        ),
+        _Body(
+          expanded: expandLeftBar == null ? true : expandLeftBar!,
+          color: bodyBackgroundColor,
+          top: top,
+          left: left,
+          getwidth: getwidth,
+          right: right,
+          child: body,
+        ),
+      ],
+    );
   }
 
   Container _StructureWidget(Size Size, bool top, bool left, bool right) {
     return Container(
-          height: Size.height,
-          width: Size.width,
-          color: backgroundColor ?? Colors.white,
+      height: Size.height,
+      width: Size.width,
+      color: backgroundColor ?? Colors.white,
+      child: Row(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // _left_bar
+          animateDuration == null
+              ? _LeftBar(
+                  color: leftBarBackgroundColor,
+                  expanded: expandLeftBar == null ? true : expandLeftBar!,
+                  child: leftBar,
+                )
+              : AnimatedSwitcher(
+                  duration: animateDuration!,
+                  reverseDuration: animateReverseDuration,
+                  child: _LeftBar(
+                    color: leftBarBackgroundColor,
+                    expanded: expandLeftBar == null ? true : expandLeftBar!,
+                    child: leftBar,
+                  )),
 
-          child: Row(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // _left_bar
-              animateDuration == null ?  _LeftBar(
-                color: leftBarBackgroundColor,
-                expanded: expandLeftBar == null ? true : expandLeftBar!,
-                child: leftBar,
-              ) : AnimatedSwitcher(
-              duration: animateDuration!,
-              reverseDuration: animateReverseDuration,
-              child: _LeftBar(
-                color: leftBarBackgroundColor,
-                expanded: expandLeftBar == null ? true : expandLeftBar!,
-                child: leftBar,
-              )),
-
-              // _middle_column 
-              animateDuration == null ? _MiddleWidget( top, left, right) : AnimatedSwitcher(
-              duration: animateDuration!,
-              reverseDuration: animateReverseDuration,
-              child: _MiddleWidget( top, left, right)),
+          // _middle_column
+          animateDuration == null
+              ? _MiddleWidget(top, left, right)
+              : AnimatedSwitcher(
+                  duration: animateDuration!,
+                  reverseDuration: animateReverseDuration,
+                  child: _MiddleWidget(top, left, right)),
 
           // _right_bar
-              // const SizedBox(height: 40,),
-               Expanded(
-                 child: _RightBar(
-                   color: rightBarBackgroundColor,
-                   child: rightBar,
-                 ),
-               )
-            ],
-          ),
-        );
+          // const SizedBox(height: 40,),
+          Expanded(
+            child: _RightBar(
+              color: rightBarBackgroundColor,
+              child: rightBar,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 
