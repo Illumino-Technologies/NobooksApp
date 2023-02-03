@@ -9,6 +9,7 @@ import 'package:nobook/src/features/dashboard/view/screen/dashboard_board.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 import 'package:nobook/core.dart';
+import 'package:nobook/src/features/notes/view/screen/note_page.dart';
 
 
 class DashBoardScreen extends StatefulWidget {
@@ -70,6 +71,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         leftBar:
             DashBoardNavigation(expand: toggleminimize, isSelected: expand),
         rightBar: const DashboardCalender(),
-        body: const DashboardBoard());
+        body: const NotePage());
   }
 }
