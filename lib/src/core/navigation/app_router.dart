@@ -1,9 +1,8 @@
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/core/navigation/app_routes.dart';
-
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_screen.dart';
-
 import 'package:nobook/src/features/notes/view/screen/note_screen.dart';
+
 part 'app_route_paths.dart';
 
 class AppRouter {
@@ -23,20 +22,21 @@ class AppRouter {
       );
 }
 
-final GoRouter _router =
-    GoRouter(urlPathStrategy: UrlPathStrategy.path, routes: [
-  GoRoute(
-    path: AppRoutePath.dashboard,
-    name: AppRoutes.dashboard,
-    builder: (context, state) {
-      return const DashBoardScreen();
-    },
-  ),
-  GoRoute(
-    path: AppRoutePath.note,
-    name: AppRoutes.note,
-    builder: (context, state) {
-      return const NoteScreen();
-    },
-  ),
-]);
+final GoRouter _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: AppRoutePath.dashboard,
+      name: AppRoutes.dashboard,
+      builder: (context, state) {
+        return const DashBoardScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutePath.note,
+      name: AppRoutes.note,
+      builder: (context, state) {
+        return const NoteScreen();
+      },
+    ),
+  ],
+);

@@ -1,12 +1,10 @@
 enum StorageKey {
-  user(Map),
-  settings(Map),
-  passcode(String),
-  loginInfo(Map);
+  user,
+  settings,
+  passcode,
+  loginInfo;
 
-  final Type type;
-
-  const StorageKey(this.type);
+  const StorageKey();
 
   String get key => '$name-key';
 

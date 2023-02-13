@@ -1,5 +1,7 @@
 import 'dart:async';
 
+///mixin for adding timer to state or screens
+///e.g when there's a reset password otp timer
 mixin TimerMixin {
   late final StreamController<Duration> _timerSub =
       StreamController<Duration>();

@@ -4,8 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-typedef ErrorFallback<Error> = FutureOr<Error> Function(Failure failure);
-
 mixin DioErrorHandlerMixin {
   Future<T> handleError<T>(
     Future<T> computation, {
@@ -48,7 +46,6 @@ mixin DioErrorHandlerMixin {
             } else if (statusCode >= 100 && statusCode < 200) {
               errorMessage = errorMessage ?? e.message;
             }
-
             errorMessage = errorMessage ?? e.message;
 
             failure = failure.copyWith(
@@ -78,7 +75,7 @@ mixin DioErrorHandlerMixin {
         failure = e;
       }
 
-      debugPrint('data layer error: $failure');
+      debugPrint('$failure');
 
       return catcher?.call(failure) ?? Future.error(failure);
     }

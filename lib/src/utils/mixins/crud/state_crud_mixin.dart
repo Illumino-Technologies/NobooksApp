@@ -1,13 +1,13 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-mixin StateCrudMixin<T> on Cubit<T?> {
+mixin StateCrudMixin<T> on StateNotifier<T?> {
   T? get readData => state;
 
   void createData(T data) {
-    emit(data);
+    state = data;
   }
 
   void deleteData() {
-    emit(null);
+    state = null;
   }
 }

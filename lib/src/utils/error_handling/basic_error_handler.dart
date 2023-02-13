@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:nobook/src/utils/error_handling/error_barrel.dart';
 
+typedef ErrorFallback<Error> = FutureOr<Error> Function(Failure failure);
+
 mixin BasicErrorHandlerMixin {
   Future<T> handleError<T>(
     Future<T> computation, {
