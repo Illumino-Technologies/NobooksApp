@@ -1,4 +1,4 @@
-import 'package:go_router/go_router.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/core/navigation/app_routes.dart';
 
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_screen.dart';
