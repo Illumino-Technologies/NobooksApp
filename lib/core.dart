@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_element, must_be_immutable
+// ignore_for_file: non_constant_identifier_names, unused_element
 
 import 'package:flutter/material.dart';
 
@@ -13,6 +13,9 @@ class Structure extends StatelessWidget {
   final Widget? rightBar;
   final Widget? body;
   final bool? expandLeftBar;
+  final Duration? animateDuration;
+  final Duration? animateReverseDuration;
+
   const Structure(
       {this.backgroundColor,
       this.body,
@@ -20,6 +23,8 @@ class Structure extends StatelessWidget {
       this.expandLeftBar,
       this.rightBar,
       this.appBar,
+      this.animateDuration,
+      this.animateReverseDuration,
       this.bodyBackgroundColor,
       this.leftBarBackgroundColor,
       this.rightBarBackgroundColor,
@@ -27,19 +32,19 @@ class Structure extends StatelessWidget {
       Key? key})
       : super(key: key);
 
-  getwidth (expanded, top, left, right, size) {
+  getwidth(expanded, top, left, right, size) {
     if (left == false && right == false) {
       return size.width;
     } else if (left == false && right == true) {
-      return (size.width * 0.6) + (size.width * 0.2);
+      return (size.width * 0.5) + (size.width * 0.2);
     } else if (left == true && right == false) {
       return (expanded
-          ? (size.width * 0.6) + (size.width * 0.2)
-          : (size.width * 0.6) + (size.width * 0.15) + (size.width * 0.2));
+          ? (size.width * 0.5) + (size.width * 0.3)
+          : (size.width * 0.5) + (size.width * 0.14) + (size.width * 0.30));
     } else {
       return (expanded
-          ? (size.width * 0.6)
-          : (size.width * 0.6) + (size.width * 0.15));
+          ? (size.width * 0.5)
+          : (size.width * 0.5) + (size.width * 0.14));
     }
   }
 
@@ -49,51 +54,87 @@ class Structure extends StatelessWidget {
     bool right = rightBar == null ? false : true;
     bool top = appBar == null ? false : true;
     var Size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Container(
-        height: Size.height,
-        width: Size.width,
-        color: backgroundColor ?? Colors.white,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _LeftBar(
-              color: leftBarBackgroundColor,
-              expanded: expandLeftBar == null ? true : expandLeftBar!,
-              child: leftBar,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                _AppBar(
-                  expanded: expandLeftBar == null ? true : expandLeftBar!,
-                  color: appBarBackgroundColor,
-                  top: top,
-                  left: left,
-                  right: right,
-                  getwidth : getwidth,
-                  child: appBar,
 
-                ),
-                _Body(
+    return Scaffold(
+      body: SizedBox(
+        height: Size.height,
+        child: _StructureWidget(Size, top, left, right)),
+    );
+  }
+
+  Widget _MiddleWidget(
+    top,
+    left,
+    right,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      // mainAxisAlignment: MainAxisAlignment.,
+      children: [
+        _AppBar(
+          expanded: expandLeftBar == null ? true : expandLeftBar!,
+          color: appBarBackgroundColor,
+          top: top,
+          left: left,
+          right: right,
+          getwidth: getwidth,
+          child: appBar,
+        ),
+        _Body(
+          expanded: expandLeftBar == null ? true : expandLeftBar!,
+          color: bodyBackgroundColor,
+          top: top,
+          left: left,
+          getwidth: getwidth,
+          right: right,
+          child: body,
+        ),
+      ],
+    );
+  }
+
+  Container _StructureWidget(Size Size, bool top, bool left, bool right) {
+    return Container(
+      height: Size.height,
+      width: Size.width,
+      color: backgroundColor ?? Colors.white,
+      child: Row(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // _left_bar
+          animateDuration == null
+              ? _LeftBar(
+                  color: leftBarBackgroundColor,
                   expanded: expandLeftBar == null ? true : expandLeftBar!,
-                  color: bodyBackgroundColor,
-                  top: top,
-                  left: left,
-                  getwidth : getwidth,
-                  right: right,
-                  child: body,
-                ),
-              ],
-            ),
-            _RightBar(
+                  child: leftBar,
+                )
+              : AnimatedSwitcher(
+                  duration: animateDuration!,
+                  reverseDuration: animateReverseDuration,
+                  child: _LeftBar(
+                    color: leftBarBackgroundColor,
+                    expanded: expandLeftBar == null ? true : expandLeftBar!,
+                    child: leftBar,
+                  )),
+
+          // _middle_column
+          animateDuration == null
+              ? _MiddleWidget(top, left, right)
+              : AnimatedSwitcher(
+                  duration: animateDuration!,
+                  reverseDuration: animateReverseDuration,
+                  child: _MiddleWidget(top, left, right)),
+
+          // _right_bar
+          // const SizedBox(height: 40,),
+          Expanded(
+            child: _RightBar(
               color: rightBarBackgroundColor,
               child: rightBar,
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -129,7 +170,8 @@ class _AppBar extends StatelessWidget {
             color: color ?? Colors.white,
           )),
       height: Size.height * 0.1,
-      width:  getwidth(expanded, top, left, right, Size),
+      // width: MediaQuery.of(context).size.width,
+      width: getwidth(expanded, top, left, right, Size),
       child: child,
     );
   }
@@ -182,18 +224,17 @@ class _LeftBar extends StatelessWidget {
   Widget build(BuildContext context) {
     var Size = MediaQuery.of(context).size;
     return Container(
-      decoration: BoxDecoration(
-          color: color ?? Colors.red,
-          border: Border.all(
-            width: 0,
+        decoration: BoxDecoration(
             color: color ?? Colors.white,
-          )),
-      height: Size.height,
-      width: child == null
-          ? Size.width * 0
-          : (expanded ? Size.width * 0.2 : Size.width * 0.05),
-      child: child,
-    );
+            border: Border.all(
+              width: 0,
+              color: color ?? Colors.white,
+            )),
+        height: Size.height,
+        width: child == null
+            ? Size.width * 0
+            : (expanded ? Size.width * 0.2 : Size.width * 0.06),
+        child: child);
   }
 }
 
@@ -213,7 +254,7 @@ class _RightBar extends StatelessWidget {
             color: color ?? Colors.white,
           )),
       height: Size.height,
-      width: child == null ? Size.width * 0 : Size.width * 0.2,
+      width: child == null ? Size.width * 0 : Size.width * 0.3,
       child: child,
     );
   }
