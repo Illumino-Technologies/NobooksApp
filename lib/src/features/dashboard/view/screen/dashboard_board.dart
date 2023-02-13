@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/core/extensions/size_extension.dart';
-import 'package:nobook/src/core/themes/color.dart';
-import 'package:nobook/src/core/utils/sizing/sizing.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
@@ -17,19 +17,19 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.mBackgroundColor,
+      backgroundColor: AppColors.backgroundGrey,
       body: SingleChildScrollView(
         child: Container(
           width: context.width * 0.50,
           decoration: const BoxDecoration(
-            color: AppColors.mBackgroundColor,
+            color: AppColors.backgroundGrey,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(children: [
               //YMargin(10),
               const DashboardWidget(),
-              const YMargin(20),
+              20.boxHeight,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

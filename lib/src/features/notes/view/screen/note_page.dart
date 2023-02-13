@@ -3,7 +3,7 @@ import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
 // import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class NotePage extends ConsumerStatefulWidget {
   const NotePage({super.key});
@@ -24,7 +24,7 @@ class _NotePageState extends ConsumerState<NotePage> {
           width: 1110,
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
-            color: AppColors.mBackgroundColor,
+            color: AppColors.backgroundGrey,
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -57,7 +57,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.grey100,
+                            color: AppColors.neutral200,
                           ))),
                 ),
                 const SizedBox(
@@ -97,7 +97,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
-                          color: AppColors.grey100),
+                          color: AppColors.neutral200),
                     ),
                   ),
                 ),

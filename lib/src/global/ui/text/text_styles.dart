@@ -37,7 +37,7 @@ abstract class TextStyles {
   );
 
   static final TextStyle headline6 = TextStyle(
-    fontSize: 28.sp,
+    fontSize: 24.sp,
     height: 1.21,
     fontWeight: FontWeight.w600,
   );

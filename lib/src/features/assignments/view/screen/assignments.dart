@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/core/extensions/size_extension.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 import 'package:nobook/src/features/assignments/models/assignments_model.dart';
 import 'package:nobook/src/features/assignments/view/widgets/reused_card_widget.dart';
@@ -22,7 +22,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
         child: Container(
           width: 758,
           height: MediaQuery.of(context).size.height,
-          color: AppColors.mBackgroundColor,
+          color: AppColors.backgroundGrey,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 29),

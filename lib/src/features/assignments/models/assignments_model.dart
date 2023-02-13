@@ -1,4 +1,4 @@
-import 'package:nobook/src/core/constants/assets.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class Assignments {
   String image;
@@ -7,6 +7,7 @@ class Assignments {
   String date;
   String expire;
   String status;
+
   Assignments(this.image, this.subject, this.topic, this.date, this.expire,
       this.status);
 }

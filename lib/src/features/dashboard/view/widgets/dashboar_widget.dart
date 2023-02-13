@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/core/extensions/size_extension.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class DashboardWidget extends ConsumerWidget {
   const DashboardWidget({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class DashboardWidget extends ConsumerWidget {
           height: context.height * 0.22,
           width: context.width * 0.50,
           decoration: const BoxDecoration(
-              color: AppColors.blue,
+              color: AppColors.blue500,
               borderRadius: BorderRadius.all(Radius.circular(8))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +45,7 @@ class DashboardWidget extends ConsumerWidget {
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 8,
-                          color: AppColors.blue),
+                          color: AppColors.blue500),
                     ),
                     onPressed: () {})
               ]),

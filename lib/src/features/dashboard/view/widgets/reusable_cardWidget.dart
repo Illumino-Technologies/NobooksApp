@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class ReuseableCard extends StatelessWidget {
   final String title;
@@ -27,7 +27,7 @@ class ReuseableCard extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),

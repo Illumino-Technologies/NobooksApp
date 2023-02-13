@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/features/notes/widgets/reused_card_widget.dart';
 
 class NoteScreen extends ConsumerStatefulWidget {
@@ -19,7 +19,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
         child: Container(
           width: 758,
           height: MediaQuery.of(context).size.height,
-          color: AppColors.mBackgroundColor,
+          color: AppColors.backgroundGrey,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 29),
@@ -47,7 +47,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                             borderRadius: BorderRadius.circular(4.0)),
                         height: 38,
                         minWidth: 98,
-                        color: AppColors.blue,
+                        color: AppColors.blue500,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
@@ -55,7 +55,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14,
-                                color: AppColors.mBackgroundColor),
+                                color: AppColors.backgroundGrey),
                           ),
                         ),
                       ),

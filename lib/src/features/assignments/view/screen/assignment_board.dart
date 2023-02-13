@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/core/extensions/size_extension.dart';
-import 'package:nobook/src/core/themes/color.dart';
-import 'package:nobook/src/core/utils/sizing/sizing.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:nobook/src/features/assignments/models/assignments_model.dart';
 import 'package:nobook/src/features/assignments/models/subjects.dart';
 
@@ -20,11 +20,11 @@ class AssignmentBoard extends StatelessWidget {
                 const Text('Your Assignments',
                     style: TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold)),
-                const YMargin(20),
+                20.boxHeight,
                 const Text('Biology',
                     style: TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold)),
-                const YMargin(10),
+                10.boxHeight,
                 SizedBox(
                   height: context.height * 0.25,
                   width: context.width * 0.55,
@@ -44,11 +44,11 @@ class AssignmentBoard extends StatelessWidget {
                 ),
               
             
-                const YMargin(20),
+                20.boxHeight,
                 const Text('Biology',
                     style: TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold)),
-                const YMargin(10),
+                10.boxHeight,
                 SizedBox(
                   height: context.height * 0.25,
                   width: context.width * 0.55,
@@ -67,11 +67,11 @@ class AssignmentBoard extends StatelessWidget {
                       }),
                 ),
                 
-                const YMargin(20),
+                20.boxHeight,
                 const Text('Biology',
                     style: TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold)),
-                const YMargin(10),
+                10.boxHeight,
                 SizedBox(
                   height: context.height * 0.25,
                   width: context.width * 0.55,
@@ -89,11 +89,11 @@ class AssignmentBoard extends StatelessWidget {
                         );
                       }),
                 ),
-                  const YMargin(20),
+                  20.boxHeight,
                 const Text('Biology',
                     style: TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold)),
-                const YMargin(10),
+                10.boxHeight,
                 SizedBox(
                   height: context.height * 0.25,
                   width: context.width * 0.55,
@@ -172,16 +172,16 @@ class AssignmentTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const YMargin(15),
+              15.boxHeight,
               Container(
                 height: context.height * 0.06,
                 width: context.height * 0.06,
                 decoration: BoxDecoration(
-                    color: AppColors.grey,
+                    color: AppColors.backgroundGrey,
                     borderRadius: BorderRadius.circular(7)),
                 child: const Center(child: Text('FM')),
               ),
-              const YMargin(10),
+              10.boxHeight,
               Text(
                 subject,
                 style: const TextStyle(fontSize: 15, color: Color(0xFF383F4D)),

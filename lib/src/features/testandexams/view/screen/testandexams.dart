@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/core/extensions/size_extension.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/features/testandexams/model/test_and_exam_model.dart';
 import 'package:nobook/src/features/testandexams/view/widgets/reused_card_widget.dart';
 
@@ -21,7 +21,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
         child: Container(
           width: 758,
           height: MediaQuery.of(context).size.height,
-          color: AppColors.mBackgroundColor,
+          color: AppColors.backgroundGrey,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 29),
@@ -49,7 +49,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                             borderRadius: BorderRadius.circular(4.0)),
                         height: 38,
                         minWidth: 98,
-                        color: AppColors.blue,
+                        color: AppColors.blue500,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
@@ -57,7 +57,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14,
-                                color: AppColors.mBackgroundColor),
+                                color: AppColors.backgroundGrey),
                           ),
                         ),
                       ),

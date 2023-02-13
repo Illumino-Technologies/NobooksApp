@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/features/assignments/view/screen/assgnment_page.dart';
 
 class ReusedCardPlus extends StatelessWidget {
@@ -13,7 +13,7 @@ class ReusedCardPlus extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -77,7 +77,7 @@ class ReusedAssCard extends StatelessWidget {
         width: 160,
         height: 160,
         decoration: const BoxDecoration(
-            color: AppColors.mCardColor,
+            color: AppColors.white,
             borderRadius: BorderRadius.all(
               Radius.circular(8),
             )),

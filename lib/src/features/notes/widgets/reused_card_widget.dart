@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class ReusedCardBio extends StatelessWidget {
   const ReusedCardBio({
@@ -12,7 +12,7 @@ class ReusedCardBio extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -118,7 +118,7 @@ class ReusedCardPlus extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -165,7 +165,7 @@ class ReusedCardBk extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -271,7 +271,7 @@ class ReusedCardCh extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -377,7 +377,7 @@ class ReusedCardCv extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -483,7 +483,7 @@ class ReusedCardEc extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -589,7 +589,7 @@ class ReusedCardEn extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -695,7 +695,7 @@ class ReusedCardFm extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -801,7 +801,7 @@ class ReusedCardGe extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -907,7 +907,7 @@ class ReusedCardMt extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),
@@ -1013,7 +1013,7 @@ class ReusedCardPh extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           )),

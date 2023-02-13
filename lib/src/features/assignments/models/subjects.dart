@@ -1,4 +1,6 @@
-import 'package:nobook/src/core/constants/assets.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class TimeTable {
   final String subject;

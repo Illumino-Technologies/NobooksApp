@@ -1,12 +1,12 @@
-import 'package:nobook/src/core/constants/assets.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
-class TestandExam {
+class TestAndExam {
   String image;
   String subject;
   String topic;
   String date;
 
-  TestandExam(
+  TestAndExam(
     this.image,
     this.subject,
     this.topic,
@@ -14,44 +14,44 @@ class TestandExam {
   );
 }
 
-final List<TestandExam> econtestandexam = [
-  TestandExam(
+final List<TestAndExam> econtestandexam = [
+  TestAndExam(
     Assets.eco,
     'Economics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eco,
     'Economics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eco,
     'Economics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eco,
     'Economics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eco,
     'Economics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eco,
     'Economics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eco,
     'Economics',
     'Theory',
@@ -59,44 +59,44 @@ final List<TestandExam> econtestandexam = [
   ),
 ];
 
-final List<TestandExam> biotestandexam = [
-  TestandExam(
+final List<TestAndExam> biotestandexam = [
+  TestAndExam(
     Assets.bio,
     'Biology',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bio,
     'Biology',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bio,
     'Biology',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bio,
     'Biology',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bio,
     'Biology',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bio,
     'Biology',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bio,
     'Biology',
     'Theory',
@@ -104,44 +104,44 @@ final List<TestandExam> biotestandexam = [
   ),
 ];
 
-final List<TestandExam> bktestandexam = [
-  TestandExam(
+final List<TestAndExam> bktestandexam = [
+  TestAndExam(
     Assets.bk,
     'Book Keeping',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bk,
     'Book Keeping',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bk,
     'Book Keeping',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bk,
     'Book Keeping',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bk,
     'Book Keeping',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bk,
     'Book Keeping',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.bk,
     'Book Keeping',
     'Theory',
@@ -149,44 +149,44 @@ final List<TestandExam> bktestandexam = [
   ),
 ];
 
-final List<TestandExam> chtestandexam = [
-  TestandExam(
+final List<TestAndExam> chtestandexam = [
+  TestAndExam(
     Assets.ch,
     'Chemistry',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ch,
     'Chemistry',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ch,
     'Chemistry',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ch,
     'Chemistry',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ch,
     'Chemistry',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ch,
     'Chemistry',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ch,
     'Chemistry',
     'Theory',
@@ -194,44 +194,44 @@ final List<TestandExam> chtestandexam = [
   ),
 ];
 
-final List<TestandExam> cvtestandexam = [
-  TestandExam(
+final List<TestAndExam> cvtestandexam = [
+  TestAndExam(
     Assets.cv,
     'Civic Educatio',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.cv,
     'Civic Educatio',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.cv,
     'Civic Educatio',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.cv,
     'Civic Educatio',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.cv,
     'Civic Educatio',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.cv,
     'Civic Educatio',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.cv,
     'Civic Educatio',
     'Theory',
@@ -239,44 +239,44 @@ final List<TestandExam> cvtestandexam = [
   ),
 ];
 
-final List<TestandExam> engtestandexam = [
-  TestandExam(
+final List<TestAndExam> engtestandexam = [
+  TestAndExam(
     Assets.eng,
     'English Language',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eng,
     'English Language',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eng,
     'English Language',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eng,
     'English Language',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eng,
     'English Language',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eng,
     'English Language',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.eng,
     'English Language',
     'Theory',
@@ -284,44 +284,44 @@ final List<TestandExam> engtestandexam = [
   ),
 ];
 
-final List<TestandExam> fmtestandexam = [
-  TestandExam(
+final List<TestAndExam> fmtestandexam = [
+  TestAndExam(
     Assets.fm,
     'Further Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.fm,
     'Further Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.fm,
     'Further Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.fm,
     'Further Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.fm,
     'Further Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.fm,
     'Further Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.fm,
     'Further Maths',
     'Theory',
@@ -329,44 +329,44 @@ final List<TestandExam> fmtestandexam = [
   ),
 ];
 
-final List<TestandExam> geotestandexam = [
-  TestandExam(
+final List<TestAndExam> geotestandexam = [
+  TestAndExam(
     Assets.geo,
     'Geography',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.geo,
     'Geography',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.geo,
     'Geography',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.geo,
     'Geography',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.geo,
     'Geography',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.geo,
     'Geography',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.geo,
     'Geography',
     'Theory',
@@ -374,44 +374,44 @@ final List<TestandExam> geotestandexam = [
   ),
 ];
 
-final List<TestandExam> mathtestandexam = [
-  TestandExam(
+final List<TestAndExam> mathtestandexam = [
+  TestAndExam(
     Assets.mt,
     'Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.mt,
     'Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.mt,
     'Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.mt,
     'Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.mt,
     'Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.mt,
     'Maths',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.mt,
     'Maths',
     'Theory',
@@ -419,44 +419,44 @@ final List<TestandExam> mathtestandexam = [
   ),
 ];
 
-final List<TestandExam> phytestandexam = [
-  TestandExam(
+final List<TestAndExam> phytestandexam = [
+  TestAndExam(
     Assets.ph,
     'Physics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ph,
     'Physics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ph,
     'Physics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ph,
     'Physics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ph,
     'Physics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ph,
     'Physics',
     'Theory',
     '18th April, 2022, 09:31am',
   ),
-  TestandExam(
+  TestAndExam(
     Assets.ph,
     'Physics',
     'Theory',
