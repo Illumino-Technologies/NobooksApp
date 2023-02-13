@@ -71,7 +71,7 @@ class ReusedCardBio extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                     TextSpan(
-                        text: '\nCell Theory',
+                        text: '\nEvolution',
                         style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w400,

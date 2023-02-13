@@ -4,13 +4,11 @@ import 'package:nobook/src/core/constants/assets.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/utils/sizing/sizing.dart';
 import 'package:nobook/src/core/widgets/app_text.dart';
+import 'package:nobook/src/features/testandexams/view/screen/testandexams.dart';
 
-import 'package:nobook/src/features/dashboard/view/screen/dashboard_board.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 import 'package:nobook/core.dart';
-import 'package:nobook/src/features/notes/view/screen/note_page.dart';
-
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -71,6 +69,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         leftBar:
             DashBoardNavigation(expand: toggleminimize, isSelected: expand),
         rightBar: const DashboardCalender(),
-        body: const NotePage());
+        body: const TestandExamScreen());
   }
 }
