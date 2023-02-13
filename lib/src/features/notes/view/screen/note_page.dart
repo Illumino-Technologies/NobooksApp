@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
+
 // import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/core/themes/color.dart';
@@ -11,14 +12,14 @@ class NotePage extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _NotePageState();
 }
 
-QuillController _controller = QuillController.basic();
-QuillController _titleController = QuillController.basic();
-
 class _NotePageState extends ConsumerState<NotePage> {
+  final QuillController _controller = QuillController.basic();
+  final QuillController _titleController = QuillController.basic();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Material(
+      child: Center(
         child: Container(
           width: 1110,
           height: MediaQuery.of(context).size.height,
@@ -38,14 +39,15 @@ class _NotePageState extends ConsumerState<NotePage> {
                     decoration: const BoxDecoration(color: Colors.white),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: QuillToolbar.basic(controller: _controller),
+                      child: Container(),
+                      // QuillToolbar.basic(controller: _controller),
                     ),
                   ),
                 ),
                 const SizedBox(
                   height: 50,
                 ),
-                 const Padding(
+                const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: ListTile(
                       leading: Text('Maths',
@@ -65,26 +67,29 @@ class _NotePageState extends ConsumerState<NotePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     height: 32,
-                    child: Row(
-                        
-                        children: [
-                           const Text(
-                            'Topic:',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.w400),
+                    child: Row(children: [
+                      const Text(
+                        'Topic:',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: SizedBox(
+                          width: 800,
+                          child: QuillEditor.basic(
+                            controller: _titleController,
+                            readOnly: false,
+                            embedBuilders: [],
                           ),
-                          const SizedBox(width: 5),
-                          Expanded(
-                            child: SizedBox(
-                              width: 800,
-                              child: QuillEditor.basic(
-                                  controller: _titleController, readOnly: false),
-                            ),
-                          )
-                        ]),
+                        ),
+                      )
+                    ]),
                   ),
                 ),
-                 const Padding(
+                const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: SizedBox(
                     child: Text(
@@ -107,7 +112,9 @@ class _NotePageState extends ConsumerState<NotePage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: QuillEditor.basic(
-                          controller: _controller, readOnly: false),
+                        controller: _controller,
+                        readOnly: false,
+                      ),
                     ),
                   ),
                 ),
@@ -120,5 +127,12 @@ class _NotePageState extends ConsumerState<NotePage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _titleController.dispose();
+    super.dispose();
   }
 }

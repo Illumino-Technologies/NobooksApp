@@ -56,7 +56,9 @@ class Structure extends StatelessWidget {
     var Size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: _StructureWidget(Size, top, left, right),
+      body: SizedBox(
+        height: Size.height,
+        child: _StructureWidget(Size, top, left, right)),
     );
   }
 

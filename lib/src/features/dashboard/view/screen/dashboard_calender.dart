@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:nobook/src/features/assignments/models/subjects.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -14,6 +13,7 @@ class _DashboardCalenderState extends State<DashboardCalender> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     final querywidth = MediaQuery.of(context).size.width / 5;
@@ -78,17 +78,17 @@ class _DashboardCalenderState extends State<DashboardCalender> {
                         return isSameDay(selectedDay, date);
                       }),
                   Expanded(
-                      child: ListView.builder(
-                    itemCount: timeTable.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: Image.asset(timeTable[index].subjectLogo),
-                        title: Text(timeTable[index].subject),
-                     
-                        trailing: const Icon(Icons.arrow_forward_ios),
-                      );
-                    },
-                  ))
+                    child: ListView.builder(
+                      itemCount: timeTable.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          leading: Image.asset(timeTable[index].subjectLogo),
+                          title: Text(timeTable[index].subject),
+                          trailing: const Icon(Icons.arrow_forward_ios),
+                        );
+                      },
+                    ),
+                  )
                 ]),
           ),
         ),
