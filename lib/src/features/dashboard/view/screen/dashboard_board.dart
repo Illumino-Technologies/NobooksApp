@@ -25,7 +25,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
             color: AppColors.mBackgroundColor,
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(children: [
               //YMargin(10),
               const DashboardWidget(),

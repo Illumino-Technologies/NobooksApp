@@ -5,14 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/core/themes/color.dart';
 import 'package:nobook/src/features/notes/widgets/reused_card_widget.dart';
 
-
 class NoteScreen extends ConsumerStatefulWidget {
   const NoteScreen({Key? key}) : super(key: key);
   @override
-  DashboardScreenState createState() => DashboardScreenState();
+  NoteScreenState createState() => NoteScreenState();
 }
 
-class DashboardScreenState extends ConsumerState<NoteScreen> {
+class NoteScreenState extends ConsumerState<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

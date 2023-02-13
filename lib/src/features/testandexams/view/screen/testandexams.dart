@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/core/extensions/size_extension.dart';
 import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/features/testandexams/model/test_and_exam_model.dart';
+import 'package:nobook/src/features/testandexams/view/widgets/reused_card_widget.dart';
 
-import 'package:nobook/src/features/assignments/models/assignments_model.dart';
-import 'package:nobook/src/features/assignments/view/widgets/reused_card_widget.dart';
-
-class AssignmentPage extends ConsumerStatefulWidget {
-  const AssignmentPage({Key? key}) : super(key: key);
+class TestandExamScreen extends ConsumerStatefulWidget {
+  const TestandExamScreen({Key? key}) : super(key: key);
   @override
-  AssignmentPageState createState() => AssignmentPageState();
+  TestandExamScreenState createState() => TestandExamScreenState();
 }
 
-class AssignmentPageState extends ConsumerState<AssignmentPage> {
+class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,18 +33,46 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   ),
                   // ignore: sort_child_properties_last
                   // ignore: prefer_const_literals_to_create_immutables
-
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Your Assignments',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 29),
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        'Your Test and Exam',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 29),
+                      ),
+                      Spacer(),
+                      MaterialButton(
+                        onPressed: () {},
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4.0)),
+                        height: 38,
+                        minWidth: 98,
+                        color: AppColors.blue,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Test',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: AppColors.mBackgroundColor),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Exams',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Colors.black),
+                        ),
+                      ),
+                    ],
                   ),
-
                   SizedBox(height: 20),
                   Align(
                     alignment: Alignment.topLeft,
@@ -63,18 +90,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: bioassignments.length,
+                        itemCount: biotestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: bioassignments[index].image,
-                              status: bioassignments[index].status,
-                              topic: bioassignments[index].topic,
-                              subject: bioassignments[index].subject,
-                              date: bioassignments[index].date,
-                              expire: bioassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: biotestandexam[index].image,
+                              topic: biotestandexam[index].topic,
+                              subject: biotestandexam[index].subject,
+                              date: biotestandexam[index].date,
                             ),
                           );
                         }),
@@ -98,18 +123,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: bkassignments.length,
+                        itemCount: bktestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: bkassignments[index].image,
-                              status: bkassignments[index].status,
-                              topic: bkassignments[index].topic,
-                              subject: bkassignments[index].subject,
-                              date: bkassignments[index].date,
-                              expire: bkassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: bktestandexam[index].image,
+                              topic: bktestandexam[index].topic,
+                              subject: bktestandexam[index].subject,
+                              date: bktestandexam[index].date,
                             ),
                           );
                         }),
@@ -134,18 +157,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: chassignments.length,
+                        itemCount: chtestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: chassignments[index].image,
-                              status: chassignments[index].status,
-                              topic: chassignments[index].topic,
-                              subject: chassignments[index].subject,
-                              date: chassignments[index].date,
-                              expire: chassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: chtestandexam[index].image,
+                              topic: chtestandexam[index].topic,
+                              subject: chtestandexam[index].subject,
+                              date: chtestandexam[index].date,
                             ),
                           );
                         }),
@@ -169,18 +190,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: cvassignments.length,
+                        itemCount: cvtestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: cvassignments[index].image,
-                              status: cvassignments[index].status,
-                              topic: cvassignments[index].topic,
-                              subject: cvassignments[index].subject,
-                              date: cvassignments[index].date,
-                              expire: cvassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: cvtestandexam[index].image,
+                              topic: cvtestandexam[index].topic,
+                              subject: cvtestandexam[index].subject,
+                              date: cvtestandexam[index].date,
                             ),
                           );
                         }),
@@ -204,18 +223,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: fmassignments.length,
+                        itemCount: fmtestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: fmassignments[index].image,
-                              status: fmassignments[index].status,
-                              topic: fmassignments[index].topic,
-                              subject: fmassignments[index].subject,
-                              date: fmassignments[index].date,
-                              expire: fmassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: fmtestandexam[index].image,
+                              topic: fmtestandexam[index].topic,
+                              subject: fmtestandexam[index].subject,
+                              date: fmtestandexam[index].date,
                             ),
                           );
                         }),
@@ -239,18 +256,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: engassignments.length,
+                        itemCount: engtestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: engassignments[index].image,
-                              status: engassignments[index].status,
-                              topic: engassignments[index].topic,
-                              subject: engassignments[index].subject,
-                              date: engassignments[index].date,
-                              expire: engassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: engtestandexam[index].image,
+                              topic: engtestandexam[index].topic,
+                              subject: engtestandexam[index].subject,
+                              date: engtestandexam[index].date,
                             ),
                           );
                         }),
@@ -274,18 +289,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: fmassignments.length,
+                        itemCount: fmtestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: fmassignments[index].image,
-                              status: fmassignments[index].status,
-                              topic: fmassignments[index].topic,
-                              subject: fmassignments[index].subject,
-                              date: fmassignments[index].date,
-                              expire: fmassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: fmtestandexam[index].image,
+                              topic: fmtestandexam[index].topic,
+                              subject: fmtestandexam[index].subject,
+                              date: fmtestandexam[index].date,
                             ),
                           );
                         }),
@@ -309,18 +322,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: geoassignments.length,
+                        itemCount: geotestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: geoassignments[index].image,
-                              status: geoassignments[index].status,
-                              topic: geoassignments[index].topic,
-                              subject: geoassignments[index].subject,
-                              date: geoassignments[index].date,
-                              expire: geoassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: geotestandexam[index].image,
+                              topic: geotestandexam[index].topic,
+                              subject: geotestandexam[index].subject,
+                              date: geotestandexam[index].date,
                             ),
                           );
                         }),
@@ -344,18 +355,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: mathassignments.length,
+                        itemCount: mathtestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: mathassignments[index].image,
-                              status: mathassignments[index].status,
-                              topic: mathassignments[index].topic,
-                              subject: mathassignments[index].subject,
-                              date: mathassignments[index].date,
-                              expire: mathassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: mathtestandexam[index].image,
+                              topic: mathtestandexam[index].topic,
+                              subject: mathtestandexam[index].subject,
+                              date: mathtestandexam[index].date,
                             ),
                           );
                         }),
@@ -379,18 +388,16 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: phyassignments.length,
+                        itemCount: phytestandexam.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: phyassignments[index].image,
-                              status: phyassignments[index].status,
-                              topic: phyassignments[index].topic,
-                              subject: phyassignments[index].subject,
-                              date: phyassignments[index].date,
-                              expire: phyassignments[index].expire,
+                            child: ReusedTestsCard(
+                              image: phytestandexam[index].image,
+                              topic: phytestandexam[index].topic,
+                              subject: phytestandexam[index].subject,
+                              date: phytestandexam[index].date,
                             ),
                           );
                         }),
