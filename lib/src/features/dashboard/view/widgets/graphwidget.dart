@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 
-
 class GraphWidget extends ConsumerStatefulWidget {
   const GraphWidget({super.key});
 
@@ -51,9 +50,10 @@ class GraphWidgetState extends ConsumerState<GraphWidget> {
                       leading: Text(
                         'Your Results',
                         style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
-                            color: Colors.black),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                     LineChart(

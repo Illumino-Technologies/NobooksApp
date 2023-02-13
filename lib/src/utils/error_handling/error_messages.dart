@@ -8,7 +8,7 @@ abstract class ErrorMessages {
   static const String couldNotFetchData = 'Could Not Fetch Data';
   static const String anErrorOccurred = 'An Error Occurred';
   static const String unknownErrorRetry = 'Something went wrong, '
-                                          'please try again';
+      'please try again';
   static const String requestUnsuccessful = 'Request unsuccessful';
   static const String nullToken = 'Null Token';
 
@@ -21,11 +21,8 @@ abstract class ErrorMessages {
   static const String invalidPasscode = 'Invalid Passcode';
   static const String biometricAuthFailed = 'biometric authentication failed';
   static const String biometricAuthFailedRetry = 'biometric authentication '
-                                       'failed, Please use Passcode instead';
+      'failed, Please use Passcode instead';
 
   static const String serverError = 'Server Error';
   static const String clientError = 'Client Error';
-
-
-
 }

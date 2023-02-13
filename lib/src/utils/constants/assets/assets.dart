@@ -5,7 +5,6 @@ part 'network_assets.dart';
 part 'vector_assets.dart';
 
 abstract class Assets {
-
   //icons
   static const String logo = 'assets/icons/logo.svg';
   static const String forumIcon = 'assets/icons/forum.svg';

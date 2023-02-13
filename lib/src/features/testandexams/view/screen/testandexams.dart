@@ -38,15 +38,17 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       Text(
                         'Your Test and Exam',
                         style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 29),
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 29,
+                        ),
                       ),
                       Spacer(),
                       MaterialButton(
                         onPressed: () {},
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.0)),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
                         height: 38,
                         minWidth: 98,
                         color: AppColors.blue500,
@@ -55,9 +57,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                           child: Text(
                             'Test',
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                color: AppColors.backgroundGrey),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: AppColors.backgroundGrey,
+                            ),
                           ),
                         ),
                       ),
@@ -66,9 +69,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                         child: Text(
                           'Exams',
                           style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Colors.black),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ],
@@ -79,9 +83,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Biology",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -90,19 +95,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: biotestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: biotestandexam[index].image,
-                              topic: biotestandexam[index].topic,
-                              subject: biotestandexam[index].subject,
-                              date: biotestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: biotestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: biotestandexam[index].image,
+                            topic: biotestandexam[index].topic,
+                            subject: biotestandexam[index].subject,
+                            date: biotestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -112,9 +118,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Book Keeping",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -123,19 +130,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: bktestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: bktestandexam[index].image,
-                              topic: bktestandexam[index].topic,
-                              subject: bktestandexam[index].subject,
-                              date: bktestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: bktestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: bktestandexam[index].image,
+                            topic: bktestandexam[index].topic,
+                            subject: bktestandexam[index].subject,
+                            date: bktestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -146,9 +154,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Chemistry",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -157,19 +166,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: chtestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: chtestandexam[index].image,
-                              topic: chtestandexam[index].topic,
-                              subject: chtestandexam[index].subject,
-                              date: chtestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: chtestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: chtestandexam[index].image,
+                            topic: chtestandexam[index].topic,
+                            subject: chtestandexam[index].subject,
+                            date: chtestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -179,9 +189,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Civic Education",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -190,19 +201,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: cvtestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: cvtestandexam[index].image,
-                              topic: cvtestandexam[index].topic,
-                              subject: cvtestandexam[index].subject,
-                              date: cvtestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: cvtestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: cvtestandexam[index].image,
+                            topic: cvtestandexam[index].topic,
+                            subject: cvtestandexam[index].subject,
+                            date: cvtestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -212,9 +224,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Economics",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -223,19 +236,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: fmtestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: fmtestandexam[index].image,
-                              topic: fmtestandexam[index].topic,
-                              subject: fmtestandexam[index].subject,
-                              date: fmtestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: fmtestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: fmtestandexam[index].image,
+                            topic: fmtestandexam[index].topic,
+                            subject: fmtestandexam[index].subject,
+                            date: fmtestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -245,9 +259,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "English Language",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -256,19 +271,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: engtestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: engtestandexam[index].image,
-                              topic: engtestandexam[index].topic,
-                              subject: engtestandexam[index].subject,
-                              date: engtestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: engtestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: engtestandexam[index].image,
+                            topic: engtestandexam[index].topic,
+                            subject: engtestandexam[index].subject,
+                            date: engtestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -278,9 +294,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Further Maths",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -289,19 +306,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: fmtestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: fmtestandexam[index].image,
-                              topic: fmtestandexam[index].topic,
-                              subject: fmtestandexam[index].subject,
-                              date: fmtestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: fmtestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: fmtestandexam[index].image,
+                            topic: fmtestandexam[index].topic,
+                            subject: fmtestandexam[index].subject,
+                            date: fmtestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -311,9 +329,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Geography",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -322,19 +341,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: geotestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: geotestandexam[index].image,
-                              topic: geotestandexam[index].topic,
-                              subject: geotestandexam[index].subject,
-                              date: geotestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: geotestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: geotestandexam[index].image,
+                            topic: geotestandexam[index].topic,
+                            subject: geotestandexam[index].subject,
+                            date: geotestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -344,9 +364,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Maths",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -355,19 +376,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: mathtestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: mathtestandexam[index].image,
-                              topic: mathtestandexam[index].topic,
-                              subject: mathtestandexam[index].subject,
-                              date: mathtestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: mathtestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: mathtestandexam[index].image,
+                            topic: mathtestandexam[index].topic,
+                            subject: mathtestandexam[index].subject,
+                            date: mathtestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -377,9 +399,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     child: Text(
                       "Physics",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -388,19 +411,20 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: phytestandexam.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedTestsCard(
-                              image: phytestandexam[index].image,
-                              topic: phytestandexam[index].topic,
-                              subject: phytestandexam[index].subject,
-                              date: phytestandexam[index].date,
-                            ),
-                          );
-                        }),
+                      itemCount: phytestandexam.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedTestsCard(
+                            image: phytestandexam[index].image,
+                            topic: phytestandexam[index].topic,
+                            subject: phytestandexam[index].subject,
+                            date: phytestandexam[index].date,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,

@@ -12,10 +12,11 @@ class ReusedCardBio extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -62,21 +63,25 @@ class ReusedCardBio extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Biology',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Biology',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nEvolution',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nEvolution',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -84,21 +89,25 @@ class ReusedCardBio extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -118,10 +127,11 @@ class ReusedCardPlus extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -165,10 +175,11 @@ class ReusedCardBk extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -215,21 +226,25 @@ class ReusedCardBk extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Book Keeping',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Book Keeping',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nTrial Balance',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nTrial Balance',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -237,21 +252,25 @@ class ReusedCardBk extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -271,10 +290,11 @@ class ReusedCardCh extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -321,21 +341,25 @@ class ReusedCardCh extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Chemistry',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Chemistry',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nRedox Reactions',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nRedox Reactions',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -343,21 +367,25 @@ class ReusedCardCh extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -377,10 +405,11 @@ class ReusedCardCv extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -427,21 +456,25 @@ class ReusedCardCv extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Civic Education',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Civic Education',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nThe Constitution',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nThe Constitution',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -449,21 +482,25 @@ class ReusedCardCv extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -483,10 +520,11 @@ class ReusedCardEc extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -533,21 +571,25 @@ class ReusedCardEc extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Economics',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Economics',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nDemand and Supply',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nDemand and Supply',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -555,21 +597,25 @@ class ReusedCardEc extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\n',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '\n',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -589,10 +635,11 @@ class ReusedCardEn extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -639,21 +686,25 @@ class ReusedCardEn extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'English',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'English',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nPhrases and Clauses',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nPhrases and Clauses',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -661,21 +712,25 @@ class ReusedCardEn extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\n',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '\n',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -695,10 +750,11 @@ class ReusedCardFm extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -745,21 +801,25 @@ class ReusedCardFm extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Further Math',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Further Math',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nDifferentiation',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nDifferentiation',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -767,21 +827,25 @@ class ReusedCardFm extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\n',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '\n',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -801,10 +865,11 @@ class ReusedCardGe extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -851,21 +916,25 @@ class ReusedCardGe extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Geography',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Geography',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nRelief and Drainage',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nRelief and Drainage',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -873,21 +942,25 @@ class ReusedCardGe extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\n',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '\n',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -907,10 +980,11 @@ class ReusedCardMt extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -957,21 +1031,25 @@ class ReusedCardMt extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Maths',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Maths',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nSet Theory',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nSet Theory',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -979,21 +1057,25 @@ class ReusedCardMt extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\n',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '\n',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -1013,10 +1095,11 @@ class ReusedCardPh extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -1063,21 +1146,25 @@ class ReusedCardPh extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: 'Physics',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: 'Physics',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\nParticulate Nature of Matter',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\nParticulate Nature of Matter',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -1085,21 +1172,25 @@ class ReusedCardPh extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: const TextSpan(
-                      text: '18th April, 2022 . 09:31am',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: const TextSpan(
+                  text: '18th April, 2022 . 09:31am',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\n',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '\n',
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),

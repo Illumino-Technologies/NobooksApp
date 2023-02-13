@@ -1,5 +1,3 @@
 import 'package:flutter/cupertino.dart';
 
-class TestAndExamProvider extends ChangeNotifier{
-  
-}
+class TestAndExamProvider extends ChangeNotifier {}

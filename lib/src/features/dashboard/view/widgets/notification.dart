@@ -10,19 +10,20 @@ class Notifications extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SizedBox(
-          width: 700,
-          // color: Colors.white,
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: notification.length,
-            itemBuilder: (context, index) => ListTile(
-              tileColor: Colors.white.withOpacity(1),
-              style: ListTileStyle.list,
-              leading: Image.asset(Assets.book),
-              title: Text(notification[index].title),
-              subtitle: Text(notification[index].time),
-            ),
-          )),
+        width: 700,
+        // color: Colors.white,
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: notification.length,
+          itemBuilder: (context, index) => ListTile(
+            tileColor: Colors.white.withOpacity(1),
+            style: ListTileStyle.list,
+            leading: Image.asset(Assets.book),
+            title: Text(notification[index].title),
+            subtitle: Text(notification[index].time),
+          ),
+        ),
+      ),
     );
   }
 }

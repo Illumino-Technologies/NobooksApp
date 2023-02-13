@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:nobook/src/features/assignments/models/assignments_model.dart';
 import 'package:nobook/src/features/assignments/models/subjects.dart';
 
@@ -11,134 +10,141 @@ class AssignmentBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: (
-        Row(
+      body: SingleChildScrollView(
+        child: (Row(
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Your Assignments',
-                    style: TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold)),
-                20.boxHeight,
-                const Text('Biology',
-                    style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold)),
-                10.boxHeight,
-                SizedBox(
-                  height: context.height * 0.25,
-                  width: context.width * 0.55,
-                  child: ListView.builder(
-                      itemCount: assignments.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) {
-                        return AssignmentTile(
-                          status: assignments[index].status,
-                          subject: assignments[index].subject,
-                          topic: assignments[index].topic,
-                          expire: assignments[index].expire,
-                          image: assignments[index].image,
-                          date: assignments[index].date,
-                        );
-                      }),
+                const Text(
+                  'Your Assignments',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-              
-            
                 20.boxHeight,
-                const Text('Biology',
-                    style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold)),
+                const Text(
+                  'Biology',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
                 10.boxHeight,
                 SizedBox(
                   height: context.height * 0.25,
                   width: context.width * 0.55,
                   child: ListView.builder(
-                      itemCount: assignments.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) {
-                        return AssignmentTile(
-                          status: assignments[index].status,
-                          subject: assignments[index].subject,
-                          topic: assignments[index].topic,
-                          expire: assignments[index].expire,
-                          image: assignments[index].image,
-                          date: assignments[index].date,
-                        );
-                      }),
+                    itemCount: assignments.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return AssignmentTile(
+                        status: assignments[index].status,
+                        subject: assignments[index].subject,
+                        topic: assignments[index].topic,
+                        expire: assignments[index].expire,
+                        image: assignments[index].image,
+                        date: assignments[index].date,
+                      );
+                    },
+                  ),
                 ),
-                
                 20.boxHeight,
-                const Text('Biology',
-                    style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold)),
-                10.boxHeight,
-                SizedBox(
-                  height: context.height * 0.25,
-                  width: context.width * 0.55,
-                  child: ListView.builder(
-                      itemCount: assignments.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) {
-                        return AssignmentTile(
-                          status: assignments[index].status,
-                          subject: assignments[index].subject,
-                          topic: assignments[index].topic,
-                          expire: assignments[index].expire,
-                          image: assignments[index].image,
-                          date: assignments[index].date,
-                        );
-                      }),
+                const Text(
+                  'Biology',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                  20.boxHeight,
-                const Text('Biology',
-                    style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold)),
                 10.boxHeight,
                 SizedBox(
                   height: context.height * 0.25,
                   width: context.width * 0.55,
                   child: ListView.builder(
-                      itemCount: assignments.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) {
-                        return AssignmentTile(
-                          status: assignments[index].status,
-                          subject: assignments[index].subject,
-                          topic: assignments[index].topic,
-                          expire: assignments[index].expire,
-                          image: assignments[index].image,
-                          date: assignments[index].date,
-                        );
-                      }),
+                    itemCount: assignments.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return AssignmentTile(
+                        status: assignments[index].status,
+                        subject: assignments[index].subject,
+                        topic: assignments[index].topic,
+                        expire: assignments[index].expire,
+                        image: assignments[index].image,
+                        date: assignments[index].date,
+                      );
+                    },
+                  ),
+                ),
+                20.boxHeight,
+                const Text(
+                  'Biology',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                10.boxHeight,
+                SizedBox(
+                  height: context.height * 0.25,
+                  width: context.width * 0.55,
+                  child: ListView.builder(
+                    itemCount: assignments.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return AssignmentTile(
+                        status: assignments[index].status,
+                        subject: assignments[index].subject,
+                        topic: assignments[index].topic,
+                        expire: assignments[index].expire,
+                        image: assignments[index].image,
+                        date: assignments[index].date,
+                      );
+                    },
+                  ),
+                ),
+                20.boxHeight,
+                const Text(
+                  'Biology',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                10.boxHeight,
+                SizedBox(
+                  height: context.height * 0.25,
+                  width: context.width * 0.55,
+                  child: ListView.builder(
+                    itemCount: assignments.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return AssignmentTile(
+                        status: assignments[index].status,
+                        subject: assignments[index].subject,
+                        topic: assignments[index].topic,
+                        expire: assignments[index].expire,
+                        image: assignments[index].image,
+                        date: assignments[index].date,
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
             Column(
               children: [
-              const Text('Your Subjects'),
-              SizedBox(
-                height: context.height * 0.85,
-                width: context.height * 0.35,
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
+                const Text('Your Subjects'),
+                SizedBox(
+                  height: context.height * 0.85,
+                  width: context.height * 0.35,
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
 
-                  itemCount: timeTable.length,
-                  // scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: Image.asset(timeTable[index].subjectLogo),
-                      title: Text(timeTable[index].subject),
-                      trailing: const Icon(Icons.keyboard_arrow_down),
-                    );
-                  },
-                ),
-              )
-            ]),
+                    itemCount: timeTable.length,
+                    // scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: Image.asset(timeTable[index].subjectLogo),
+                        title: Text(timeTable[index].subject),
+                        trailing: const Icon(Icons.keyboard_arrow_down),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           ],
         )),
-    
-    ));
+      ),
+    );
   }
 }
 
@@ -166,7 +172,9 @@ class AssignmentTile extends StatelessWidget {
         Container(
           height: context.height * 0.25,
           decoration: BoxDecoration(
-              color: AppColors.white, borderRadius: BorderRadius.circular(10)),
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 10),
           margin: const EdgeInsets.symmetric(horizontal: 7),
           child: Column(
@@ -177,8 +185,9 @@ class AssignmentTile extends StatelessWidget {
                 height: context.height * 0.06,
                 width: context.height * 0.06,
                 decoration: BoxDecoration(
-                    color: AppColors.backgroundGrey,
-                    borderRadius: BorderRadius.circular(7)),
+                  color: AppColors.backgroundGrey,
+                  borderRadius: BorderRadius.circular(7),
+                ),
                 child: const Center(child: Text('FM')),
               ),
               10.boxHeight,
@@ -205,23 +214,28 @@ class AssignmentTile extends StatelessWidget {
           ),
         ),
         Positioned(
-            top: 10,
-            right: 35,
-            child: Container(
-              padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                  color: status.contains('Submitted') == true
-                      ? Colors.green.withOpacity(0.2)
-                      : Colors.red.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Text(status,
-                  style: TextStyle(
-                      fontSize: 10,
-                      color: status.contains('Submitted') == true
-                          ? Colors.green
-                          : Colors.red,
-                      fontWeight: FontWeight.w400)),
-            )),
+          top: 10,
+          right: 35,
+          child: Container(
+            padding: const EdgeInsets.all(2),
+            decoration: BoxDecoration(
+              color: status.contains('Submitted') == true
+                  ? Colors.green.withOpacity(0.2)
+                  : Colors.red.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Text(
+              status,
+              style: TextStyle(
+                fontSize: 10,
+                color: status.contains('Submitted') == true
+                    ? Colors.green
+                    : Colors.red,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

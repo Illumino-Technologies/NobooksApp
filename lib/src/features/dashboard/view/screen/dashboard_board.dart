@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
@@ -26,33 +25,36 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(children: [
-              //YMargin(10),
-              const DashboardWidget(),
-              20.boxHeight,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Your Notes',
-                    style: TextStyle(
+            child: Column(
+              children: [
+                //YMargin(10),
+                const DashboardWidget(),
+                20.boxHeight,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Your Notes',
+                      style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    'Veiw all >',
-                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Text(
+                      'Veiw all >',
+                      style: TextStyle(
                         color: Colors.blue[500],
                         fontSize: 12,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
 
-              SizedBox(
-                height: context.height * 0.25,
-                child: ListView.builder(
+                SizedBox(
+                  height: context.height * 0.25,
+                  child: ListView.builder(
                     itemCount: dashBoard.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
@@ -64,31 +66,34 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                         bottomsubTitle: dashBoard[index].bottomsubTitle,
                         bottomtitle: dashBoard[index].bottomtitle,
                       );
-                    }),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Your Assignments',
-                    style: TextStyle(
+                    },
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Your Assignments',
+                      style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    'Veiw all >',
-                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Text(
+                      'Veiw all >',
+                      style: TextStyle(
                         color: Colors.blue[500],
                         fontSize: 12,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
 
-              SizedBox(
-                height: context.height * 0.25,
-                child: ListView.builder(
+                SizedBox(
+                  height: context.height * 0.25,
+                  child: ListView.builder(
                     itemCount: dashBoard.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
@@ -100,25 +105,28 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                         bottomsubTitle: dashBoard[index].bottomsubTitle,
                         bottomtitle: dashBoard[index].bottomtitle,
                       );
-                    }),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Container(
-                    width: 694,
-                    height: 433,
-                    decoration: BoxDecoration(
+                    },
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Container(
+                      width: 694,
+                      height: 433,
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
                           image: AssetImage("assets/graph.png"),
                           fit: BoxFit.fill,
-                        )),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ]),
+              ],
+            ),
           ),
         ),
       ),

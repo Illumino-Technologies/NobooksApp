@@ -25,22 +25,23 @@ class _DashBoardNavigationState extends State<DashBoardNavigation> {
       children: [
         10.boxHeight,
         InkWell(
-            onTap: () {
-              widget.expand();
-            },
-            child: widget.isSelected
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 0),
-                    child: SvgPicture.asset(Assets.drawerIcon),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: SvgPicture.asset(Assets.drawerLeft),
-                  )),
+          onTap: () {
+            widget.expand();
+          },
+          child: widget.isSelected
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 0),
+                  child: SvgPicture.asset(Assets.drawerIcon),
+                )
+              : Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: SvgPicture.asset(Assets.drawerLeft),
+                ),
+        ),
         widget.isSelected ? const DashIconWithName() : const DashIcon(),
       ],
     );
   }
 }
 
-//  
+//

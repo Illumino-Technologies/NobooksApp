@@ -40,9 +40,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       'Your Assignments',
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 29),
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 29,
+                      ),
                     ),
                   ),
 
@@ -52,9 +53,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Biology",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -63,21 +65,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: bioassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: bioassignments[index].image,
-                              status: bioassignments[index].status,
-                              topic: bioassignments[index].topic,
-                              subject: bioassignments[index].subject,
-                              date: bioassignments[index].date,
-                              expire: bioassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: bioassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: bioassignments[index].image,
+                            status: bioassignments[index].status,
+                            topic: bioassignments[index].topic,
+                            subject: bioassignments[index].subject,
+                            date: bioassignments[index].date,
+                            expire: bioassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -87,9 +90,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Book Keeping",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -98,21 +102,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: bkassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: bkassignments[index].image,
-                              status: bkassignments[index].status,
-                              topic: bkassignments[index].topic,
-                              subject: bkassignments[index].subject,
-                              date: bkassignments[index].date,
-                              expire: bkassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: bkassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: bkassignments[index].image,
+                            status: bkassignments[index].status,
+                            topic: bkassignments[index].topic,
+                            subject: bkassignments[index].subject,
+                            date: bkassignments[index].date,
+                            expire: bkassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -123,9 +128,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Chemistry",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -134,21 +140,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: chassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: chassignments[index].image,
-                              status: chassignments[index].status,
-                              topic: chassignments[index].topic,
-                              subject: chassignments[index].subject,
-                              date: chassignments[index].date,
-                              expire: chassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: chassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: chassignments[index].image,
+                            status: chassignments[index].status,
+                            topic: chassignments[index].topic,
+                            subject: chassignments[index].subject,
+                            date: chassignments[index].date,
+                            expire: chassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -158,9 +165,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Civic Education",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -169,21 +177,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: cvassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: cvassignments[index].image,
-                              status: cvassignments[index].status,
-                              topic: cvassignments[index].topic,
-                              subject: cvassignments[index].subject,
-                              date: cvassignments[index].date,
-                              expire: cvassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: cvassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: cvassignments[index].image,
+                            status: cvassignments[index].status,
+                            topic: cvassignments[index].topic,
+                            subject: cvassignments[index].subject,
+                            date: cvassignments[index].date,
+                            expire: cvassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -193,9 +202,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Economics",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -204,21 +214,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: fmassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: fmassignments[index].image,
-                              status: fmassignments[index].status,
-                              topic: fmassignments[index].topic,
-                              subject: fmassignments[index].subject,
-                              date: fmassignments[index].date,
-                              expire: fmassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: fmassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: fmassignments[index].image,
+                            status: fmassignments[index].status,
+                            topic: fmassignments[index].topic,
+                            subject: fmassignments[index].subject,
+                            date: fmassignments[index].date,
+                            expire: fmassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -228,9 +239,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "English Language",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -239,21 +251,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: engassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: engassignments[index].image,
-                              status: engassignments[index].status,
-                              topic: engassignments[index].topic,
-                              subject: engassignments[index].subject,
-                              date: engassignments[index].date,
-                              expire: engassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: engassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: engassignments[index].image,
+                            status: engassignments[index].status,
+                            topic: engassignments[index].topic,
+                            subject: engassignments[index].subject,
+                            date: engassignments[index].date,
+                            expire: engassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -263,9 +276,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Further Maths",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -274,21 +288,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: fmassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: fmassignments[index].image,
-                              status: fmassignments[index].status,
-                              topic: fmassignments[index].topic,
-                              subject: fmassignments[index].subject,
-                              date: fmassignments[index].date,
-                              expire: fmassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: fmassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: fmassignments[index].image,
+                            status: fmassignments[index].status,
+                            topic: fmassignments[index].topic,
+                            subject: fmassignments[index].subject,
+                            date: fmassignments[index].date,
+                            expire: fmassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -298,9 +313,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Geography",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -309,21 +325,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: geoassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: geoassignments[index].image,
-                              status: geoassignments[index].status,
-                              topic: geoassignments[index].topic,
-                              subject: geoassignments[index].subject,
-                              date: geoassignments[index].date,
-                              expire: geoassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: geoassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: geoassignments[index].image,
+                            status: geoassignments[index].status,
+                            topic: geoassignments[index].topic,
+                            subject: geoassignments[index].subject,
+                            date: geoassignments[index].date,
+                            expire: geoassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -333,9 +350,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Maths",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -344,21 +362,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: mathassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: mathassignments[index].image,
-                              status: mathassignments[index].status,
-                              topic: mathassignments[index].topic,
-                              subject: mathassignments[index].subject,
-                              date: mathassignments[index].date,
-                              expire: mathassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: mathassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: mathassignments[index].image,
+                            status: mathassignments[index].status,
+                            topic: mathassignments[index].topic,
+                            subject: mathassignments[index].subject,
+                            date: mathassignments[index].date,
+                            expire: mathassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,
@@ -368,9 +387,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     child: Text(
                       "Physics",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -379,21 +399,22 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                        itemCount: phyassignments.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ReusedAssCard(
-                              image: phyassignments[index].image,
-                              status: phyassignments[index].status,
-                              topic: phyassignments[index].topic,
-                              subject: phyassignments[index].subject,
-                              date: phyassignments[index].date,
-                              expire: phyassignments[index].expire,
-                            ),
-                          );
-                        }),
+                      itemCount: phyassignments.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusedAssCard(
+                            image: phyassignments[index].image,
+                            status: phyassignments[index].status,
+                            topic: phyassignments[index].topic,
+                            subject: phyassignments[index].subject,
+                            date: phyassignments[index].date,
+                            expire: phyassignments[index].expire,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 48,

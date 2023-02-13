@@ -5,7 +5,7 @@ import 'package:nobook/src/features/assignments/view/screen/assignment_board.dar
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-import '../../../../global/ui/ui_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class AssignmentScreen extends StatefulWidget {
   const AssignmentScreen({Key? key}) : super(key: key);

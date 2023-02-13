@@ -6,7 +6,7 @@ import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.d
 import 'package:nobook/src/features/testandexams/view/screen/testandexams.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-import '../../../../global/ui/ui_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);

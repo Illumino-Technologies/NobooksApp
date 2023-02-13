@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_tile%20widgets.dart';
 
-
 class CardWidgets2 extends ConsumerWidget {
   const CardWidgets2({super.key});
 
@@ -26,7 +25,7 @@ class CardWidgets2 extends ConsumerWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: const [
-                  ReuseableCard(
+                ReuseableCard(
                   title: 'Economics',
                   subTitle: 'Demand and Supply',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -34,10 +33,10 @@ class CardWidgets2 extends ConsumerWidget {
                   firstImage: 'assets/subjects/ec.png',
                   secondImage: 'assets/undone.png',
                 ),
-                 SizedBox(
+                SizedBox(
                   width: 16,
                 ),
-                  ReuseableCard(
+                ReuseableCard(
                   title: 'Biology',
                   subTitle: 'Cell Theory',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -45,10 +44,10 @@ class CardWidgets2 extends ConsumerWidget {
                   firstImage: 'assets/subjects/bi.png',
                   secondImage: 'assets/undone.png',
                 ),
-                 SizedBox(
+                SizedBox(
                   width: 16,
                 ),
-                  ReuseableCard(
+                ReuseableCard(
                   title: 'Further Maths',
                   subTitle: 'Differentiation',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -56,10 +55,10 @@ class CardWidgets2 extends ConsumerWidget {
                   firstImage: 'assets/subjects/fm.png',
                   secondImage: 'assets/submitted.png',
                 ),
-                 SizedBox(
+                SizedBox(
                   width: 16,
                 ),
-                  ReuseableCard(
+                ReuseableCard(
                   title: 'English',
                   subTitle: 'Phrases and Clauses',
                   bottomtitle: '18th April, 2022 . 09:31am',
@@ -70,7 +69,7 @@ class CardWidgets2 extends ConsumerWidget {
               ],
             ),
           ),
-        ]
+        ],
       ),
     );
   }

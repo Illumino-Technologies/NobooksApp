@@ -36,15 +36,17 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       Text(
                         'Your Notes',
                         style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 29),
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 29,
+                        ),
                       ),
                       Spacer(),
                       MaterialButton(
                         onPressed: () {},
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.0)),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
                         height: 38,
                         minWidth: 98,
                         color: AppColors.blue500,
@@ -53,9 +55,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                           child: Text(
                             'Personal',
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                color: AppColors.backgroundGrey),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: AppColors.backgroundGrey,
+                            ),
                           ),
                         ),
                       ),
@@ -64,9 +67,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                         child: Text(
                           'General',
                           style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Colors.black),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ],
@@ -77,34 +81,36 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Biology",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          ReusedCardPlus(),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          ReusedCardBio(),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          ReusedCardBio(),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          ReusedCardBio(),
-                        ],
-                      )),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        ReusedCardPlus(),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        ReusedCardBio(),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        ReusedCardBio(),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        ReusedCardBio(),
+                      ],
+                    ),
+                  ),
                   SizedBox(
                     height: 48,
                   ),
@@ -113,9 +119,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Book Keeping",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -145,9 +152,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Chemistry",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -177,9 +185,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Civic Education",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -209,9 +218,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Economics",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -241,9 +251,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "English Language",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -273,9 +284,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Further Maths",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -305,9 +317,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Geography",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -337,9 +350,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Maths",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -369,9 +383,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Text(
                       "Physics",
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(

@@ -1,7 +1,5 @@
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-import 'package:nobook/src/utils/utils_barrel.dart';
-
 class TimeTable {
   final String subject;
   final String subjectLogo;
@@ -15,8 +13,8 @@ final List<TimeTable> timeTable = [
   TimeTable('Chemistry', Assets.mt),
   TimeTable('Biology', Assets.mt),
   TimeTable('English', Assets.mt),
-  TimeTable('Further Mathematics',  Assets.mt),
-  TimeTable('Maths',  Assets.mt),
+  TimeTable('Further Mathematics', Assets.mt),
+  TimeTable('Maths', Assets.mt),
   TimeTable('Physics', Assets.mt),
   TimeTable('Chemistry', Assets.mt),
   TimeTable('Biology', Assets.mt),

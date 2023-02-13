@@ -13,10 +13,11 @@ class ReusedCardPlus extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -57,30 +58,34 @@ class ReusedAssCard extends StatelessWidget {
   final String expire;
   final String status;
 
-  const ReusedAssCard(
-      {super.key,
-      required this.image,
-      required this.subject,
-      required this.topic,
-      required this.date,
-      required this.expire,
-      required this.status});
+  const ReusedAssCard({
+    super.key,
+    required this.image,
+    required this.subject,
+    required this.topic,
+    required this.date,
+    required this.expire,
+    required this.status,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const AssignmentNote()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AssignmentNote()),
+        );
       },
       child: Container(
         width: 160,
         height: 160,
         decoration: const BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.all(
-              Radius.circular(8),
-            )),
+          color: AppColors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -127,21 +132,25 @@ class ReusedAssCard extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: RichText(
-                    text: TextSpan(
-                        text: subject,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
-                        children: <TextSpan>[
+                  text: TextSpan(
+                    text: subject,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                      fontSize: 14,
+                    ),
+                    children: <TextSpan>[
                       TextSpan(
-                          text: '\n$topic',
-                          style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.grey))
-                    ])),
+                        text: '\n$topic',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 16,
@@ -149,21 +158,25 @@ class ReusedAssCard extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: RichText(
-                    text: TextSpan(
-                        text: date,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey,
-                          fontSize: 8,
-                        ),
-                        children: <TextSpan>[
+                  text: TextSpan(
+                    text: date,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: Colors.grey,
+                      fontSize: 8,
+                    ),
+                    children: <TextSpan>[
                       TextSpan(
-                          text: '\n$expire',
-                          style: const TextStyle(
-                              fontSize: 8,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black12))
-                    ])),
+                        text: '\n$expire',
+                        style: const TextStyle(
+                          fontSize: 8,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black12,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

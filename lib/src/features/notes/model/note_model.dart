@@ -4,11 +4,12 @@ class Note {
   String content;
   String noteColor;
 
-  Note(
-      {this.id = null,
-      this.title = "Note",
-      this.content = "Text",
-      this.noteColor = 'red'});
+  Note({
+    this.id,
+    this.title = "Note",
+    this.content = "Text",
+    this.noteColor = 'red',
+  });
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> data = <String, dynamic>{};
