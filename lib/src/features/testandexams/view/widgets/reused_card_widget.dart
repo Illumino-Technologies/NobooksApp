@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/core/themes/color.dart';
-import 'package:nobook/src/features/assignments/view/screen/assgnment_page.dart';
+import 'package:nobook/src/features/testandexams/view/screen/testandexam_page.dart';
 
 class ReusedCardPlus extends StatelessWidget {
   const ReusedCardPlus({
@@ -49,29 +49,26 @@ class ReusedCardPlus extends StatelessWidget {
   }
 }
 
-class ReusedAssCard extends StatelessWidget {
+class ReusedTestsCard extends StatelessWidget {
   final String image;
   final String subject;
   final String topic;
   final String date;
-  final String expire;
-  final String status;
 
-  const ReusedAssCard(
-      {super.key,
-      required this.image,
-      required this.subject,
-      required this.topic,
-      required this.date,
-      required this.expire,
-      required this.status});
+  const ReusedTestsCard({
+    super.key,
+    required this.image,
+    required this.subject,
+    required this.topic,
+    required this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const AssignmentNote()));
+            MaterialPageRoute(builder: (context) => const TestandExamPage()));
       },
       child: Container(
         width: 160,
@@ -88,38 +85,24 @@ class ReusedAssCard extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              Row(
-                children: [
-                  Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(4),
-                      ),
-                      image: DecorationImage(
-                        image: AssetImage(image),
-                        fit: BoxFit.fill,
-                      ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(4),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage(image),
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  const SizedBox(
-                    width: 59,
-                  ),
-                  Container(
-                    height: 15,
-                    width: 39,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(4),
-                      ),
-                      image: DecorationImage(
-                        image: AssetImage(status),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  )
-                ],
+                ),
+              ),
+              const SizedBox(
+                width: 59,
               ),
               const SizedBox(
                 height: 16,
@@ -148,22 +131,14 @@ class ReusedAssCard extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: RichText(
-                    text: TextSpan(
-                        text: date,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey,
-                          fontSize: 8,
-                        ),
-                        children: <TextSpan>[
-                      TextSpan(
-                          text: '\n$expire',
-                          style: const TextStyle(
-                              fontSize: 8,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black12))
-                    ])),
+                child: Text(
+                  date,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                ),
               ),
             ],
           ),
