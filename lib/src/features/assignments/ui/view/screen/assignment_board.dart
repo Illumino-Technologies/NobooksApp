@@ -132,7 +132,8 @@ class AssignmentBoard extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ListTile(
                         leading: Image.asset(
-                            FakeAssignmentData.timeTable[index].subjectLogo,),
+                          FakeAssignmentData.timeTable[index].subjectLogo,
+                        ),
                         title:
                             Text(FakeAssignmentData.timeTable[index].subject),
                         trailing: const Icon(Icons.keyboard_arrow_down),

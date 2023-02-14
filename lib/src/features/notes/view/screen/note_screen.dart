@@ -91,7 +91,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Row(
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(
                           width: 8,
                         ),
@@ -129,7 +129,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Row(
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(width: 8),
                         const ReusedCardBk(),
                         const SizedBox(width: 8),
@@ -142,7 +142,6 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                   const SizedBox(
                     height: 48,
                   ),
-
                   const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
@@ -163,7 +162,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(width: 8),
                         const ReusedCardCh(),
                         const SizedBox(width: 8),
@@ -196,7 +195,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(width: 8),
                         const ReusedCardCv(),
                         const SizedBox(width: 8),
@@ -229,7 +228,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(width: 8),
                         const ReusedCardEc(),
                         const SizedBox(width: 8),
@@ -262,7 +261,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(width: 8),
                         const ReusedCardEn(),
                         const SizedBox(width: 8),
@@ -295,7 +294,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(width: 8),
                         const ReusedCardFm(),
                         const SizedBox(width: 8),
@@ -328,7 +327,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(width: 8),
                         const ReusedCardGe(),
                         const SizedBox(width: 8),
@@ -361,7 +360,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const SizedBox(width: 8),
                         const ReusedCardMt(),
                         const SizedBox(width: 8),
@@ -394,7 +393,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const ReusedCardPlus(),
+                        const NoteReusedCardPlus(),
                         const ReusedCardPh(),
                         const ReusedCardPh(),
                         const ReusedCardPh(),

@@ -84,7 +84,8 @@ class _DashboardCalenderState extends State<DashboardCalender> {
                     itemBuilder: (context, index) {
                       return ListTile(
                         leading: Image.asset(
-                            FakeAssignmentData.timeTable[index].subjectLogo,),
+                          FakeAssignmentData.timeTable[index].subjectLogo,
+                        ),
                         title:
                             Text(FakeAssignmentData.timeTable[index].subject),
                         trailing: const Icon(Icons.arrow_forward_ios),

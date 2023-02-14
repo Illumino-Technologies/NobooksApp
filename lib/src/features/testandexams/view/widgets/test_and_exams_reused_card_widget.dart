@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/features/testandexams/view/screen/testandexam_page.dart';
 
-class ReusedCardPlus extends StatelessWidget {
-  const ReusedCardPlus({
+class TestAndExamsReusedCardPlus extends StatelessWidget {
+  const TestAndExamsReusedCardPlus({
     super.key,
   });
 
