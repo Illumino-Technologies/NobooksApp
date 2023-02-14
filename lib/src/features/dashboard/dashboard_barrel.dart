@@ -1,0 +1,15 @@
+export 'package:nobook/src/features/dashboard/models/cardinfo.dart';
+export 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
+export 'package:nobook/src/features/dashboard/models/notification.dart';
+export 'package:nobook/src/features/dashboard/state_manager/dashboard_provider.dart';
+export 'package:nobook/src/features/dashboard/utils/dasboard_utils.dart';
+export 'package:nobook/src/features/dashboard/view/screen/dashboard_board.dart';
+export 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
+export 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
+export 'package:nobook/src/features/dashboard/view/screen/dashboard_screen.dart';
+export 'package:nobook/src/features/dashboard/view/widgets/card_widget.dart';
+export 'package:nobook/src/features/dashboard/view/widgets/dash_icon.dart';
+export 'package:nobook/src/features/dashboard/view/widgets/dash_icon_with_name.dart';
+export 'package:nobook/src/features/dashboard/view/widgets/graphwidget.dart';
+export 'package:nobook/src/features/dashboard/view/widgets/notification.dart';
+export 'package:nobook/src/features/dashboard/view/widgets/reusable_tile%20widgets.dart';

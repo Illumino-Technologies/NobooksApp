@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nobook/src/core/constants/assets.dart';
 
-import 'package:nobook/src/core/utils/sizing/sizing.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 import 'package:nobook/src/features/dashboard/view/widgets/dash_icon.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dash_icon_with_name.dart';
@@ -24,24 +23,25 @@ class _DashBoardNavigationState extends State<DashBoardNavigation> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const YMargin(10),
+        10.boxHeight,
         InkWell(
-            onTap: () {
-              widget.expand();
-            },
-            child: widget.isSelected
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 0),
-                    child: SvgPicture.asset(Assets.drawerIcon),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: SvgPicture.asset(Assets.drawerLeft),
-                  )),
+          onTap: () {
+            widget.expand();
+          },
+          child: widget.isSelected
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 0),
+                  child: SvgPicture.asset(Assets.drawerIcon),
+                )
+              : Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: SvgPicture.asset(Assets.drawerLeft),
+                ),
+        ),
         widget.isSelected ? const DashIconWithName() : const DashIcon(),
       ],
     );
   }
 }
 
-//  
+//

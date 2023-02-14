@@ -3,7 +3,7 @@ import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
 // import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class NotePage extends ConsumerStatefulWidget {
   const NotePage({super.key});
@@ -24,7 +24,7 @@ class _NotePageState extends ConsumerState<NotePage> {
           width: 1110,
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
-            color: AppColors.mBackgroundColor,
+            color: AppColors.backgroundGrey,
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -50,15 +50,22 @@ class _NotePageState extends ConsumerState<NotePage> {
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: ListTile(
-                      leading: Text('Maths',
-                          style: TextStyle(
-                              fontSize: 32, fontWeight: FontWeight.w600)),
-                      trailing: Text('01:10pm . 18th April, 2022',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.grey100,
-                          ))),
+                    leading: Text(
+                      'Maths',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    trailing: Text(
+                      '01:10pm . 18th April, 2022',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.neutral200,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 15,
@@ -67,26 +74,28 @@ class _NotePageState extends ConsumerState<NotePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     height: 32,
-                    child: Row(children: [
-                      const Text(
-                        'Topic:',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      const SizedBox(width: 5),
-                      Expanded(
-                        child: SizedBox(
-                          width: 800,
-                          child: QuillEditor.basic(
-                            controller: _titleController,
-                            readOnly: false,
-                            embedBuilders: [],
+                    child: Row(
+                      children: [
+                        const Text(
+                          'Topic:',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                      )
-                    ]),
+                        const SizedBox(width: 5),
+                        Expanded(
+                          child: SizedBox(
+                            width: 800,
+                            child: QuillEditor.basic(
+                              controller: _titleController,
+                              readOnly: false,
+                              embedBuilders: const [],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 const Padding(
@@ -95,9 +104,10 @@ class _NotePageState extends ConsumerState<NotePage> {
                     child: Text(
                       'Write something here...',
                       style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          color: AppColors.grey100),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                        color: AppColors.neutral200,
+                      ),
                     ),
                   ),
                 ),

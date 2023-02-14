@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nobook/src/core/constants/assets.dart';
-import 'package:nobook/src/core/extensions/size_extension.dart';
-import 'package:nobook/src/core/themes/color.dart';
-import 'package:nobook/src/core/utils/sizing/sizing.dart';
-import 'package:nobook/src/core/widgets/app_text.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DashIconWithName extends StatefulWidget {
   const DashIconWithName({Key? key}) : super(key: key);
@@ -15,225 +12,286 @@ class DashIconWithName extends StatefulWidget {
 
 class _DashIconWithNameState extends State<DashIconWithName> {
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: SizedBox(
         width: 240,
-        child: Column(children: [
-          const YMargin(20),
-          SvgPicture.asset(Assets.logo),
-          const YMargin(40),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedIndex = 0;
-              });
-            },
-            child: Container(
-              height: context.height * 0.04,
-              width: context.height * 0.25,
-              decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 0 ? AppColors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Row(children: [
-                const XMargin(10),
-                SvgPicture.asset(Assets.dashboardIcon,
-                    color: selectedIndex == 0
-                        ? AppColors.white
-                        : AppColors.grey100),
-                const XMargin(15),
-                AppText.medium('Dashboard',
-                    color: selectedIndex == 0
-                        ? AppColors.white
-                        : AppColors.grey100)
-              ]),
+        child: Column(
+          children: [
+            20.boxHeight,
+            SvgPicture.asset(Assets.logo),
+            40.boxHeight,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  selectedIndex = 0;
+                });
+              },
+              child: Container(
+                height: context.height * 0.04,
+                width: context.height * 0.25,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 0
+                      ? AppColors.blue500
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  children: [
+                    10.boxWidth,
+                    SvgPicture.asset(
+                      Assets.dashboardIcon,
+                      color: selectedIndex == 0
+                          ? AppColors.white
+                          : AppColors.neutral200,
+                    ),
+                    15.boxWidth,
+                    Text(
+                      'Dashboard',
+                      style: TextStyles.paragraph3.copyWith(
+                        color: selectedIndex == 0
+                            ? AppColors.white
+                            : AppColors.neutral200,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-          const YMargin(20),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedIndex = 1;
-              });
-            },
-            child: Container(
-              height: context.height * 0.04,
-              width: context.height * 0.25,
-              decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 1 ? AppColors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                children: [
-                  const XMargin(10),
-                  SvgPicture.asset(Assets.noteIcon,
+            20.boxHeight,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  selectedIndex = 1;
+                });
+              },
+              child: Container(
+                height: context.height * 0.04,
+                width: context.height * 0.25,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 1
+                      ? AppColors.blue500
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  children: [
+                    10.boxWidth,
+                    SvgPicture.asset(
+                      Assets.noteIcon,
                       color: selectedIndex == 1
                           ? AppColors.white
-                          : AppColors.grey100),
-                  const XMargin(15),
-                  AppText.medium('Notes',
-                      color: selectedIndex == 1
-                          ? AppColors.white
-                          : AppColors.grey100)
-                ],
+                          : AppColors.neutral200,
+                    ),
+                    15.boxWidth,
+                    Text(
+                      'Notes',
+                      style: TextStyles.paragraph3.copyWith(
+                        color: selectedIndex == 1
+                            ? AppColors.white
+                            : AppColors.neutral200,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          const YMargin(20),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedIndex = 2;
-              });
-            },
-            child: Container(
-              height: context.height * 0.04,
-              width: context.height * 0.25,
-              decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 2 ? AppColors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                children: [
-                  const XMargin(10),
-                  SvgPicture.asset(Assets.assignmentIcon,
+            20.boxHeight,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  selectedIndex = 2;
+                });
+              },
+              child: Container(
+                height: context.height * 0.04,
+                width: context.height * 0.25,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 2
+                      ? AppColors.blue500
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  children: [
+                    10.boxWidth,
+                    SvgPicture.asset(
+                      Assets.assignmentIcon,
                       color: selectedIndex == 2
                           ? AppColors.white
-                          : AppColors.grey100),
-                  const XMargin(15),
-                  AppText.medium('Assignments',
-                      color: selectedIndex == 2
-                          ? AppColors.white
-                          : AppColors.grey100)
-                ],
+                          : AppColors.neutral200,
+                    ),
+                    15.boxWidth,
+                    Text(
+                      'Assignments',
+                      style: TextStyles.paragraph3.copyWith(
+                        color: selectedIndex == 2
+                            ? AppColors.white
+                            : AppColors.neutral200,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          const YMargin(20),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedIndex = 3;
-              });
-            },
-            child: Container(
-              height: context.height * 0.04,
-              width: context.height * 0.25,
-              decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 3 ? AppColors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                children: [
-                  const XMargin(10),
-                  SvgPicture.asset(Assets.examIcon,
+            20.boxHeight,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  selectedIndex = 3;
+                });
+              },
+              child: Container(
+                height: context.height * 0.04,
+                width: context.height * 0.25,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 3
+                      ? AppColors.blue500
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  children: [
+                    10.boxWidth,
+                    SvgPicture.asset(
+                      Assets.examIcon,
                       color: selectedIndex == 3
                           ? AppColors.white
-                          : AppColors.grey100),
-                  const XMargin(15),
-                  AppText.medium('Tests & Exams',
-                      color: selectedIndex == 3
-                          ? AppColors.white
-                          : AppColors.grey100)
-                ],
+                          : AppColors.neutral200,
+                    ),
+                    15.boxWidth,
+                    Text(
+                      'Tests & Exams',
+                      style: TextStyles.paragraph3.copyWith(
+                        color: selectedIndex == 3
+                            ? AppColors.white
+                            : AppColors.neutral200,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          const YMargin(20),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedIndex = 4;
-              });
-            },
-            child: Container(
-              height: context.height * 0.04,
-              width: context.height * 0.25,
-              decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 4 ? AppColors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                children: [
-                  const XMargin(10),
-                  SvgPicture.asset(Assets.recordIcon,
+            20.boxHeight,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  selectedIndex = 4;
+                });
+              },
+              child: Container(
+                height: context.height * 0.04,
+                width: context.height * 0.25,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 4
+                      ? AppColors.blue500
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  children: [
+                    10.boxWidth,
+                    SvgPicture.asset(
+                      Assets.recordIcon,
                       color: selectedIndex == 4
                           ? AppColors.white
-                          : AppColors.grey100),
-                  const XMargin(15),
-                  AppText.medium('Records',
-                      color: selectedIndex == 4
-                          ? AppColors.white
-                          : AppColors.grey100)
-                ],
+                          : AppColors.neutral200,
+                    ),
+                    15.boxWidth,
+                    Text(
+                      'Records',
+                      style: TextStyles.paragraph3.copyWith(
+                        color: selectedIndex == 4
+                            ? AppColors.white
+                            : AppColors.neutral200,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          const YMargin(20),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedIndex = 5;
-              });
-            },
-            child: Container(
-              height: context.height * 0.04,
-              width: context.height * 0.25,
-              decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 5 ? AppColors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                children: [
-                  const XMargin(10),
-                  SvgPicture.asset(Assets.arenaIcon,
+            20.boxHeight,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  selectedIndex = 5;
+                });
+              },
+              child: Container(
+                height: context.height * 0.04,
+                width: context.height * 0.25,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 5
+                      ? AppColors.blue500
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  children: [
+                    10.boxWidth,
+                    SvgPicture.asset(
+                      Assets.arenaIcon,
                       color: selectedIndex == 5
                           ? AppColors.white
-                          : AppColors.grey100),
-                  const XMargin(15),
-                  AppText.medium('Arena',
-                      color: selectedIndex == 5
-                          ? AppColors.white
-                          : AppColors.grey100)
-                ],
+                          : AppColors.neutral200,
+                    ),
+                    15.boxWidth,
+                    Text(
+                      'Arena',
+                      style: TextStyles.paragraph3.copyWith(
+                        color: selectedIndex == 2
+                            ? AppColors.white
+                            : AppColors.neutral200,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          const YMargin(20),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedIndex = 6;
-              });
-            },
-            child: Container(
-              height: context.height * 0.04,
-              width: context.height * 0.25,
-              decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 6 ? AppColors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                children: [
-                  const XMargin(10),
-                  SvgPicture.asset(Assets.forumIcon,
+            20.boxHeight,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  selectedIndex = 6;
+                });
+              },
+              child: Container(
+                height: context.height * 0.04,
+                width: context.height * 0.25,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 6
+                      ? AppColors.blue500
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  children: [
+                    10.boxWidth,
+                    SvgPicture.asset(
+                      Assets.forumIcon,
                       color: selectedIndex == 6
                           ? AppColors.white
-                          : AppColors.grey100),
-                  const XMargin(15),
-                  AppText.medium('Forum',
-                      color: selectedIndex == 6
-                          ? AppColors.white
-                          : AppColors.grey100)
-                ],
+                          : AppColors.neutral200,
+                    ),
+                    15.boxWidth,
+                    Text(
+                      'Forum',
+                      style: TextStyles.paragraph3.copyWith(
+                        color: selectedIndex == 6
+                            ? AppColors.white
+                            : AppColors.neutral200,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          const YMargin(20),
-        ]),
+            20.boxHeight,
+          ],
+        ),
       ),
     );
   }

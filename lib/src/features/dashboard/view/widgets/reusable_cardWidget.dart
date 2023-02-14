@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class ReuseableCard extends StatelessWidget {
   final String title;
@@ -27,10 +27,11 @@ class ReuseableCard extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -78,22 +79,26 @@ class ReuseableCard extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: TextSpan(
-                      text: title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: <TextSpan>[
+                text: TextSpan(
+                  text: title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\n$subTitle',
-                        style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey))
-                  ])),
+                      text: '\n$subTitle',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -101,21 +106,25 @@ class ReuseableCard extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: RichText(
-                  text: TextSpan(
-                      text: bottomtitle,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
-                        fontSize: 8,
-                      ),
-                      children: <TextSpan>[
+                text: TextSpan(
+                  text: bottomtitle,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey,
+                    fontSize: 8,
+                  ),
+                  children: <TextSpan>[
                     TextSpan(
-                        text: '\n$bottomsubTitle',
-                        style: const TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black12))
-                  ])),
+                      text: '\n$bottomsubTitle',
+                      style: const TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black12,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),

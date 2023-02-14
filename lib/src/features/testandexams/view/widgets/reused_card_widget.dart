@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/core/themes/color.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/features/testandexams/view/screen/testandexam_page.dart';
 
 class ReusedCardPlus extends StatelessWidget {
@@ -13,10 +13,11 @@ class ReusedCardPlus extends StatelessWidget {
       width: 160,
       height: 160,
       decoration: const BoxDecoration(
-          color: AppColors.mCardColor,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          )),
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -67,17 +68,20 @@ class ReusedTestsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const TestandExamPage()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const TestandExamPage()),
+        );
       },
       child: Container(
         width: 160,
         height: 160,
         decoration: const BoxDecoration(
-            color: AppColors.mCardColor,
-            borderRadius: BorderRadius.all(
-              Radius.circular(8),
-            )),
+          color: AppColors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -110,21 +114,25 @@ class ReusedTestsCard extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: RichText(
-                    text: TextSpan(
-                        text: subject,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
-                        children: <TextSpan>[
+                  text: TextSpan(
+                    text: subject,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                      fontSize: 14,
+                    ),
+                    children: <TextSpan>[
                       TextSpan(
-                          text: '\n$topic',
-                          style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.grey))
-                    ])),
+                        text: '\n$topic',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 16,

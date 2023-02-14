@@ -12,19 +12,24 @@ class ReusableTileWidget1 extends ConsumerWidget {
       leading: const Text(
         'Your Notes',
         style: TextStyle(
-            color: Colors.black, fontSize: 18, fontWeight: FontWeight.w700),
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+        ),
       ),
       trailing: InkWell(
-          child: GestureDetector(
-        onTap: (() {}),
-        child: Text(
-          'Veiw all >',
-          style: TextStyle(
+        child: GestureDetector(
+          onTap: (() {}),
+          child: Text(
+            'Veiw all >',
+            style: TextStyle(
               color: Colors.blue[500],
               fontSize: 12,
-              fontWeight: FontWeight.w600),
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
-      )),
+      ),
     );
   }
 }
@@ -38,20 +43,25 @@ class ReusableTileWidget2 extends ConsumerWidget {
       leading: const Text(
         'Your Assignments',
         style: TextStyle(
-            color: Colors.black, fontSize: 18, fontWeight: FontWeight.w700),
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+        ),
       ),
       trailing: InkWell(
-          child: GestureDetector(
-        // ignore: sort_child_properties_last
-        child: Text(
-          'Veiw all >',
-          style: TextStyle(
+        child: GestureDetector(
+          // ignore: sort_child_properties_last
+          child: Text(
+            'Veiw all >',
+            style: TextStyle(
               color: Colors.blue[500],
               fontSize: 12,
-              fontWeight: FontWeight.w600),
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          onTap: (() {}),
         ),
-        onTap: (() {}),
-      )),
+      ),
     );
   }
 }

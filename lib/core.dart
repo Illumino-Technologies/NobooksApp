@@ -16,21 +16,21 @@ class Structure extends StatelessWidget {
   final Duration? animateDuration;
   final Duration? animateReverseDuration;
 
-  const Structure(
-      {this.backgroundColor,
-      this.body,
-      this.leftBar,
-      this.expandLeftBar,
-      this.rightBar,
-      this.appBar,
-      this.animateDuration,
-      this.animateReverseDuration,
-      this.bodyBackgroundColor,
-      this.leftBarBackgroundColor,
-      this.rightBarBackgroundColor,
-      this.appBarBackgroundColor,
-      Key? key})
-      : super(key: key);
+  const Structure({
+    this.backgroundColor,
+    this.body,
+    this.leftBar,
+    this.expandLeftBar,
+    this.rightBar,
+    this.appBar,
+    this.animateDuration,
+    this.animateReverseDuration,
+    this.bodyBackgroundColor,
+    this.leftBarBackgroundColor,
+    this.rightBarBackgroundColor,
+    this.appBarBackgroundColor,
+    Key? key,
+  }) : super(key: key);
 
   getwidth(expanded, top, left, right, size) {
     if (left == false && right == false) {
@@ -58,7 +58,8 @@ class Structure extends StatelessWidget {
     return Scaffold(
       body: SizedBox(
         height: Size.height,
-        child: _StructureWidget(Size, top, left, right)),
+        child: _StructureWidget(Size, top, left, right),
+      ),
     );
   }
 
@@ -116,7 +117,8 @@ class Structure extends StatelessWidget {
                     color: leftBarBackgroundColor,
                     expanded: expandLeftBar == null ? true : expandLeftBar!,
                     child: leftBar,
-                  )),
+                  ),
+                ),
 
           // _middle_column
           animateDuration == null
@@ -124,7 +126,8 @@ class Structure extends StatelessWidget {
               : AnimatedSwitcher(
                   duration: animateDuration!,
                   reverseDuration: animateReverseDuration,
-                  child: _MiddleWidget(top, left, right)),
+                  child: _MiddleWidget(top, left, right),
+                ),
 
           // _right_bar
           // const SizedBox(height: 40,),
@@ -148,27 +151,28 @@ class _AppBar extends StatelessWidget {
   bool top;
   dynamic getwidth;
   bool expanded;
-  _AppBar(
-      {this.color,
-      this.child,
-      this.getwidth,
-      this.left = false,
-      this.right = false,
-      this.top = false,
-      this.expanded = true,
-      Key? key})
-      : super(key: key);
+  _AppBar({
+    this.color,
+    this.child,
+    this.getwidth,
+    this.left = false,
+    this.right = false,
+    this.top = false,
+    this.expanded = true,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var Size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
+        color: color ?? Colors.white,
+        border: Border.all(
+          width: 0,
           color: color ?? Colors.white,
-          border: Border.all(
-            width: 0,
-            color: color ?? Colors.white,
-          )),
+        ),
+      ),
       height: Size.height * 0.1,
       // width: MediaQuery.of(context).size.width,
       width: getwidth(expanded, top, left, right, Size),
@@ -185,27 +189,28 @@ class _Body extends StatelessWidget {
   bool top;
   bool expanded;
   dynamic getwidth;
-  _Body(
-      {this.color,
-      this.child,
-      this.expanded = true,
-      this.left = false,
-      this.right = false,
-      this.top = false,
-      this.getwidth,
-      Key? key})
-      : super(key: key);
+  _Body({
+    this.color,
+    this.child,
+    this.expanded = true,
+    this.left = false,
+    this.right = false,
+    this.top = false,
+    this.getwidth,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var Size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
+        color: color ?? Colors.white,
+        border: Border.all(
+          width: 0,
           color: color ?? Colors.white,
-          border: Border.all(
-            width: 0,
-            color: color ?? Colors.white,
-          )),
+        ),
+      ),
       height: Size.height * 0.9,
       width: getwidth(expanded, top, left, right, Size),
       child: child,
@@ -224,17 +229,19 @@ class _LeftBar extends StatelessWidget {
   Widget build(BuildContext context) {
     var Size = MediaQuery.of(context).size;
     return Container(
-        decoration: BoxDecoration(
-            color: color ?? Colors.white,
-            border: Border.all(
-              width: 0,
-              color: color ?? Colors.white,
-            )),
-        height: Size.height,
-        width: child == null
-            ? Size.width * 0
-            : (expanded ? Size.width * 0.2 : Size.width * 0.06),
-        child: child);
+      decoration: BoxDecoration(
+        color: color ?? Colors.white,
+        border: Border.all(
+          width: 0,
+          color: color ?? Colors.white,
+        ),
+      ),
+      height: Size.height,
+      width: child == null
+          ? Size.width * 0
+          : (expanded ? Size.width * 0.2 : Size.width * 0.06),
+      child: child,
+    );
   }
 }
 
@@ -248,11 +255,12 @@ class _RightBar extends StatelessWidget {
     var Size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
+        color: color ?? Colors.white,
+        border: Border.all(
+          width: 0,
           color: color ?? Colors.white,
-          border: Border.all(
-            width: 0,
-            color: color ?? Colors.white,
-          )),
+        ),
+      ),
       height: Size.height,
       width: child == null ? Size.width * 0 : Size.width * 0.3,
       child: child,
