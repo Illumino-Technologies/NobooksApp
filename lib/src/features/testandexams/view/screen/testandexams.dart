@@ -1,14 +1,12 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:nobook/src/features/testandexams/test_and_exam_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/features/testandexams/model/test_and_exam_model.dart';
-import 'package:nobook/src/features/testandexams/view/widgets/reused_card_widget.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class TestandExamScreen extends ConsumerStatefulWidget {
   const TestandExamScreen({Key? key}) : super(key: key);
+
   @override
   TestandExamScreenState createState() => TestandExamScreenState();
 }
@@ -35,7 +33,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   // ignore: prefer_const_literals_to_create_immutables
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Your Test and Exam',
                         style: TextStyle(
                           color: Colors.black,
@@ -43,7 +41,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                           fontSize: 29,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       MaterialButton(
                         onPressed: () {},
                         shape: RoundedRectangleBorder(
@@ -52,8 +50,8 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                         height: 38,
                         minWidth: 98,
                         color: AppColors.blue500,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Text(
                             'Test',
                             style: TextStyle(
@@ -64,8 +62,8 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Text(
                           'Exams',
                           style: TextStyle(
@@ -77,8 +75,8 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Align(
+                  const SizedBox(height: 20),
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Biology",
@@ -89,31 +87,35 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: biotestandexam.length,
+                      itemCount: FakeTestAndExamData.biotestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: biotestandexam[index].image,
-                            topic: biotestandexam[index].topic,
-                            subject: biotestandexam[index].subject,
-                            date: biotestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.biotestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.biotestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .biotestandexam[index].subject,
+                            date:
+                                FakeTestAndExamData.biotestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Book Keeping",
@@ -124,32 +126,35 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: bktestandexam.length,
+                      itemCount: FakeTestAndExamData.bktestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: bktestandexam[index].image,
-                            topic: bktestandexam[index].topic,
-                            subject: bktestandexam[index].subject,
-                            date: bktestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.bktestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.bktestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .bktestandexam[index].subject,
+                            date: FakeTestAndExamData.bktestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
 
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Chemistry",
@@ -160,31 +165,34 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: chtestandexam.length,
+                      itemCount: FakeTestAndExamData.chtestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: chtestandexam[index].image,
-                            topic: chtestandexam[index].topic,
-                            subject: chtestandexam[index].subject,
-                            date: chtestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.chtestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.chtestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .chtestandexam[index].subject,
+                            date: FakeTestAndExamData.chtestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Civic Education",
@@ -195,31 +203,34 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: cvtestandexam.length,
+                      itemCount: FakeTestAndExamData.cvtestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: cvtestandexam[index].image,
-                            topic: cvtestandexam[index].topic,
-                            subject: cvtestandexam[index].subject,
-                            date: cvtestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.cvtestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.cvtestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .cvtestandexam[index].subject,
+                            date: FakeTestAndExamData.cvtestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Economics",
@@ -230,31 +241,34 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: fmtestandexam.length,
+                      itemCount: FakeTestAndExamData.fmtestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: fmtestandexam[index].image,
-                            topic: fmtestandexam[index].topic,
-                            subject: fmtestandexam[index].subject,
-                            date: fmtestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.fmtestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.fmtestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .fmtestandexam[index].subject,
+                            date: FakeTestAndExamData.fmtestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "English Language",
@@ -265,31 +279,35 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: engtestandexam.length,
+                      itemCount: FakeTestAndExamData.engtestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: engtestandexam[index].image,
-                            topic: engtestandexam[index].topic,
-                            subject: engtestandexam[index].subject,
-                            date: engtestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.engtestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.engtestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .engtestandexam[index].subject,
+                            date:
+                                FakeTestAndExamData.engtestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Further Maths",
@@ -300,31 +318,34 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: fmtestandexam.length,
+                      itemCount: FakeTestAndExamData.fmtestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: fmtestandexam[index].image,
-                            topic: fmtestandexam[index].topic,
-                            subject: fmtestandexam[index].subject,
-                            date: fmtestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.fmtestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.fmtestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .fmtestandexam[index].subject,
+                            date: FakeTestAndExamData.fmtestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Geography",
@@ -335,31 +356,35 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: geotestandexam.length,
+                      itemCount: FakeTestAndExamData.geotestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: geotestandexam[index].image,
-                            topic: geotestandexam[index].topic,
-                            subject: geotestandexam[index].subject,
-                            date: geotestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.geotestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.geotestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .geotestandexam[index].subject,
+                            date:
+                                FakeTestAndExamData.geotestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Maths",
@@ -370,31 +395,35 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: mathtestandexam.length,
+                      itemCount: FakeTestAndExamData.mathtestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: mathtestandexam[index].image,
-                            topic: mathtestandexam[index].topic,
-                            subject: mathtestandexam[index].subject,
-                            date: mathtestandexam[index].date,
+                            image: FakeTestAndExamData
+                                .mathtestandexam[index].image,
+                            topic: FakeTestAndExamData
+                                .mathtestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .mathtestandexam[index].subject,
+                            date:
+                                FakeTestAndExamData.mathtestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Physics",
@@ -405,28 +434,32 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SizedBox(
                     height: context.height * 0.25,
                     child: ListView.builder(
-                      itemCount: phytestandexam.length,
+                      itemCount: FakeTestAndExamData.phytestandexam.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReusedTestsCard(
-                            image: phytestandexam[index].image,
-                            topic: phytestandexam[index].topic,
-                            subject: phytestandexam[index].subject,
-                            date: phytestandexam[index].date,
+                            image:
+                                FakeTestAndExamData.phytestandexam[index].image,
+                            topic:
+                                FakeTestAndExamData.phytestandexam[index].topic,
+                            subject: FakeTestAndExamData
+                                .phytestandexam[index].subject,
+                            date:
+                                FakeTestAndExamData.phytestandexam[index].date,
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
                 ],

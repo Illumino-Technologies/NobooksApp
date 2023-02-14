@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nobook/src/features/assignments/assignment_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/features/assignments/view/screen/assgnment_page.dart';
 
 class ReusedCardPlus extends StatelessWidget {
   const ReusedCardPlus({

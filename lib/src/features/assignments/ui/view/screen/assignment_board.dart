@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/features/assignments/models/assignments_model.dart';
-import 'package:nobook/src/features/assignments/models/subjects.dart';
+import 'package:nobook/src/features/assignments/assignment_barrel.dart';
 
 class AssignmentBoard extends StatelessWidget {
   const AssignmentBoard({super.key});
@@ -30,16 +29,16 @@ class AssignmentBoard extends StatelessWidget {
                   height: context.height * 0.25,
                   width: context.width * 0.55,
                   child: ListView.builder(
-                    itemCount: assignments.length,
+                    itemCount: FakeAssignmentData.assignments.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                       return AssignmentTile(
-                        status: assignments[index].status,
-                        subject: assignments[index].subject,
-                        topic: assignments[index].topic,
-                        expire: assignments[index].expire,
-                        image: assignments[index].image,
-                        date: assignments[index].date,
+                        status: FakeAssignmentData.assignments[index].status,
+                        subject: FakeAssignmentData.assignments[index].subject,
+                        topic: FakeAssignmentData.assignments[index].topic,
+                        expire: FakeAssignmentData.assignments[index].expire,
+                        image: FakeAssignmentData.assignments[index].image,
+                        date: FakeAssignmentData.assignments[index].date,
                       );
                     },
                   ),
@@ -54,16 +53,16 @@ class AssignmentBoard extends StatelessWidget {
                   height: context.height * 0.25,
                   width: context.width * 0.55,
                   child: ListView.builder(
-                    itemCount: assignments.length,
+                    itemCount: FakeAssignmentData.assignments.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                       return AssignmentTile(
-                        status: assignments[index].status,
-                        subject: assignments[index].subject,
-                        topic: assignments[index].topic,
-                        expire: assignments[index].expire,
-                        image: assignments[index].image,
-                        date: assignments[index].date,
+                        status: FakeAssignmentData.assignments[index].status,
+                        subject: FakeAssignmentData.assignments[index].subject,
+                        topic: FakeAssignmentData.assignments[index].topic,
+                        expire: FakeAssignmentData.assignments[index].expire,
+                        image: FakeAssignmentData.assignments[index].image,
+                        date: FakeAssignmentData.assignments[index].date,
                       );
                     },
                   ),
@@ -78,16 +77,16 @@ class AssignmentBoard extends StatelessWidget {
                   height: context.height * 0.25,
                   width: context.width * 0.55,
                   child: ListView.builder(
-                    itemCount: assignments.length,
+                    itemCount: FakeAssignmentData.assignments.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                       return AssignmentTile(
-                        status: assignments[index].status,
-                        subject: assignments[index].subject,
-                        topic: assignments[index].topic,
-                        expire: assignments[index].expire,
-                        image: assignments[index].image,
-                        date: assignments[index].date,
+                        status: FakeAssignmentData.assignments[index].status,
+                        subject: FakeAssignmentData.assignments[index].subject,
+                        topic: FakeAssignmentData.assignments[index].topic,
+                        expire: FakeAssignmentData.assignments[index].expire,
+                        image: FakeAssignmentData.assignments[index].image,
+                        date: FakeAssignmentData.assignments[index].date,
                       );
                     },
                   ),
@@ -102,16 +101,16 @@ class AssignmentBoard extends StatelessWidget {
                   height: context.height * 0.25,
                   width: context.width * 0.55,
                   child: ListView.builder(
-                    itemCount: assignments.length,
+                    itemCount: FakeAssignmentData.assignments.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                       return AssignmentTile(
-                        status: assignments[index].status,
-                        subject: assignments[index].subject,
-                        topic: assignments[index].topic,
-                        expire: assignments[index].expire,
-                        image: assignments[index].image,
-                        date: assignments[index].date,
+                        status: FakeAssignmentData.assignments[index].status,
+                        subject: FakeAssignmentData.assignments[index].subject,
+                        topic: FakeAssignmentData.assignments[index].topic,
+                        expire: FakeAssignmentData.assignments[index].expire,
+                        image: FakeAssignmentData.assignments[index].image,
+                        date: FakeAssignmentData.assignments[index].date,
                       );
                     },
                   ),
@@ -127,13 +126,15 @@ class AssignmentBoard extends StatelessWidget {
                   child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
 
-                    itemCount: timeTable.length,
+                    itemCount: FakeAssignmentData.timeTable.length,
                     // scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: Image.asset(timeTable[index].subjectLogo),
-                        title: Text(timeTable[index].subject),
+                        leading: Image.asset(
+                            FakeAssignmentData.timeTable[index].subjectLogo,),
+                        title:
+                            Text(FakeAssignmentData.timeTable[index].subject),
                         trailing: const Icon(Icons.keyboard_arrow_down),
                       );
                     },

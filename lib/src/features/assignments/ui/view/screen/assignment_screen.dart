@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/core.dart';
-import 'package:nobook/src/features/assignments/view/screen/assignment_board.dart';
+import 'package:nobook/src/features/assignments/assignment_barrel.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 

@@ -1,12 +1,11 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nobook/src/features/notes/notes_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/features/notes/widgets/reused_card_widget.dart';
 
 class NoteScreen extends ConsumerStatefulWidget {
   const NoteScreen({Key? key}) : super(key: key);
+
   @override
   NoteScreenState createState() => NoteScreenState();
 }
@@ -24,16 +23,13 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 29),
               child: Column(
-                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   const SizedBox(
                     height: 32,
                   ),
-                  // ignore: sort_child_properties_last
-                  // ignore: prefer_const_literals_to_create_immutables
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Your Notes',
                         style: TextStyle(
                           color: Colors.black,
@@ -41,7 +37,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                           fontSize: 29,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       MaterialButton(
                         onPressed: () {},
                         shape: RoundedRectangleBorder(
@@ -50,8 +46,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                         height: 38,
                         minWidth: 98,
                         color: AppColors.blue500,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Text(
                             'Personal',
                             style: TextStyle(
@@ -62,8 +58,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Text(
                           'General',
                           style: TextStyle(
@@ -75,8 +71,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Align(
+                  const SizedBox(height: 20),
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Biology",
@@ -87,7 +83,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -95,26 +91,26 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Row(
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(
+                        const ReusedCardPlus(),
+                        const SizedBox(
                           width: 8,
                         ),
-                        ReusedCardBio(),
-                        SizedBox(
+                        const ReusedCardBio(),
+                        const SizedBox(
                           width: 8,
                         ),
-                        ReusedCardBio(),
-                        SizedBox(
+                        const ReusedCardBio(),
+                        const SizedBox(
                           width: 8,
                         ),
-                        ReusedCardBio(),
+                        const ReusedCardBio(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Book Keeping",
@@ -125,7 +121,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -133,21 +129,21 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     child: Row(
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(width: 8),
-                        ReusedCardBk(),
-                        SizedBox(width: 8),
-                        ReusedCardBk(),
-                        SizedBox(width: 8),
-                        ReusedCardBk(),
+                        const ReusedCardPlus(),
+                        const SizedBox(width: 8),
+                        const ReusedCardBk(),
+                        const SizedBox(width: 8),
+                        const ReusedCardBk(),
+                        const SizedBox(width: 8),
+                        const ReusedCardBk(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
 
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Chemistry",
@@ -158,7 +154,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -167,20 +163,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(width: 8),
-                        ReusedCardCh(),
-                        SizedBox(width: 8),
-                        ReusedCardCh(),
-                        SizedBox(width: 8),
-                        ReusedCardCh(),
+                        const ReusedCardPlus(),
+                        const SizedBox(width: 8),
+                        const ReusedCardCh(),
+                        const SizedBox(width: 8),
+                        const ReusedCardCh(),
+                        const SizedBox(width: 8),
+                        const ReusedCardCh(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Civic Education",
@@ -191,7 +187,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -200,20 +196,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(width: 8),
-                        ReusedCardCv(),
-                        SizedBox(width: 8),
-                        ReusedCardCv(),
-                        SizedBox(width: 8),
-                        ReusedCardCv(),
+                        const ReusedCardPlus(),
+                        const SizedBox(width: 8),
+                        const ReusedCardCv(),
+                        const SizedBox(width: 8),
+                        const ReusedCardCv(),
+                        const SizedBox(width: 8),
+                        const ReusedCardCv(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Economics",
@@ -224,7 +220,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -233,20 +229,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(width: 8),
-                        ReusedCardEc(),
-                        SizedBox(width: 8),
-                        ReusedCardEc(),
-                        SizedBox(width: 8),
-                        ReusedCardEc(),
+                        const ReusedCardPlus(),
+                        const SizedBox(width: 8),
+                        const ReusedCardEc(),
+                        const SizedBox(width: 8),
+                        const ReusedCardEc(),
+                        const SizedBox(width: 8),
+                        const ReusedCardEc(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "English Language",
@@ -257,7 +253,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -266,20 +262,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(width: 8),
-                        ReusedCardEn(),
-                        SizedBox(width: 8),
-                        ReusedCardEn(),
-                        SizedBox(width: 8),
-                        ReusedCardEn(),
+                        const ReusedCardPlus(),
+                        const SizedBox(width: 8),
+                        const ReusedCardEn(),
+                        const SizedBox(width: 8),
+                        const ReusedCardEn(),
+                        const SizedBox(width: 8),
+                        const ReusedCardEn(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Further Maths",
@@ -290,7 +286,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -299,20 +295,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(width: 8),
-                        ReusedCardFm(),
-                        SizedBox(width: 8),
-                        ReusedCardFm(),
-                        SizedBox(width: 8),
-                        ReusedCardFm(),
+                        const ReusedCardPlus(),
+                        const SizedBox(width: 8),
+                        const ReusedCardFm(),
+                        const SizedBox(width: 8),
+                        const ReusedCardFm(),
+                        const SizedBox(width: 8),
+                        const ReusedCardFm(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Geography",
@@ -323,7 +319,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -332,20 +328,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(width: 8),
-                        ReusedCardGe(),
-                        SizedBox(width: 8),
-                        ReusedCardGe(),
-                        SizedBox(width: 8),
-                        ReusedCardGe(),
+                        const ReusedCardPlus(),
+                        const SizedBox(width: 8),
+                        const ReusedCardGe(),
+                        const SizedBox(width: 8),
+                        const ReusedCardGe(),
+                        const SizedBox(width: 8),
+                        const ReusedCardGe(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Maths",
@@ -356,7 +352,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -365,20 +361,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        SizedBox(width: 8),
-                        ReusedCardMt(),
-                        SizedBox(width: 8),
-                        ReusedCardMt(),
-                        SizedBox(width: 8),
-                        ReusedCardMt(),
+                        const ReusedCardPlus(),
+                        const SizedBox(width: 8),
+                        const ReusedCardMt(),
+                        const SizedBox(width: 8),
+                        const ReusedCardMt(),
+                        const SizedBox(width: 8),
+                        const ReusedCardMt(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Physics",
@@ -389,7 +385,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   SingleChildScrollView(
@@ -398,14 +394,14 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        ReusedCardPlus(),
-                        ReusedCardPh(),
-                        ReusedCardPh(),
-                        ReusedCardPh(),
+                        const ReusedCardPlus(),
+                        const ReusedCardPh(),
+                        const ReusedCardPh(),
+                        const ReusedCardPh(),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
                 ],

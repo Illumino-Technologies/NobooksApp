@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,10 +11,10 @@ class GraphWidget extends ConsumerStatefulWidget {
 }
 
 class GraphWidgetState extends ConsumerState<GraphWidget> {
-  List<Color> gradientColors = [
-    const Color.fromRGBO(12, 51, 255, 1),
-    const Color.fromRGBO(37, 72, 255, 0.24),
-    const Color.fromRGBO(37, 72, 255, 0),
+  final List<Color> gradientColors = const <Color>[
+    Color.fromRGBO(12, 51, 255, 1),
+    Color.fromRGBO(37, 72, 255, 0.24),
+    Color.fromRGBO(37, 72, 255, 0),
   ];
 
   bool showAvg = false;
@@ -46,7 +44,7 @@ class GraphWidgetState extends ConsumerState<GraphWidget> {
                   children: [
                     // ignore: prefer_const_constructors
                     SizedBox(height: 21.5),
-                    ListTile(
+                    const ListTile(
                       leading: Text(
                         'Your Results',
                         style: TextStyle(

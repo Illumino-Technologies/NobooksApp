@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
-import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
+import 'package:nobook/src/features/dashboard/dashboard_barrel.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DashboardBoard extends ConsumerStatefulWidget {
   const DashboardBoard({Key? key}) : super(key: key);
+
   @override
   DashboardScreenState createState() => DashboardScreenState();
 }
@@ -55,16 +56,20 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                 SizedBox(
                   height: context.height * 0.25,
                   child: ListView.builder(
-                    itemCount: dashBoard.length,
+                    itemCount: FakeDashboardData.dashBoard.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return ReuseableCard(
-                        firstImage: dashBoard[index].firstImage,
-                        secondImage: dashBoard[index].secondImage,
-                        title: dashBoard[index].title,
-                        subTitle: dashBoard[index].subTitle,
-                        bottomsubTitle: dashBoard[index].bottomsubTitle,
-                        bottomtitle: dashBoard[index].bottomtitle,
+                        firstImage:
+                            FakeDashboardData.dashBoard[index].firstImage,
+                        secondImage:
+                            FakeDashboardData.dashBoard[index].secondImage,
+                        title: FakeDashboardData.dashBoard[index].title,
+                        subTitle: FakeDashboardData.dashBoard[index].subTitle,
+                        bottomsubTitle:
+                            FakeDashboardData.dashBoard[index].bottomsubTitle,
+                        bottomtitle:
+                            FakeDashboardData.dashBoard[index].bottomtitle,
                       );
                     },
                   ),
@@ -94,16 +99,20 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                 SizedBox(
                   height: context.height * 0.25,
                   child: ListView.builder(
-                    itemCount: dashBoard.length,
+                    itemCount: FakeDashboardData.dashBoard.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return ReuseableCard(
-                        firstImage: dashBoard[index].firstImage,
-                        secondImage: dashBoard[index].secondImage,
-                        title: dashBoard[index].title,
-                        subTitle: dashBoard[index].subTitle,
-                        bottomsubTitle: dashBoard[index].bottomsubTitle,
-                        bottomtitle: dashBoard[index].bottomtitle,
+                        firstImage:
+                            FakeDashboardData.dashBoard[index].firstImage,
+                        secondImage:
+                            FakeDashboardData.dashBoard[index].secondImage,
+                        title: FakeDashboardData.dashBoard[index].title,
+                        subTitle: FakeDashboardData.dashBoard[index].subTitle,
+                        bottomsubTitle:
+                            FakeDashboardData.dashBoard[index].bottomsubTitle,
+                        bottomtitle:
+                            FakeDashboardData.dashBoard[index].bottomtitle,
                       );
                     },
                   ),

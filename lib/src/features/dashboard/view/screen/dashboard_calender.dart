@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/features/assignments/models/subjects.dart';
+import 'package:nobook/src/features/assignments/assignment_barrel.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DashboardCalender extends StatefulWidget {
@@ -16,7 +16,7 @@ class _DashboardCalenderState extends State<DashboardCalender> {
 
   @override
   Widget build(BuildContext context) {
-    final querywidth = MediaQuery.of(context).size.width / 5;
+    final double queryWidth = MediaQuery.of(context).size.width / 5;
     // final queryheight = MediaQuery.of(context).size.height/3;
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -24,7 +24,7 @@ class _DashboardCalenderState extends State<DashboardCalender> {
       children: [
         Expanded(
           child: SizedBox(
-            width: querywidth + 100,
+            width: queryWidth + 100,
             // height: MediaQuery.of(context).size.height,
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,11 +80,13 @@ class _DashboardCalenderState extends State<DashboardCalender> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: timeTable.length,
+                    itemCount: FakeAssignmentData.timeTable.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: Image.asset(timeTable[index].subjectLogo),
-                        title: Text(timeTable[index].subject),
+                        leading: Image.asset(
+                            FakeAssignmentData.timeTable[index].subjectLogo,),
+                        title:
+                            Text(FakeAssignmentData.timeTable[index].subject),
                         trailing: const Icon(Icons.arrow_forward_ios),
                       );
                     },

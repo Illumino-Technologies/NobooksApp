@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/features/dashboard/models/notification.dart';
+import 'package:nobook/src/features/dashboard/dashboard_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 class Notifications extends StatelessWidget {
@@ -14,13 +14,13 @@ class Notifications extends StatelessWidget {
         // color: Colors.white,
         child: ListView.builder(
           shrinkWrap: true,
-          itemCount: notification.length,
+          itemCount: FakeDashboardData.notification.length,
           itemBuilder: (context, index) => ListTile(
             tileColor: Colors.white.withOpacity(1),
             style: ListTileStyle.list,
             leading: Image.asset(Assets.book),
-            title: Text(notification[index].title),
-            subtitle: Text(notification[index].time),
+            title: Text(FakeDashboardData.notification[index].title),
+            subtitle: Text(FakeDashboardData.notification[index].time),
           ),
         ),
       ),
