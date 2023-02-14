@@ -116,8 +116,8 @@ class ReusedCardBio extends StatelessWidget {
   }
 }
 
-class ReusedCardPlus extends StatelessWidget {
-  const ReusedCardPlus({
+class NoteReusedCardPlus extends StatelessWidget {
+  const NoteReusedCardPlus({
     super.key,
   });
 
