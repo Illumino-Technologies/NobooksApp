@@ -1,7 +1,8 @@
 part of 'app_router.dart';
 
 enum AppRoute {
-  dashboard('/'),
+  home('/'),
+  dashboard('/dashboard'),
   note('/note'),
   assignment('/assignment'),
   record('/record'),

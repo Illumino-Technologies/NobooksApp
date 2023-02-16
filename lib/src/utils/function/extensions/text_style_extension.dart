@@ -5,7 +5,9 @@ extension TextStyleExtension on TextStyle {
 
   TextStyle get withWhite => copyWith(color: AppColors.white);
 
-  TextStyle get withMediumWeight => copyWith(fontWeight: FontWeight.w500);
+  TextStyle get asMedium => copyWith(fontWeight: FontWeight.w500);
+
+  TextStyle get asSemibold => copyWith(fontWeight: FontWeight.w600);
 
   TextStyle withSize(double fontSize) => copyWith(fontSize: fontSize);
 

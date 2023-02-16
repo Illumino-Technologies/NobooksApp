@@ -25,7 +25,7 @@ class _DashIconState extends State<DashIcon> {
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: SvgPicture.asset(
-                Assets.emptyLogo,
+                VectorAssets.logoSmall,
                 width: 30,
               ),
             ),
@@ -37,8 +37,8 @@ class _DashIconState extends State<DashIcon> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.width * 0.04,
+                height: context.screenHeight * 0.04,
+                width: context.screenWidth * 0.04,
                 decoration: BoxDecoration(
                   color: selectedIndex == 0
                       ? AppColors.blue500
@@ -50,7 +50,7 @@ class _DashIconState extends State<DashIcon> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.dashboardIcon,
+                      VectorAssets.dashboardIcon,
                       color: selectedIndex == 0
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -67,8 +67,8 @@ class _DashIconState extends State<DashIcon> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.width * 0.04,
+                height: context.screenHeight * 0.04,
+                width: context.screenWidth * 0.04,
                 decoration: BoxDecoration(
                   color: selectedIndex == 1
                       ? AppColors.blue500
@@ -80,7 +80,7 @@ class _DashIconState extends State<DashIcon> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.noteIcon,
+                      VectorAssets.noteIcon,
                       color: selectedIndex == 1
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -97,8 +97,8 @@ class _DashIconState extends State<DashIcon> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.width * 0.04,
+                height: context.screenHeight * 0.04,
+                width: context.screenWidth * 0.04,
                 decoration: BoxDecoration(
                   color: selectedIndex == 2
                       ? AppColors.blue500
@@ -110,7 +110,7 @@ class _DashIconState extends State<DashIcon> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.assignmentIcon,
+                      VectorAssets.assignmentIcon,
                       color: selectedIndex == 2
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -127,7 +127,7 @@ class _DashIconState extends State<DashIcon> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
+                height: context.screenHeight * 0.04,
                 // width: context.width * 0.04,
                 decoration: BoxDecoration(
                   color: selectedIndex == 3
@@ -140,7 +140,7 @@ class _DashIconState extends State<DashIcon> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.examIcon,
+                      VectorAssets.examIcon,
                       color: selectedIndex == 3
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -157,8 +157,8 @@ class _DashIconState extends State<DashIcon> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.width * 0.38,
+                height: context.screenHeight * 0.04,
+                width: context.screenWidth * 0.38,
                 decoration: BoxDecoration(
                   color: selectedIndex == 4
                       ? AppColors.blue500
@@ -170,7 +170,7 @@ class _DashIconState extends State<DashIcon> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.recordIcon,
+                      VectorAssets.recordIcon,
                       color: selectedIndex == 4
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -187,8 +187,8 @@ class _DashIconState extends State<DashIcon> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.width * 0.04,
+                height: context.screenHeight * 0.04,
+                width: context.screenWidth * 0.04,
                 decoration: BoxDecoration(
                   color: selectedIndex == 5
                       ? AppColors.blue500
@@ -200,7 +200,7 @@ class _DashIconState extends State<DashIcon> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.arenaIcon,
+                      VectorAssets.arenaIcon,
                       color: selectedIndex == 5
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -217,8 +217,8 @@ class _DashIconState extends State<DashIcon> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.width * 0.04,
+                height: context.screenHeight * 0.04,
+                width: context.screenWidth * 0.04,
                 decoration: BoxDecoration(
                   color: selectedIndex == 6
                       ? AppColors.blue500
@@ -230,7 +230,7 @@ class _DashIconState extends State<DashIcon> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.forumIcon,
+                      VectorAssets.forumIcon,
                       color: selectedIndex == 6
                           ? AppColors.white
                           : AppColors.neutral200,

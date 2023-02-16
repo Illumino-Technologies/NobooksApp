@@ -1,4 +1,4 @@
-class Assignments {
+class Assignment {
   String image;
   String subject;
   String topic;
@@ -6,7 +6,7 @@ class Assignments {
   String expire;
   String status;
 
-  Assignments(
+  Assignment(
     this.image,
     this.subject,
     this.topic,

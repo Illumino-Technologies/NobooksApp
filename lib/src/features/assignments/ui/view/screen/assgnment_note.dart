@@ -4,16 +4,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class AssignmentNote extends ConsumerStatefulWidget {
-  const AssignmentNote({super.key});
+  const AssignmentNote({
+    super.key,
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _AssignmentPageState();
 }
 
-QuillController _controller = QuillController.basic();
-QuillController _titleController = QuillController.basic();
-
 class _AssignmentPageState extends ConsumerState<AssignmentNote> {
+  final QuillController _controller = QuillController.basic();
+  final QuillController _titleController = QuillController.basic();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _titleController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

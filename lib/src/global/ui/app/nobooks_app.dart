@@ -19,7 +19,7 @@ class NoBooksApp extends StatelessWidget {
         routerDelegate: AppRouter.router.routerDelegate,
         routeInformationParser: AppRouter.router.routeInformationParser,
         routeInformationProvider: AppRouter.router.routeInformationProvider,
-        theme: ThemeData(
+        theme: AppTheme.lightTheme.copyWith(
           textTheme: GoogleFonts.nunitoTextTheme(),
         ),
       ),

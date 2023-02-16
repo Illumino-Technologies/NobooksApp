@@ -11,7 +11,7 @@ class NobooksWidgetInitializer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DevicePreview(
-      enabled: kDebugMode,
+      enabled: false,
       builder: (context) {
         return ProviderScope(
           child: ScreenUtilInit(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
+
 // import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
@@ -11,10 +12,17 @@ class TestandExamPage extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _AssignmentPageState();
 }
 
-QuillController _controller = QuillController.basic();
-QuillController _titleController = QuillController.basic();
-
 class _AssignmentPageState extends ConsumerState<TestandExamPage> {
+  final QuillController _controller = QuillController.basic();
+  final QuillController _titleController = QuillController.basic();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _titleController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

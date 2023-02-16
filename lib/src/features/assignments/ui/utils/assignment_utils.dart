@@ -17,8 +17,8 @@ abstract class FakeAssignmentData {
     TimeTable(subject: 'Further Mathematics', subjectLogo: Assets.mt),
   ];
 
-  static final List<Assignments> assignments = [
-    Assignments(
+  static final List<Assignment> assignments = [
+    Assignment(
       Assets.eco,
       'Economics',
       'Demand and Supply',
@@ -26,7 +26,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.eco,
       'Economics',
       'Demand and Supply',
@@ -34,7 +34,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.eco,
       'Economics',
       'Demand and Supply',
@@ -42,7 +42,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.eco,
       'Economics',
       'Demand and Supply',
@@ -50,7 +50,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.eco,
       'Economics',
       'Demand and Supply',
@@ -58,7 +58,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.eco,
       'Economics',
       'Demand and Supply',
@@ -66,7 +66,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.eco,
       'Economics',
       'Demand and Supply',
@@ -76,8 +76,8 @@ abstract class FakeAssignmentData {
     ),
   ];
 
-  static final List<Assignments> bioassignments = [
-    Assignments(
+  static final List<Assignment> bioassignments = [
+    Assignment(
       Assets.bio,
       'Biology',
       'cvll Theory',
@@ -85,7 +85,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.bio,
       'Biology',
       'cvll Theory',
@@ -93,7 +93,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.bio,
       'Biology',
       'cvll Theory',
@@ -101,7 +101,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.bio,
       'Biology',
       'cvll Theory',
@@ -109,7 +109,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.bio,
       'Biology',
       'cvll Theory',
@@ -117,7 +117,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.bio,
       'Biology',
       'cvll Theory',
@@ -125,7 +125,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.bio,
       'Biology',
       'cvll Theory',
@@ -135,8 +135,8 @@ abstract class FakeAssignmentData {
     ),
   ];
 
-  static final List<Assignments> bkassignments = [
-    Assignments(
+  static final List<Assignment> bkassignments = [
+    Assignment(
       Assets.bk,
       'Book Keeping',
       'cvll Theory',
@@ -144,7 +144,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.bk,
       'Book Keeping',
       'cvll Theory',
@@ -152,7 +152,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.bk,
       'Book Keeping',
       'cvll Theory',
@@ -160,7 +160,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.bk,
       'Book Keeping',
       'cvll Theory',
@@ -168,7 +168,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.bk,
       'Book Keeping',
       'cvll Theory',
@@ -176,7 +176,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.bk,
       'Book Keeping',
       'cvll Theory',
@@ -184,7 +184,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.bk,
       'Book Keeping',
       'cvll Theory',
@@ -194,8 +194,8 @@ abstract class FakeAssignmentData {
     ),
   ];
 
-  static final List<Assignments> chassignments = [
-    Assignments(
+  static final List<Assignment> chassignments = [
+    Assignment(
       Assets.ch,
       'Chemistry',
       'cvll Theory',
@@ -203,7 +203,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ch,
       'Chemistry',
       'cvll Theory',
@@ -211,7 +211,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.ch,
       'Chemistry',
       'cvll Theory',
@@ -219,7 +219,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ch,
       'Chemistry',
       'cvll Theory',
@@ -227,7 +227,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ch,
       'Chemistry',
       'cvll Theory',
@@ -235,7 +235,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.ch,
       'Chemistry',
       'cvll Theory',
@@ -243,7 +243,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ch,
       'Chemistry',
       'cvll Theory',
@@ -252,8 +252,8 @@ abstract class FakeAssignmentData {
       'Submitted',
     ),
   ];
-  static final List<Assignments> cvassignments = [
-    Assignments(
+  static final List<Assignment> cvassignments = [
+    Assignment(
       Assets.cv,
       'Civic Educatio',
       'cvll Theory',
@@ -261,7 +261,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.cv,
       'Civic Educatio',
       'cvll Theory',
@@ -269,7 +269,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.cv,
       'Civic Educatio',
       'cvll Theory',
@@ -277,7 +277,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.cv,
       'Civic Educatio',
       'cvll Theory',
@@ -285,7 +285,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.cv,
       'Civic Educatio',
       'cvll Theory',
@@ -293,7 +293,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.cv,
       'Civic Educatio',
       'cvll Theory',
@@ -301,7 +301,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.cv,
       'Civic Educatio',
       'cvll Theory',
@@ -310,8 +310,8 @@ abstract class FakeAssignmentData {
       'Submitted',
     ),
   ];
-  static final List<Assignments> engassignments = [
-    Assignments(
+  static final List<Assignment> engassignments = [
+    Assignment(
       Assets.eng,
       'English Language',
       'cvll Theory',
@@ -319,7 +319,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.eng,
       'English Language',
       'cvll Theory',
@@ -327,7 +327,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.eng,
       'English Language',
       'cvll Theory',
@@ -335,7 +335,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.eng,
       'English Language',
       'cvll Theory',
@@ -343,7 +343,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.eng,
       'English Language',
       'cvll Theory',
@@ -351,7 +351,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.eng,
       'English Language',
       'cvll Theory',
@@ -359,7 +359,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.eng,
       'English Language',
       'cvll Theory',
@@ -368,8 +368,8 @@ abstract class FakeAssignmentData {
       'Submitted',
     ),
   ];
-  static final List<Assignments> fmassignments = [
-    Assignments(
+  static final List<Assignment> fmassignments = [
+    Assignment(
       Assets.fm,
       'Further Maths',
       'cvll Theory',
@@ -377,31 +377,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
-      Assets.fm,
-      'Further Maths',
-      'cvll Theory',
-      '18th April, 2022, 09:31am',
-      'Expires 19th April, 8:00am',
-      'Undone',
-    ),
-    Assignments(
-      Assets.fm,
-      'Further Maths',
-      'cvll Theory',
-      '18th April, 2022, 09:31am',
-      'Expires 19th April, 8:00am',
-      'Submitted',
-    ),
-    Assignments(
-      Assets.fm,
-      'Further Maths',
-      'cvll Theory',
-      '18th April, 2022, 09:31am',
-      'Expires 19th April, 8:00am',
-      'Submitted',
-    ),
-    Assignments(
+    Assignment(
       Assets.fm,
       'Further Maths',
       'cvll Theory',
@@ -409,7 +385,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Undone',
     ),
-    Assignments(
+    Assignment(
       Assets.fm,
       'Further Maths',
       'cvll Theory',
@@ -417,7 +393,31 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
+      Assets.fm,
+      'Further Maths',
+      'cvll Theory',
+      '18th April, 2022, 09:31am',
+      'Expires 19th April, 8:00am',
+      'Submitted',
+    ),
+    Assignment(
+      Assets.fm,
+      'Further Maths',
+      'cvll Theory',
+      '18th April, 2022, 09:31am',
+      'Expires 19th April, 8:00am',
+      'Undone',
+    ),
+    Assignment(
+      Assets.fm,
+      'Further Maths',
+      'cvll Theory',
+      '18th April, 2022, 09:31am',
+      'Expires 19th April, 8:00am',
+      'Submitted',
+    ),
+    Assignment(
       Assets.fm,
       'Further Maths',
       'cvll Theory',
@@ -426,8 +426,8 @@ abstract class FakeAssignmentData {
       'Submitted',
     ),
   ];
-  static final List<Assignments> geoassignments = [
-    Assignments(
+  static final List<Assignment> geoassignments = [
+    Assignment(
       Assets.geo,
       'Geography',
       'cvll Theory',
@@ -435,7 +435,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.geo,
       'Geography',
       'cvll Theory',
@@ -443,7 +443,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.geo,
       'Geography',
       'cvll Theory',
@@ -451,7 +451,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.geo,
       'Geography',
       'cvll Theory',
@@ -459,7 +459,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.geo,
       'Geography',
       'cvll Theory',
@@ -467,7 +467,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.geo,
       'Geography',
       'cvll Theory',
@@ -475,7 +475,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.geo,
       'Geography',
       'cvll Theory',
@@ -484,8 +484,8 @@ abstract class FakeAssignmentData {
       'Submitted',
     ),
   ];
-  static final List<Assignments> mathassignments = [
-    Assignments(
+  static final List<Assignment> mathassignments = [
+    Assignment(
       Assets.mt,
       'Maths',
       'cvll Theory',
@@ -493,7 +493,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.mt,
       'Maths',
       'cvll Theory',
@@ -501,7 +501,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.mt,
       'Maths',
       'cvll Theory',
@@ -509,7 +509,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.mt,
       'Maths',
       'cvll Theory',
@@ -517,7 +517,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.mt,
       'Maths',
       'cvll Theory',
@@ -525,7 +525,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.mt,
       'Maths',
       'cvll Theory',
@@ -533,7 +533,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.mt,
       'Maths',
       'cvll Theory',
@@ -542,8 +542,8 @@ abstract class FakeAssignmentData {
       'Submitted',
     ),
   ];
-  static final List<Assignments> phyassignments = [
-    Assignments(
+  static final List<Assignment> phyassignments = [
+    Assignment(
       Assets.ph,
       'Physics',
       'cvll Theory',
@@ -551,7 +551,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ph,
       'Physics',
       'cvll Theory',
@@ -559,7 +559,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ph,
       'Physics',
       'cvll Theory',
@@ -567,7 +567,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ph,
       'Physics',
       'cvll Theory',
@@ -575,7 +575,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ph,
       'Physics',
       'cvll Theory',
@@ -583,7 +583,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ph,
       'Physics',
       'cvll Theory',
@@ -591,7 +591,7 @@ abstract class FakeAssignmentData {
       'Expires 19th April, 8:00am',
       'Submitted',
     ),
-    Assignments(
+    Assignment(
       Assets.ph,
       'Physics',
       'cvll Theory',

@@ -24,13 +24,10 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 29),
               child: Column(
-                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   const SizedBox(
                     height: 32,
                   ),
-                  // ignore: sort_child_properties_last
-                  // ignore: prefer_const_literals_to_create_immutables
                   Row(
                     children: [
                       const Text(
@@ -91,7 +88,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.biotestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -130,7 +127,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.bktestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -153,7 +150,6 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                   const SizedBox(
                     height: 48,
                   ),
-
                   const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
@@ -169,7 +165,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.chtestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -207,7 +203,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.cvtestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -245,7 +241,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.fmtestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -283,7 +279,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.engtestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -322,7 +318,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.fmtestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -360,7 +356,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.geotestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -399,7 +395,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.mathtestandexam.length,
                       scrollDirection: Axis.horizontal,
@@ -438,7 +434,7 @@ class TestandExamScreenState extends ConsumerState<TestandExamScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeTestAndExamData.phytestandexam.length,
                       scrollDirection: Axis.horizontal,

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nobook/core.dart';
 import 'package:nobook/src/features/assignments/assignment_barrel.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
-
 import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class AssignmentScreen extends StatefulWidget {
   const AssignmentScreen({Key? key}) : super(key: key);
@@ -38,8 +36,8 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
           ),
           250.boxWidth,
           SizedBox(
-            width: context.width * 0.25,
-            height: context.height * 0.065,
+            width: context.screenWidth * 0.25,
+            height: context.screenHeight * 0.065,
             child: TextFormField(
               decoration: const InputDecoration(
                 border: InputBorder.none,
@@ -56,12 +54,12 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
             ),
           ),
           //10.boxWidth,
-          SvgPicture.asset(Assets.libraryIcon),
+          SvgPicture.asset(VectorAssets.libraryIcon),
           //10.boxWidth,
           SvgPicture.asset(Assets.notificationIcon),
           // 10.boxWidth,
           Image.asset(
-            Assets.dp,
+            Assets.profileImage,
             height: 30,
           )
         ],

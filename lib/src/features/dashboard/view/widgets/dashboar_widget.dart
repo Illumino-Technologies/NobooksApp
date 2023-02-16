@@ -12,8 +12,8 @@ class DashboardWidget extends ConsumerWidget {
       children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          height: context.height * 0.22,
-          width: context.width * 0.50,
+          height: context.screenHeight * 0.22,
+          width: context.screenWidth * 0.50,
           decoration: const BoxDecoration(
             color: AppColors.blue500,
             borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -45,8 +45,8 @@ class DashboardWidget extends ConsumerWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(2.0),
                     ),
-                    height: context.height * 0.05,
-                    minWidth: context.height * 0.13,
+                    height: context.screenHeight * 0.05,
+                    minWidth: context.screenHeight * 0.13,
                     color: const Color.fromRGBO(255, 255, 255, 1),
                     child: const Text(
                       'Get Started',

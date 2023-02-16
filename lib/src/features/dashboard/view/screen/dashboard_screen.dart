@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nobook/core.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
 import 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 import 'package:nobook/src/features/testandexams/view/screen/testandexams.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
-
 import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -38,7 +36,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           Expanded(
             child: SizedBox(
               // width: context.width * 0.25,
-              height: context.height * 0.065,
+              height: context.screenHeight * 0.065,
               child: TextFormField(
                 decoration: const InputDecoration(
                   border: InputBorder.none,
@@ -56,12 +54,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             ),
           ),
           //10.boxWidth,
-          SvgPicture.asset(Assets.libraryIcon),
+          SvgPicture.asset(VectorAssets.libraryIcon),
           //10.boxWidth,
           SvgPicture.asset(Assets.notificationIcon),
           // 10.boxWidth,
           Image.asset(
-            Assets.dp,
+            Assets.profileImage,
             height: 30,
           ),
         ],
