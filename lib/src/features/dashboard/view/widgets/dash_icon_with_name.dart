@@ -22,7 +22,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
         child: Column(
           children: [
             20.boxHeight,
-            SvgPicture.asset(Assets.logo),
+            SvgPicture.asset(VectorAssets.logo),
             40.boxHeight,
             InkWell(
               onTap: () {
@@ -43,7 +43,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.dashboardIcon,
+                      VectorAssets.dashboardIcon,
                       color: selectedIndex == 0
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -81,7 +81,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.noteIcon,
+                      VectorAssets.noteIcon,
                       color: selectedIndex == 1
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -119,7 +119,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.assignmentIcon,
+                      VectorAssets.assignmentIcon,
                       color: selectedIndex == 2
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -157,7 +157,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.examIcon,
+                      VectorAssets.examIcon,
                       color: selectedIndex == 3
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -195,7 +195,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.recordIcon,
+                      VectorAssets.recordIcon,
                       color: selectedIndex == 4
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -233,7 +233,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.arenaIcon,
+                      VectorAssets.arenaIcon,
                       color: selectedIndex == 5
                           ? AppColors.white
                           : AppColors.neutral200,
@@ -271,7 +271,7 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                   children: [
                     10.boxWidth,
                     SvgPicture.asset(
-                      Assets.forumIcon,
+                      VectorAssets.forumIcon,
                       color: selectedIndex == 6
                           ? AppColors.white
                           : AppColors.neutral200,

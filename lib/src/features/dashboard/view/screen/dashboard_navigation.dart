@@ -31,11 +31,11 @@ class _DashBoardNavigationState extends State<DashBoardNavigation> {
           child: widget.isSelected
               ? Padding(
                   padding: const EdgeInsets.only(left: 0),
-                  child: SvgPicture.asset(Assets.drawerIcon),
+                  child: SvgPicture.asset(VectorAssets.arenaIcon),
                 )
               : Padding(
                   padding: const EdgeInsets.only(right: 0),
-                  child: SvgPicture.asset(Assets.drawerLeft),
+                  child: SvgPicture.asset(VectorAssets.drawerLeft),
                 ),
         ),
         widget.isSelected ? const DashIconWithName() : const DashIcon(),

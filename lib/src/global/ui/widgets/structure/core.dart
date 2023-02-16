@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names, unused_element
-
 import 'package:flutter/material.dart';
 
 class Structure extends StatelessWidget {
@@ -53,12 +51,12 @@ class Structure extends StatelessWidget {
     bool left = leftBar == null ? false : true;
     bool right = rightBar == null ? false : true;
     bool top = appBar == null ? false : true;
-    var Size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: SizedBox(
-        height: Size.height,
-        child: _StructureWidget(Size, top, left, right),
+        height: size.height,
+        child: _StructureWidget(size, top, left, right),
       ),
     );
   }
@@ -151,6 +149,7 @@ class _AppBar extends StatelessWidget {
   bool top;
   dynamic getwidth;
   bool expanded;
+
   _AppBar({
     this.color,
     this.child,
@@ -189,6 +188,7 @@ class _Body extends StatelessWidget {
   bool top;
   bool expanded;
   dynamic getwidth;
+
   _Body({
     this.color,
     this.child,
@@ -222,6 +222,7 @@ class _LeftBar extends StatelessWidget {
   final Color? color;
   final Widget? child;
   bool expanded;
+
   _LeftBar({this.color, this.child, this.expanded = true, Key? key})
       : super(key: key);
 
@@ -248,6 +249,7 @@ class _LeftBar extends StatelessWidget {
 class _RightBar extends StatelessWidget {
   final Color? color;
   final Widget? child;
+
   const _RightBar({this.color, this.child, Key? key}) : super(key: key);
 
   @override

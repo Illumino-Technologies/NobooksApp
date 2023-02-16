@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/features_barrel.dart';
+import 'package:nobook/src/global/global_barrel.dart';
 
 part 'app_route.dart';
 
@@ -24,7 +25,7 @@ final GoRouter _router = GoRouter(
       path: AppRoute.dashboard.path,
       name: AppRoute.dashboard.name,
       builder: (context, state) {
-        return const DashBoardScreen();
+        return const NoBooksScaffold();
       },
     ),
     GoRoute(
