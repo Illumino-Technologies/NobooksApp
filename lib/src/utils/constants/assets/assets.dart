@@ -20,7 +20,9 @@ abstract class Assets {
   static const String bk = 'assets/subjects/bk.png';
   static const String ph = 'assets/subjects/ph.png';
 
+  static const String hiImage = 'assets/images/hi_image.png';
+
   //images
-  static const String dp = 'assets/dp.png';
+  static const String profileImage = 'assets/profile_image.png';
   static const String _helper = 'assets/images/.png';
 }

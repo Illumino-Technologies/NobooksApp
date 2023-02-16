@@ -14,5 +14,6 @@ abstract class VectorAssets {
   static const String dashboardIcon = 'assets/vectors/dashboard.svg';
   static const String recordIcon = 'assets/vectors/record.svg';
   static const String logoSmall = 'assets/vectors/empty_logo.svg';
+  static const String notification = 'assets/vectors/notification.svg';
   static const String circledChevronRight = 'assets/vectors/circled_chevron_right.svg';
 }

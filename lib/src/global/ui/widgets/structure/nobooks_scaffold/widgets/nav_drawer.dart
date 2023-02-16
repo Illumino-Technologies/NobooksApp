@@ -13,24 +13,43 @@ class _NavDrawer extends StatefulWidget {
 }
 
 class _NavDrawerState extends State<_NavDrawer> {
+  bool itemShowIconOnly = false;
+
+  Future<void> slideOpenWidgets() async {
+    if(showIconOnly == itemShowIconOnly){
+      return;
+    }
+    if (showIconOnly) {
+      itemShowIconOnly = showIconOnly;
+      return;
+    }
+
+    await Future.delayed(
+      const Duration(milliseconds: 200),
+      () {
+        itemShowIconOnly = showIconOnly;
+        setState(() {});
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    context.screenWidth <= 1024.h;
-
-    MediaQuery.of(context);
-    final bool showIconOnly = showIconOnlyNotifier;
-    return Container(
+    slideOpenWidgets();
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      color: AppColors.white,
       width: showIconOnly ? 90.w : 240.w,
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          14.boxHeight,
+          24.boxHeight,
           Align(
             alignment: Alignment.centerRight,
             child: IconButton(
               onPressed: () {
-                showIconOnlyNotifier = !showIconOnlyNotifier;
+                showIconOnly = !showIconOnly;
                 setState(() {});
               },
               icon: SvgPicture.asset(
@@ -43,7 +62,7 @@ class _NavDrawerState extends State<_NavDrawer> {
           ),
           14.boxHeight,
           SvgPicture.asset(
-            showIconOnly ? VectorAssets.logoSmall : VectorAssets.logo,
+            itemShowIconOnly? VectorAssets.logoSmall : VectorAssets.logo,
           ),
           56.boxHeight,
           ValueListenableBuilder<NavItem>(
@@ -53,10 +72,10 @@ class _NavDrawerState extends State<_NavDrawer> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ...NavItem.values.map(
-                    (item) => NavItemWidget(
+                    (item) => _NavItemWidget(
                       item: item,
                       selected: item == selectedItem,
-                      showIconOnly: showIconOnly,
+                      showIconOnly: itemShowIconOnly,
                       onPressed: () => onItemSelected(item),
                     ),
                   ),
@@ -76,14 +95,14 @@ class _NavDrawerState extends State<_NavDrawer> {
   }
 
   void initializeShowIconOnly() {
-    showIconOnlyNotifier = context.screenWidth <= 1024.h;
+    showIconOnly = context.screenWidth <= 1024.h;
   }
 
   final ValueNotifier<NavItem> selectedItemNotifier = ValueNotifier(
     NavItem.dashboard,
   );
 
-  bool showIconOnlyNotifier = false;
+  bool showIconOnly = false;
 
   @override
   void dispose() {

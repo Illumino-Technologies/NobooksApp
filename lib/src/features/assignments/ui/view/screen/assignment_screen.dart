@@ -59,7 +59,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
           SvgPicture.asset(Assets.notificationIcon),
           // 10.boxWidth,
           Image.asset(
-            Assets.dp,
+            Assets.profileImage,
             height: 30,
           )
         ],
