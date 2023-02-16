@@ -26,8 +26,8 @@ class AssignmentBoard extends StatelessWidget {
                 ),
                 10.boxHeight,
                 SizedBox(
-                  height: context.height * 0.25,
-                  width: context.width * 0.55,
+                  height: context.screenHeight * 0.25,
+                  width: context.screenWidth * 0.55,
                   child: ListView.builder(
                     itemCount: FakeAssignmentData.assignments.length,
                     scrollDirection: Axis.horizontal,
@@ -50,8 +50,8 @@ class AssignmentBoard extends StatelessWidget {
                 ),
                 10.boxHeight,
                 SizedBox(
-                  height: context.height * 0.25,
-                  width: context.width * 0.55,
+                  height: context.screenHeight * 0.25,
+                  width: context.screenWidth * 0.55,
                   child: ListView.builder(
                     itemCount: FakeAssignmentData.assignments.length,
                     scrollDirection: Axis.horizontal,
@@ -74,8 +74,8 @@ class AssignmentBoard extends StatelessWidget {
                 ),
                 10.boxHeight,
                 SizedBox(
-                  height: context.height * 0.25,
-                  width: context.width * 0.55,
+                  height: context.screenHeight * 0.25,
+                  width: context.screenWidth * 0.55,
                   child: ListView.builder(
                     itemCount: FakeAssignmentData.assignments.length,
                     scrollDirection: Axis.horizontal,
@@ -98,8 +98,8 @@ class AssignmentBoard extends StatelessWidget {
                 ),
                 10.boxHeight,
                 SizedBox(
-                  height: context.height * 0.25,
-                  width: context.width * 0.55,
+                  height: context.screenHeight * 0.25,
+                  width: context.screenWidth * 0.55,
                   child: ListView.builder(
                     itemCount: FakeAssignmentData.assignments.length,
                     scrollDirection: Axis.horizontal,
@@ -121,8 +121,8 @@ class AssignmentBoard extends StatelessWidget {
               children: [
                 const Text('Your Subjects'),
                 SizedBox(
-                  height: context.height * 0.85,
-                  width: context.height * 0.35,
+                  height: context.screenHeight * 0.85,
+                  width: context.screenHeight * 0.35,
                   child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
 
@@ -172,7 +172,7 @@ class AssignmentTile extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: context.height * 0.25,
+          height: context.screenHeight * 0.25,
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.circular(10),
@@ -184,8 +184,8 @@ class AssignmentTile extends StatelessWidget {
             children: [
               15.boxHeight,
               Container(
-                height: context.height * 0.06,
-                width: context.height * 0.06,
+                height: context.screenHeight * 0.06,
+                width: context.screenHeight * 0.06,
                 decoration: BoxDecoration(
                   color: AppColors.backgroundGrey,
                   borderRadius: BorderRadius.circular(7),

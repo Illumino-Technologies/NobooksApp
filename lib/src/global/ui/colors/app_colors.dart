@@ -199,6 +199,9 @@ abstract class AppColors {
   ///#000000
   static const Color black = Color(0xFF000000);
 
+  ///#000000 0%
+  static const Color transparent = Color(0x00000000);
+
   ///#0C33FF 40%
   static const Color subjectBlue = Color(0x660C33FF);
 

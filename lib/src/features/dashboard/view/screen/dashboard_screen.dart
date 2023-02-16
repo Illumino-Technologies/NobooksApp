@@ -36,7 +36,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           Expanded(
             child: SizedBox(
               // width: context.width * 0.25,
-              height: context.height * 0.065,
+              height: context.screenHeight * 0.065,
               child: TextFormField(
                 decoration: const InputDecoration(
                   border: InputBorder.none,

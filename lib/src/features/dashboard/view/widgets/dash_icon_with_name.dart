@@ -31,8 +31,8 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.height * 0.25,
+                height: context.screenHeight * 0.04,
+                width: context.screenHeight * 0.25,
                 decoration: BoxDecoration(
                   color: selectedIndex == 0
                       ? AppColors.blue500
@@ -69,8 +69,8 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.height * 0.25,
+                height: context.screenHeight * 0.04,
+                width: context.screenHeight * 0.25,
                 decoration: BoxDecoration(
                   color: selectedIndex == 1
                       ? AppColors.blue500
@@ -107,8 +107,8 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.height * 0.25,
+                height: context.screenHeight * 0.04,
+                width: context.screenHeight * 0.25,
                 decoration: BoxDecoration(
                   color: selectedIndex == 2
                       ? AppColors.blue500
@@ -145,8 +145,8 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.height * 0.25,
+                height: context.screenHeight * 0.04,
+                width: context.screenHeight * 0.25,
                 decoration: BoxDecoration(
                   color: selectedIndex == 3
                       ? AppColors.blue500
@@ -183,8 +183,8 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.height * 0.25,
+                height: context.screenHeight * 0.04,
+                width: context.screenHeight * 0.25,
                 decoration: BoxDecoration(
                   color: selectedIndex == 4
                       ? AppColors.blue500
@@ -221,8 +221,8 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.height * 0.25,
+                height: context.screenHeight * 0.04,
+                width: context.screenHeight * 0.25,
                 decoration: BoxDecoration(
                   color: selectedIndex == 5
                       ? AppColors.blue500
@@ -259,8 +259,8 @@ class _DashIconWithNameState extends State<DashIconWithName> {
                 });
               },
               child: Container(
-                height: context.height * 0.04,
-                width: context.height * 0.25,
+                height: context.screenHeight * 0.04,
+                width: context.screenHeight * 0.25,
                 decoration: BoxDecoration(
                   color: selectedIndex == 6
                       ? AppColors.blue500

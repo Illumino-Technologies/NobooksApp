@@ -60,7 +60,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.bioassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -102,7 +102,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.bkassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -145,7 +145,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.chassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -187,7 +187,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.cvassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -229,7 +229,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.fmassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -271,7 +271,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.engassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -313,7 +313,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.fmassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -355,7 +355,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.geoassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -397,7 +397,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.mathassignments.length,
                       scrollDirection: Axis.horizontal,
@@ -440,7 +440,7 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: context.height * 0.25,
+                    height: context.screenHeight * 0.25,
                     child: ListView.builder(
                       itemCount: FakeAssignmentData.phyassignments.length,
                       scrollDirection: Axis.horizontal,

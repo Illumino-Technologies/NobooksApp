@@ -20,7 +20,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
       backgroundColor: AppColors.backgroundGrey,
       body: SingleChildScrollView(
         child: Container(
-          width: context.width * 0.50,
+          width: context.screenWidth * 0.50,
           decoration: const BoxDecoration(
             color: AppColors.backgroundGrey,
           ),
@@ -54,7 +54,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                 ),
 
                 SizedBox(
-                  height: context.height * 0.25,
+                  height: context.screenHeight * 0.25,
                   child: ListView.builder(
                     itemCount: FakeDashboardData.dashBoard.length,
                     scrollDirection: Axis.horizontal,
@@ -97,7 +97,7 @@ class DashboardScreenState extends ConsumerState<DashboardBoard> {
                 ),
 
                 SizedBox(
-                  height: context.height * 0.25,
+                  height: context.screenHeight * 0.25,
                   child: ListView.builder(
                     itemCount: FakeDashboardData.dashBoard.length,
                     scrollDirection: Axis.horizontal,

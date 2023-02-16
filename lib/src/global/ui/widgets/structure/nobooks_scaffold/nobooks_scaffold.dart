@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/global/global_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+
+part 'util/nav_item.dart';
+
+part 'widgets/nav_drawer.dart';
+
+part 'widgets/nav_item_widget.dart';
 
 /// Row
 ///   Col
@@ -15,19 +23,16 @@ class NoBooksScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = context.screenWidth;
     return Scaffold(
       appBar: AppBar(toolbarHeight: 0),
       body: Row(
         children: [
-          Container(
-            width: 240.w,
-            color: AppColors.subjectBlue,
-            child: Column(
-              children: [],
-            ),
-          ),
+          _NavDrawer(onNavItemChanged: onSelected),
         ],
       ),
     );
   }
+
+  void onSelected(NavItem item) {}
 }

@@ -11,7 +11,7 @@ extension BuildContextExtension on BuildContext {
 
   Size get size => mediaQuery.size;
 
-  double get height => mediaQuery.size.height;
+  double get screenHeight => mediaQuery.size.height;
 
-  double get width => mediaQuery.size.width;
+  double get screenWidth => mediaQuery.size.width;
 }

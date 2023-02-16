@@ -36,8 +36,8 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
           ),
           250.boxWidth,
           SizedBox(
-            width: context.width * 0.25,
-            height: context.height * 0.065,
+            width: context.screenWidth * 0.25,
+            height: context.screenHeight * 0.065,
             child: TextFormField(
               decoration: const InputDecoration(
                 border: InputBorder.none,
