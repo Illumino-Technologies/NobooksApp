@@ -16,9 +16,8 @@ class _NavDrawerState extends State<_NavDrawer> {
   bool itemShowIconOnly = false;
 
   Future<void> slideOpenWidgets() async {
-    if(showIconOnly == itemShowIconOnly){
-      return;
-    }
+    if (showIconOnly == itemShowIconOnly) return;
+
     if (showIconOnly) {
       itemShowIconOnly = showIconOnly;
       return;
@@ -26,10 +25,9 @@ class _NavDrawerState extends State<_NavDrawer> {
 
     await Future.delayed(
       const Duration(milliseconds: 200),
-      () {
+      () => setState(() {
         itemShowIconOnly = showIconOnly;
-        setState(() {});
-      },
+      }),
     );
   }
 
@@ -62,7 +60,7 @@ class _NavDrawerState extends State<_NavDrawer> {
           ),
           14.boxHeight,
           SvgPicture.asset(
-            itemShowIconOnly? VectorAssets.logoSmall : VectorAssets.logo,
+            itemShowIconOnly ? VectorAssets.logoSmall : VectorAssets.logo,
           ),
           56.boxHeight,
           ValueListenableBuilder<NavItem>(

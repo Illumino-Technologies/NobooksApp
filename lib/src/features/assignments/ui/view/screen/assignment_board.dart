@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
-import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/features/assignments/assignment_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class AssignmentBoard extends StatelessWidget {
   const AssignmentBoard({super.key});
@@ -10,7 +10,7 @@ class AssignmentBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: (Row(
+        child: Row(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,7 +144,7 @@ class AssignmentBoard extends StatelessWidget {
               ],
             ),
           ],
-        )),
+        ),
       ),
     );
   }
@@ -157,6 +157,7 @@ class AssignmentTile extends StatelessWidget {
   final String date;
   final String expire;
   final String status;
+
   const AssignmentTile({
     Key? key,
     required this.image,

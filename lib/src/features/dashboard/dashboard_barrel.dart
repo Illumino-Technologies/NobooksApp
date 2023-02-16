@@ -3,7 +3,7 @@ export 'package:nobook/src/features/dashboard/models/dashboard_note_model.dart';
 export 'package:nobook/src/features/dashboard/models/notification.dart';
 export 'package:nobook/src/features/dashboard/state_manager/dashboard_provider.dart';
 export 'package:nobook/src/features/dashboard/utils/dasboard_utils.dart';
-export 'package:nobook/src/features/dashboard/view/screen/dashboard_board.dart';
+export 'package:nobook/src/features/dashboard/view/screen/dashboard_board_page.dart';
 export 'package:nobook/src/features/dashboard/view/screen/dashboard_calender.dart';
 export 'package:nobook/src/features/dashboard/view/screen/dashboard_navigation.dart';
 export 'package:nobook/src/features/dashboard/view/screen/dashboard_screen.dart';

@@ -5,3 +5,4 @@ export 'package:nobook/src/global/ui/text/text_styles.dart';
 export 'package:nobook/src/global/ui/theme/theme_barrel.dart';
 export 'package:nobook/src/global/ui/util_functions/ui_functions.dart';
 export 'package:nobook/src/global/ui/widgets/widgets_barrel.dart';
+export 'package:nobook/src/global/ui/screens/screens_barrel.dart';

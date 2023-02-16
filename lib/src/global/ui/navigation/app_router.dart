@@ -22,10 +22,17 @@ final GoRouter _router = GoRouter(
   redirect: NavigationRedirects.baseRedirect,
   routes: [
     GoRoute(
+      path: AppRoute.home.path,
+      name: AppRoute.home.name,
+      builder: (context, state) {
+        return const HomeScreen();
+      },
+    ),
+    GoRoute(
       path: AppRoute.dashboard.path,
       name: AppRoute.dashboard.name,
       builder: (context, state) {
-        return const NoBooksScaffold();
+        return const DashBoardScreen();
       },
     ),
     GoRoute(
