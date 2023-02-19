@@ -12,14 +12,14 @@ to [design file ->](https://www.figma.com/file/qlhO5tA7U1wy8SWkePOb4t/No'Books?n
 Features:
 
 - Note-taking
-- Personal notes (create, update, read, delete)
-- Teacher’s notes (read, make annotations which saves to their account)
+  - Personal notes (create, update, read, delete)
+  - Teacher’s notes (read, make annotations which saves to their account)
 - Assignment (read, submit)
 - Tests (read, submit)
 - Exams (read, submit)
 - Timetable
-- Personal timetable (create, update, read, delete) - currently unavailable in MVP
-- School timetable (read only)
+  - Personal timetable (create, update, read, delete) - currently unavailable in MVP
+  - School timetable (read only)
 - Records (read only)
 
 ## Teacher
