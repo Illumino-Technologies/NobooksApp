@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
             case NavItem.dashboard:
               return const DashboardBoardPage();
             case NavItem.notes:
-              return const NotePage();
+              return const NoteScreen();
             case NavItem.assignments:
               return const AssignmentBoard();
             case NavItem.testAndExams:
