@@ -14,6 +14,7 @@ abstract class ErrorMessages {
 
   static const String updatePhoneNumberWithOld = 'New phone number must be '
       'different from the current one';
+
   static const String updateLocationWithOld = 'New address must be '
       'different from the current one';
   static const String passcodeLogin = 'Unable to login with passcode!';

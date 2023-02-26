@@ -1,8 +1,6 @@
 enum StorageKey {
   user,
-  settings,
-  passcode,
-  loginInfo;
+  ;
 
   const StorageKey();
 

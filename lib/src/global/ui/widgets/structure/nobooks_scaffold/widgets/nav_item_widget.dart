@@ -70,9 +70,8 @@ class _NavItemWidget extends StatelessWidget {
                       child: Text(
                         item.text,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyles.paragraph3.asSemibold.copyWith(
-                          color:
-                              selected ? AppColors.white : AppColors.neutral200,
+                        style: TextStyles.paragraph3.asSemibold.withColor(
+                          selected ? AppColors.white : AppColors.neutral200,
                         ),
                       ),
                     ),
