@@ -231,4 +231,13 @@ abstract class AppColors {
 
   ///#DBA507 40%
   static const Color subjectOrange = Color(0x66DBA507);
+
+  ///#A9C499 40%
+  static const Color subjectGreenVariant = Color(0x66A9C499);
+
+  ///#A7D6FF 40%
+  static const Color subjectLightBlueVariant = Color(0x66A7D6FF);
+
+  ///#F19CDC 40%
+  static const Color subjectPinkVariant = Color(0x66F19CDC);
 }

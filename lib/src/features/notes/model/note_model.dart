@@ -24,6 +24,7 @@ class Note {
 
   @override
   toString() {
+
     return {
       'id': id,
       'title': title,
