@@ -1,5 +1,3 @@
-import 'package:equatable/equatable.dart';
-
-abstract class RiverpodState with EquatableMixin {
+abstract class RiverpodState {
   const RiverpodState();
 }

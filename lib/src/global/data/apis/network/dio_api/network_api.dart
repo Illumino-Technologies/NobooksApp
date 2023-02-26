@@ -26,12 +26,20 @@ class NetworkApi with DioErrorHandlerMixin implements NetworkApiInterface {
   Future<T> delete<T>(
     String path, {
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) =>
-      handleError(_delete(path, requireToken: requireToken));
+      handleError(
+        _delete(
+          path,
+          requireToken: requireToken,
+          cancelToken: cancelToken,
+        ),
+      );
 
   Future<T> _delete<T>(
     String path, {
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) {
     // TODO: implement delete
     throw UnimplementedError();
@@ -41,12 +49,20 @@ class NetworkApi with DioErrorHandlerMixin implements NetworkApiInterface {
   Future<T> get<T>(
     String path, {
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) =>
-      handleError(_get(path, requireToken: requireToken));
+      handleError(
+        _get(
+          path,
+          requireToken: requireToken,
+          cancelToken: cancelToken,
+        ),
+      );
 
   Future<T> _get<T>(
     String path, {
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) {
     // TODO: implement get
     throw UnimplementedError();
@@ -57,13 +73,22 @@ class NetworkApi with DioErrorHandlerMixin implements NetworkApiInterface {
     String path, {
     required dynamic params,
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) =>
-      handleError(_patch(path, params: params, requireToken: requireToken));
+      handleError(
+        _patch(
+          path,
+          params: params,
+          requireToken: requireToken,
+          cancelToken: cancelToken,
+        ),
+      );
 
   Future<T> _patch<T>(
     String path, {
     required dynamic params,
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) {
     // TODO: implement patch
     throw UnimplementedError();
@@ -74,13 +99,21 @@ class NetworkApi with DioErrorHandlerMixin implements NetworkApiInterface {
     String path, {
     required dynamic params,
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) =>
-      handleError(_post(path, params: params, requireToken: requireToken));
+      handleError(
+        _post(
+          path,
+          params: params,
+          requireToken: requireToken,
+        ),
+      );
 
   Future<T> _post<T>(
     String path, {
     required dynamic params,
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) {
     // TODO: implement post
     throw UnimplementedError();
@@ -91,13 +124,22 @@ class NetworkApi with DioErrorHandlerMixin implements NetworkApiInterface {
     String path, {
     required dynamic params,
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) =>
-      handleError(_put(path, params: params, requireToken: requireToken));
+      handleError(
+        _put(
+          path,
+          params: params,
+          requireToken: requireToken,
+          cancelToken: cancelToken,
+        ),
+      );
 
   Future<T> _put<T>(
     String path, {
     required dynamic params,
     bool requireToken = true,
+    CancelToken? cancelToken,
   }) {
     // TODO: implement put
     throw UnimplementedError();

@@ -4,7 +4,11 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 mixin RiverpodUtilsMixin<State extends RiverpodStateWithStatus>
     on StateNotifier<State> {
   void notifyOnError(Failure error) {
-    state = state.copyWith(error: error, loading: false, success: false);
+    state = state.copyWith(
+      error: error,
+      loading: false,
+      success: false,
+    );
   }
 
   void notifyLoading([nullifyError = true]) {

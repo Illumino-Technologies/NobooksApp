@@ -8,8 +8,7 @@ extension DateTimeExtension on DateTime {
     int? hour,
     int? minute,
     int? second,
-  }) =>
-      DateTime(
+  }) => DateTime(
         year ?? this.year,
         month ?? this.month,
         day ?? this.day,

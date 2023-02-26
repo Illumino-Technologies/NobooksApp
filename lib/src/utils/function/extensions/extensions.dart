@@ -18,3 +18,4 @@ part 'string_extension.dart';
 part 'text_style_extension.dart';
 
 part 'theme_mode_extension.dart';
+
