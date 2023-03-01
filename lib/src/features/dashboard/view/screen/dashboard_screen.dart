@@ -31,7 +31,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       appBar: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Hi, Boluwatife🧑', style: TextStyles.headline6),
+          // Text('Hi, Boluwatife🧑', style: TextStyles.headline6),
           250.boxWidth,
           Expanded(
             child: SizedBox(
