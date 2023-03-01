@@ -3,6 +3,7 @@ import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
 // import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nobook/src/features/calculator/calcpage.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class TestandExamPage extends ConsumerStatefulWidget {
@@ -53,17 +54,27 @@ class _AssignmentPageState extends ConsumerState<TestandExamPage> {
                 const SizedBox(
                   height: 50,
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: ListTile(
-                    leading: Text(
-                      'Maths',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w600,
+                    leading: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CalcPage(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Maths',
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                    trailing: Text(
+                    trailing: const Text(
                       '01:10pm . 18th April, 2022',
                       style: TextStyle(
                         fontSize: 20,
