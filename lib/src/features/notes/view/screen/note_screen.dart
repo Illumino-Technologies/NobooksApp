@@ -22,47 +22,57 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Your Notes'),
-                      // Spacer(),
-                      Row(
-                        children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor: Colors.blue,
-                              // : Colors.white,
+                  10.boxHeight,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Your Notes',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                        // Spacer(),
+                        Row(
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor: Colors.blue,
+                                // : Colors.white,
+                              ),
+                              onPressed: () {},
+                              child: const Text(
+                                'Personal',
+                                style: TextStyle(fontSize: 16),
+                              ),
                             ),
-                            onPressed: () {},
-                            child: const Text(
-                              'Personal',
-                              style: TextStyle(fontSize: 16),
+                            const SizedBox(width: 10),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor: Colors.transparent,
+                                // : Colors.white,
+                              ),
+                              onPressed: () {},
+                              child: const Text('General',
+                                  style: TextStyle(fontSize: 16, 
+                                  color: Colors.black54,),),
                             ),
-                          ),
-                          const SizedBox(width: 10),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor: Colors.transparent,
-                              // : Colors.white,
-                            ),
-                            onPressed: () {},
-                            child: const Text('General',
-                                style: TextStyle(fontSize: 16)),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  10.boxHeight,
+                  30.boxHeight,
                   const BiologyNoteCards(),
-                  10.boxHeight,
+                  30.boxHeight,
                   const ChemistryNoteCards(),
-                  10.boxHeight,
+                  30.boxHeight,
                   const BookKeepingNoteCards(),
-                  10.boxHeight,
+                  30.boxHeight,
                   const CivicNoteCards()
                 ],
               ),
@@ -70,8 +80,13 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
           ),
           SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Your Subjects'),
+                const Text('Your Subjects', style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black54,
+                  // fontWeight: FontWeight.bold,
+                ),),
                 SizedBox(
                   height: context.screenHeight * 0.85,
                   width: context.screenHeight * 0.35,

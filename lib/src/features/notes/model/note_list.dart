@@ -5,27 +5,27 @@ import 'package:flutter/material.dart';
 List<Note> biologynote = [
   Note(
     subject: Subject(code: '', name: 'Biology', color: Colors.black),
-    topic: ' Cell Theory',
-    noteBody: 'Evolution',
-    createdAt: DateTime.now(),
-    updatedAt: DateTime.now(),
-  ),
-  Note(
-    subject: Subject(code: '', name: 'Biology', color: Colors.black),
-    topic: 'Evolution',
-    noteBody: 'Evolution',
-    createdAt: DateTime.now(),
-    updatedAt: DateTime.now(),
-  ),
-  Note(
-    subject: Subject(code: '', name: 'Biology', color: Colors.black),
     topic: 'Cell Theory',
     noteBody: 'Evolution',
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
   ),
   Note(
-    subject: Subject(code: '', name: 'Biology', color: Colors.black),
+    subject:const  Subject(code: '', name: 'Biology', color: Colors.black),
+    topic: 'Evolution',
+    noteBody: 'Evolution',
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+  ),
+  Note(
+    subject:const  Subject(code: '', name: 'Biology', color: Colors.black),
+    topic: 'Cell Theory',
+    noteBody: 'Evolution',
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+  ),
+  Note(
+    subject: const Subject(code: '', name: 'Biology', color: Colors.black),
     topic: 'Evolution',
     noteBody: 'Evolution',
     createdAt: DateTime.now(),
