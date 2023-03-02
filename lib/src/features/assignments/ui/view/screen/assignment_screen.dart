@@ -24,7 +24,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
   Widget build(BuildContext context) {
     return Structure(
       animateDuration: const Duration(milliseconds: 100),
-      // no need to add animation inside 
+      // no need to add animation inside
       //Dashboard navigation widget use this animateDuration instead
       animateReverseDuration: const Duration(milliseconds: 100),
       expandLeftBar: expand,

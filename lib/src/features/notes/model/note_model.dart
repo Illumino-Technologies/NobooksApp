@@ -1,10 +1,10 @@
-class Note {
+class NoteModel {
   int? id;
   String title;
   String content;
   String noteColor;
 
-  Note({
+  NoteModel({
     this.id,
     this.title = "Note",
     this.content = "Text",
@@ -24,7 +24,6 @@ class Note {
 
   @override
   toString() {
-
     return {
       'id': id,
       'title': title,

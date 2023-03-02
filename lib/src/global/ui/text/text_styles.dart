@@ -61,6 +61,7 @@ abstract class TextStyles {
     height: 1.214,
     fontWeight: FontWeight.w400,
   );
+
   ///16sp | 400(normal)  | 1.188
   static final TextStyle paragraph2 = TextStyle(
     fontSize: 16.sp,

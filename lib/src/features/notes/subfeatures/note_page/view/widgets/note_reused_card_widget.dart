@@ -4,25 +4,28 @@ import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
 class BiologyNoteCards extends StatelessWidget {
-  const BiologyNoteCards({super.key,});
+  const BiologyNoteCards({
+    super.key,
+  });
+
   // final Subject? subject;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal:10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         const Text(  'Biology',
-            style:  TextStyle(
+          const Text(
+            'Biology',
+            style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Colors.black,
               fontSize: 18,
             ),
           ),
-          20.boxHeight,  
-        
+          20.boxHeight,
           Row(
             children: [
               16.boxWidth,
@@ -62,7 +65,9 @@ class BiologyNoteCards extends StatelessWidget {
                                           Radius.circular(4),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage('assets/subjects/bk.png'),
+                                          image: AssetImage(
+                                            'assets/subjects/bk.png',
+                                          ),
                                           fit: BoxFit.fill,
                                         ),
                                       ),
@@ -102,13 +107,15 @@ class BiologyNoteCards extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                 text: biologynote[index].createdAt.toString(),
+                                      text: biologynote[index]
+                                          .createdAt
+                                          .toString(),
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         color: Colors.grey,
                                         fontSize: 8,
                                       ),
-                                      children: const[
+                                      children: const [
                                         TextSpan(
                                           text: '',
                                           style: TextStyle(
@@ -144,12 +151,13 @@ class ChemistryNoteCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal:10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         const Text(  'Chemistry',
-            style:  TextStyle(
+          const Text(
+            'Chemistry',
+            style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Colors.black,
               fontSize: 18,
@@ -194,7 +202,8 @@ class ChemistryNoteCards extends StatelessWidget {
                                           Radius.circular(4),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage('assets/subjects/ch.png'),
+                                          image: AssetImage(
+                                              'assets/subjects/ch.png',),
                                           fit: BoxFit.fill,
                                         ),
                                       ),
@@ -216,7 +225,8 @@ class ChemistryNoteCards extends StatelessWidget {
                                       ),
                                       children: [
                                         TextSpan(
-                                          text: '\n${chemistrynote[index].topic}',
+                                          text:
+                                              '\n${chemistrynote[index].topic}',
                                           style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400,
@@ -234,13 +244,15 @@ class ChemistryNoteCards extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                      text: chemistrynote[index].createdAt.toString(),
+                                      text: chemistrynote[index]
+                                          .createdAt
+                                          .toString(),
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         color: Colors.grey,
                                         fontSize: 8,
                                       ),
-                                      children: const[
+                                      children: const [
                                         TextSpan(
                                           text: '',
                                           style: TextStyle(
@@ -276,12 +288,13 @@ class BookKeepingNoteCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal:10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         const Text(  'Book Keeping',
-            style:  TextStyle(
+          const Text(
+            'Book Keeping',
+            style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Colors.black,
               fontSize: 18,
@@ -326,7 +339,8 @@ class BookKeepingNoteCards extends StatelessWidget {
                                           Radius.circular(4),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage('assets/subjects/bk.png'),
+                                          image: AssetImage(
+                                              'assets/subjects/bk.png',),
                                           fit: BoxFit.fill,
                                         ),
                                       ),
@@ -348,7 +362,8 @@ class BookKeepingNoteCards extends StatelessWidget {
                                       ),
                                       children: [
                                         TextSpan(
-                                          text: '\n${bookeepingnote[index].topic}',
+                                          text:
+                                              '\n${bookeepingnote[index].topic}',
                                           style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400,
@@ -366,13 +381,15 @@ class BookKeepingNoteCards extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                      text: bookeepingnote[index].createdAt.toString(),
+                                      text: bookeepingnote[index]
+                                          .createdAt
+                                          .toString(),
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         color: Colors.grey,
                                         fontSize: 8,
                                       ),
-                                      children: const[
+                                      children: const [
                                         TextSpan(
                                           text: '',
                                           style: TextStyle(
@@ -407,13 +424,14 @@ class CivicNoteCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal:10.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         const Text(  'Civic Education',
-            style:  TextStyle(
+          const Text(
+            'Civic Education',
+            style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Colors.black,
               fontSize: 18,
@@ -458,7 +476,8 @@ class CivicNoteCards extends StatelessWidget {
                                           Radius.circular(4),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage('assets/subjects/cv.png'),
+                                          image: AssetImage(
+                                              'assets/subjects/cv.png',),
                                           fit: BoxFit.fill,
                                         ),
                                       ),
@@ -498,13 +517,14 @@ class CivicNoteCards extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                      text: civicnote[index].createdAt.toString(),
+                                      text:
+                                          civicnote[index].createdAt.toString(),
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         color: Colors.grey,
                                         fontSize: 8,
                                       ),
-                                      children: const[
+                                      children: const [
                                         TextSpan(
                                           text: '',
                                           style: TextStyle(
@@ -581,4 +601,3 @@ class AddNoteCards extends StatelessWidget {
     );
   }
 }
-

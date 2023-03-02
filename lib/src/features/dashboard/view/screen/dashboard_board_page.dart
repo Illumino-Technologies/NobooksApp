@@ -58,8 +58,7 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return ReuseableCard(
-                      firstImage:
-                          FakeDashboardData.dashBoard[index].firstImage,
+                      firstImage: FakeDashboardData.dashBoard[index].firstImage,
                       secondImage:
                           FakeDashboardData.dashBoard[index].secondImage,
                       title: FakeDashboardData.dashBoard[index].title,
@@ -101,8 +100,7 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return ReuseableCard(
-                      firstImage:
-                          FakeDashboardData.dashBoard[index].firstImage,
+                      firstImage: FakeDashboardData.dashBoard[index].firstImage,
                       secondImage:
                           FakeDashboardData.dashBoard[index].secondImage,
                       title: FakeDashboardData.dashBoard[index].title,
