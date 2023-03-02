@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/dashboard/dashboard_barrel.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
@@ -18,7 +19,7 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        width: context.screenWidth * 0.50,
+        width: 761.w,
         decoration: const BoxDecoration(
           color: AppColors.backgroundGrey,
         ),
