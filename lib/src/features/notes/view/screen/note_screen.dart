@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/notes/notes_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 
@@ -95,7 +96,12 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                         const SizedBox(
                           width: 8,
                         ),
-                        const ReusedCardBio(),
+                        InkWell(
+                          onTap: () {
+                            context.goNamed(AppRoute.notePage.name);
+                          },
+                          child: const ReusedCardBio(),
+                        ),
                         const SizedBox(
                           width: 8,
                         ),

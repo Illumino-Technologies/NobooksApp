@@ -18,6 +18,8 @@ class _NotePageState extends ConsumerState<NotePage> {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle;
+
     return Material(
       child: Center(
         child: Container(

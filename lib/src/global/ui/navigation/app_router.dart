@@ -41,6 +41,8 @@ final GoRouter _router = GoRouter(
       builder: (context, state) {
         return const NoteScreen();
       },
+      routes: [
+      ]
     ),
   ],
 );
