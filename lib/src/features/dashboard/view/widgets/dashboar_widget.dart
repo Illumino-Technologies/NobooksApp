@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:go_router_flow/go_router_flow.dart';
+import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DashboardWidget extends ConsumerWidget {
   const DashboardWidget({Key? key}) : super(key: key);
@@ -56,7 +58,12 @@ class DashboardWidget extends ConsumerWidget {
                         color: AppColors.blue500,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      context.goNamed(
+                        AppRoute.notePage.name,
+                        extra: FakeNotes.allNotes[1],
+                      );
+                    },
                   )
                 ],
               ),

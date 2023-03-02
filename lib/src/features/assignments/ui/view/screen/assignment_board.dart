@@ -135,7 +135,7 @@ class AssignmentBoard extends StatelessWidget {
                           FakeAssignmentData.timeTable[index].subjectLogo,
                         ),
                         title:
-                        Text(FakeAssignmentData.timeTable[index].subject),
+                            Text(FakeAssignmentData.timeTable[index].subject),
                         trailing: const Icon(Icons.keyboard_arrow_down),
                       );
                     },

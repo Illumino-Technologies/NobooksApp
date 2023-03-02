@@ -1,17 +1,18 @@
 part of '../nobooks_scaffold.dart';
 
 enum NavItem {
-  dashboard('Dashboard', VectorAssets.dashboardIcon),
-  notes('Notes', VectorAssets.noteIcon),
-  assignments('Assignments', VectorAssets.assignmentIcon),
-  testAndExams('Tests & Exams', VectorAssets.examIcon),
-  records('Records', VectorAssets.recordIcon),
-  arena('Arena', VectorAssets.arenaIcon),
-  forum('Forum', VectorAssets.forumIcon),
+  dashboard('Dashboard', VectorAssets.dashboardIcon, AppRoute.dashboard),
+  notes('Notes', VectorAssets.noteIcon, AppRoute.note),
+  assignments('Assignments', VectorAssets.assignmentIcon, AppRoute.assignment),
+  testAndExams('Tests & Exams', VectorAssets.examIcon, AppRoute.testAndExam),
+  records('Records', VectorAssets.recordIcon, AppRoute.record),
+  arena('Arena', VectorAssets.arenaIcon, AppRoute.arena),
+  forum('Forum', VectorAssets.forumIcon, AppRoute.forum),
   ;
 
   final String text;
   final String vectorAsset;
+  final AppRoute route;
 
-  const NavItem(this.text, this.vectorAsset);
+  const NavItem(this.text, this.vectorAsset, this.route);
 }
