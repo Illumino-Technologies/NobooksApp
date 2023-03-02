@@ -4,6 +4,7 @@ enum AppRoute {
   home('/'),
   dashboard('/dashboard'),
   note('/note'),
+  notePage('note-page'),
   assignment('/assignment'),
   record('/record'),
   testAndExam('/test-and-exam'),

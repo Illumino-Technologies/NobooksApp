@@ -41,6 +41,15 @@ final GoRouter _router = GoRouter(
       builder: (context, state) {
         return const NoteScreen();
       },
+      routes: [
+        GoRoute(
+          path: AppRoute.notePage.path,
+          name: AppRoute.notePage.name,
+          builder: (context, state) => NoteDetailPage(
+            note: (state.extra as Note),
+          ),
+        ),
+      ],
     ),
   ],
 );

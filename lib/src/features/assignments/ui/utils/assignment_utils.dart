@@ -4,17 +4,17 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 abstract class FakeAssignmentData {
   static final List<TimeTable> timeTable = [
     TimeTable(subject: 'Maths', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Physics', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Chemistry', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Biology', subjectLogo: Assets.mt),
-    TimeTable(subject: 'English', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Further Mathematics', subjectLogo: Assets.mt),
+    TimeTable(subject: 'Physics', subjectLogo: Assets.ph),
+    TimeTable(subject: 'Chemistry', subjectLogo: Assets.ch),
+    TimeTable(subject: 'Biology', subjectLogo: Assets.bio),
+    TimeTable(subject: 'English', subjectLogo: Assets.eng),
+    TimeTable(subject: 'Further Mathematics', subjectLogo: Assets.fm),
     TimeTable(subject: 'Maths', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Physics', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Chemistry', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Biology', subjectLogo: Assets.mt),
-    TimeTable(subject: 'English', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Further Mathematics', subjectLogo: Assets.mt),
+    TimeTable(subject: 'Physics', subjectLogo: Assets.ph),
+    TimeTable(subject: 'Chemistry', subjectLogo: Assets.ch),
+    TimeTable(subject: 'Biology', subjectLogo: Assets.bio),
+    TimeTable(subject: 'English', subjectLogo: Assets.eng),
+    TimeTable(subject: 'Further Mathematics', subjectLogo: Assets.fm),
   ];
 
   static final List<Assignment> assignments = [
