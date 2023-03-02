@@ -12,6 +12,8 @@ part 'navigation_redirects.dart';
 class AppRouter {
   static GlobalKey<NavigatorState> get navigationKey => _navigationKey;
 
+  static GlobalKey<NavigatorState> get shellRouteKey => _shellRouteKey;
+
   static GoRouter get router => _router;
 }
 
@@ -53,35 +55,5 @@ final GoRouter _router = GoRouter(
         ),
       ],
     ),
-    // GoRoute(
-    //   path: AppRoute.home.path,
-    //   name: AppRoute.home.name,
-    //   builder: (context, state) {
-    //     return const HomeScreen();
-    //   },
-    // ),
-    // GoRoute(
-    //   path: AppRoute.dashboard.path,
-    //   name: AppRoute.dashboard.name,
-    //   builder: (context, state) {
-    //     return const DashBoardScreen();
-    //   },
-    // ),
-    // GoRoute(
-    //   path: AppRoute.note.path,
-    //   name: AppRoute.note.name,
-    //   builder: (context, state) {
-    //     return const NoteScreen();
-    //   },
-    //   routes: [
-    //     GoRoute(
-    //       path: AppRoute.notePage.path,
-    //       name: AppRoute.notePage.name,
-    //       builder: (context, state) => NoteDetailPage(
-    //         note: (state.extra as Note),
-    //       ),
-    //     ),
-    //   ],
-    // ),
   ],
 );
