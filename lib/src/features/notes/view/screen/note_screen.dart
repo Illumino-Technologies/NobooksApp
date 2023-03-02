@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router_flow/go_router_flow.dart';
-import 'package:nobook/src/features/notes/notes_barrel.dart';
-import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/features/features_barrel.dart';
+import 'package:nobook/src/global/ui/text/text_styles.dart';
+import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
 class NoteScreen extends ConsumerStatefulWidget {
-  const NoteScreen({Key? key}) : super(key: key);
-
+  const NoteScreen({Key? key, this.style}) : super(key: key);
+  final TextStyles? style;
   @override
   NoteScreenState createState() => NoteScreenState();
 }
@@ -15,405 +15,112 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          width: 758,
-          height: MediaQuery.of(context).size.height,
-          color: AppColors.backgroundGrey,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 29),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 32,
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        'Your Notes',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 29,
-                        ),
-                      ),
-                      const Spacer(),
-                      MaterialButton(
-                        onPressed: () {},
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4.0),
-                        ),
-                        height: 38,
-                        minWidth: 98,
-                        color: AppColors.blue500,
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            'Personal',
+                  10.boxHeight,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Your Notes',
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: AppColors.backgroundGrey,
+                              fontSize: 24,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                        // Spacer(),
+                        Row(
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor: Colors.blue,
+                                // : Colors.white,
+                              ),
+                              onPressed: () {},
+                              child: const Text(
+                                'Personal',
+                                style: TextStyle(fontSize: 16),
+                              ),
                             ),
-                          ),
+                            const SizedBox(width: 10),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor: Colors.transparent,
+                                // : Colors.white,
+                              ),
+                              onPressed: () {},
+                              child: const Text('General',
+                                  style: TextStyle(fontSize: 16, 
+                                  color: Colors.black54,),),
+                            ),
+                          ],
                         ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'General',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Biology",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            context.goNamed(AppRoute.notePage.name);
-                          },
-                          child: const ReusedCardBio(),
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        const ReusedCardBio(),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        const ReusedCardBio(),
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Book Keeping",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(width: 8),
-                        const ReusedCardBk(),
-                        const SizedBox(width: 8),
-                        const ReusedCardBk(),
-                        const SizedBox(width: 8),
-                        const ReusedCardBk(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Chemistry",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(width: 8),
-                        const ReusedCardCh(),
-                        const SizedBox(width: 8),
-                        const ReusedCardCh(),
-                        const SizedBox(width: 8),
-                        const ReusedCardCh(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Civic Education",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(width: 8),
-                        const ReusedCardCv(),
-                        const SizedBox(width: 8),
-                        const ReusedCardCv(),
-                        const SizedBox(width: 8),
-                        const ReusedCardCv(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Economics",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(width: 8),
-                        const ReusedCardEc(),
-                        const SizedBox(width: 8),
-                        const ReusedCardEc(),
-                        const SizedBox(width: 8),
-                        const ReusedCardEc(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "English Language",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(width: 8),
-                        const ReusedCardEn(),
-                        const SizedBox(width: 8),
-                        const ReusedCardEn(),
-                        const SizedBox(width: 8),
-                        const ReusedCardEn(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Further Maths",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(width: 8),
-                        const ReusedCardFm(),
-                        const SizedBox(width: 8),
-                        const ReusedCardFm(),
-                        const SizedBox(width: 8),
-                        const ReusedCardFm(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Geography",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(width: 8),
-                        const ReusedCardGe(),
-                        const SizedBox(width: 8),
-                        const ReusedCardGe(),
-                        const SizedBox(width: 8),
-                        const ReusedCardGe(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Maths",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const SizedBox(width: 8),
-                        const ReusedCardMt(),
-                        const SizedBox(width: 8),
-                        const ReusedCardMt(),
-                        const SizedBox(width: 8),
-                        const ReusedCardMt(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Physics",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const NoteReusedCardPlus(),
-                        const ReusedCardPh(),
-                        const ReusedCardPh(),
-                        const ReusedCardPh(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
+                  30.boxHeight,
+                  const BiologyNoteCards(),
+                  30.boxHeight,
+                  const ChemistryNoteCards(),
+                  30.boxHeight,
+                  const BookKeepingNoteCards(),
+                  30.boxHeight,
+                  const CivicNoteCards()
                 ],
               ),
             ),
           ),
-        ),
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Your Subjects', style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black54,
+                  // fontWeight: FontWeight.bold,
+                ),),
+                SizedBox(
+                  height: context.screenHeight * 0.85,
+                  width: context.screenHeight * 0.35,
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: FakeAssignmentData.timeTable.length,
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: Container(
+                          height: 32,
+                          width: 32,
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage(FakeAssignmentData
+                                  .timeTable[index].subjectLogo,),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        title: Text(FakeAssignmentData.timeTable[index].subject),
+                        trailing: const Icon(Icons.keyboard_arrow_down),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
