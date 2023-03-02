@@ -3,13 +3,13 @@ import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
 // import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/features/features_barrel.dart' show Note, NotePage;
+import 'package:nobook/src/features/features_barrel.dart' show Note, NoteDetailPage;
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 
-class NotePage extends ConsumerStatefulWidget {
+class NoteDetailPage extends ConsumerStatefulWidget {
   final Note note;
 
-  const NotePage({
+  const NoteDetailPage({
     super.key,
     required this.note,
   });
@@ -18,7 +18,7 @@ class NotePage extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _NotePageState();
 }
 
-class _NotePageState extends ConsumerState<NotePage> {
+class _NotePageState extends ConsumerState<NoteDetailPage> {
   final QuillController _controller = QuillController.basic();
   final QuillController _titleController = QuillController.basic();
 
