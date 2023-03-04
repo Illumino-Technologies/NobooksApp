@@ -11,12 +11,12 @@ typedef ChangeNotifierBuilderCallback<T extends ChangeNotifier> = Widget
 class ChangeNotifierBuilder<T extends ChangeNotifier> extends StatefulWidget {
   final ChangeNotifierBuilderCallback<T> builder;
   final T listenable;
-  final ChangeNotifierSelector<T>? selector;
+  final ChangeNotifierSelector<T>? buildWhen;
 
   const ChangeNotifierBuilder({
     Key? key,
     required this.listenable,
-    this.selector,
+    this.buildWhen,
     required this.builder,
   }) : super(key: key);
 
@@ -38,11 +38,11 @@ class _ChangeNotifierBuilderState<T extends ChangeNotifier>
   }
 
   void changeListener() {
-    final bool? shouldSetState = widget.selector?.call(
+    final bool? shouldSetState = widget.buildWhen?.call(
       listenable,
       widget.listenable,
     );
-    if (shouldSetState ?? false) {
+    if (shouldSetState ?? true) {
       setState(() {});
     }
     listenable = widget.listenable;

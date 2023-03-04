@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/document_editor_model.dart';
+part of 'all_models.dart';
 
 enum DrawingOperation {
   start,
@@ -10,7 +9,7 @@ enum DrawingOperation {
 class DrawingDelta {
   final PointDouble point;
   final DrawingOperation operation;
-  final DrawingDeltaMetadata? metadata;
+  final DrawingMetadata? metadata;
 
   const DrawingDelta({
     required this.point,
@@ -26,7 +25,7 @@ class DrawingDelta {
   DrawingDelta copyWith({
     PointDouble? point,
     DrawingOperation? operation,
-    DrawingDeltaMetadata? metadata,
+    DrawingMetadata? metadata,
   }) {
     return DrawingDelta(
       point: point ?? this.point,
@@ -36,11 +35,11 @@ class DrawingDelta {
   }
 }
 
-class DrawingDeltaMetadata {
+class DrawingMetadata {
   final Color? color;
   final double? strokeWidth;
 
-  const DrawingDeltaMetadata({
+  const DrawingMetadata({
     this.color,
     this.strokeWidth,
   });
@@ -50,4 +49,3 @@ class DrawingDeltaMetadata {
     return 'DrawingDeltaMetadata{\ncolor: $color, \nstrokeWidth: $strokeWidth\n}';
   }
 }
-

@@ -1,8 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:nobook/src/features/features_barrel.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/drawing_editing_delta.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/model/all_models.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 typedef PointDouble = Point<double>;
