@@ -14,6 +14,10 @@ extension ListExtension<E> on List<E> {
     return false;
   }
 
+  bool isFirst(E element) => indexOf(element) == 0;
+
+  bool isLast(E element) => indexOf(element) == (length - 1);
+
   void pushFront(E element) {
     return insert(0, element);
   }
