@@ -50,3 +50,4 @@ class DrawingDeltaMetadata {
     return 'DrawingDeltaMetadata{\ncolor: $color, \nstrokeWidth: $strokeWidth\n}';
   }
 }
+

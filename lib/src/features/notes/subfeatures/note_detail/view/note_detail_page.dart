@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-
-// import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nobook/src/features/features_barrel.dart'
-    show Note, NoteDetailPage;
+import 'package:nobook/src/features/features_barrel.dart' show Note;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/model/document_editor_model.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/model/drawing_editing_delta.dart';
-import 'package:nobook/src/features/notes/subfeatures/note_detail/view/someotherifile.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
@@ -30,8 +26,8 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
     return Material(
       child: Center(
         child:
-        // PainterWidgetView(),
-        Column(
+            // PainterWidgetView(),
+            Column(
           children: [
             FilledButton.tonal(
               onPressed: () {
@@ -110,8 +106,7 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
                       );
 
                       erasingNotifier.value
-                          ?
-                          erase(region)
+                          ? erase(region)
                           // eraseDrawingInRegion(region)
 
                           // eraseDelta(
@@ -417,5 +412,13 @@ class Region {
     final bool isPointInVerticalRegion = y >= minY && y <= maxY;
 
     return isPointInHorizontalRegion && isPointInVerticalRegion;
+  }
+}
+
+class DrawingNotifier extends ValueNotifier<List<Drawing>> {
+  DrawingNotifier(super.value);
+
+  ada() {
+    notifyListeners();
   }
 }
