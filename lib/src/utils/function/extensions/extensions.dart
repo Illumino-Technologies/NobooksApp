@@ -1,4 +1,6 @@
 // import 'package:nobook/src/global/global_barrel.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/global/global_barrel.dart';
@@ -12,6 +14,8 @@ part 'list_extension.dart';
 part 'num_extension.dart';
 
 part 'object_extension.dart';
+
+part 'point_double_extension.dart';
 
 part 'string_extension.dart';
 
