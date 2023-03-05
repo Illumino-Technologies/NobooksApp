@@ -3,6 +3,7 @@ import 'package:nobook/src/features/notes/model/note/note.dart';
 import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/domain/models/subject/subject.dart';
 
+
 abstract class FakeNotes {
   static final List<Note> allNotes = [
     Note(
@@ -10,7 +11,7 @@ abstract class FakeNotes {
       topic: 'Cell Theory',
       noteBody: 'Evolution',
       createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
+      updatedAt: DateTime.now()
     ),
     Note(
       subject: FakeSubjects.biology,
@@ -35,7 +36,7 @@ abstract class FakeNotes {
     ),
     Note(
       subject: FakeSubjects.chemistry,
-      topic: ' Redox Reaction',
+      topic: 'Redox Reaction',
       noteBody: 'Redox Reaction',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
@@ -43,7 +44,7 @@ abstract class FakeNotes {
     Note(
       subject:
           FakeSubjects.civicEducation,
-      topic: ' Civil Society',
+      topic: 'Civil Society',
       noteBody: 'Civic Education',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
@@ -51,7 +52,7 @@ abstract class FakeNotes {
     Note(
       subject:
           FakeSubjects.civicEducation,
-      topic: ' Civil Society',
+      topic: 'Civil Society',
       noteBody: 'Civic Education',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
@@ -59,7 +60,7 @@ abstract class FakeNotes {
     Note(
       subject:
           FakeSubjects.civicEducation,
-      topic: ' Civil Society',
+      topic: 'Civil Society',
       noteBody: 'Civic Education',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
