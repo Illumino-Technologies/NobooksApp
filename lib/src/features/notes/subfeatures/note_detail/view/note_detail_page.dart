@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/model/all_models.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/document_editor_model.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/model/sketch_painter.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_controller.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/global/ui/widgets/custom/value_listenables/change_notifier_builder.dart';
@@ -21,6 +22,9 @@ class NoteDetailPage extends ConsumerStatefulWidget {
 }
 
 class _NotePageState extends ConsumerState<NoteDetailPage> {
+  final double drawingBoundsVertical = 600;
+  final double drawingBoundsHorizontal = 600;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -88,19 +92,56 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
               ],
             ),
             20.boxHeight,
+            ChangeNotifierBuilder(
+              listenable: controller,
+              buildWhen: (previous, next) =>
+                  previous?.sketchMetadata == next.sketchMetadata,
+              builder: (_, notifier) {
+                final DrawingMetadata metadata = notifier.sketchMetadata;
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ...ChangeColor.values.map(
+                      (e) => Container(
+                        decoration: BoxDecoration(
+                          border: metadata.color == e.color
+                              ? Border.all(
+                                  color: e.color,
+                                  width: 2,
+                                )
+                              : null,
+                        ),
+                        margin: EdgeInsets.only(left: 30.w),
+                        padding: const EdgeInsets.all(5),
+                        child: InkWell(
+                          onTap: () => changeColor(e.color),
+                          child: Container(
+                            width: 50,
+                            height: 50,
+                            color: e.color,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                );
+              },
+            ),
+            20.boxHeight,
             Container(
               color: AppColors.subjectOrange.withOpacity(0.4),
-              width: 600,
-              height: 600,
+              width: drawingBoundsHorizontal,
+              height: drawingBoundsVertical,
               child: Stack(
                 children: [
-                  SizedBox.square(
-                    dimension: 600,
+                  SizedBox(
+                    height: drawingBoundsVertical,
+                    width: drawingBoundsHorizontal,
                     child: ChangeNotifierBuilder<DrawingController>(
                       listenable: controller,
                       builder: (_, controller) {
                         return CustomPaint(
-                          painter: DrawingPainter(
+                          painter: SketchPainter(
                             drawings: controller.drawings,
                           ),
                         );
@@ -110,6 +151,7 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
                   GestureDetector(
                     onPanStart: panStart,
                     onPanEnd: (details) {
+                      details.velocity.pixelsPerSecond;
                       // if (erasingNotifier.value) return;
                       if (controller.drawingMode == DrawingMode.erase) return;
                       panEnd(details);
@@ -130,15 +172,31 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
     );
   }
 
+  void changeColor(Color color) {
+    controller.changeColor(color);
+  }
+
+  final ValueNotifier<int?> dragChangeNotifier = ValueNotifier<int?>(null);
+
+  int computeDurationDifference(Duration duration) {
+    final int durationDifference = dragChangeNotifier.value == null
+        ? 0
+        : duration.inMilliseconds - dragChangeNotifier.value!;
+    dragChangeNotifier.value = duration.inMilliseconds;
+    return durationDifference;
+  }
+
+  double computeDragSpeed(double distance, Duration duration) {
+    final int time = computeDurationDifference(duration);
+    return time == 0 ? 0 : distance / time;
+  }
+
   PointDouble pointDoubleFromOffset(Offset offset) {
     return PointDouble(offset.dx, offset.dy);
   }
 
-  void panStart(details) {
+  void panStart(DragStartDetails details) {
     final DrawingDelta delta = DrawingDelta(
-      metadata: const DrawingMetadata(
-        color: AppColors.red300,
-      ),
       point: PointDouble(
         details.localPosition.dx,
         details.localPosition.dy,
@@ -160,10 +218,20 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
     controller.draw(delta);
   }
 
+  bool isOutOfBounds(Offset offset) {
+    return (offset.dx < 0 || offset.dx > drawingBoundsHorizontal) ||
+        (offset.dy < 0 || offset.dy > drawingBoundsVertical);
+  }
+
   void panUpdate(DragUpdateDetails details) {
+    if (isOutOfBounds(details.localPosition)) return;
+
+    final double speed = details.sourceTimeStamp != null
+        ? computeDragSpeed(details.delta.distance, details.sourceTimeStamp!)
+        : 0;
+
     final DrawingDelta delta = DrawingDelta(
       point: pointDoubleFromOffset(details.localPosition),
-      metadata: const DrawingMetadata(strokeWidth: 4),
       operation: DrawingOperation.neutral,
     );
 
@@ -223,3 +291,5 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
     super.dispose();
   }
 }
+
+extension DragUpdateDetailsExtension on DragUpdateDetails {}

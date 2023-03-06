@@ -6,10 +6,10 @@ import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 typedef PointDouble = Point<double>;
 
-class DrawingPainter extends CustomPainter {
+class SketchPainter extends CustomPainter {
   final List<Drawing> drawings;
 
-  const DrawingPainter({
+  const SketchPainter({
     required this.drawings,
   });
 
@@ -22,14 +22,12 @@ class DrawingPainter extends CustomPainter {
 
   void paintDrawing(Drawing drawing, Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color = AppColors.black
-      ..strokeWidth = 4
+      ..color = drawing.metadata?.color ?? AppColors.black
+      ..strokeWidth = drawing.metadata?.strokeWidth ?? 4
       ..style = PaintingStyle.stroke;
 
     final Path path = Path();
     path.moveTo(0, 0);
-    paint.color = drawing.metadata?.color ?? AppColors.black;
-    paint.strokeWidth = drawing.metadata?.strokeWidth ?? paint.strokeWidth;
 
     for (final DrawingDelta drawingDelta in drawing.deltas) {
       paintDelta(
@@ -81,6 +79,17 @@ class DrawingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return oldDelegate is DrawingPainter && oldDelegate.drawings != drawings;
+    return oldDelegate is SketchPainter && oldDelegate.drawings != drawings;
   }
+}
+
+enum ChangeColor {
+  red(AppColors.red500),
+  green(AppColors.green800),
+  blue(AppColors.blue500),
+  ;
+
+  final Color color;
+
+  const ChangeColor(this.color);
 }

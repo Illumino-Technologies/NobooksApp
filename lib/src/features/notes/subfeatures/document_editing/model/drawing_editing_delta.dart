@@ -48,4 +48,25 @@ class DrawingMetadata {
   String toString() {
     return 'DrawingDeltaMetadata{\ncolor: $color, \nstrokeWidth: $strokeWidth\n}';
   }
+
+  DrawingMetadata copyWith({
+    Color? color,
+    double? strokeWidth,
+  }) {
+    return DrawingMetadata(
+      color: color ?? this.color,
+      strokeWidth: strokeWidth ?? this.strokeWidth,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DrawingMetadata &&
+          runtimeType == other.runtimeType &&
+          color == other.color &&
+          strokeWidth == other.strokeWidth;
+
+  @override
+  int get hashCode => color.hashCode ^ strokeWidth.hashCode;
 }

@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/model/all_models.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/document_editor_model.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/model/sketch_painter.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
@@ -76,6 +76,23 @@ class DrawingController extends ChangeNotifier {
     }
   }
 
+  void changeColor(Color color) {
+    switch (drawingMode) {
+      case DrawingMode.erase:
+        return;
+      case DrawingMode.sketch:
+        sketchMetadata = sketchMetadata.copyWith(color: color);
+        break;
+      case DrawingMode.shape:
+        shapeMetadata = shapeMetadata.copyWith(color: color);
+        break;
+      case DrawingMode.line:
+        lineMetadata = lineMetadata.copyWith(color: color);
+        break;
+    }
+    notifyListeners();
+  }
+
   void changeEraseMode(EraseMode mode) {
     if (eraser.mode == mode) return;
     eraser = eraser.copyWith(mode: mode);
@@ -121,7 +138,11 @@ class DrawingController extends ChangeNotifier {
   }
 
   Drawings _sketch(DrawingDelta delta, Drawings drawings) {
-    final Drawings sketchedDrawings = addDeltaToDrawings(delta, drawings);
+    final Drawings sketchedDrawings = addDeltaToDrawings(
+      delta,
+      drawings,
+      newMetadata: sketchMetadata,
+    );
     return sketchedDrawings;
   }
 
@@ -219,8 +240,16 @@ class DrawingController extends ChangeNotifier {
     return drawings;
   }
 
-  Drawings addDeltaToDrawings(DrawingDelta delta, Drawings drawings) {
+  Drawings addDeltaToDrawings(
+    DrawingDelta delta,
+    Drawings drawings, {
+    DrawingMetadata? newMetadata,
+  }) {
     drawings = List.from(drawings);
+
+    delta = delta.copyWith(
+      metadata: newMetadata,
+    );
 
     switch (delta.operation) {
       case DrawingOperation.start:

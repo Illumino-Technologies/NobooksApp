@@ -1,5 +1,7 @@
+import 'dart:ui';
+
 import 'package:nobook/src/features/notes/subfeatures/document_editing/model/all_models.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/document_editor_model.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/model/sketch_painter.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 extension DrawingsExentension on Drawings {
@@ -13,4 +15,8 @@ extension DrawingsExentension on Drawings {
     }
     return false;
   }
+}
+
+extension PointDoubleExtension on PointDouble {
+  Offset get toOffset => Offset(x, y);
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/document_editor_model.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/model/sketch_painter.dart';
 
 part 'drawing_editing_delta.dart';
 
