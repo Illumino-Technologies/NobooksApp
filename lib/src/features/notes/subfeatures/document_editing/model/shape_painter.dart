@@ -1,7 +1,7 @@
 enum Shape {
-  circle,
-  square,
-  triangle,
   rectangle,
+  circle,
+  triangle,
+  star,
 }
 
