@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
@@ -63,14 +62,14 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       elevation: 0,
-                                      backgroundColor: AppColors.blue500,
+                                      backgroundColor: AppColors.blue500
                                       // : Colors.white,
                                       ),
                                   onPressed: () {
-                                    context.goNamed(
-                                      AppRoute.notePage.path,
-                                      extra: NoteModel(),
-                                    );
+                                    // context.router.pushNamed(
+                                    //   AppRoute.notePage.name,
+                                    //   extra: NoteModel(),
+                                    // );
                                   },
                                   child: const Text(
                                     'Personal',
@@ -206,7 +205,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
               SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 10.0,),
+                      horizontal: 10.0, vertical: 10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
