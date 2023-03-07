@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class SketchPainter extends DrawingPainter<SketchDrawing> {
   const SketchPainter();
-
-  void paintShape(ShapeDrawing drawing, Canvas canvas, Size size) {}
 
   @override
   void paintDrawing(Canvas canvas, Size size, SketchDrawing drawing) {
@@ -27,7 +26,7 @@ class SketchPainter extends DrawingPainter<SketchDrawing> {
         size: size,
       );
     }
-    canvas.drawPath(path, paint);
+    // canvas.drawPath(path, paint);
   }
 
   void paintDelta({
@@ -54,14 +53,28 @@ class SketchPainter extends DrawingPainter<SketchDrawing> {
         // path.lineTo(drawingDelta.point.x, drawingDelta.point.y);
         break;
       case DrawingOperation.neutral:
-        paint.color = drawingDelta.metadata?.color ??
-            drawing.metadata?.color ??
-            paint.color;
-        paint.strokeWidth = drawingDelta.metadata?.strokeWidth ??
-            drawing.metadata?.strokeWidth ??
-            paint.strokeWidth;
-        path.lineTo(drawingDelta.point.x, drawingDelta.point.y);
-        break;
+        {
+          paint.color = drawingDelta.metadata?.color ??
+              drawing.metadata?.color ??
+              paint.color;
+          paint.strokeWidth = drawingDelta.metadata?.strokeWidth ??
+              drawing.metadata?.strokeWidth ??
+              paint.strokeWidth;
+
+          if (drawing.deltas.isFirst(drawingDelta)) break;
+
+          final PointDouble previousPoint =
+              drawing.deltas[drawing.deltas.indexOf(drawingDelta) - 1].point;
+          canvas.drawLine(
+            previousPoint.toOffset,
+            drawingDelta.point.toOffset,
+            paint,
+          );
+
+          path.lineTo(drawingDelta.point.x, drawingDelta.point.y);
+
+          break;
+        }
     }
   }
 }

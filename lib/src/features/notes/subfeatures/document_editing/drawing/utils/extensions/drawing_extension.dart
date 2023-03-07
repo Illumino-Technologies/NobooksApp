@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
@@ -18,4 +19,17 @@ extension DrawingsExentension on Drawings {
 
 extension PointDoubleExtension on PointDouble {
   Offset get toOffset => Offset(x, y);
+
+  PointDouble center(PointDouble p2) {
+    final double midX = ((x + p2.x) / 2);
+    final double midY = ((y + p2.y) / 2);
+
+    return PointDouble(midX, midY);
+  }
+}
+
+extension SizeExt on Size {
+  double get magnitude {
+    return math.sqrt((height * height) + (width * width));
+  }
 }

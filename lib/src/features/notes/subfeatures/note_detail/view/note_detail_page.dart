@@ -189,6 +189,8 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
                     child: ChangeNotifierBuilder<DrawingController>(
                       listenable: controller,
                       builder: (_, controller) {
+                        print('drawings: ${controller.drawings}');
+
                         return CustomPaint(
                           painter: DrawingsPainter(
                             shapeDrawingPainter: const ShapePainter(),
@@ -204,7 +206,7 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
                     onPanEnd: (details) {
                       details.velocity.pixelsPerSecond;
                       // if (erasingNotifier.value) return;
-                      if (controller.drawingMode == DrawingMode.erase) return;
+                      if (controller.drawingMode == DrawingMode.drawing) return;
                       panEnd(details);
                     },
                     onForcePressStart: (details) {},
@@ -317,7 +319,8 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
   final ValueNotifier<bool> erasingNotifier = ValueNotifier<bool>(false);
 
   void erasingCheckingCallback() {
-    final bool isCurrentlyErasing = controller.drawingMode == DrawingMode.erase;
+    final bool isCurrentlyErasing =
+        controller.drawingMode == DrawingMode.drawing;
 
     if (isCurrentlyErasing ^ erasingNotifier.value) {
       erasingNotifier.value = isCurrentlyErasing;

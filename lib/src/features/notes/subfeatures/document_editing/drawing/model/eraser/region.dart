@@ -17,6 +17,9 @@ class Region {
 
   double get maxY => centre.y + radius;
 
+  PointDouble get maxPoint => PointDouble(maxX, maxY);
+  PointDouble get minPoint => PointDouble(minX, minY);
+
   bool containsPoint(PointDouble point) {
     final double x = point.x;
     final double y = point.y;

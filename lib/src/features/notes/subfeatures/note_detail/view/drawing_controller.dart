@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DrawingController extends ChangeNotifier {
   late Eraser eraser;
@@ -68,16 +67,16 @@ class DrawingController extends ChangeNotifier {
 
   void toggleErase() {
     //TODO: use action stack
-    if (drawingMode == DrawingMode.erase) {
+    if (drawingMode == DrawingMode.drawing) {
       changeDrawingMode(DrawingMode.sketch);
     } else {
-      changeDrawingMode(DrawingMode.erase);
+      changeDrawingMode(DrawingMode.drawing);
     }
   }
 
   void changeColor(Color color) {
     switch (drawingMode) {
-      case DrawingMode.erase:
+      case DrawingMode.drawing:
         return;
       case DrawingMode.sketch:
         sketchMetadata = sketchMetadata.copyWith(color: color);
@@ -110,7 +109,7 @@ class DrawingController extends ChangeNotifier {
     Drawings drawings = List.from(_drawings);
 
     switch (drawingMode) {
-      case DrawingMode.erase:
+      case DrawingMode.drawing:
         eraser = eraser.copyWith(
           region: eraser.region.copyWith(centre: delta.point),
         );
@@ -149,10 +148,11 @@ class DrawingController extends ChangeNotifier {
     Drawings erasedDrawings;
     switch (eraser.mode) {
       case EraseMode.drawing:
-        erasedDrawings = eraseDrawingFrom(eraser.region, drawings);
+        erasedDrawings = eraser.eraseDrawingFrom(drawings);
         break;
       case EraseMode.area:
-        erasedDrawings = eraseAreaFrom(eraser.region, drawings);
+        print('erasing area');
+        erasedDrawings = eraser.eraseAreaFrom(drawings);
         break;
     }
     if (erasedDrawings.every((element) => element.deltas.isEmpty)) {
@@ -174,66 +174,6 @@ class DrawingController extends ChangeNotifier {
       newMetadata: shapeMetadata,
     );
     return drawnDrawings;
-  }
-
-  Drawings eraseAreaFrom(Region eraser, Drawings drawings) {
-    drawings = List.from(drawings);
-
-    Drawing? drawingToBeErased;
-
-    for (final Drawing drawing in drawings) {
-      if (drawing.deltas.containsWhere(
-        (value) => eraser.containsPoint(value.point),
-      )) {
-        drawingToBeErased = drawing;
-        break;
-      }
-    }
-    if (drawingToBeErased == null) return drawings;
-
-    final Drawing drawingTobeErasedCopy = drawingToBeErased;
-
-    final DrawingDelta erasedDelta = drawingToBeErased.deltas
-        .firstWhere((element) => eraser.containsPoint(element.point));
-
-    final int erasedDeltaIndex = drawingToBeErased.deltas.indexOf(erasedDelta);
-
-    if (drawingToBeErased.deltas.isFirst(erasedDelta)) {
-      if (drawingToBeErased.deltas.length == 1) {
-        drawingToBeErased.deltas.clear();
-      } else {
-        drawingToBeErased.deltas[1] = drawingToBeErased.deltas[1].copyWith(
-          operation: DrawingOperation.start,
-        );
-        drawingToBeErased.deltas.removeAt(0);
-      }
-      drawings.replace(drawingTobeErasedCopy, [drawingToBeErased]);
-    } else if (drawingToBeErased.deltas.isLast(erasedDelta)) {
-      final int length = drawingToBeErased.deltas.length;
-      drawingToBeErased.deltas[length - 2] = drawingToBeErased
-          .deltas[length - 2]
-          .copyWith(operation: DrawingOperation.end);
-      drawingToBeErased.deltas.removeLast();
-      drawings.replace(drawingTobeErasedCopy, [drawingToBeErased]);
-    } else {
-      drawingToBeErased.deltas[erasedDeltaIndex - 1] = drawingToBeErased
-          .deltas[erasedDeltaIndex - 1]
-          .copyWith(operation: DrawingOperation.end);
-
-      drawingToBeErased.deltas[erasedDeltaIndex + 1] = drawingToBeErased
-          .deltas[erasedDeltaIndex + 1]
-          .copyWith(operation: DrawingOperation.start);
-
-      drawingToBeErased.deltas.removeAt(erasedDeltaIndex);
-
-      final List<Drawing> modifiedDrawings = splitDrawingDeltaToDrawings(
-        drawingToBeErased.deltas,
-        drawingToBeErased.metadata,
-      );
-      drawings.replace(drawingTobeErasedCopy, [...modifiedDrawings]);
-    }
-
-    return drawings;
   }
 
   Drawings removeLastDrawingFrom(Drawings drawings) {
@@ -272,58 +212,6 @@ class DrawingController extends ChangeNotifier {
         drawings.last.deltas.add(delta);
         break;
     }
-    return drawings;
-  }
-
-  List<Drawing> splitDrawingDeltaToDrawings<T extends Drawing>(
-    List<DrawingDelta> deltas, [
-    DrawingMetadata? defaultMetadata,
-  ]) {
-    deltas = List.from(deltas);
-    final List<Drawing> drawings = [];
-
-    bool currentlyAddingDrawing = false;
-    for (final DrawingDelta delta in deltas) {
-      if (delta.operation == DrawingOperation.start) {
-        currentlyAddingDrawing = true;
-        drawings.add(
-          Drawing(
-            deltas: [delta],
-            metadata: defaultMetadata ?? delta.metadata,
-          ),
-        );
-        continue;
-      }
-      if (currentlyAddingDrawing) {
-        drawings.last.deltas.add(delta);
-      }
-      if (delta.operation == DrawingOperation.end) {
-        currentlyAddingDrawing = false;
-      }
-    }
-    return drawings;
-  }
-
-  Drawings eraseDrawingAtSpecific(PointDouble point, Drawings drawings) {
-    drawings = List.from(drawings);
-
-    drawings.removeWhere(
-      (element) => element.deltas.containsWhere(
-        (value) => value.point == point,
-      ),
-    );
-    return drawings;
-  }
-
-  Drawings eraseDrawingFrom(Region region, Drawings drawings) {
-    drawings = List.from(drawings);
-
-    drawings.removeWhere(
-      (element) => element.deltas.containsWhere(
-        (value) => region.containsPoint(value.point),
-      ),
-    );
-
     return drawings;
   }
 }

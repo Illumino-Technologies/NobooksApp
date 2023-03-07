@@ -16,4 +16,13 @@ class SketchDrawing extends Drawing {
       metadata: metadata ?? this.metadata,
     );
   }
+
+  @override
+  String toString() {
+    return '''\n
+    SketchDrawing{
+      deltas: $deltas,
+      metadata: $metadata,
+    }''';
+  }
 }

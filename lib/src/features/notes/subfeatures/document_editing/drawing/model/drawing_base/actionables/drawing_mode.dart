@@ -1,7 +1,7 @@
 part of '../drawing.dart';
 
 enum DrawingMode {
-  erase,
+  drawing,
   sketch,
   shape,
   line;

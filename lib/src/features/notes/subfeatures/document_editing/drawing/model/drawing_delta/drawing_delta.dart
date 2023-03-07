@@ -18,7 +18,11 @@ class DrawingDelta {
 
   @override
   String toString() {
-    return 'DrawingDelta{\npoint: $point, operation: \n$operation, metadata: \n$metadata\n}';
+    return '''DrawingDelta{
+      point: $point,
+      operation: $operation,
+      metadata: $metadata
+    }''';
   }
 
   DrawingDelta copyWith({

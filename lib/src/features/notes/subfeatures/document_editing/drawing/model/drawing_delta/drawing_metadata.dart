@@ -11,7 +11,10 @@ class DrawingMetadata {
 
   @override
   String toString() {
-    return 'DrawingDeltaMetadata{\ncolor: $color, \nstrokeWidth: $strokeWidth\n}';
+    return '''DrawingDeltaMetadata{
+        color: $color,
+        strokeWidth: $strokeWidth
+      }''';
   }
 
   DrawingMetadata copyWith({
