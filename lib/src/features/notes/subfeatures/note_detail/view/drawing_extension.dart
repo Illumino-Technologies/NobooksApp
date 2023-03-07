@@ -1,7 +1,6 @@
 import 'dart:ui';
 
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/all_models.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/sketch_painter.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 extension DrawingsExentension on Drawings {

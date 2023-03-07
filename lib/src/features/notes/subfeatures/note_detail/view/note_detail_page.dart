@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/all_models.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/sketch_painter.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_controller.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/global/ui/widgets/custom/value_listenables/change_notifier_builder.dart';
@@ -22,7 +21,7 @@ class NoteDetailPage extends ConsumerStatefulWidget {
 }
 
 class _NotePageState extends ConsumerState<NoteDetailPage> {
-  final double drawingBoundsVertical = 600;
+  final double drawingBoundsVertical = 500;
   final double drawingBoundsHorizontal = 600;
 
   @override
@@ -128,6 +127,56 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
               },
             ),
             20.boxHeight,
+            ChangeNotifierBuilder(
+              listenable: controller,
+              buildWhen: (previous, next) =>
+                  previous?.drawingMode == next.drawingMode,
+              builder: (_, value) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      decoration: BoxDecoration(
+                        borderRadius: Ui.allBorderRadius(50),
+                        border: value.drawingMode == DrawingMode.sketch
+                            ? Border.all(
+                                color: AppColors.blue500,
+                                width: 2,
+                              )
+                            : null,
+                      ),
+                      child: FilledButton.tonal(
+                        onPressed: () {
+                          controller.changeDrawingMode(DrawingMode.sketch);
+                        },
+                        child: const Text('Sketch mode'),
+                      ),
+                    ),
+                    30.boxWidth,
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      decoration: BoxDecoration(
+                        borderRadius: Ui.allBorderRadius(50),
+                        border: value.drawingMode == DrawingMode.shape
+                            ? Border.all(
+                                color: AppColors.blue500,
+                                width: 2,
+                              )
+                            : null,
+                      ),
+                      child: FilledButton.tonal(
+                        onPressed: () {
+                          controller.changeDrawingMode(DrawingMode.shape);
+                        },
+                        child: const Text('Shape mode'),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+            20.boxHeight,
             Container(
               color: AppColors.subjectOrange.withOpacity(0.4),
               width: drawingBoundsHorizontal,
@@ -141,7 +190,9 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
                       listenable: controller,
                       builder: (_, controller) {
                         return CustomPaint(
-                          painter: SketchPainter(
+                          painter: DrawingsPainter(
+                            shapeDrawingPainter: const ShapePainter(),
+                            sketchDrawingPainter: const SketchPainter(),
                             drawings: controller.drawings,
                           ),
                         );

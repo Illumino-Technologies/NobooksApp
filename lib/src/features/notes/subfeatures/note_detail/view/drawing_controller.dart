@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/all_models.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/model/sketch_painter.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
@@ -138,7 +137,7 @@ class DrawingController extends ChangeNotifier {
   }
 
   Drawings _sketch(DrawingDelta delta, Drawings drawings) {
-    final Drawings sketchedDrawings = addDeltaToDrawings(
+    final Drawings sketchedDrawings = addDeltaToDrawings<SketchDrawing>(
       delta,
       drawings,
       newMetadata: sketchMetadata,
@@ -169,7 +168,11 @@ class DrawingController extends ChangeNotifier {
   }
 
   Drawings _drawShape(DrawingDelta delta, Drawings drawings) {
-    final Drawings drawnDrawings = addDeltaToDrawings(delta, drawings);
+    final Drawings drawnDrawings = addDeltaToDrawings<ShapeDrawing>(
+      delta,
+      drawings,
+      newMetadata: shapeMetadata,
+    );
     return drawnDrawings;
   }
 
@@ -240,7 +243,7 @@ class DrawingController extends ChangeNotifier {
     return drawings;
   }
 
-  Drawings addDeltaToDrawings(
+  Drawings addDeltaToDrawings<T extends Drawing>(
     DrawingDelta delta,
     Drawings drawings, {
     DrawingMetadata? newMetadata,
@@ -254,7 +257,7 @@ class DrawingController extends ChangeNotifier {
     switch (delta.operation) {
       case DrawingOperation.start:
         drawings.add(
-          Drawing(
+          Drawing.drawingType<T>(
             deltas: [delta],
             metadata: delta.metadata,
           ),
@@ -272,7 +275,7 @@ class DrawingController extends ChangeNotifier {
     return drawings;
   }
 
-  List<Drawing> splitDrawingDeltaToDrawings(
+  List<Drawing> splitDrawingDeltaToDrawings<T extends Drawing>(
     List<DrawingDelta> deltas, [
     DrawingMetadata? defaultMetadata,
   ]) {
