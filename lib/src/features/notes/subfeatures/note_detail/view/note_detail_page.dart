@@ -177,6 +177,27 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
               },
             ),
             20.boxHeight,
+            ChangeNotifierBuilder(
+              listenable: controller,
+              buildWhen: (previous, next) => previous?.shape == next.shape,
+              builder: (_, value) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ...Shape.values.map(
+                      (e) => IconButton(
+                        onPressed: () => controller.changeShape(e),
+                        icon: Icon(
+                          e.iconData,
+                          color: value.shape == e ? AppColors.blue500 : null,
+                        ),
+                      ),
+                    )
+                  ],
+                );
+              },
+            ),
+            20.boxHeight,
             Container(
               color: AppColors.subjectOrange.withOpacity(0.4),
               width: drawingBoundsHorizontal,

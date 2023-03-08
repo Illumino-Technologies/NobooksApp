@@ -26,7 +26,7 @@ class SketchPainter extends DrawingPainter<SketchDrawing> {
         size: size,
       );
     }
-    // canvas.drawPath(path, paint);
+    canvas.drawPath(path, paint);
   }
 
   void paintDelta({
@@ -63,13 +63,13 @@ class SketchPainter extends DrawingPainter<SketchDrawing> {
 
           if (drawing.deltas.isFirst(drawingDelta)) break;
 
-          final PointDouble previousPoint =
-              drawing.deltas[drawing.deltas.indexOf(drawingDelta) - 1].point;
-          canvas.drawLine(
-            previousPoint.toOffset,
-            drawingDelta.point.toOffset,
-            paint,
-          );
+          // final PointDouble previousPoint =
+          //     drawing.deltas[drawing.deltas.indexOf(drawingDelta) - 1].point;
+          // canvas.drawLine(
+          //   previousPoint.toOffset,
+          //   drawingDelta.point.toOffset,
+          //   paint,
+          // );
 
           path.lineTo(drawingDelta.point.x, drawingDelta.point.y);
 

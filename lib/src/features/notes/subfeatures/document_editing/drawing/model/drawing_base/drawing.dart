@@ -24,10 +24,21 @@ class Drawing {
   static Drawing drawingType<T extends Drawing>({
     required List<DrawingDelta> deltas,
     required DrawingMetadata? metadata,
+    Shape? shape,
   }) {
+    assert(
+      () {
+        if (T == ShapeDrawing) {
+          return shape != null;
+        }
+        return true;
+      }(),
+      "Shape cannot be null when constructing a [ShapeDrawing] object",
+    );
     switch (T) {
       case ShapeDrawing:
         return ShapeDrawing(
+          shape: shape!,
           deltas: deltas,
           metadata: metadata,
         );

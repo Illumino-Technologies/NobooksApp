@@ -1,17 +1,22 @@
-import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/model/drawing_model_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart' show Drawing, DrawingDelta, DrawingMetadata, Shape, ShapeDrawing;
 
 class ShapeDrawing extends Drawing {
+  final Shape shape;
+
   ShapeDrawing({
+    required this.shape,
     required super.deltas,
     super.metadata,
   });
 
   @override
   ShapeDrawing copyWith({
+    final Shape? shape,
     List<DrawingDelta>? deltas,
     DrawingMetadata? metadata,
   }) {
     return ShapeDrawing(
+      shape: shape ?? this.shape,
       deltas: deltas ?? this.deltas,
       metadata: metadata ?? this.metadata,
     );

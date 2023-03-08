@@ -33,3 +33,7 @@ extension SizeExt on Size {
     return math.sqrt((height * height) + (width * width));
   }
 }
+
+extension OffsetExtension on Offset {
+  PointDouble get point => PointDouble(dx, dy);
+}

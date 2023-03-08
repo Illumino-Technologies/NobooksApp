@@ -41,10 +41,11 @@ class Eraser {
         Drawing? drawing;
         switch (drawingType) {
           case ShapeDrawing:
-            drawing = ShapeDrawing(
-              deltas: [delta],
-              metadata: defaultMetadata ?? delta.metadata,
-            );
+            // drawing = ShapeDrawing(
+            //
+            //   deltas: [delta],
+            //   metadata: defaultMetadata ?? delta.metadata,
+            // );
             break;
           case SketchDrawing:
             drawing = SketchDrawing(

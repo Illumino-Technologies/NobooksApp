@@ -21,6 +21,7 @@ class DrawingController extends ChangeNotifier {
   late DrawingMetadata lineMetadata;
   late DrawingMetadata shapeMetadata;
   late DrawingMetadata sketchMetadata;
+  late Shape shape;
 
   void initialize({
     Eraser? eraser,
@@ -28,10 +29,13 @@ class DrawingController extends ChangeNotifier {
     DrawingMetadata? lineMetadata,
     DrawingMetadata? shapeMetadata,
     DrawingMetadata? sketchMetadata,
+    Shape? shape,
   }) {
     //TODO: initializeValues from cache/storage
 
     _drawings = _drawings;
+
+    this.shape = shape ?? Shape.rectangle;
 
     this.lineMetadata = lineMetadata ??
         const DrawingMetadata(
@@ -62,6 +66,12 @@ class DrawingController extends ChangeNotifier {
 
   void changeDrawingMode(DrawingMode mode) {
     drawingMode = mode;
+    notifyListeners();
+  }
+
+  void changeShape(Shape newShape) {
+    if (shape == newShape) return;
+    shape = newShape;
     notifyListeners();
   }
 
@@ -99,7 +109,7 @@ class DrawingController extends ChangeNotifier {
 
   void changeDrawings(Drawings drawings) {
     if (drawings.isEmpty) {
-      changeDrawingMode(DrawingMode.sketch);
+      changeDrawingMode(DrawingMode.shape);
     }
     _drawings = List.from(drawings);
     notifyListeners();
@@ -130,7 +140,7 @@ class DrawingController extends ChangeNotifier {
 
   void clearDrawings() {
     //TODO: use action stack
-    changeDrawingMode(DrawingMode.sketch);
+    changeDrawingMode(DrawingMode.shape);
     //TODO: confirm or modify
     changeDrawings([]);
   }
@@ -151,7 +161,6 @@ class DrawingController extends ChangeNotifier {
         erasedDrawings = eraser.eraseDrawingFrom(drawings);
         break;
       case EraseMode.area:
-        print('erasing area');
         erasedDrawings = eraser.eraseAreaFrom(drawings);
         break;
     }
@@ -200,6 +209,7 @@ class DrawingController extends ChangeNotifier {
           Drawing.drawingType<T>(
             deltas: [delta],
             metadata: delta.metadata,
+            shape: shape,
           ),
         );
         break;
