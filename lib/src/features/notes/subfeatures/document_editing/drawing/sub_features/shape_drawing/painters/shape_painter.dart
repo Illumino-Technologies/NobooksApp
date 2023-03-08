@@ -175,7 +175,7 @@ class ShapePainter extends DrawingPainter<ShapeDrawing> {
       (zero.y + height.percent(34.5)),
     );
 
-    final P≠ointDouble m2 = PointDouble(
+    final PointDouble m2 = PointDouble(
       (zero.x + width.percent(31.6)),
       (zero.y + height.percent(56.0)),
     );
