@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DrawingController extends ChangeNotifier {
   late Eraser eraser;
@@ -18,10 +19,35 @@ class DrawingController extends ChangeNotifier {
 
   Drawings get drawings => List.from(_drawings);
 
+  final List<DrawingMode> _actionStack = List.from([]);
+
   late DrawingMetadata lineMetadata;
   late DrawingMetadata shapeMetadata;
   late DrawingMetadata sketchMetadata;
   late Shape shape;
+
+  DrawingMetadata metadataFor([DrawingMode? mode]) {
+    switch (_actionStack.lastOrNull) {
+      case DrawingMode.erase:
+        {
+          final DrawingMode? lastNonEraseMode = _actionStack.lastWhereOrNull(
+            (element) => element != DrawingMode.erase,
+          );
+          if (lastNonEraseMode == null) return sketchMetadata;
+          return metadataFor(
+            lastNonEraseMode,
+          );
+        }
+      case DrawingMode.sketch:
+        return sketchMetadata;
+      case DrawingMode.shape:
+        return shapeMetadata;
+      case DrawingMode.line:
+        return lineMetadata;
+      case null:
+        return metadataFor(DrawingMode.erase);
+    }
+  }
 
   void initialize({
     Eraser? eraser,
@@ -54,6 +80,9 @@ class DrawingController extends ChangeNotifier {
         );
 
     this.drawingMode = drawingMode ?? DrawingMode.sketch;
+
+    _actionStack.add(this.drawingMode);
+
     this.eraser = eraser ??
         const Eraser(
           region: Region(
@@ -65,6 +94,9 @@ class DrawingController extends ChangeNotifier {
   }
 
   void changeDrawingMode(DrawingMode mode) {
+    if (_actionStack.contains(mode)) _actionStack.remove(mode);
+    _actionStack.add(mode);
+
     drawingMode = mode;
     notifyListeners();
   }
@@ -77,16 +109,16 @@ class DrawingController extends ChangeNotifier {
 
   void toggleErase() {
     //TODO: use action stack
-    if (drawingMode == DrawingMode.drawing) {
+    if (drawingMode == DrawingMode.erase) {
       changeDrawingMode(DrawingMode.sketch);
     } else {
-      changeDrawingMode(DrawingMode.drawing);
+      changeDrawingMode(DrawingMode.erase);
     }
   }
 
   void changeColor(Color color) {
     switch (drawingMode) {
-      case DrawingMode.drawing:
+      case DrawingMode.erase:
         return;
       case DrawingMode.sketch:
         sketchMetadata = sketchMetadata.copyWith(color: color);
@@ -109,7 +141,7 @@ class DrawingController extends ChangeNotifier {
 
   void changeDrawings(Drawings drawings) {
     if (drawings.isEmpty) {
-      changeDrawingMode(DrawingMode.shape);
+      changeDrawingMode(_actionStack.lastOrNull ?? DrawingMode.sketch);
     }
     _drawings = List.from(drawings);
     notifyListeners();
@@ -119,7 +151,7 @@ class DrawingController extends ChangeNotifier {
     Drawings drawings = List.from(_drawings);
 
     switch (drawingMode) {
-      case DrawingMode.drawing:
+      case DrawingMode.erase:
         eraser = eraser.copyWith(
           region: eraser.region.copyWith(centre: delta.point),
         );
@@ -139,8 +171,9 @@ class DrawingController extends ChangeNotifier {
   }
 
   void clearDrawings() {
+    if (_actionStack.lastOrNull == DrawingMode.erase) _actionStack.removeLast();
     //TODO: use action stack
-    changeDrawingMode(DrawingMode.shape);
+    changeDrawingMode(_actionStack.lastOrNull ?? DrawingMode.sketch);
     //TODO: confirm or modify
     changeDrawings([]);
   }
@@ -149,7 +182,7 @@ class DrawingController extends ChangeNotifier {
     final Drawings sketchedDrawings = addDeltaToDrawings<SketchDrawing>(
       delta,
       drawings,
-      newMetadata: sketchMetadata,
+      newMetadata: metadataFor(DrawingMode.sketch),
     );
     return sketchedDrawings;
   }
@@ -180,7 +213,7 @@ class DrawingController extends ChangeNotifier {
     final Drawings drawnDrawings = addDeltaToDrawings<ShapeDrawing>(
       delta,
       drawings,
-      newMetadata: shapeMetadata,
+      newMetadata: metadataFor(DrawingMode.shape),
     );
     return drawnDrawings;
   }

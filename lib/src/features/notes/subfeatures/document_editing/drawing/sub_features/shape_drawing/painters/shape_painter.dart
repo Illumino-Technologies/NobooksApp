@@ -1,5 +1,3 @@
-//ignore: unused_import
-import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:nobook/src/features/features_barrel.dart';
@@ -15,8 +13,6 @@ class ShapePainter extends DrawingPainter<ShapeDrawing> {
     Size size,
     ShapeDrawing drawing,
   ) {
-    print('shape: ${drawing.shape}');
-
     final Paint paint = Paint()
       ..color = drawing.metadata?.color ?? AppColors.black
       ..strokeWidth = drawing.metadata?.strokeWidth ?? 4
@@ -100,11 +96,6 @@ class ShapePainter extends DrawingPainter<ShapeDrawing> {
     );
     final Path path = Path();
 
-    final Rect rect = Rect.fromPoints(
-      firstDelta.point.toOffset,
-      secondDelta.point.toOffset,
-    );
-
     final double x1 = firstDelta.point.x;
     final double x2 = secondDelta.point.x;
 
@@ -143,17 +134,6 @@ class ShapePainter extends DrawingPainter<ShapeDrawing> {
     );
 
     final Path path = Path();
-    // final double x1 = firstDelta.point.x;
-    // final double x2 = secondDelta.point.x;
-    //
-    // final double y1 = firstDelta.point.y;
-    // final double y2 = secondDelta.point.y;
-
-    final double x1 = math.min(firstDelta.point.x, secondDelta.point.x);
-    final double x2 = math.max(firstDelta.point.x, secondDelta.point.x);
-
-    final double y1 = math.min(firstDelta.point.y, secondDelta.point.y);
-    final double y2 = math.max(firstDelta.point.y, secondDelta.point.y);
 
     final double width = rect.width;
     final double height = rect.height;

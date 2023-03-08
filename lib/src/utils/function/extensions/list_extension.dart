@@ -90,6 +90,17 @@ extension ListExtension<E> on List<E> {
     return tempList;
   }
 
+  E? lastWhereOrNull(
+    bool Function(E element) test, {
+    E Function()? orElse,
+  }) {
+    try {
+      return lastWhere(test, orElse: orElse);
+    } catch (e) {
+      return null;
+    }
+  }
+
   E? firstWhereOrNull(bool Function(E element) test) {
     try {
       return firstWhere(test);

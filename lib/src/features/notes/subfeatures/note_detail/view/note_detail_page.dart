@@ -94,9 +94,9 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
             ChangeNotifierBuilder(
               listenable: controller,
               buildWhen: (previous, next) =>
-                  previous?.sketchMetadata == next.sketchMetadata,
+                  previous?.metadataFor() == next.metadataFor(),
               builder: (_, notifier) {
-                final DrawingMetadata metadata = notifier.sketchMetadata;
+                final DrawingMetadata metadata = notifier.metadataFor();
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -227,7 +227,7 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
                     onPanEnd: (details) {
                       details.velocity.pixelsPerSecond;
                       // if (erasingNotifier.value) return;
-                      if (controller.drawingMode == DrawingMode.drawing) return;
+                      if (controller.drawingMode == DrawingMode.erase) return;
                       panEnd(details);
                     },
                     onForcePressStart: (details) {},
@@ -340,8 +340,7 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
   final ValueNotifier<bool> erasingNotifier = ValueNotifier<bool>(false);
 
   void erasingCheckingCallback() {
-    final bool isCurrentlyErasing =
-        controller.drawingMode == DrawingMode.drawing;
+    final bool isCurrentlyErasing = controller.drawingMode == DrawingMode.erase;
 
     if (isCurrentlyErasing ^ erasingNotifier.value) {
       erasingNotifier.value = isCurrentlyErasing;
