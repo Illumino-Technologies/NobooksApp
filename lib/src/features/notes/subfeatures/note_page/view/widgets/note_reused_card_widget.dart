@@ -203,7 +203,8 @@ class ChemistryNoteCards extends StatelessWidget {
                                         ),
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/subjects/ch.png',),
+                                            'assets/subjects/ch.png',
+                                          ),
                                           fit: BoxFit.fill,
                                         ),
                                       ),
@@ -340,7 +341,8 @@ class BookKeepingNoteCards extends StatelessWidget {
                                         ),
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/subjects/bk.png',),
+                                            'assets/subjects/bk.png',
+                                          ),
                                           fit: BoxFit.fill,
                                         ),
                                       ),
@@ -477,7 +479,8 @@ class CivicNoteCards extends StatelessWidget {
                                         ),
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/subjects/cv.png',),
+                                            'assets/subjects/cv.png',
+                                          ),
                                           fit: BoxFit.fill,
                                         ),
                                       ),

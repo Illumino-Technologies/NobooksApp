@@ -3,7 +3,6 @@ import 'package:nobook/src/features/notes/model/note/note.dart';
 import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/domain/models/subject/subject.dart';
 
-
 abstract class FakeNotes {
   static final List<Note> allNotes = [
     Note(
@@ -11,7 +10,7 @@ abstract class FakeNotes {
       topic: 'Cell Theory',
       noteBody: 'Evolution',
       createdAt: DateTime.now(),
-      updatedAt: DateTime.now()
+      updatedAt: DateTime.now(),
     ),
     Note(
       subject: FakeSubjects.biology,
@@ -42,56 +41,49 @@ abstract class FakeNotes {
       updatedAt: DateTime.now(),
     ),
     Note(
-      subject:
-          FakeSubjects.civicEducation,
+      subject: FakeSubjects.civicEducation,
       topic: 'Civil Society',
       noteBody: 'Civic Education',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     ),
     Note(
-      subject:
-          FakeSubjects.civicEducation,
+      subject: FakeSubjects.civicEducation,
       topic: 'Civil Society',
       noteBody: 'Civic Education',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     ),
     Note(
-      subject:
-          FakeSubjects.civicEducation,
+      subject: FakeSubjects.civicEducation,
       topic: 'Civil Society',
       noteBody: 'Civic Education',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     ),
     Note(
-      subject:
-          FakeSubjects.bookKeeping,
+      subject: FakeSubjects.bookKeeping,
       topic: 'Trial Balance',
       noteBody: 'Booking Keeping',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     ),
     Note(
-      subject:
-          FakeSubjects.bookKeeping,
+      subject: FakeSubjects.bookKeeping,
       topic: 'Trial Balance',
       noteBody: 'Booking Keeping',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     ),
     Note(
-      subject:
-          FakeSubjects.bookKeeping,
+      subject: FakeSubjects.bookKeeping,
       topic: 'Trial Balance',
       noteBody: 'Booking Keeping',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     ),
     Note(
-      subject:
-          FakeSubjects.bookKeeping,
+      subject: FakeSubjects.bookKeeping,
       topic: 'Trial Balance',
       noteBody: 'Booking Keeping',
       createdAt: DateTime.now(),
@@ -171,24 +163,21 @@ List<Note> civicnote = [
     updatedAt: DateTime.now(),
   ),
   Note(
-    subject:
-        FakeSubjects.civicEducation,
+    subject: FakeSubjects.civicEducation,
     topic: ' Civil Society',
     noteBody: 'Civic Education',
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
   ),
   Note(
-    subject:
-        FakeSubjects.civicEducation,
+    subject: FakeSubjects.civicEducation,
     topic: ' Civil Society',
     noteBody: 'Civic Education',
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
   ),
   Note(
-    subject:
-        FakeSubjects.civicEducation,
+    subject: FakeSubjects.civicEducation,
     topic: ' Civil Society',
     noteBody: 'Civic Education',
     createdAt: DateTime.now(),
@@ -197,32 +186,28 @@ List<Note> civicnote = [
 ];
 List<Note> bookeepingnote = [
   Note(
-    subject:
-        FakeSubjects.bookKeeping,
+    subject: FakeSubjects.bookKeeping,
     topic: 'Trial Balance',
     noteBody: 'Booking Keeping',
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
   ),
   Note(
-    subject:
-        FakeSubjects.bookKeeping,
+    subject: FakeSubjects.bookKeeping,
     topic: 'Trial Balance',
     noteBody: 'Booking Keeping',
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
   ),
   Note(
-    subject:
-        FakeSubjects.bookKeeping,
+    subject: FakeSubjects.bookKeeping,
     topic: 'Trial Balance',
     noteBody: 'Booking Keeping',
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
   ),
   Note(
-    subject:
-        FakeSubjects.bookKeeping,
+    subject: FakeSubjects.bookKeeping,
     topic: 'Trial Balance',
     noteBody: 'Booking Keeping',
     createdAt: DateTime.now(),

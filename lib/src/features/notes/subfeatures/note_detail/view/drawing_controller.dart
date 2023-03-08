@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/note_detail/view/base_controller.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-class DrawingController extends ChangeNotifier {
+class DrawingController extends ChangeNotifier
+    implements DocumentEditingController {
   late Eraser eraser;
 
   late DrawingMode _drawingMode;
@@ -49,16 +51,22 @@ class DrawingController extends ChangeNotifier {
     }
   }
 
-  void initialize({
+  bool _initialized = false;
+
+  bool get initialized => _initialized;
+
+  @override
+  Future<void> initialize({
     Eraser? eraser,
     DrawingMode? drawingMode,
     DrawingMetadata? lineMetadata,
     DrawingMetadata? shapeMetadata,
     DrawingMetadata? sketchMetadata,
     Shape? shape,
-  }) {
+  }) async {
     //TODO: initializeValues from cache/storage
 
+    if (_initialized) return;
     _drawings = _drawings;
 
     this.shape = shape ?? Shape.rectangle;
@@ -91,6 +99,7 @@ class DrawingController extends ChangeNotifier {
           ),
           mode: EraseMode.area,
         );
+    _initialized = true;
   }
 
   void changeDrawingMode(DrawingMode mode) {

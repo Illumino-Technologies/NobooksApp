@@ -10,13 +10,11 @@ class NobooksWidgetInitializer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        return ProviderScope(
-          child: ScreenUtilInit(
-            designSize: const Size(1366, 1024),
-            builder: (_, __) => child,
-          ),
-        );
-      }
-    
+    return ProviderScope(
+      child: ScreenUtilInit(
+        designSize: const Size(1366, 1024),
+        builder: (_, __) => child,
+      ),
+    );
   }
-
+}

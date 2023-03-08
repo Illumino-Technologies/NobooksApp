@@ -61,10 +61,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      elevation: 0,
-                                      backgroundColor: AppColors.blue500
-                                      // : Colors.white,
-                                      ),
+                                    elevation: 0,
+                                    backgroundColor: AppColors.blue500,
+                                    // : Colors.white,
+                                  ),
                                   onPressed: () {
                                     // context.router.pushNamed(
                                     //   AppRoute.notePage.name,
@@ -173,8 +173,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                       Text(
                                                         DateFormat.yMEd()
                                                             .add_jms()
-                                                            .format(currentNote
-                                                                .createdAt),
+                                                            .format(
+                                                              currentNote
+                                                                  .createdAt,
+                                                            ),
                                                         style: const TextStyle(
                                                           fontSize: 10,
                                                           fontWeight:
@@ -205,7 +207,9 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
               SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 10.0),
+                    horizontal: 10.0,
+                    vertical: 10.0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

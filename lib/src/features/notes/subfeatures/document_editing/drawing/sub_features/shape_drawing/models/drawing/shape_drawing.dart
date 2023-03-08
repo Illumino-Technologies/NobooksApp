@@ -1,4 +1,5 @@
-import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart' show Drawing, DrawingDelta, DrawingMetadata, Shape, ShapeDrawing;
+import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart'
+    show Drawing, DrawingDelta, DrawingMetadata, Shape, ShapeDrawing;
 
 class ShapeDrawing extends Drawing {
   final Shape shape;

@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_canvas.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_controller.dart';
 import 'package:nobook/src/global/global_barrel.dart';
-import 'package:nobook/src/global/ui/widgets/custom/value_listenables/change_notifier_builder.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
 class NoteDetailPage extends ConsumerStatefulWidget {
@@ -202,42 +202,9 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
               color: AppColors.subjectOrange.withOpacity(0.4),
               width: drawingBoundsHorizontal,
               height: drawingBoundsVertical,
-              child: Stack(
-                children: [
-                  SizedBox(
-                    height: drawingBoundsVertical,
-                    width: drawingBoundsHorizontal,
-                    child: ChangeNotifierBuilder<DrawingController>(
-                      listenable: controller,
-                      builder: (_, controller) {
-                        print('drawings: ${controller.drawings}');
-
-                        return CustomPaint(
-                          painter: DrawingsPainter(
-                            shapeDrawingPainter: const ShapePainter(),
-                            sketchDrawingPainter: const SketchPainter(),
-                            drawings: controller.drawings,
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  GestureDetector(
-                    onPanStart: panStart,
-                    onPanEnd: (details) {
-                      details.velocity.pixelsPerSecond;
-                      // if (erasingNotifier.value) return;
-                      if (controller.drawingMode == DrawingMode.erase) return;
-                      panEnd(details);
-                    },
-                    onForcePressStart: (details) {},
-                    onForcePressUpdate: (details) {
-                      details.pressure;
-                      print('force pressure: ${details.pressure}');
-                    },
-                    onPanUpdate: panUpdate,
-                  ),
-                ],
+              child: DrawingCanvas(
+                controller: controller,
+                size: Size(drawingBoundsHorizontal, drawingBoundsVertical),
               ),
             ),
           ],
@@ -249,92 +216,6 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
   void changeColor(Color color) {
     controller.changeColor(color);
   }
-
-  final ValueNotifier<int?> dragChangeNotifier = ValueNotifier<int?>(null);
-
-  int computeDurationDifference(Duration duration) {
-    final int durationDifference = dragChangeNotifier.value == null
-        ? 0
-        : duration.inMilliseconds - dragChangeNotifier.value!;
-    dragChangeNotifier.value = duration.inMilliseconds;
-    return durationDifference;
-  }
-
-  double computeDragSpeed(double distance, Duration duration) {
-    final int time = computeDurationDifference(duration);
-    return time == 0 ? 0 : distance / time;
-  }
-
-  PointDouble pointDoubleFromOffset(Offset offset) {
-    return PointDouble(offset.dx, offset.dy);
-  }
-
-  void panStart(DragStartDetails details) {
-    final DrawingDelta delta = DrawingDelta(
-      point: PointDouble(
-        details.localPosition.dx,
-        details.localPosition.dy,
-      ),
-      operation: DrawingOperation.start,
-    );
-
-    controller.draw(delta);
-  }
-
-  void panEnd(DragEndDetails details) {
-    final DrawingDelta delta = DrawingDelta(
-      point: controller.drawings.isEmpty
-          ? const PointDouble(0, 0)
-          : controller.drawings.last.deltas.last.point,
-      operation: DrawingOperation.end,
-    );
-
-    controller.draw(delta);
-  }
-
-  bool isOutOfBounds(Offset offset) {
-    return (offset.dx < 0 || offset.dx > drawingBoundsHorizontal) ||
-        (offset.dy < 0 || offset.dy > drawingBoundsVertical);
-  }
-
-  void panUpdate(DragUpdateDetails details) {
-    if (isOutOfBounds(details.localPosition)) return;
-
-    final double speed = details.sourceTimeStamp != null
-        ? computeDragSpeed(details.delta.distance, details.sourceTimeStamp!)
-        : 0;
-
-    final DrawingDelta delta = DrawingDelta(
-      point: pointDoubleFromOffset(details.localPosition),
-      operation: DrawingOperation.neutral,
-    );
-
-    controller.draw(delta);
-  }
-
-  late final Drawing initialDrawing = Drawing(
-    deltas: initialDelta,
-  );
-
-  final List<DrawingDelta> initialDelta = [
-    const DrawingDelta(
-      point: PointDouble(0, 0),
-      operation: DrawingOperation.start,
-    ),
-    ...List<DrawingDelta>.generate(
-      80,
-      (index) => DrawingDelta(
-        point: PointDouble(
-          3 * (index + 2),
-          4 * (index + 2),
-        ),
-      ),
-    ),
-    const DrawingDelta(
-      point: PointDouble(7, 29),
-      operation: DrawingOperation.end,
-    ),
-  ];
 
   final DrawingController controller = DrawingController();
   final ValueNotifier<bool> erasingNotifier = ValueNotifier<bool>(false);
@@ -365,5 +246,3 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
     super.dispose();
   }
 }
-
-extension DragUpdateDetailsExtension on DragUpdateDetails {}

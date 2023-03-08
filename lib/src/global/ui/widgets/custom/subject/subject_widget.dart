@@ -37,7 +37,6 @@ class SubjectWidget extends StatelessWidget {
       child: Text(
         subject.code.cleanUpper,
         style: TextStyles.headline6.copyWith(
-          
           color: AppColors.white,
           fontSize: fontSize.sp,
         ),

@@ -101,6 +101,13 @@ extension ListExtension<E> on List<E> {
     }
   }
 
+  void forceAdd(E value, int fixedLength) {
+    if (length == fixedLength && isNotEmpty) {
+      removeAt(0);
+    }
+    add(value);
+  }
+
   E? firstWhereOrNull(bool Function(E element) test) {
     try {
       return firstWhere(test);
