@@ -18,4 +18,24 @@ abstract class VectorAssets {
   static const String notification = 'assets/vectors/notification.svg';
   static const String circledChevronRight =
       'assets/vectors/circled_chevron_right.svg';
+
+  static const String fourFigTableIcon = 'assets/vectors/4ft_icon.svg';
+  static const String alignCenterIcon = 'assets/vectors/align_center_icon.svg';
+  static const String alignLeftIcon = 'assets/vectors/align_left_icon.svg';
+  static const String alignRightIcon = 'assets/vectors/align_right_icon.svg';
+  static const String boldIcon = 'assets/vectors/bold_icon.svg';
+  static const String calculatorIcon = 'assets/vectors/calculator_icon.svg';
+  static const String eraserIcon = 'assets/vectors/eraser_icon.svg';
+  static const String penIcon = 'assets/vectors/pen_icon.svg';
+  static const String redoIcon = 'assets/vectors/redo_icon.svg';
+  static const String undoIcon = 'assets/vectors/undo_icon.svg';
+  static const String rulerIcon = 'assets/vectors/ruler_icon.svg';
+  static const String shapesIcon = 'assets/vectors/shapes_icon.svg';
+  static const String tableIcon = 'assets/vectors/table_icon.svg';
+  static const String roughPaperIcon = 'assets/vectors/rough_paper_icon.svg';
+  static const String squareRootIcon = 'assets/vectors/square_root_icon.svg';
+  static const String textColorIcon = 'assets/vectors/text_color_icon.svg';
+  static const String underlineIcon = 'assets/vectors/underline_icon.svg';
+  static const String italicIcon = 'assets/vectors/italic_icon.svg';
+  static const String _icon = 'assets/vectors/_icon.svg';
 }

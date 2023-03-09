@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/base_controller.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_controller.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -21,7 +22,8 @@ class ToolbarController extends ChangeNotifier
     _initialized = true;
   }
 
-  void drawingControllerListener() {}
+  void drawingControllerListener() {
+  }
 
   late final List<DocumentEditingController> cache = [];
 
