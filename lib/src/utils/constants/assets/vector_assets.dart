@@ -37,5 +37,8 @@ abstract class VectorAssets {
   static const String textColorIcon = 'assets/vectors/text_color_icon.svg';
   static const String underlineIcon = 'assets/vectors/underline_icon.svg';
   static const String italicIcon = 'assets/vectors/italic_icon.svg';
+  static const String superscriptIcon = 'assets/vectors/superscript_icon.svg';
+  static const String subscriptIcon = 'assets/vectors/subscript_icon.svg';
+  static const String textIcon = 'assets/vectors/text_icon.svg';
   static const String _icon = 'assets/vectors/_icon.svg';
 }
