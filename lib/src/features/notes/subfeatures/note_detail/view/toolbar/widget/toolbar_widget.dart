@@ -6,12 +6,16 @@ import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/constants/assets/assets.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
+import '../../../../document_editing/drawing/drawing_barrel.dart';
+
 part 'custom/tool_bar_item_widget.dart';
 
 part 'custom/toolbar_item_button.dart';
 
 class ToolBarWidget extends StatefulWidget {
-  const ToolBarWidget({Key? key}) : super(key: key);
+  const ToolBarWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ToolBarWidget> createState() => _ToolBarWidgetState();
@@ -25,6 +29,8 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   final List<ToolBarItem> bottomItems = ToolBarItem.values.where((element) {
     return element.position == ToolBarItemPosition.bottom;
   }).toList();
+
+  // ToolbarController get controller {}
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +63,6 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
                             final bool selected = selectedItems.contains(item);
 
                             if (item == ToolBarItem.pen) {
-                              print(item);
-                              print(documentEditorType);
                               return documentEditorType ==
                                       DocumentEditorType.text
                                   ? ToolbarItemButton(
@@ -132,28 +136,23 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
           documentEditorTypeNotifier.value == DocumentEditorType.drawing
               ? DocumentEditorType.text
               : DocumentEditorType.drawing;
-      selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
-        ..clear();
-      return;
-    }
-    if (item == ToolBarItem.table) {
-      documentEditorTypeNotifier.value = DocumentEditorType.table;
-      selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
-        ..clear()
-        ..add(item);
-      return;
-    }
-    if (item == ToolBarItem.equation) {
-      documentEditorTypeNotifier.value = DocumentEditorType.math;
-      selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
-        ..clear()
-        ..add(item);
+      clearSelectedItems();
       return;
     }
 
     if (selectedItemsNotifier.value.contains(item)) {
       selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
         ..remove(item);
+      return;
+    }
+    if (item == ToolBarItem.table) {
+      documentEditorTypeNotifier.value = DocumentEditorType.table;
+      addItemToSelected(item);
+      return;
+    }
+    if (item == ToolBarItem.equation) {
+      documentEditorTypeNotifier.value = DocumentEditorType.math;
+      addItemToSelected(item);
       return;
     }
 
@@ -163,6 +162,11 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       case DocumentEditorType.general:
         return;
       case DocumentEditorType.drawing:
+        {
+          performDrawingAction(item);
+          continue continuation;
+        }
+      continuation:
       case DocumentEditorType.math:
       case DocumentEditorType.table:
       case DocumentEditorType.text:
@@ -172,15 +176,49 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
         }
     }
 
+    addItemToSelected(item);
+  }
+
+  void addItemToSelected(ToolBarItem item) {
+    clearSelectedItems();
     selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
-      ..clear()
       ..add(item);
+  }
+
+  void clearSelectedItems() {
+    final List<ToolBarItem> items = List.from(selectedItemsNotifier.value);
+    final List<ToolBarItem> generalItems = items.where((element) {
+      return DocumentEditorType.general.toolBarItems.contains(element);
+    }).toList();
+
+    items.clear();
+
+    items.addAll(generalItems);
+    selectedItemsNotifier.value = generalItems;
+  }
+
+  final Map<ToolBarItem, DrawingMode> toolbarItemToDrawingMode = {
+    ToolBarItem.pen: DrawingMode.sketch,
+    ToolBarItem.eraser: DrawingMode.erase,
+    ToolBarItem.shapes: DrawingMode.shape,
+    ToolBarItem.ruler: DrawingMode.line,
+  };
+
+  void performDrawingAction(ToolBarItem item) {
+    if (toolbarItemToDrawingMode[item] == null) return;
+    // controller.drawingController.changeDrawingMode(
+    //   toolbarItemToDrawingMode[item]!,
+    // );
   }
 
   final ValueNotifier<List<ToolBarItem>> selectedItemsNotifier =
       ValueNotifier<List<ToolBarItem>>(
     [],
   );
+
+  Future showDialogPop() async {
+    // showDialog(context: context, builder: builder )
+  }
 
   final ValueNotifier<DocumentEditorType> documentEditorTypeNotifier =
       ValueNotifier<DocumentEditorType>(
@@ -192,5 +230,14 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
     super.dispose();
     selectedItemsNotifier.dispose();
     documentEditorTypeNotifier.dispose();
+  }
+}
+
+class ShapeSelector extends StatelessWidget {
+  const ShapeSelector({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

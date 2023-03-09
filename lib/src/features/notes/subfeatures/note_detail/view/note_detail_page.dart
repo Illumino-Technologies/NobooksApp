@@ -5,6 +5,7 @@ import 'package:nobook/src/features/features_barrel.dart' show Note;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_canvas.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_controller.dart';
+import 'package:nobook/src/features/notes/subfeatures/note_detail/view/toolbar/toolbar_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/toolbar/widget/toolbar_widget.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';

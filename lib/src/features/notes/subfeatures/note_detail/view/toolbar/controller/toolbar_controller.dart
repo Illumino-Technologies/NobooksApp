@@ -22,8 +22,7 @@ class ToolbarController extends ChangeNotifier
     _initialized = true;
   }
 
-  void drawingControllerListener() {
-  }
+  void drawingControllerListener() {}
 
   late final List<DocumentEditingController> cache = [];
 
@@ -68,4 +67,5 @@ class ToolbarController extends ChangeNotifier
     super.dispose();
     drawingController.dispose();
   }
+
 }
