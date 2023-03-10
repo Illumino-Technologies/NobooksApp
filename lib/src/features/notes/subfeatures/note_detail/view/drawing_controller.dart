@@ -57,6 +57,7 @@ class DrawingController extends ChangeNotifier
 
   @override
   Future<void> initialize({
+    Color? color,
     Eraser? eraser,
     DrawingMode? drawingMode,
     DrawingMetadata? lineMetadata,
@@ -72,18 +73,18 @@ class DrawingController extends ChangeNotifier
     this.shape = shape ?? Shape.rectangle;
 
     this.lineMetadata = lineMetadata ??
-        const DrawingMetadata(
-          color: AppColors.black,
+        DrawingMetadata(
+          color: color ?? AppColors.black,
           strokeWidth: 4,
         );
     this.shapeMetadata = shapeMetadata ??
-        const DrawingMetadata(
-          color: AppColors.black,
+        DrawingMetadata(
+          color: color ?? AppColors.black,
           strokeWidth: 4,
         );
     this.sketchMetadata = sketchMetadata ??
-        const DrawingMetadata(
-          color: AppColors.black,
+        DrawingMetadata(
+          color: color ?? AppColors.black,
           strokeWidth: 4,
         );
 

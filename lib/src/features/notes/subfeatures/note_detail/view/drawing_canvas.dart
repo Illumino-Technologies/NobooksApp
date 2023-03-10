@@ -25,40 +25,44 @@ class _DrawingCanvasState extends State<DrawingCanvas> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          height: drawingBoundsVertical,
-          width: drawingBoundsHorizontal,
-          child: ChangeNotifierBuilder<DrawingController>(
-            listenable: controller,
-            builder: (_, controller) {
-              return CustomPaint(
-                painter: DrawingsPainter(
-                  shapeDrawingPainter: const ShapePainter(),
-                  sketchDrawingPainter: const SketchPainter(),
-                  drawings: controller.drawings,
-                ),
-              );
-            },
+    return SizedBox(
+      height: drawingBoundsVertical,
+      width: drawingBoundsHorizontal,
+      child: Stack(
+        children: [
+          SizedBox(
+            height: drawingBoundsVertical,
+            width: drawingBoundsHorizontal,
+            child: ChangeNotifierBuilder<DrawingController>(
+              listenable: controller,
+              builder: (_, controller) {
+                return CustomPaint(
+                  painter: DrawingsPainter(
+                    shapeDrawingPainter: const ShapePainter(),
+                    sketchDrawingPainter: const SketchPainter(),
+                    drawings: controller.drawings,
+                  ),
+                );
+              },
+            ),
           ),
-        ),
-        GestureDetector(
-          onPanStart: panStart,
-          onPanEnd: (details) {
-            details.velocity.pixelsPerSecond;
-            // if (erasingNotifier.value) return;
-            if (controller.drawingMode == DrawingMode.erase) return;
-            panEnd(details);
-          },
-          onForcePressStart: (details) {},
-          onForcePressUpdate: (details) {
-            details.pressure;
-            print('force pressure: ${details.pressure}');
-          },
-          onPanUpdate: panUpdate,
-        ),
-      ],
+          GestureDetector(
+            onPanStart: panStart,
+            onPanEnd: (details) {
+              details.velocity.pixelsPerSecond;
+              // if (erasingNotifier.value) return;
+              if (controller.drawingMode == DrawingMode.erase) return;
+              panEnd(details);
+            },
+            onForcePressStart: (details) {},
+            onForcePressUpdate: (details) {
+              details.pressure;
+              print('force pressure: ${details.pressure}');
+            },
+            onPanUpdate: panUpdate,
+          ),
+        ],
+      ),
     );
   }
 

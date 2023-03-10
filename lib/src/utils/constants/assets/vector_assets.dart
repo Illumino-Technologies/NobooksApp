@@ -40,5 +40,9 @@ abstract class VectorAssets {
   static const String superscriptIcon = 'assets/vectors/superscript_icon.svg';
   static const String subscriptIcon = 'assets/vectors/subscript_icon.svg';
   static const String textIcon = 'assets/vectors/text_icon.svg';
+  static const String circleIcon = 'assets/vectors/circle_icon.svg';
+  static const String rectangleIcon = 'assets/vectors/rectangle_icon.svg';
+  static const String starIcon = 'assets/vectors/star_icon.svg';
+  static const String triangleIcon = 'assets/vectors/triangle_icon.svg';
   static const String _icon = 'assets/vectors/_icon.svg';
 }

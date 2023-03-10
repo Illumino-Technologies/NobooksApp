@@ -1,7 +1,40 @@
-import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:flutter/material.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class UtilFunctions {
+  static Color interpolateColors(double value, List<Color> colors) {
+    assert(value >= 0 || value <= 1, 'value must be between 0 and 1');
+
+    print('value: $value');
+    final int colorListLength = colors.length - 1;
+
+    final int maxExpectedIndex = (colorListLength * value).ceil();
+    final int minExpectedIndex = (colorListLength * value).floor();
+
+    print('min index: $minExpectedIndex');
+    print('max index: $maxExpectedIndex');
+
+    final Color minColor = colors[minExpectedIndex];
+    final Color maxColor = colors[maxExpectedIndex];
+
+    return Color.lerp(minColor, maxColor, value)!;
+  }
+
+  static double extrapolateColors(Color value, List<Color> colors) {
+    int difference = 100000000;
+    int colorIndex = 0;
+
+    for (final Color color in colors) {
+      final int temp = (color.value - value.value).abs();
+      if (temp < difference) {
+        difference = temp;
+        colorIndex = colors.indexOf(color);
+      }
+    }
+
+    return colorIndex / (colors.length - 1);
+  }
+
   static DateTime? dateTimeFromMap(
     dynamic data, {
     bool mustReturnData = false,

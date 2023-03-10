@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/base_controller.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_controller.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 class ToolbarController extends ChangeNotifier
@@ -12,12 +12,17 @@ class ToolbarController extends ChangeNotifier
     drawingController.addListener(drawingControllerListener);
   }
 
+  late Color _color;
+
+  Color get color => _color;
+
   bool _initialized = false;
 
   bool get initialized => _initialized;
 
   @override
-  Future<void> initialize() async {
+  Future<void> initialize({Color? color}) async {
+    _color = color ?? AppColors.black;
     await drawingController.initialize();
     _initialized = true;
   }
@@ -62,10 +67,13 @@ class ToolbarController extends ChangeNotifier
     assert(initialized, 'controller must be initialized');
   }
 
+  void dispatchColorChange(Color color) {
+    drawingController.changeColor(color);
+  }
+
   @override
   void dispose() {
     super.dispose();
     drawingController.dispose();
   }
-
 }
