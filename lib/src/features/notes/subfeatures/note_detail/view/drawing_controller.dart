@@ -1,19 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_painter/flutter_painter.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/base_controller.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DrawingController extends ChangeNotifier
+    with EquatableMixin
     implements DocumentEditingController {
-  DrawingController({
-    this.controllerChanger,
-  });
-
+  DrawingController();
 
   late Eraser eraser;
-  late final ValueChanged<DocumentEditingController>? controllerChanger;
   late DrawingMode _drawingMode;
 
   DrawingMode get drawingMode => _drawingMode;
@@ -185,15 +182,9 @@ class DrawingController extends ChangeNotifier
     changeDrawings(drawings);
   }
 
-  late final ValueNotifier<DrawingController> significantUpdateNotifier =
-      ValueNotifier<DrawingController>(
-    this,
-  );
-
   void notifyOfSignificantUpdate() {
     // significantUpdateNotifier.value = this;
     print('notifying of significant change');
-    controllerChanger!.call(this);
   }
 
   void clearDrawings() {
@@ -285,9 +276,61 @@ class DrawingController extends ChangeNotifier
     return drawings;
   }
 
+  bool drawingControllerEquality(
+    DrawingController controller,
+  ) {
+    return controller.lineMetadata == lineMetadata &&
+        controller.shapeMetadata == shapeMetadata &&
+        controller.drawingMode == drawingMode &&
+        controller.eraser == eraser &&
+        controller.shape == shape &&
+        UtilFunctions.listEqual(controller._actionStack, _actionStack) &&
+        UtilFunctions.listEqual(controller._drawings, _drawings) &&
+        controller.sketchMetadata == sketchMetadata;
+  }
+
+  DrawingController copy({
+    Color? color,
+    Shape? shape,
+    DrawingMode? drawingMode,
+    Eraser? eraser,
+    DrawingMetadata? lineMetadata,
+    DrawingMetadata? shapeMetadata,
+    DrawingMetadata? sketchMetadata,
+    List<DrawingMode>? actionStack,
+    List<Drawing>? drawings,
+  }) {
+    final DrawingController drawingController = DrawingController();
+
+    drawingController._actionStack.clear();
+    drawingController._actionStack.addAll(actionStack ?? _actionStack);
+    drawingController.changeDrawings([]);
+    drawingController.changeDrawings(drawings ?? this.drawings);
+
+    return drawingController
+      ..initialize(
+        color: color ?? this.sketchMetadata.color,
+        shape: shape ?? this.shape,
+        drawingMode: drawingMode ?? this.drawingMode,
+        eraser: eraser ?? this.eraser,
+        lineMetadata: lineMetadata ?? this.lineMetadata,
+        shapeMetadata: shapeMetadata ?? this.shapeMetadata,
+        sketchMetadata: sketchMetadata ?? this.sketchMetadata,
+      );
+  }
+
   @override
   void dispose() {
-    significantUpdateNotifier.dispose();
     super.dispose();
   }
+
+  @override
+  List<Object?> get props => [
+        shapeMetadata,
+        lineMetadata,
+        sketchMetadata,
+        _drawingMode,
+        _initialized,
+        ..._drawings,
+      ];
 }

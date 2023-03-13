@@ -1,8 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 
 part 'actionables/drawing_mode.dart';
 
-class Drawing {
+class Drawing with EquatableMixin {
   final List<DrawingDelta> deltas;
   final DrawingMetadata? metadata;
 
@@ -49,4 +50,7 @@ class Drawing {
         );
     }
   }
+
+  @override
+  List<Object?> get props => [metadata, ...deltas];
 }

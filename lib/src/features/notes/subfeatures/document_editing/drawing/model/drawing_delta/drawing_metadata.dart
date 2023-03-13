@@ -1,6 +1,6 @@
 part of 'drawing_delta.dart';
 
-class DrawingMetadata {
+class DrawingMetadata with EquatableMixin {
   final Color? color;
   final double? strokeWidth;
 
@@ -28,13 +28,5 @@ class DrawingMetadata {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DrawingMetadata &&
-          runtimeType == other.runtimeType &&
-          color == other.color &&
-          strokeWidth == other.strokeWidth;
-
-  @override
-  int get hashCode => color.hashCode ^ strokeWidth.hashCode;
+  List<Object?> get props => [color, strokeWidth];
 }
