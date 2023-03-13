@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_painter/flutter_painter.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/base_controller.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
@@ -6,8 +7,13 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DrawingController extends ChangeNotifier
     implements DocumentEditingController {
-  late Eraser eraser;
+  DrawingController({
+    this.controllerChanger,
+  });
 
+
+  late Eraser eraser;
+  late final ValueChanged<DocumentEditingController>? controllerChanger;
   late DrawingMode _drawingMode;
 
   DrawingMode get drawingMode => _drawingMode;
@@ -98,7 +104,7 @@ class DrawingController extends ChangeNotifier
             centre: PointDouble(0, 0),
             radius: 5,
           ),
-          mode: EraseMode.area,
+          mode: EraseMode.drawing,
         );
     _initialized = true;
   }
@@ -109,12 +115,14 @@ class DrawingController extends ChangeNotifier
 
     drawingMode = mode;
     notifyListeners();
+    notifyOfSignificantUpdate();
   }
 
   void changeShape(Shape newShape) {
     if (shape == newShape) return;
     shape = newShape;
     notifyListeners();
+    notifyOfSignificantUpdate();
   }
 
   void toggleErase() {
@@ -127,26 +135,19 @@ class DrawingController extends ChangeNotifier
   }
 
   void changeColor(Color color) {
-    switch (drawingMode) {
-      case DrawingMode.erase:
-        return;
-      case DrawingMode.sketch:
-        sketchMetadata = sketchMetadata.copyWith(color: color);
-        break;
-      case DrawingMode.shape:
-        shapeMetadata = shapeMetadata.copyWith(color: color);
-        break;
-      case DrawingMode.line:
-        lineMetadata = lineMetadata.copyWith(color: color);
-        break;
-    }
-    notifyListeners();
+    sketchMetadata = sketchMetadata.copyWith(color: color);
+    shapeMetadata = shapeMetadata.copyWith(color: color);
+    lineMetadata = lineMetadata.copyWith(color: color);
+
+    // notifyListeners();
+    notifyOfSignificantUpdate();
   }
 
   void changeEraseMode(EraseMode mode) {
     if (eraser.mode == mode) return;
     eraser = eraser.copyWith(mode: mode);
     notifyListeners();
+    notifyOfSignificantUpdate();
   }
 
   void changeDrawings(Drawings drawings) {
@@ -160,12 +161,16 @@ class DrawingController extends ChangeNotifier
   void draw(DrawingDelta delta) {
     Drawings drawings = List.from(_drawings);
 
+    if (delta.operation == DrawingOperation.end) {
+      notifyOfSignificantUpdate();
+    }
     switch (drawingMode) {
       case DrawingMode.erase:
         eraser = eraser.copyWith(
           region: eraser.region.copyWith(centre: delta.point),
         );
         drawings = _erase(eraser, drawings);
+        // notifyOfSignificantUpdate();
         break;
       case DrawingMode.sketch:
         drawings = _sketch(delta, drawings);
@@ -180,12 +185,24 @@ class DrawingController extends ChangeNotifier
     changeDrawings(drawings);
   }
 
+  late final ValueNotifier<DrawingController> significantUpdateNotifier =
+      ValueNotifier<DrawingController>(
+    this,
+  );
+
+  void notifyOfSignificantUpdate() {
+    // significantUpdateNotifier.value = this;
+    print('notifying of significant change');
+    controllerChanger!.call(this);
+  }
+
   void clearDrawings() {
     if (_actionStack.lastOrNull == DrawingMode.erase) _actionStack.removeLast();
     //TODO: use action stack
     changeDrawingMode(_actionStack.lastOrNull ?? DrawingMode.sketch);
     //TODO: confirm or modify
     changeDrawings([]);
+    notifyOfSignificantUpdate();
   }
 
   Drawings _sketch(DrawingDelta delta, Drawings drawings) {
@@ -266,5 +283,11 @@ class DrawingController extends ChangeNotifier
         break;
     }
     return drawings;
+  }
+
+  @override
+  void dispose() {
+    significantUpdateNotifier.dispose();
+    super.dispose();
   }
 }

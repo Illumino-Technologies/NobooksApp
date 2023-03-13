@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_controller.dart';
 import 'package:nobook/src/features/notes/subfeatures/note_detail/view/toolbar/toolbar_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -65,79 +66,96 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
               return ValueListenableBuilder<List<ToolBarItem>>(
                 valueListenable: selectedItemsNotifier,
                 builder: (_, selectedItems, __) {
-                  return Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  return ChangeNotifierBuilder<ToolbarController>(
+                    listenable: controller,
+                    builder: (_, controllerValue) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 24.w,
+                          vertical: 16.h,
+                        ),
+                        child: Column(
                           children: [
-                            ...topItems.map(
-                              (item) {
-                                final bool enabled = DocumentEditorType
-                                        .general.toolBarItems
-                                        .contains(item) ||
-                                    documentEditorType.toolBarItems
-                                        .contains(item);
-                                final bool selected =
-                                    selectedItems.contains(item);
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ...topItems.map(
+                                  (item) {
+                                    bool enabled = DocumentEditorType
+                                            .general.toolBarItems
+                                            .contains(item) ||
+                                        documentEditorType.toolBarItems
+                                            .contains(item);
 
-                                if (item == ToolBarItem.pen) {
-                                  return documentEditorType ==
-                                          DocumentEditorType.text
-                                      ? ToolbarItemButton(
-                                          item: item,
-                                          selected: selected,
-                                          enabled: enabled,
-                                          vectorAssetPath:
-                                              VectorAssets.textIcon,
-                                          onSelected: onSelected,
-                                        )
-                                      : ToolbarItemButton(
-                                          item: item,
-                                          selected: selected,
-                                          enabled: enabled,
-                                          vectorAssetPath: VectorAssets.penIcon,
-                                          onSelected: onSelected,
-                                        );
-                                }
+                                    // if (item == ToolBarItem.undo) {
+                                    //   enabled = controllerValue.canUndo;
+                                    // }
+                                    // if (item == ToolBarItem.redo) {
+                                    //   enabled = controllerValue.canRedo;
+                                    // }
 
-                                return ToolbarItemButton(
-                                  item: item,
-                                  enabled: enabled,
-                                  onSelected: onSelected,
-                                  selected: selected,
-                                );
-                              },
-                            )
+                                    final bool selected =
+                                        selectedItems.contains(item);
+
+                                    if (item == ToolBarItem.pen) {
+                                      return documentEditorType ==
+                                              DocumentEditorType.text
+                                          ? ToolbarItemButton(
+                                              item: item,
+                                              selected: selected,
+                                              enabled: enabled,
+                                              vectorAssetPath:
+                                                  VectorAssets.textIcon,
+                                              onSelected: onSelected,
+                                            )
+                                          : ToolbarItemButton(
+                                              item: item,
+                                              selected: selected,
+                                              enabled: enabled,
+                                              vectorAssetPath:
+                                                  VectorAssets.penIcon,
+                                              onSelected: onSelected,
+                                            );
+                                    }
+
+                                    return ToolbarItemButton(
+                                      item: item,
+                                      enabled: enabled,
+                                      onSelected: onSelected,
+                                      selected: selected,
+                                    );
+                                  },
+                                )
+                              ],
+                            ),
+                            11.boxHeight,
+                            const Divider(
+                              color: AppColors.neutral50,
+                              height: 1,
+                              thickness: 1,
+                            ),
+                            11.boxHeight,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ...bottomItems.map(
+                                  (item) => ToolbarItemButton(
+                                    item: item,
+                                    enabled: DocumentEditorType
+                                            .general.toolBarItems
+                                            .contains(item) ||
+                                        documentEditorType.toolBarItems
+                                            .contains(item),
+                                    onSelected: onSelected,
+                                    selected: selectedItems.contains(item),
+                                  ),
+                                )
+                              ],
+                            ),
                           ],
                         ),
-                        11.boxHeight,
-                        const Divider(
-                          color: AppColors.neutral50,
-                          height: 1,
-                          thickness: 1,
-                        ),
-                        11.boxHeight,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ...bottomItems.map(
-                              (item) => ToolbarItemButton(
-                                item: item,
-                                enabled: DocumentEditorType.general.toolBarItems
-                                        .contains(item) ||
-                                    documentEditorType.toolBarItems
-                                        .contains(item),
-                                onSelected: onSelected,
-                                selected: selectedItems.contains(item),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
+                      );
+                    },
                   );
                 },
               );
@@ -174,11 +192,24 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
     );
   }
 
+  final DrawingController newDrawingController = DrawingController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    onSelected(ToolBarItem.pen);
+  }
+
   void closeToolItemSelector() => showSelector(ToolItemSelector.none);
 
-  void redo() {}
+  void redo() {
+    controller.setDrawingController(newDrawingController);
+  }
 
-  void undo() {}
+  void undo() {
+    print('undo ing');
+    controller.undo();
+  }
 
   void showSelector(ToolItemSelector selector) {
     toolItemSelectorNotifier.value = selector;
@@ -192,7 +223,10 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       documentEditorTypeNotifier.value =
           documentEditorTypeNotifier.value == DocumentEditorType.drawing
               ? DocumentEditorType.text
-              : DocumentEditorType.drawing;
+              : () {
+                  performDrawingAction(ToolBarItem.pen);
+                  return DocumentEditorType.drawing;
+                }();
       clearSelectedItems();
       return;
     }
@@ -206,6 +240,13 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       if (item == ToolBarItem.shapes &&
           toolItemSelectorNotifier.value == ToolItemSelector.shape) {
         closeToolItemSelector();
+      }
+
+      if (DocumentEditorType.drawing.toolBarItems.contains(item)) {
+        (item == ToolBarItem.pen &&
+                documentEditorTypeNotifier.value == DocumentEditorType.text)
+            ? null
+            : reverseDrawingAction();
       }
 
       selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
@@ -252,6 +293,10 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
 
   void onShapeChanged(Shape shape) {
     controller.drawingController.changeShape(shape);
+  }
+
+  void reverseDrawingAction() {
+    controller.drawingController.changeDrawingMode(DrawingMode.sketch);
   }
 
   void addItemToSelected(ToolBarItem item) {

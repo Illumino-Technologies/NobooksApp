@@ -201,13 +201,13 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
             20.boxHeight,
             ToolBarWidget(controller: toolbarController),
             20.boxHeight,
-            ChangeNotifierBuilder<DrawingController>(
-              listenable: toolbarController.drawingController,
+            ChangeNotifierBuilder<ToolbarController>(
+              listenable: toolbarController,
               builder: (_, drawingController) {
                 return Container(
                   color: AppColors.subjectOrange,
                   child: DrawingCanvas(
-                    controller: drawingController,
+                    controller: drawingController.drawingController,
                     size: Size(
                       700.w,
                       400.h,

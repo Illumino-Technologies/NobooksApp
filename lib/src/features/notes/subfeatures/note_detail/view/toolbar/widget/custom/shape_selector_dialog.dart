@@ -64,7 +64,10 @@ class _ShapeSelectorState extends State<ShapeSelector> {
 
   void onClosePressed() {}
 
-  void onShapeChanged(Shape shape) {}
+  void onShapeChanged(Shape shape) {
+    shapeNotifier.value = shape;
+    widget.onChanged(shapeNotifier.value);
+  }
 
   late final ValueNotifier<Shape> shapeNotifier = ValueNotifier<Shape>(
     widget.shape,
@@ -107,6 +110,7 @@ class _ShapeWidget extends StatelessWidget {
               shape.assetPath,
               width: 24.r,
               height: 24.r,
+              color: selected ? AppColors.white : null,
             ),
           ),
           16.boxWidth,
