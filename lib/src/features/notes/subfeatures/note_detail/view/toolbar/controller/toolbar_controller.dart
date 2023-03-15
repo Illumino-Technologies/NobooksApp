@@ -86,7 +86,6 @@ class ToolbarController extends ChangeNotifier
   }
 
   void setCanUndoOrRedo() {
-    print('set can undo or redo called');
     final bool tempCanUndo =
         cache.isNotEmpty && cache.length > 1 && activeCacheIndex != 0;
 
@@ -100,7 +99,6 @@ class ToolbarController extends ChangeNotifier
       canUndo = tempCanUndo;
       canRedo = tempCanRedo;
       notifyListeners();
-      print('changing \n\n can undo or redo values\n\n');
     }
   }
 
@@ -125,14 +123,8 @@ class ToolbarController extends ChangeNotifier
   void undo() {
     assertInitialized();
     if (!canUndo) return;
-    print('undoing');
 
-    print('cache length: ${cache.length}');
-
-    print('active cache index: $activeCacheIndex');
     activeCacheIndex ??= cache.lastIndex;
-
-    print('active cache index: $activeCacheIndex');
 
     if (activeCacheIndex == 0) return;
     activeCacheIndex = activeCacheIndex! - 1;
