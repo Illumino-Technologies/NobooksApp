@@ -49,6 +49,16 @@ class _ChangeNotifierBuilderState<T extends ChangeNotifier>
   }
 
   @override
+  void didUpdateWidget(ChangeNotifierBuilder<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.listenable != widget.listenable) {
+      oldWidget.listenable.removeListener(changeListener);
+      listenable = widget.listenable;
+      widget.listenable.addListener(changeListener);
+    }
+  }
+
+  @override
   void dispose() {
     widget.listenable.removeListener(changeListener);
     super.dispose();

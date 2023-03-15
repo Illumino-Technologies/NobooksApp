@@ -8,7 +8,6 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 class ToolbarController extends ChangeNotifier
     implements DocumentEditingController {
   DrawingController drawingController = DrawingController();
-  late DrawingController previousDrawingController = drawingController.copy();
 
   String myString = 'hello world';
   late String previousMyString = myString;
@@ -36,25 +35,33 @@ class ToolbarController extends ChangeNotifier
     if ((drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation ==
             DrawingOperation.end) ||
         drawingController.drawings.isEmpty) {
-      addControllerToCache(drawingController.copy());
+      addControllerToCache(
+        drawingController.copy()..addListener(drawingControllerListener),
+      );
     }
-    // previousDrawingController = drawingController.copy();
+    setCanUndoOrRedo();
   }
 
   late final List<DocumentEditingController> cache = [];
 
   void setDrawingController(DrawingController controller) {
-    // drawingController = controller;
+    drawingController = controller;
     notifyListeners();
   }
 
   void addControllerToCache(DocumentEditingController controller) {
-    print('adding to cache');
+    if (activeCacheIndex == cache.lastIndex) {
+      activeCacheIndex = activeCacheIndex! + 1;
+    } else if (activeCacheIndex == null) {
+      activeCacheIndex = cache.lastIndex;
+    } else if (activeCacheIndex != null) {
+      cache.removeRange(activeCacheIndex! + 1, cache.length);
+    }
     if (cache.length == 45) {
       cache.removeAt(0);
     }
     cache.add(controller);
-    print('cache updated');
+    activeCacheIndex = cache.lastIndex;
   }
 
   void removeControllerFromCache(DocumentEditingController controller) {
@@ -63,28 +70,42 @@ class ToolbarController extends ChangeNotifier
 
   void setDocumentValue(DocumentEditingController controller) {
     if (controller is DrawingController) {
-      drawingController = controller.copy();
-      drawingController.notifyListeners();
+      drawingController = controller;
       notifyListeners();
     }
   }
 
-  bool get canUndo => cache.isNotEmpty && cache.length > 1;
+  @override
+  void notifyListeners() {
+    currentControllerListener();
+    super.notifyListeners();
+  }
 
-  bool get canRedo =>
-      cache.isNotEmpty &&
-      cache.length > 1 &&
-      cache.containsWhere(
-        (value) =>
-            value is DrawingController &&
-            value.drawingControllerEquality(drawingController),
-      ) &&
-      !(cache.lastIndexWhere(
-            (value) =>
-                value is DrawingController &&
-                value.drawingControllerEquality(drawingController),
-          ) ==
-          (cache.length - 1));
+  void currentControllerListener() {
+    setCanUndoOrRedo();
+  }
+
+  void setCanUndoOrRedo() {
+    print('set can undo or redo called');
+    final bool tempCanUndo =
+        cache.isNotEmpty && cache.length > 1 && activeCacheIndex != 0;
+
+    final bool tempCanRedo = cache.isNotEmpty &&
+        cache.length > 1 &&
+        activeCacheIndex != (cache.length - 1);
+
+    final bool shouldChange = tempCanUndo ^ canUndo || tempCanRedo ^ canRedo;
+
+    if (shouldChange) {
+      canUndo = tempCanUndo;
+      canRedo = tempCanRedo;
+      notifyListeners();
+      print('changing \n\n can undo or redo values\n\n');
+    }
+  }
+
+  bool canUndo = false;
+  bool canRedo = false;
 
   DocumentEditingController? get previousActiveController {
     final int cacheLength = cache.length;
@@ -99,29 +120,25 @@ class ToolbarController extends ChangeNotifier
     return null;
   }
 
+  int? activeCacheIndex;
+
   void undo() {
     assertInitialized();
     if (!canUndo) return;
     print('undoing');
 
-    DocumentEditingController? cachedController = previousActiveController;
-    print(cachedController);
-    if (cachedController == null) return;
+    print('cache length: ${cache.length}');
 
-    cachedController = cachedController is DrawingController
-        ? cachedController.copy()
-        : cachedController;
+    print('active cache index: $activeCacheIndex');
+    activeCacheIndex ??= cache.lastIndex;
+
+    print('active cache index: $activeCacheIndex');
+
+    if (activeCacheIndex == 0) return;
+    activeCacheIndex = activeCacheIndex! - 1;
+    DocumentEditingController cachedController = cache[activeCacheIndex!];
 
     setDocumentValue(cachedController);
-
-    // cache.removeLast();
-    // print('length: ${cache.length}');
-    // cache.removeRange(cache.length - 20, cache.length - 1);
-    // final DrawingController tempController = cache.last as DrawingController;
-    // drawingController.changeDrawings(tempController.drawings);
-    // drawingController.notifyListeners();
-    // notifyListeners();
-    // print('length: ${cache.length}');
   }
 
   DocumentEditingController get activeController {
@@ -131,8 +148,14 @@ class ToolbarController extends ChangeNotifier
 
   void redo() {
     if (!canRedo) return;
-    final int currentControllerIndex = cache.indexOf(activeController);
-    setDocumentValue(cache[currentControllerIndex + 1]);
+    activeCacheIndex ??= cache.lastIndex;
+
+    if (activeCacheIndex == cache.lastIndex) return;
+
+    activeCacheIndex = activeCacheIndex! + 1;
+    DocumentEditingController cachedController = cache[activeCacheIndex!];
+
+    setDocumentValue(cachedController);
   }
 
   void assertInitialized() {

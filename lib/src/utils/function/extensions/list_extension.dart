@@ -14,6 +14,8 @@ extension ListExtension<E> on List<E> {
     return false;
   }
 
+  int get lastIndex => length - 1;
+
   bool isFirst(E element) => indexOf(element) == 0;
 
   bool isLast(E element) => indexOf(element) == (length - 1);

@@ -184,7 +184,6 @@ class DrawingController extends ChangeNotifier
 
   void notifyOfSignificantUpdate() {
     // significantUpdateNotifier.value = this;
-    print('notifying of significant change');
   }
 
   void clearDrawings() {
@@ -317,11 +316,6 @@ class DrawingController extends ChangeNotifier
         shapeMetadata: shapeMetadata ?? this.shapeMetadata,
         sketchMetadata: sketchMetadata ?? this.sketchMetadata,
       );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override

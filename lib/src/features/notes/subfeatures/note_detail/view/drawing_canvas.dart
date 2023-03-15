@@ -34,7 +34,7 @@ class _DrawingCanvasState extends State<DrawingCanvas> {
             height: drawingBoundsVertical,
             width: drawingBoundsHorizontal,
             child: ChangeNotifierBuilder<DrawingController>(
-              listenable: controller,
+              listenable: widget.controller,
               builder: (_, controller) {
                 return CustomPaint(
                   painter: DrawingsPainter(

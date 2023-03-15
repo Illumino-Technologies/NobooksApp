@@ -87,12 +87,12 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
                                         documentEditorType.toolBarItems
                                             .contains(item);
 
-                                    // if (item == ToolBarItem.undo) {
-                                    //   enabled = controllerValue.canUndo;
-                                    // }
-                                    // if (item == ToolBarItem.redo) {
-                                    //   enabled = controllerValue.canRedo;
-                                    // }
+                                    if (item == ToolBarItem.undo) {
+                                      enabled = controllerValue.canUndo;
+                                    }
+                                    if (item == ToolBarItem.redo) {
+                                      enabled = controllerValue.canRedo;
+                                    }
 
                                     final bool selected =
                                         selectedItems.contains(item);
@@ -203,11 +203,10 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   void closeToolItemSelector() => showSelector(ToolItemSelector.none);
 
   void redo() {
-    controller.setDrawingController(newDrawingController);
+    controller.redo();
   }
 
   void undo() {
-    print('undo ing');
     controller.undo();
   }
 
