@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
+import 'package:nobook/src/features/notes/subfeatures/calculator/view/calcPages.dart';
 import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
@@ -53,9 +54,19 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'Your Notes',
-                              style: TextStyles.headline1.withSize(24),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: ((context) => const CalcPage()),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Your Notes',
+                                style: TextStyles.headline1.withSize(24),
+                              ),
                             ),
                             Row(
                               children: [
