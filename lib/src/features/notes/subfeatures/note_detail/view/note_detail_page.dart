@@ -9,7 +9,7 @@ import 'package:nobook/src/features/notes/subfeatures/note_detail/view/toolbar/t
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
-class NoteDetailPage extends ConsumerStatefulWidget {
+class NoteDetailPage extends StatelessWidget {
   final Note note;
 
   const NoteDetailPage({
@@ -18,10 +18,23 @@ class NoteDetailPage extends ConsumerStatefulWidget {
   });
 
   @override
+  Widget build(BuildContext context) {
+    return true ? NoteDetailPageX(note: note) : Container();
+  }
+}
+
+class NoteDetailPageX extends ConsumerStatefulWidget {
+  final Note note;
+  const NoteDetailPageX({
+    super.key,
+    required this.note,
+  });
+
+  @override
   ConsumerState<ConsumerStatefulWidget> createState() => _NotePageState();
 }
 
-class _NotePageState extends ConsumerState<NoteDetailPage> {
+class _NotePageState extends ConsumerState<NoteDetailPageX> {
   final double drawingBoundsVertical = 500;
   final double drawingBoundsHorizontal = 600;
 
@@ -202,6 +215,7 @@ class _NotePageState extends ConsumerState<NoteDetailPage> {
             ToolBarWidget(controller: toolbarController),
             20.boxHeight,
             ChangeNotifierBuilder<ToolbarController>(
+              key: const ValueKey('ToolBarControllerNotifierBuilder'),
               listenable: toolbarController,
               buildWhen: (previous, next) =>
                   previous?.drawingController == next.drawingController,

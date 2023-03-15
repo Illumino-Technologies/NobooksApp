@@ -275,7 +275,7 @@ class DrawingController extends ChangeNotifier
     return drawings;
   }
 
-  bool drawingControllerEquality(
+  bool equalsOther(
     DrawingController controller,
   ) {
     return controller.lineMetadata == lineMetadata &&

@@ -197,7 +197,38 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    controller.addListener(controllerListener);
     onSelected(ToolBarItem.pen);
+  }
+
+  @override
+  void didUpdateWidget(covariant ToolBarWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller) {
+      oldWidget.controller.removeListener(controllerListener);
+      controller.addListener(controllerListener);
+    }
+  }
+
+  void changeShapeSelectionByController() {
+    final DrawingMode currentDrawingMode =
+        controller.drawingController.drawingMode;
+    if (currentDrawingMode != DrawingMode.shape &&
+        selectedItemsNotifier.value.contains(ToolBarItem.shapes)) {
+      selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
+        ..remove(ToolBarItem.shapes);
+    }
+    if (currentDrawingMode == DrawingMode.shape &&
+        !selectedItemsNotifier.value.contains(ToolBarItem.shapes)) {
+      selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
+        ..add(ToolBarItem.shapes);
+    }
+  }
+
+  void controllerListener() {
+    if (documentEditorTypeNotifier.value == DocumentEditorType.drawing) {
+      changeShapeSelectionByController();
+    }
   }
 
   void closeToolItemSelector() => showSelector(ToolItemSelector.none);
@@ -321,6 +352,13 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
     ToolBarItem.eraser: DrawingMode.erase,
     ToolBarItem.shapes: DrawingMode.shape,
     ToolBarItem.ruler: DrawingMode.line,
+  };
+
+  final Map<DrawingMode, ToolBarItem> drawingModeToToolbarItem = {
+    DrawingMode.sketch: ToolBarItem.pen,
+    DrawingMode.erase: ToolBarItem.eraser,
+    DrawingMode.shape: ToolBarItem.shapes,
+    DrawingMode.line: ToolBarItem.ruler,
   };
 
   void performDrawingAction(ToolBarItem item) {

@@ -50,17 +50,17 @@ class ToolbarController extends ChangeNotifier
   }
 
   void addControllerToCache(DocumentEditingController controller) {
-    if (activeCacheIndex == cache.lastIndex) {
-      activeCacheIndex = activeCacheIndex! + 1;
-    } else if (activeCacheIndex == null) {
-      activeCacheIndex = cache.lastIndex;
-    } else if (activeCacheIndex != null) {
+    if (activeCacheIndex != null && activeCacheIndex != cache.lastIndex) {
       cache.removeRange(activeCacheIndex! + 1, cache.length);
     }
     if (cache.length == 45) {
       cache.removeAt(0);
     }
     cache.add(controller);
+    if (controller is DrawingController &&
+        !drawingController.equalsOther(controller)) {
+      setDrawingController(controller);
+    }
     activeCacheIndex = cache.lastIndex;
   }
 
@@ -86,11 +86,10 @@ class ToolbarController extends ChangeNotifier
   }
 
   void setCanUndoOrRedo() {
-    final bool tempCanUndo =
-        cache.isNotEmpty && cache.length > 1 && activeCacheIndex != 0;
+    final bool tempCanUndo = cache.isNotEmpty && activeCacheIndex != -1;
 
     final bool tempCanRedo = cache.isNotEmpty &&
-        cache.length > 1 &&
+        cache.isNotEmpty &&
         activeCacheIndex != (cache.length - 1);
 
     final bool shouldChange = tempCanUndo ^ canUndo || tempCanRedo ^ canRedo;
@@ -109,8 +108,7 @@ class ToolbarController extends ChangeNotifier
     final int cacheLength = cache.length;
     for (int i = cacheLength - 1; i >= 0; --i) {
       final DocumentEditingController temp = cache[i];
-      if (temp is DrawingController &&
-          temp.drawingControllerEquality(drawingController)) {
+      if (temp is DrawingController && temp.equalsOther(drawingController)) {
         if (i == 0) return null;
         return cache[i - 1];
       }
@@ -126,9 +124,13 @@ class ToolbarController extends ChangeNotifier
 
     activeCacheIndex ??= cache.lastIndex;
 
-    if (activeCacheIndex == 0) return;
     activeCacheIndex = activeCacheIndex! - 1;
-    DocumentEditingController cachedController = cache[activeCacheIndex!];
+
+    DocumentEditingController cachedController = activeCacheIndex != -1
+        ? cache[activeCacheIndex!]
+        : (DrawingController()
+          ..initialize()
+          ..addListener(drawingControllerListener));
 
     setDocumentValue(cachedController);
   }
