@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:ui';
 
@@ -17,6 +18,18 @@ extension DrawingsExentension on Drawings {
   }
 }
 
+extension NoteDocumentExtension on NoteDocument {
+  String toJson() {
+    return jsonEncode(toSerializerList());
+  }
+
+  List<Map<String, dynamic>> toSerializerList() {
+    return map<Map<String, dynamic>>(
+      (e) => e.toDataMap(),
+    ).toList();
+  }
+}
+
 extension PointDoubleExtension on PointDouble {
   Offset get toOffset => Offset(x, y);
 
@@ -26,9 +39,13 @@ extension PointDoubleExtension on PointDouble {
 
     return PointDouble(midX, midY);
   }
+
+  Map<String, dynamic> toMap() {
+    return {'x': x, 'y': y};
+  }
 }
 
-extension SizeExt on Size {
+extension SizeExtension on Size {
   double get magnitude {
     return math.sqrt((height * height) + (width * width));
   }
@@ -46,4 +63,8 @@ extension OffsetExtension on Offset {
   }
 
   PointDouble get point => PointDouble(dx, dy);
+}
+
+extension ColorExtension on Color {
+  String get toSerializerString => value.toString().removeAll('#');
 }

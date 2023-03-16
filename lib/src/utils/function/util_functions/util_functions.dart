@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class UtilFunctions {
@@ -18,6 +19,13 @@ abstract class UtilFunctions {
     final Color maxColor = colors[maxExpectedIndex];
 
     return Color.lerp(minColor, maxColor, value)!;
+  }
+
+  static PointDouble pointDoubleFromMap(Map<String, dynamic> map) {
+    return PointDouble(
+      (map['x'] as num).toDouble(),
+      (map['y'] as num).toDouble(),
+    );
   }
 
   static double extrapolateColors(Color value, List<Color> colors) {

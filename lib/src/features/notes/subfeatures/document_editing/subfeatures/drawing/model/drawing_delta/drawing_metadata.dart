@@ -29,4 +29,18 @@ class DrawingMetadata with EquatableMixin {
 
   @override
   List<Object?> get props => [color, strokeWidth];
+
+  Map<String, dynamic> toMap() {
+    return {
+      'color': (color ?? AppColors.black).toSerializerString,
+      'strokeWidth': strokeWidth,
+    };
+  }
+
+  factory DrawingMetadata.fromMap(Map<String, dynamic> map) {
+    return DrawingMetadata(
+      color: Color(int.parse(map['color'], radix: 16)),
+      strokeWidth: (map['strokeWidth'] as num?)?.toDouble(),
+    );
+  }
 }

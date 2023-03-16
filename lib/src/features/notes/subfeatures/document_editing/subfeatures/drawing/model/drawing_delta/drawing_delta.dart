@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/utils/drawing_utils_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+
+import '../../../../../../../../global/ui/ui_barrel.dart';
 
 part 'actionable/drawing_operation.dart';
 
@@ -40,4 +43,20 @@ class DrawingDelta with EquatableMixin {
 
   @override
   List<Object?> get props => [point, operation, metadata];
+
+  Map<String, dynamic> toMap() {
+    return {
+      'point': point.toMap(),
+      'operation': operation.toSerializerString,
+      'metadata': metadata?.toMap(),
+    };
+  }
+
+  factory DrawingDelta.fromMap(Map<String, dynamic> map) {
+    return DrawingDelta(
+      point: UtilFunctions.pointDoubleFromMap(map['point']),
+      operation: DrawingOperation.fromString(map['operation']),
+      metadata: DrawingMetadata.fromMap(map['metadata']),
+    );
+  }
 }

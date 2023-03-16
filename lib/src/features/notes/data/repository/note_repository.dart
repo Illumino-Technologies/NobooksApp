@@ -1,0 +1,1 @@
+part 'note_repo_interface.dart';

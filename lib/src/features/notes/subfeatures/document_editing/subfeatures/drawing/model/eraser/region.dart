@@ -18,6 +18,7 @@ class Region {
   double get maxY => centre.y + radius;
 
   PointDouble get maxPoint => PointDouble(maxX, maxY);
+
   PointDouble get minPoint => PointDouble(minX, minY);
 
   bool containsPoint(PointDouble point) {
@@ -37,6 +38,26 @@ class Region {
     return Region(
       centre: centre ?? this.centre,
       radius: radius ?? this.radius,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    final Map<String, dynamic> centreMap = {'x': centre.x, 'y': centre.y};
+    return {
+      'centre': centreMap,
+      'radius': radius,
+    };
+  }
+
+  factory Region.fromMap(Map<String, dynamic> map) {
+    final Map<String, dynamic> centreMap = map['centre'];
+
+    return Region(
+      centre: PointDouble(
+        centreMap['x'] as double,
+        centreMap['y'] as double,
+      ),
+      radius: map['radius'] as double,
     );
   }
 }

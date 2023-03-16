@@ -1,5 +1,6 @@
 enum StorageKey {
   user,
+  note,
   ;
 
   const StorageKey();

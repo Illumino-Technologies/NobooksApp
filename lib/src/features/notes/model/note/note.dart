@@ -1,14 +1,17 @@
+import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/utils/function/util_functions/util_functions.dart';
 
 class Note {
+  final String id;
   final Subject subject;
   final String topic;
-  final dynamic noteBody;
+  final NoteDocument noteBody;
   final DateTime createdAt;
   final DateTime updatedAt;
 
   const Note({
+    required this.id,
     required this.subject,
     required this.topic,
     required this.noteBody,
@@ -16,11 +19,30 @@ class Note {
     required this.updatedAt,
   });
 
+  Note copyWith({
+    String? id,
+    Subject? subject,
+    String? topic,
+    NoteDocument? noteBody,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) {
+    return Note(
+      id: id ?? this.id,
+      subject: subject ?? this.subject,
+      topic: topic ?? this.topic,
+      noteBody: noteBody ?? this.noteBody,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
+
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'subject': subject,
       'topic': topic,
-      'noteBody': noteBody,
+      'noteBody': noteBody.toSerializerList(),
       'createdAt': createdAt,
       'updatedAt': updatedAt,
     };
@@ -28,9 +50,14 @@ class Note {
 
   factory Note.fromMap(Map<String, dynamic> map) {
     return Note(
+      id: map['id'],
       subject: Subject.fromMap(map['subject']),
       topic: map['topic'] as String,
-      noteBody: map['noteBody'],
+      noteBody: (map['noteBody'] as List)
+          .cast<Map<String, dynamic>>()
+          .map<DocumentEditingController>((e) {
+        return DocumentEditingController.fromMap(e);
+      }).toList(),
       createdAt: UtilFunctions.dateTimeFromMap(map['createdAt'])!,
       updatedAt: UtilFunctions.dateTimeFromMap(map['updatedAt'])!,
     );

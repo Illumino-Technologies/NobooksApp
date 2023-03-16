@@ -4,8 +4,7 @@ import 'package:nobook/src/features/notes/subfeatures/document_editing/base/docu
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-class ToolbarController extends ChangeNotifier
-    implements DocumentEditingController {
+class ToolbarController extends ChangeNotifier {
   DrawingController drawingController = DrawingController();
 
   String myString = 'hello world';

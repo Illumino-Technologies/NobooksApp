@@ -4,9 +4,7 @@ import 'package:nobook/src/features/notes/subfeatures/document_editing/document_
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-class DrawingController extends ChangeNotifier
-    with EquatableMixin
-    implements DocumentEditingController {
+class DrawingController extends DocumentEditingController with EquatableMixin {
   DrawingController();
 
   late Eraser eraser;
@@ -66,11 +64,12 @@ class DrawingController extends ChangeNotifier
     DrawingMetadata? shapeMetadata,
     DrawingMetadata? sketchMetadata,
     Shape? shape,
+    Drawings? drawings,
   }) async {
     //TODO: initializeValues from cache/storage
 
     if (_initialized) return;
-    _drawings = _drawings;
+    _drawings = drawings ?? _drawings;
 
     this.shape = shape ?? Shape.rectangle;
 
@@ -287,6 +286,14 @@ class DrawingController extends ChangeNotifier
         controller.sketchMetadata == sketchMetadata;
   }
 
+  Color get color {
+    //TODO: modify if should modify
+    return sketchMetadata.color ??
+        shapeMetadata.color ??
+        lineMetadata.color ??
+        AppColors.black;
+  }
+
   DrawingController copy({
     Color? color,
     Shape? shape,
@@ -315,6 +322,45 @@ class DrawingController extends ChangeNotifier
         shapeMetadata: shapeMetadata ?? this.shapeMetadata,
         sketchMetadata: sketchMetadata ?? this.sketchMetadata,
       );
+  }
+
+  @override
+  Map<String, dynamic> toMap() {
+    return {
+      'eraser': eraser.toMap(),
+      'drawingMode': drawingMode.index,
+      'drawings': drawings.map<Map<String, dynamic>>((Drawing drawing) {
+        return drawing.toMap();
+      }).toList(),
+      'lineMetadata': lineMetadata.toMap(),
+      'shapeMetadata': shapeMetadata.toMap(),
+      'sketchMetadata': sketchMetadata.toMap(),
+      'shape': shape.index,
+    };
+  }
+
+  factory DrawingController.fromMap(Map<String, dynamic> map) {
+    final Color? color = int.tryParse(map['color'], radix: 16) == null
+        ? null
+        : Color(int.parse(map['color'], radix: 16));
+
+    final DrawingController controller = DrawingController()
+      ..initialize(
+        eraser: Eraser.fromMap(map['eraser']),
+        drawingMode: DrawingMode.values[map['drawingMode'] as int],
+        drawings: (map['_drawings'] as List)
+            .cast<Map<String, dynamic>>()
+            .map((data) => Drawing.fromMap(data))
+            .toList(),
+        lineMetadata: DrawingMetadata.fromMap(map['lineMetadata']),
+        shapeMetadata: DrawingMetadata.fromMap(map['shapeMetadata']),
+        sketchMetadata: DrawingMetadata.fromMap(map['sketchMetadata']),
+        shape: Shape.values[map['shape'] as int],
+      );
+    if (color != null) {
+      controller.changeColor(color);
+    }
+    return controller;
   }
 
   @override

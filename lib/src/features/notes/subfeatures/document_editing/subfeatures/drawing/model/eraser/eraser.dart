@@ -188,4 +188,18 @@ class Eraser {
         (element) => shapeDrawingEraseTest(drawingTobeErased, eraseRegion),
       );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'region': region.toMap(),
+      'mode': mode.toSerializerString,
+    };
+  }
+
+  factory Eraser.fromMap(Map<String, dynamic> map) {
+    return Eraser(
+      region: Region.fromMap(map['region']),
+      mode: EraseMode.fromString(map['mode']),
+    );
+  }
 }

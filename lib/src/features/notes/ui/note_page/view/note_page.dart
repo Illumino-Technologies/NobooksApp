@@ -175,7 +175,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                       ),
                                                       8.boxHeight,
                                                       Text(
-                                                        currentNote.noteBody,
+                                                        // currentNote.noteBody.isEmpty,
+                                                        'Hello there',
                                                         style: TextStyles
                                                             .headline4
                                                             .withSize(12),
