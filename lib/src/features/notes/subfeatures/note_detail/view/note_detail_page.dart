@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
-import 'package:nobook/src/features/notes/subfeatures/document_editing/drawing/drawing_barrel.dart';
-import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_canvas.dart';
-import 'package:nobook/src/features/notes/subfeatures/note_detail/view/drawing_controller.dart';
-import 'package:nobook/src/features/notes/subfeatures/note_detail/view/toolbar/toolbar_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolbar/toolbar_barrel.dart'
+    show ToolBarWidget, ToolbarController;
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
@@ -49,7 +48,6 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
             ToolBarWidget(controller: toolbarController),
             20.boxHeight,
             ChangeNotifierBuilder<ToolbarController>(
-              key: const ValueKey('ToolBarControllerNotifierBuilder'),
               listenable: toolbarController,
               buildWhen: (previous, next) =>
                   previous?.drawingController == next.drawingController,
@@ -59,8 +57,8 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
                   child: DrawingCanvas(
                     controller: controller.drawingController,
                     size: Size(
-                      700.w,
-                      400.h,
+                      900.w,
+                      600.h,
                     ),
                   ),
                 );

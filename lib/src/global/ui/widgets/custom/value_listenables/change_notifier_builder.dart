@@ -29,14 +29,6 @@ class _ChangeNotifierBuilderState<T extends ChangeNotifier>
     extends State<ChangeNotifierBuilder<T>> {
   T? listenable;
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      widget.listenable.addListener(changeListener);
-    });
-  }
-
   void changeListener() {
     final bool? shouldSetState = widget.buildWhen?.call(
       listenable,
@@ -46,6 +38,12 @@ class _ChangeNotifierBuilderState<T extends ChangeNotifier>
       setState(() {});
     }
     listenable = widget.listenable;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    widget.listenable.addListener(changeListener);
   }
 
   @override
