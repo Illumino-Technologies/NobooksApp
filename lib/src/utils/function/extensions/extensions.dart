@@ -8,6 +8,8 @@ part 'build_context_extension.dart';
 
 part 'date_time_extension.dart';
 
+part 'iterable_extension.dart';
+
 part 'list_extension.dart';
 
 part 'num_extension.dart';

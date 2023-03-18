@@ -4,16 +4,6 @@ typedef TransformerCallback<E> = E Function(E element);
 typedef ElementTestCallback<E> = bool Function(E element);
 
 extension ListExtension<E> on List<E> {
-  bool containsWhere(bool Function(E value) test) {
-    for (E element in this) {
-      bool satisfied = test(element);
-      if (satisfied) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   int get lastIndex => length - 1;
 
   bool isFirst(E element) => indexOf(element) == 0;

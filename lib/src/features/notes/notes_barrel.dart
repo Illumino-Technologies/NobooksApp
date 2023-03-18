@@ -1,3 +1,4 @@
+export 'package:nobook/src/features/notes/data/notes_data_barrel.dart';
 export 'package:nobook/src/features/notes/model/note/note.dart';
 export 'package:nobook/src/features/notes/model/note_model.dart';
 export 'package:nobook/src/features/notes/subfeatures/calculator/calculator_barrel.dart';

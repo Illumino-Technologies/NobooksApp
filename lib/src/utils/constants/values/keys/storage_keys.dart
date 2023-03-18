@@ -1,6 +1,7 @@
 enum StorageKey {
   user,
   note,
+  noteSyncQueue,
   ;
 
   const StorageKey();
