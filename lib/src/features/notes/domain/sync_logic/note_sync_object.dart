@@ -22,7 +22,8 @@ class NoteSyncQueueObject {
   final Note note;
   final NoteSyncStatus status;
   final NoteSyncError? _errorReason;
-   NoteSyncError? get errorReason => _errorReason;
+
+  NoteSyncError? get errorReason => _errorReason;
 
   const NoteSyncQueueObject({
     required this.note,
@@ -32,8 +33,8 @@ class NoteSyncQueueObject {
             status == NoteSyncStatus.syncCompleted ? null : errorReason;
 
   NoteSyncQueueObject copyWith({
-    final Note? document,
-    final NoteSyncStatus? status,
+    final Note? note,
+    NoteSyncStatus? status,
     NoteSyncError? errorReason,
   }) {
     switch (errorReason) {
@@ -55,8 +56,27 @@ class NoteSyncQueueObject {
         break;
     }
 
+    switch (status) {
+      case NoteSyncStatus.localSynced:
+        if (this.status == NoteSyncStatus.networkSynced) {
+          status = NoteSyncStatus.syncCompleted;
+          break;
+        }
+
+      case NoteSyncStatus.networkSynced:
+        if (this.status == NoteSyncStatus.localSynced) {
+          status = NoteSyncStatus.syncCompleted;
+          break;
+        }
+      case null:
+      case NoteSyncStatus.noneSynced:
+      case NoteSyncStatus.syncCompleted:
+        // TODO: Handle this case.
+        break;
+    }
+
     return NoteSyncQueueObject(
-      note: document ?? this.note,
+      note: note ?? this.note,
       status: status ?? this.status,
       errorReason: errorReason ?? _errorReason,
     );
