@@ -85,7 +85,9 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
     }
   }
 
-  final ToolbarController toolbarController = ToolbarController();
+  late final ToolbarController toolbarController = ToolbarController(
+    note: widget.note,
+  );
 
   @override
   void initState() {

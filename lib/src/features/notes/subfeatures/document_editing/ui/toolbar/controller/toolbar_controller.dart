@@ -5,12 +5,15 @@ import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 class ToolbarController extends ChangeNotifier {
+  final NoteSyncLogicInterface _noteSynchronizer;
   DrawingController drawingController = DrawingController();
+  final Note note;
 
-  String myString = 'hello world';
-  late String previousMyString = myString;
-
-  ToolbarController() {
+  ToolbarController({
+    required this.note,
+    NoteSyncLogic? noteSynchronizer,
+  }) : _noteSynchronizer =
+            noteSynchronizer ?? NoteSyncLogic(currentNote: note) {
     drawingController.addListener(drawingControllerListener);
   }
 
@@ -22,8 +25,10 @@ class ToolbarController extends ChangeNotifier {
 
   bool get initialized => _initialized;
 
-  @override
   Future<void> initialize({Color? color}) async {
+    //TODO: implement
+    final Note? note = await _noteSynchronizer.fetchStoredNote();
+
     _color = color ?? AppColors.black;
     await drawingController.initialize();
     _initialized = true;
@@ -37,7 +42,7 @@ class ToolbarController extends ChangeNotifier {
         drawingController.copy()..addListener(drawingControllerListener),
       );
     }
-    setCanUndoOrRedo();
+    currentControllerListener();
   }
 
   late final List<DocumentEditingController> cache = [];
@@ -80,6 +85,7 @@ class ToolbarController extends ChangeNotifier {
   }
 
   void currentControllerListener() {
+    syncNote();
     setCanUndoOrRedo();
   }
 
@@ -165,5 +171,9 @@ class ToolbarController extends ChangeNotifier {
       drawingControllerListener,
     );
     drawingController.dispose();
+  }
+
+  Future<void> syncNote() async {
+    await _noteSynchronizer.syncNote(note);
   }
 }

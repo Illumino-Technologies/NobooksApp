@@ -1,4 +1,4 @@
-import 'package:nobook/src/features/features_barrel.dart';
+part of 'note_sync_logic.dart';
 
 enum NoteSyncStatus {
   noneSynced,
@@ -71,7 +71,6 @@ class NoteSyncQueueObject {
       case null:
       case NoteSyncStatus.noneSynced:
       case NoteSyncStatus.syncCompleted:
-        // TODO: Handle this case.
         break;
     }
 

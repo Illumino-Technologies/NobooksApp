@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:nobook/src/features/notes/domain/sync_logic/note_sync_object.dart';
+import 'package:nobook/src/features/notes/notes_barrel.dart';
 import 'package:nobook/src/global/data/apis/storage/error_handler/hive_error_handler.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 

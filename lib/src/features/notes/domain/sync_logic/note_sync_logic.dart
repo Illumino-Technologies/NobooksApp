@@ -1,11 +1,17 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:nobook/src/features/notes/domain/sync_logic/note_sync_object.dart';
+import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/notes_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-class NoteSyncLogic with BasicErrorHandlerMixin {
+part 'note_sync_logic_interface.dart';
+
+part 'note_sync_object.dart';
+
+class NoteSyncLogic
+    with BasicErrorHandlerMixin
+    implements NoteSyncLogicInterface {
   final NoteLocalSourceInterface _localSource;
   final NoteNetworkSourceInterface _networkSource;
   final NoteSyncQueueSourceInterface _noteSyncQueueSource;
@@ -23,29 +29,25 @@ class NoteSyncLogic with BasicErrorHandlerMixin {
         _localSource = localSource ?? NoteLocalSource(),
         _noteSyncQueueSource = noteSyncQueueSource ?? NoteSyncQueueSource(),
         _syncQueue = Queue<NoteSyncQueueObject>(),
-        _syncQueueStream = const Stream<Note>.empty(),
         _networkSource = networkSource ?? NoteNetworkSource() {
     _fetchQueueAndRetry();
-  }
-
-  void syncNote(Note note) {
-    _syncQueueController.add(note);
   }
 
   Queue<NoteSyncQueueObject> get syncQueue =>
       Queue<NoteSyncQueueObject>.from(_syncQueue);
 
-  final Stream<Note> _syncQueueStream;
-
-  late final StreamController<Note> _syncQueueController =
-      StreamController<Note>()..addStream(_syncQueueStream);
-
-  late final StreamSubscription<Note> _syncQueueSubscription =
-      _syncQueueStream.listen(_noteQueueListener);
-
-  Future<void> _noteQueueListener(Note event) => handleError(
-        _storeNote(event),
+  @override
+  Future<void> syncNote(Note note) => handleError(
+        _storeNote(note),
       );
+
+  @override
+  Future<Note?> fetchStoredNote() => handleError(_fetchStoredNote());
+
+  Future<Note?> _fetchStoredNote() async {
+    //TODO: implement network fetch
+    return _localSource.fetchNote(currentNote.id);
+  }
 
   Future<void> _storeNote(
     Note note,
@@ -142,7 +144,5 @@ class NoteSyncLogic with BasicErrorHandlerMixin {
 
   void dispose() {
     _saveQueue();
-    _syncQueueSubscription.cancel();
-    _syncQueueController.close();
   }
 }
