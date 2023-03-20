@@ -207,6 +207,8 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       oldWidget.controller.removeListener(controllerListener);
       controller.addListener(controllerListener);
     }
+
+    controller.syncNote();
   }
 
   void changeShapeSelectionByController() {
@@ -373,10 +375,6 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       ValueNotifier<List<ToolBarItem>>(
     [],
   );
-
-  Future showDialogPop() async {
-    // showDialog(context: context, builder: builder )
-  }
 
   final ValueNotifier<DocumentEditorType> documentEditorTypeNotifier =
       ValueNotifier<DocumentEditorType>(

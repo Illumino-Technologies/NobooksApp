@@ -26,10 +26,7 @@ class ToolbarController extends ChangeNotifier {
 
   Future<void> initialize({Color? color}) async {
     final Note? note = await Future.microtask(
-      () async {
-        await Future.delayed(const Duration(seconds: 1));
-        return await _noteSynchronizer.fetchStoredNote();
-      },
+      _noteSynchronizer.fetchStoredNote,
     );
 
     drawingController.initialize();
@@ -44,14 +41,14 @@ class ToolbarController extends ChangeNotifier {
     drawingController.removeListener(drawingControllerListener);
     for (final DocumentEditingController controller in note.noteBody) {
       if (controller is DrawingController) {
-        print('setting drawing controller');
         drawingController = controller;
         notifyListeners();
       }
     }
+
     //TODO: add all controller listeners [back]
-    // drawingController.addListener(drawingControllerListener);
-    // notifyListeners();
+    drawingController.addListener(drawingControllerListener);
+    notifyListeners();
   }
 
   void drawingControllerListener() {
@@ -74,7 +71,9 @@ class ToolbarController extends ChangeNotifier {
 
   void addControllerToCache(DocumentEditingController controller) {
     if (activeCacheIndex != null && activeCacheIndex != cache.lastIndex) {
-      cache.removeRange(activeCacheIndex! + 1, cache.length);
+      if (cache.isNotEmpty) {
+        cache.removeRange(activeCacheIndex! + 1, cache.length);
+      }
     }
     if (cache.length == 45) {
       cache.removeAt(0);
@@ -100,22 +99,22 @@ class ToolbarController extends ChangeNotifier {
 
   @override
   void notifyListeners() {
-    note = note.copyWith(noteBody: [
-      //TODO: add other controllers
-      drawingController,
-    ]);
+    note = note.copyWith(
+      noteBody: [
+        //TODO: add other controllers
+        drawingController,
+      ],
+    );
     currentControllerListener();
     super.notifyListeners();
   }
 
   void currentControllerListener() {
-    syncNote();
     setCanUndoOrRedo();
   }
 
   void setCanUndoOrRedo() {
-    final bool tempCanUndo = true;
-        // cache.isNotEmpty && activeCacheIndex != -1;
+    final bool tempCanUndo = cache.isNotEmpty && activeCacheIndex != -1;
 
     final bool tempCanRedo = cache.isNotEmpty &&
         cache.isNotEmpty &&
@@ -149,8 +148,6 @@ class ToolbarController extends ChangeNotifier {
 
   void undo() {
     assertInitialized();
-    _setControllersFromNote(note);
-    return;
     if (!canUndo) return;
 
     activeCacheIndex ??= cache.lastIndex;
@@ -187,6 +184,11 @@ class ToolbarController extends ChangeNotifier {
     assert(initialized, 'controller must be initialized');
   }
 
+  void clear() {
+    note = note.copyWith(noteBody: []);
+    _noteSynchronizer.clearNotes();
+  }
+
   void dispatchColorChange(Color color) {
     //TODO: dispatch across other controllers
     drawingController.changeColor(color);
@@ -201,6 +203,7 @@ class ToolbarController extends ChangeNotifier {
   @override
   void dispose() {
     super.dispose();
+    syncNote();
     _noteSynchronizer.dispose();
     drawingController.removeListener(
       drawingControllerListener,

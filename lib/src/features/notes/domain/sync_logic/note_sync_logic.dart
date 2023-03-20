@@ -138,6 +138,7 @@ class NoteSyncLogic
   }
 
   Future<void> _saveQueue() async {
+    if(_syncQueue.isEmpty) return;
     await _noteSyncQueueSource.storeQueue(currentNote.id, _syncQueue);
   }
 
@@ -152,5 +153,12 @@ class NoteSyncLogic
   @override
   void dispose() {
     _saveQueue();
+  }
+
+  @override
+  Future<void> clearNotes() async {
+    await _localSource.deleteNote(currentNote.id);
+    print('all notes deleted');
+    await _noteSyncQueueSource.clearQueue(currentNote.id);
   }
 }

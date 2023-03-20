@@ -340,9 +340,9 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   }
 
   factory DrawingController.fromMap(Map<String, dynamic> map) {
-    final Color? color = int.tryParse(map['color'].toString(), radix: 16) == null
+    final Color? color = int.tryParse(map['color'].toString()) == null
         ? null
-        : Color(int.parse(map['color'], radix: 16));
+        : Color(int.parse(map['color'].toString()));
 
     final DrawingController controller = DrawingController()
       ..initialize(

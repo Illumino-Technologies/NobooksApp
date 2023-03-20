@@ -39,7 +39,7 @@ class DrawingMetadata with EquatableMixin {
 
   factory DrawingMetadata.fromMap(Map<String, dynamic> map) {
     return DrawingMetadata(
-      color: Color(int.parse(map['color'], radix: 16)),
+      color: Color(int.parse(map['color'].toString())),
       strokeWidth: (map['strokeWidth'] as num?)?.toDouble(),
     );
   }

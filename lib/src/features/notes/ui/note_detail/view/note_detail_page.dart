@@ -47,12 +47,19 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
             20.boxHeight,
             ToolBarWidget(controller: toolbarController),
             20.boxHeight,
+            MaterialButton(
+              onPressed: () {
+                print('clear called');
+                toolbarController.clear();
+              },
+              child: const Icon(Icons.delete),
+            ),
+            20.boxHeight,
             ChangeNotifierBuilder<ToolbarController>(
               listenable: toolbarController,
-              // buildWhen: (previous, next) =>
-              //     previous?.drawingController == next.drawingController,
+              buildWhen: (previous, next) =>
+                  previous?.drawingController == next.drawingController,
               builder: (_, controller) {
-                print('drawing controller changed');
                 return Container(
                   color: AppColors.subjectOrange,
                   child: DrawingCanvas(

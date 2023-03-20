@@ -4,7 +4,9 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'actionables/drawing_mode.dart';
 
-class Drawing with EquatableMixin {
+part 'drawing_type.dart';
+
+abstract class Drawing with EquatableMixin {
   final List<DrawingDelta> deltas;
   final DrawingMetadata? metadata;
 
@@ -16,12 +18,7 @@ class Drawing with EquatableMixin {
   Drawing copyWith({
     List<DrawingDelta>? deltas,
     DrawingMetadata? metadata,
-  }) {
-    return Drawing(
-      deltas: deltas ?? this.deltas,
-      metadata: metadata ?? this.metadata,
-    );
-  }
+  });
 
   static Drawing drawingType<T extends Drawing>({
     required List<DrawingDelta> deltas,
@@ -55,22 +52,22 @@ class Drawing with EquatableMixin {
   @override
   List<Object?> get props => [metadata, ...deltas];
 
-  Map<String, dynamic> toMap() {
-    return {
-      'deltas': deltas
-          .map<Map<String, dynamic>>((DrawingDelta e) => e.toMap())
-          .toList(),
-      'metadata': metadata?.toMap(),
-    };
-  }
+  Map<String, dynamic> toMap();
 
   factory Drawing.fromMap(Map<String, dynamic> map) {
-    return Drawing(
-      deltas: (map['deltas'] as List)
-          .cast<Map>()
-          .map((e) => DrawingDelta.fromMap(e.cast()))
-          .toList(),
-      metadata: DrawingMetadata.fromMap((map['metadata'] as Map).cast()),
-    );
+    final DrawingType type =
+        DrawingType.values[int.parse(map['type'].toString())];
+
+    switch (type) {
+      case DrawingType.shape:
+        return ShapeDrawing.fromMap(map);
+      case DrawingType.sketch:
+        return SketchDrawing.fromMap(map);
+      case DrawingType.line:
+        // TODO: Handle this case.
+        break;
+    }
+    //TODO: Change
+    return SketchDrawing.fromMap(map);
   }
 }

@@ -69,9 +69,7 @@ class NoteLocalSource
       );
 
   Future<void> _storeNote(Note note) async {
-    print("storing note with id: ${note.id}\n\n");
     await _box.put(note.id, note.toMap());
-    print('stored data: ${_box.get(note.id)}');
   }
 
   @override
