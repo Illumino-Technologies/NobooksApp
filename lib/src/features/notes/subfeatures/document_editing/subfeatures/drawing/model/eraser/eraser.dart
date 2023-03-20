@@ -198,7 +198,7 @@ class Eraser {
 
   factory Eraser.fromMap(Map<String, dynamic> map) {
     return Eraser(
-      region: Region.fromMap(map['region']),
+      region: Region.fromMap((map['region'] as Map).cast()),
       mode: EraseMode.fromString(map['mode']),
     );
   }

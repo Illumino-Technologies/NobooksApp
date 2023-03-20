@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/base/document_editing_base_barrel.dart';
-import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 class ToolbarController extends ChangeNotifier {
   final NoteSyncLogicInterface _noteSynchronizer;
   DrawingController drawingController = DrawingController();
-  final Note note;
+  Note note;
 
   ToolbarController({
     required this.note,
@@ -26,12 +25,33 @@ class ToolbarController extends ChangeNotifier {
   bool get initialized => _initialized;
 
   Future<void> initialize({Color? color}) async {
-    //TODO: implement
-    final Note? note = await _noteSynchronizer.fetchStoredNote();
+    final Note? note = await Future.microtask(
+      () async {
+        await Future.delayed(const Duration(seconds: 1));
+        return await _noteSynchronizer.fetchStoredNote();
+      },
+    );
 
-    _color = color ?? AppColors.black;
-    await drawingController.initialize();
+    drawingController.initialize();
+
+    if (note != null) _setControllersFromNote(note);
+    _setDefaultColor();
     _initialized = true;
+  }
+
+  void _setControllersFromNote(Note note) {
+    //TODO: remove all controller listeners
+    drawingController.removeListener(drawingControllerListener);
+    for (final DocumentEditingController controller in note.noteBody) {
+      if (controller is DrawingController) {
+        print('setting drawing controller');
+        drawingController = controller;
+        notifyListeners();
+      }
+    }
+    //TODO: add all controller listeners [back]
+    // drawingController.addListener(drawingControllerListener);
+    // notifyListeners();
   }
 
   void drawingControllerListener() {
@@ -80,6 +100,10 @@ class ToolbarController extends ChangeNotifier {
 
   @override
   void notifyListeners() {
+    note = note.copyWith(noteBody: [
+      //TODO: add other controllers
+      drawingController,
+    ]);
     currentControllerListener();
     super.notifyListeners();
   }
@@ -90,7 +114,8 @@ class ToolbarController extends ChangeNotifier {
   }
 
   void setCanUndoOrRedo() {
-    final bool tempCanUndo = cache.isNotEmpty && activeCacheIndex != -1;
+    final bool tempCanUndo = true;
+        // cache.isNotEmpty && activeCacheIndex != -1;
 
     final bool tempCanRedo = cache.isNotEmpty &&
         cache.isNotEmpty &&
@@ -124,6 +149,8 @@ class ToolbarController extends ChangeNotifier {
 
   void undo() {
     assertInitialized();
+    _setControllersFromNote(note);
+    return;
     if (!canUndo) return;
 
     activeCacheIndex ??= cache.lastIndex;
@@ -161,19 +188,33 @@ class ToolbarController extends ChangeNotifier {
   }
 
   void dispatchColorChange(Color color) {
+    //TODO: dispatch across other controllers
     drawingController.changeColor(color);
+  }
+
+  void _setDefaultColor() {
+    //TODO: compare with other controllers and set color
+    final Color color = drawingController.color;
+    _color = color;
   }
 
   @override
   void dispose() {
     super.dispose();
+    _noteSynchronizer.dispose();
     drawingController.removeListener(
       drawingControllerListener,
     );
     drawingController.dispose();
   }
 
+  bool _syncingNote = false;
+
   Future<void> syncNote() async {
+    if (_syncingNote) return;
+    _syncingNote = true;
+    print('syncing note');
     await _noteSynchronizer.syncNote(note);
+    _syncingNote = false;
   }
 }

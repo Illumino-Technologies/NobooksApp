@@ -6,7 +6,7 @@ import 'package:nobook/src/global/domain/models/subject/subject.dart';
 abstract class FakeNotes {
   static final List<Note> allNotes = [
     Note(
-      id: 'hello',
+      id: 'uniqueString-x',
       subject: FakeSubjects.biology,
       topic: 'Cell Theory',
       noteBody: [],

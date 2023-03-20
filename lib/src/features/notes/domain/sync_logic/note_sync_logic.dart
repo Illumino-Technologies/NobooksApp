@@ -13,7 +13,9 @@ class NoteSyncLogic
     with BasicErrorHandlerMixin
     implements NoteSyncLogicInterface {
   final NoteLocalSourceInterface _localSource;
-  final NoteNetworkSourceInterface _networkSource;
+
+  // final NoteNetworkSourceInterface _networkSource;
+  final NoteLocalSourceInterface _networkSource;
   final NoteSyncQueueSourceInterface _noteSyncQueueSource;
   Note _currentNote;
   final Queue<NoteSyncQueueObject> _syncQueue;
@@ -23,14 +25,15 @@ class NoteSyncLogic
   NoteSyncLogic({
     required Note currentNote,
     NoteLocalSourceInterface? localSource,
-    NoteNetworkSourceInterface? networkSource,
+    NoteLocalSourceInterface? networkSource,
+    // NoteNetworkSourceInterface? networkSource,
     NoteSyncQueueSourceInterface? noteSyncQueueSource,
   })  : _currentNote = currentNote,
         _localSource = localSource ?? NoteLocalSource(),
         _noteSyncQueueSource = noteSyncQueueSource ?? NoteSyncQueueSource(),
         _syncQueue = Queue<NoteSyncQueueObject>(),
-        _networkSource = networkSource ?? NoteNetworkSource() {
-    _fetchQueueAndRetry();
+        _networkSource = networkSource ?? NoteLocalSource() {
+    // _fetchQueueAndRetry();
   }
 
   Queue<NoteSyncQueueObject> get syncQueue =>
@@ -46,7 +49,9 @@ class NoteSyncLogic
 
   Future<Note?> _fetchStoredNote() async {
     //TODO: implement network fetch
-    return _localSource.fetchNote(currentNote.id);
+    final Note? storedNote = _localSource.fetchNote(currentNote.id);
+    print('stored note: $storedNote');
+    return storedNote;
   }
 
   Future<void> _storeNote(
@@ -85,6 +90,8 @@ class NoteSyncLogic
     _syncQueue.addAll(queue);
 
     await _retryStoringNotesFromQueue();
+
+    await _noteSyncQueueSource.clearQueue(currentNote.id);
   }
 
   Future<void> _retryStoringNotesFromQueue() async {
@@ -142,6 +149,7 @@ class NoteSyncLogic
     await _networkSource.storeNote(note);
   }
 
+  @override
   void dispose() {
     _saveQueue();
   }

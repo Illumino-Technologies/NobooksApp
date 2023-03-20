@@ -10,12 +10,12 @@ part 'note_sync_queue_source_interface.dart';
 class NoteSyncQueueSource
     with HiveErrorHandlerMixin
     implements NoteSyncQueueSourceInterface {
-  final Box<Iterable<Map<String, dynamic>>> _box;
+  final Box<Iterable> _box;
 
   NoteSyncQueueSource({
     Box<Iterable<Map<String, dynamic>>>? box,
   }) : _box = box ??
-            Hive.box<Iterable<Map<String, dynamic>>>(
+            Hive.box<Iterable>(
               StorageKey.noteSyncQueue.box,
             );
 
@@ -41,8 +41,10 @@ class NoteSyncQueueSource
   Queue<NoteSyncQueueObject> _fetchQueue(String id) {
     final Queue<NoteSyncQueueObject> queue = Queue();
 
-    final Iterable<Map<String, dynamic>> data =
-        _box.get(id) ?? const Iterable.empty();
+    final Iterable<Map<String, dynamic>> data = _box.get(id)?.map((e) {
+          return e.cast<String, dynamic>();
+        }) ??
+        const Iterable.empty();
 
     if (data.isEmpty) return queue;
 

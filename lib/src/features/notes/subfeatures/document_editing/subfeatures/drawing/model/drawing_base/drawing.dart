@@ -67,10 +67,10 @@ class Drawing with EquatableMixin {
   factory Drawing.fromMap(Map<String, dynamic> map) {
     return Drawing(
       deltas: (map['deltas'] as List)
-          .cast<Map<String, dynamic>>()
-          .map((e) => DrawingDelta.fromMap(e))
+          .cast<Map>()
+          .map((e) => DrawingDelta.fromMap(e.cast()))
           .toList(),
-      metadata: DrawingMetadata.fromMap(map['metadata']),
+      metadata: DrawingMetadata.fromMap((map['metadata'] as Map).cast()),
     );
   }
 }

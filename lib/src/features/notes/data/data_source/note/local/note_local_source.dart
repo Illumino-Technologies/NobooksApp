@@ -10,11 +10,11 @@ part 'note_local_source_interface.dart';
 class NoteLocalSource
     with HiveErrorHandlerMixin
     implements NoteLocalSourceInterface {
-  final Box<Map<String, dynamic>> _box;
+  final Box<Map> _box;
 
   NoteLocalSource({
     Box<Map<String, dynamic>>? box,
-  }) : _box = box ?? Hive.box<Map<String, dynamic>>(StorageKey.note.box);
+  }) : _box = box ?? Hive.box<Map>(StorageKey.note.box);
 
   @override
   Future<void> deleteNote(String id) => handleError(_deleteNote(id));
@@ -34,7 +34,7 @@ class NoteLocalSource
   Note? fetchNote(String id) => handleSyncError(_fetchNote(id));
 
   Note? _fetchNote(String id) {
-    final Map<String, dynamic>? data = _box.get(StorageKey.note.key);
+    final Map<String, dynamic>? data = _box.get(id)?.cast<String, dynamic>();
 
     if (data == null) return null;
 
@@ -43,10 +43,12 @@ class NoteLocalSource
   }
 
   @override
-  List<Note> fetchAllNotes() => handleSyncError(_fetchOnlineNotes());
+  List<Note> fetchAllNotes() => handleSyncError(_fetchAllNotes());
 
-  List<Note> _fetchOnlineNotes() {
-    final List<Map<String, dynamic>> data = _box.values.toList();
+  List<Note> _fetchAllNotes() {
+    final List<Map<String, dynamic>> data = _box.values.map((e) {
+      return e.cast<String, dynamic>();
+    }).toList();
 
     if (data.isNullOrEmpty) return [];
 
@@ -67,7 +69,9 @@ class NoteLocalSource
       );
 
   Future<void> _storeNote(Note note) async {
+    print("storing note with id: ${note.id}\n\n");
     await _box.put(note.id, note.toMap());
+    print('stored data: ${_box.get(note.id)}');
   }
 
   @override

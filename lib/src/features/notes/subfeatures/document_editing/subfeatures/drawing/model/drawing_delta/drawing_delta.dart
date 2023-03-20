@@ -54,9 +54,9 @@ class DrawingDelta with EquatableMixin {
 
   factory DrawingDelta.fromMap(Map<String, dynamic> map) {
     return DrawingDelta(
-      point: UtilFunctions.pointDoubleFromMap(map['point']),
-      operation: DrawingOperation.fromString(map['operation']),
-      metadata: DrawingMetadata.fromMap(map['metadata']),
+      point: UtilFunctions.pointDoubleFromMap((map['point'] as Map).cast()),
+      operation: DrawingOperation.fromString((map['operation'])),
+      metadata: DrawingMetadata.fromMap((map['metadata'] as Map).cast()),
     );
   }
 }

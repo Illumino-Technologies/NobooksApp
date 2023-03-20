@@ -50,7 +50,7 @@ class Region {
   }
 
   factory Region.fromMap(Map<String, dynamic> map) {
-    final Map<String, dynamic> centreMap = map['centre'];
+    final Map<String, dynamic> centreMap = (map['centre'] as Map).cast();
 
     return Region(
       centre: PointDouble(

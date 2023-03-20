@@ -56,7 +56,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   bool get initialized => _initialized;
 
   @override
-  Future<void> initialize({
+  void initialize({
     Color? color,
     Eraser? eraser,
     DrawingMode? drawingMode,
@@ -65,7 +65,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     DrawingMetadata? sketchMetadata,
     Shape? shape,
     Drawings? drawings,
-  }) async {
+  }) {
     //TODO: initializeValues from cache/storage
 
     if (_initialized) return;
@@ -340,21 +340,24 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   }
 
   factory DrawingController.fromMap(Map<String, dynamic> map) {
-    final Color? color = int.tryParse(map['color'], radix: 16) == null
+    final Color? color = int.tryParse(map['color'].toString(), radix: 16) == null
         ? null
         : Color(int.parse(map['color'], radix: 16));
 
     final DrawingController controller = DrawingController()
       ..initialize(
-        eraser: Eraser.fromMap(map['eraser']),
+        eraser: Eraser.fromMap((map['eraser'] as Map).cast()),
         drawingMode: DrawingMode.values[map['drawingMode'] as int],
-        drawings: (map['_drawings'] as List)
-            .cast<Map<String, dynamic>>()
-            .map((data) => Drawing.fromMap(data))
+        drawings: (map['drawings'] as List)
+            .cast<Map>()
+            .map((data) => Drawing.fromMap(data.cast()))
             .toList(),
-        lineMetadata: DrawingMetadata.fromMap(map['lineMetadata']),
-        shapeMetadata: DrawingMetadata.fromMap(map['shapeMetadata']),
-        sketchMetadata: DrawingMetadata.fromMap(map['sketchMetadata']),
+        lineMetadata:
+            DrawingMetadata.fromMap((map['lineMetadata'] as Map).cast()),
+        shapeMetadata:
+            DrawingMetadata.fromMap((map['shapeMetadata'] as Map).cast()),
+        sketchMetadata:
+            DrawingMetadata.fromMap((map['sketchMetadata'] as Map).cast()),
         shape: Shape.values[map['shape'] as int],
       );
     if (color != null) {

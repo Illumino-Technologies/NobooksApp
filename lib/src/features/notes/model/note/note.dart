@@ -40,23 +40,25 @@ class Note {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'subject': subject,
+      'subject': subject.toMap(),
       'topic': topic,
       'noteBody': noteBody.toSerializerList(),
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
+      'createdAt': createdAt.toIso8601String(),
+      'updatedAt': updatedAt.toIso8601String(),
     };
   }
 
   factory Note.fromMap(Map<String, dynamic> map) {
     return Note(
       id: map['id'],
-      subject: Subject.fromMap(map['subject']),
+      subject: Subject.fromMap((map['subject'] as Map).cast()),
       topic: map['topic'] as String,
       noteBody: (map['noteBody'] as List)
-          .cast<Map<String, dynamic>>()
+          .cast<Map>()
           .map<DocumentEditingController>((e) {
-        return DocumentEditingController.fromMap(e);
+        return DocumentEditingController.fromMap(
+          e.cast<String, dynamic>(),
+        );
       }).toList(),
       createdAt: UtilFunctions.dateTimeFromMap(map['createdAt'])!,
       updatedAt: UtilFunctions.dateTimeFromMap(map['updatedAt'])!,

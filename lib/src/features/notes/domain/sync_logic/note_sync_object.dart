@@ -58,14 +58,17 @@ class NoteSyncQueueObject {
 
     switch (status) {
       case NoteSyncStatus.localSynced:
-        if (this.status == NoteSyncStatus.networkSynced) {
-          status = NoteSyncStatus.syncCompleted;
+        {
+          if (this.status == NoteSyncStatus.networkSynced) {
+            status = NoteSyncStatus.syncCompleted;
+          }
           break;
         }
-
       case NoteSyncStatus.networkSynced:
-        if (this.status == NoteSyncStatus.localSynced) {
-          status = NoteSyncStatus.syncCompleted;
+        {
+          if (this.status == NoteSyncStatus.localSynced) {
+            status = NoteSyncStatus.syncCompleted;
+          }
           break;
         }
       case null:
@@ -83,7 +86,7 @@ class NoteSyncQueueObject {
 
   Map<String, dynamic> toMap() {
     return {
-      'note': note,
+      'note': note.toMap(),
       'status': status.index,
       'errorReason': _errorReason?.index,
     };
@@ -91,7 +94,7 @@ class NoteSyncQueueObject {
 
   factory NoteSyncQueueObject.fromMap(Map<String, dynamic> map) {
     return NoteSyncQueueObject(
-      note: map['note'],
+      note: Note.fromMap(map['note']),
       status: NoteSyncStatus.values[(map['status'] as int)],
       errorReason: map['errorReason'] == null
           ? null
