@@ -146,7 +146,7 @@ packages:
     source: hosted
     version: "5.0.1"
   equatable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: equatable
       sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
@@ -214,6 +214,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  flutter_drawing_board:
+    dependency: "direct main"
+    description:
+      name: flutter_drawing_board
+      sha256: "12469d7ce627df68b995ee0ea8c345e93f4cfc9a57ff34bd6f6d89bdab5fd7bf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.4+2"
+  flutter_hsvcolor_picker:
+    dependency: transitive
+    description:
+      name: flutter_hsvcolor_picker
+      sha256: "5612d51d3f826f7c7f5cb8c2462a9d13f2b71884f4765aaf69f04e3ee06a18bf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.3"
   flutter_keyboard_visibility:
     dependency: transitive
     description:
@@ -440,6 +456,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.0"
+  math_expressions:
+    dependency: "direct main"
+    description:
+      name: math_expressions
+      sha256: "6cec3bb1f5a78701cc25d63705ddfa807062d00bc0d85ba8b2d13daed9fe61c5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.1"
   meta:
     dependency: transitive
     description:
@@ -870,5 +894,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.19.0 <3.0.0"
+  dart: ">=2.19.0 <4.0.0"
   flutter: ">=3.3.0"

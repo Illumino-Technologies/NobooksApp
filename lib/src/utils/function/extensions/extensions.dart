@@ -1,4 +1,3 @@
-// import 'package:nobook/src/global/global_barrel.dart';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -8,6 +7,8 @@ import 'package:nobook/src/global/global_barrel.dart';
 part 'build_context_extension.dart';
 
 part 'date_time_extension.dart';
+
+part 'iterable_extension.dart';
 
 part 'list_extension.dart';
 

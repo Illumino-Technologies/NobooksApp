@@ -61,7 +61,7 @@ class DashboardWidget extends ConsumerWidget {
                       onPressed: () {
                         context.goNamed(
                           AppRoute.noteDetailPage.name,
-                          extra: FakeNotes.allNotes[1],
+                          extra: FakeNotes.allNotes.first,
                         );
                       },
                     )
