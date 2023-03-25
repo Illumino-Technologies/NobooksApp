@@ -73,10 +73,12 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    backgroundColor: isPersonal?AppColors.blue500: Colors.white
-                                    // : Colors.white,
-                                  ),
+                                      elevation: 0,
+                                      backgroundColor: isPersonal
+                                          ? AppColors.blue500
+                                          : Colors.white
+                                      // : Colors.white,
+                                      ),
                                   onPressed: () {
                                     setState(() {
                                       isPersonal = true;
@@ -84,14 +86,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                   },
                                   child: Text(
                                     'Personal',
-                                    style: TextStyle(fontSize: 16, color: isPersonal?Colors.white:Colors.black),
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: isPersonal
+                                            ? Colors.white
+                                            : Colors.black),
                                   ),
                                 ),
                                 const SizedBox(width: 10),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     elevation: 0,
-                                    backgroundColor: !isPersonal?AppColors.blue500:Colors.white,
+                                    backgroundColor: !isPersonal
+                                        ? AppColors.blue500
+                                        : Colors.white,
                                     // : Colors.white,
                                   ),
                                   onPressed: () {
@@ -99,11 +107,13 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                       isPersonal = false;
                                     });
                                   },
-                                  child:  Text(
+                                  child: Text(
                                     'General',
                                     style: TextStyle(
                                       fontSize: 16,
-                                      color: !isPersonal?Colors.white:Colors.black,
+                                      color: !isPersonal
+                                          ? Colors.white
+                                          : Colors.black,
                                     ),
                                   ),
                                 ),
@@ -111,205 +121,273 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                             ),
                           ],
                         ),
-                        isPersonal?
-                        ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: availableSubjects.length,
-                          itemBuilder: (context, index) {
-                            final Subject currentSubject =
-                                availableSubjects[index];
-                            return Container(
-                              margin: const EdgeInsets.symmetric(vertical: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        currentSubject.name,
-                                        style:
-                                            TextStyles.headline1.withSize(24),
-                                      ),
-                                    ],
-                                  ),
-                                  20.boxHeight,
-                                  SizedBox(
-                                    height: 160,
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount:
-                                          subjectNotes[currentSubject]!.length,
-                                      itemBuilder: (context, index) {
-                                        final Note currentNote = subjectNotes[
-                                            currentSubject]![index];
-                                        return Container(
-                                          margin: const EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                          ),
-                                          width: 160,
-                                          decoration: const BoxDecoration(
-                                            color: AppColors.white,
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(8),
+                        isPersonal
+                            ? ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: availableSubjects.length,
+                                itemBuilder: (context, index) {
+                                  final Subject currentSubject =
+                                      availableSubjects[index];
+                                  return Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              currentSubject.name,
+                                              style: TextStyles.headline1
+                                                  .withSize(24),
                                             ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                16.boxHeight,
-                                                SubjectWidget(
-                                                  subject: currentNote.subject,
-                                                  boxSize: 40,
-                                                  fontSize: 25,
+                                          ],
+                                        ),
+                                        20.boxHeight,
+                                        Row(
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 20),
+                                              height: 160,
+                                              width: 160,
+                                              decoration: const BoxDecoration(
+                                                color: AppColors.white,
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(8),
                                                 ),
-                                                20.boxHeight,
-                                                Expanded(
+                                              ),
+                                              child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Image.asset(
+                                                        'assets/plus.png'),
+                                                    8.boxHeight,
+                                                    Text(
+                                                      'Add Note',
+                                                      style: TextStyles
+                                                          .headline3
+                                                          .withSize(14),
+                                                    ),
+                                                  ]),
+                                            ),
+                                            Expanded(
+                                              child: SizedBox(
+                                                height: 160,
+                                                child: ListView.builder(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: subjectNotes[
+                                                          currentSubject]!
+                                                      .length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    final Note currentNote =
+                                                        subjectNotes[
+                                                                currentSubject]![
+                                                            index];
+                                                    return Container(
+                                                      margin: const EdgeInsets
+                                                          .symmetric(
+                                                        horizontal: 20,
+                                                      ),
+                                                      width: 160,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        color: AppColors.white,
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                          Radius.circular(8),
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(10.0),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            16.boxHeight,
+                                                            SubjectWidget(
+                                                              subject:
+                                                                  currentNote
+                                                                      .subject,
+                                                              boxSize: 40,
+                                                              fontSize: 25,
+                                                            ),
+                                                            20.boxHeight,
+                                                            Expanded(
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    currentNote
+                                                                        .topic,
+                                                                    style: TextStyles
+                                                                        .headline3
+                                                                        .withSize(
+                                                                            14),
+                                                                  ),
+                                                                  8.boxHeight,
+                                                                  Text(
+                                                                    // currentNote.noteBody.isEmpty,
+                                                                    'Hello there',
+                                                                    style: TextStyles
+                                                                        .headline4
+                                                                        .withSize(
+                                                                            12),
+                                                                  ),
+                                                                  40.boxHeight,
+                                                                  Text(
+                                                                    DateFormat
+                                                                            .yMEd()
+                                                                        .add_jms()
+                                                                        .format(
+                                                                          currentNote
+                                                                              .createdAt,
+                                                                        ),
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .grey,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              )
+                            : ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: availableSubjects.length,
+                                itemBuilder: (context, index) {
+                                  final Subject currentSubject =
+                                      availableSubjects[index];
+                                  return Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        20.boxHeight,
+                                        SizedBox(
+                                          height: 160,
+                                          child: ListView.builder(
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount:
+                                                subjectNotes[currentSubject]!
+                                                    .length,
+                                            itemBuilder: (context, index) {
+                                              final Note currentNote =
+                                                  subjectNotes[currentSubject]![
+                                                      index];
+                                              return Container(
+                                                margin:
+                                                    const EdgeInsets.symmetric(
+                                                  horizontal: 20,
+                                                ),
+                                                width: 160,
+                                                decoration: const BoxDecoration(
+                                                  color: AppColors.white,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(8),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      10.0),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      Text(
-                                                        currentNote.topic,
-                                                        style: TextStyles
-                                                            .headline3
-                                                            .withSize(14),
+                                                      16.boxHeight,
+                                                      SubjectWidget(
+                                                        subject:
+                                                            currentNote.subject,
+                                                        boxSize: 40,
+                                                        fontSize: 25,
                                                       ),
-                                                      8.boxHeight,
-                                                      Text(
-                                                        // currentNote.noteBody.isEmpty,
-                                                        'Hello there',
-                                                        style: TextStyles
-                                                            .headline4
-                                                            .withSize(12),
-                                                      ),
-                                                      40.boxHeight,
-                                                      Text(
-                                                        DateFormat.yMEd()
-                                                            .add_jms()
-                                                            .format(
-                                                              currentNote
-                                                                  .createdAt,
+                                                      20.boxHeight,
+                                                      Expanded(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              currentNote.topic,
+                                                              style: TextStyles
+                                                                  .headline3
+                                                                  .withSize(14),
                                                             ),
-                                                        style: const TextStyle(
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: Colors.grey,
+                                                            8.boxHeight,
+                                                            Text(
+                                                              // currentNote.noteBody.isEmpty,
+                                                              'Hello there',
+                                                              style: TextStyles
+                                                                  .headline4
+                                                                  .withSize(12),
+                                                            ),
+                                                            40.boxHeight,
+                                                            Text(
+                                                              DateFormat.yMEd()
+                                                                  .add_jms()
+                                                                  .format(
+                                                                    currentNote
+                                                                        .createdAt,
+                                                                  ),
+                                                              style:
+                                                                  const TextStyle(
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color:
+                                                                    Colors.grey,
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                              ],
-                                            ),
+                                              );
+                                            },
                                           ),
-                                        );
-                                      },
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                ],
+                                  );
+                                },
                               ),
-                            );
-                          },
-                        ):ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: availableSubjects.length,
-                          itemBuilder: (context, index) {
-                            final Subject currentSubject =
-                                availableSubjects[index];
-                            return Container(
-                              margin: const EdgeInsets.symmetric(vertical: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  20.boxHeight,
-                                  SizedBox(
-                                    height: 160,
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount:
-                                          subjectNotes[currentSubject]!.length,
-                                      itemBuilder: (context, index) {
-                                        final Note currentNote = subjectNotes[
-                                            currentSubject]![index];
-                                        return Container(
-                                          margin: const EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                          ),
-                                          width: 160,
-                                          decoration: const BoxDecoration(
-                                            color: AppColors.white,
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(8),
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                16.boxHeight,
-                                                SubjectWidget(
-                                                  subject: currentNote.subject,
-                                                  boxSize: 40,
-                                                  fontSize: 25,
-                                                ),
-                                                20.boxHeight,
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        currentNote.topic,
-                                                        style: TextStyles
-                                                            .headline3
-                                                            .withSize(14),
-                                                      ),
-                                                      8.boxHeight,
-                                                      Text(
-                                                        // currentNote.noteBody.isEmpty,
-                                                        'Hello there',
-                                                        style: TextStyles
-                                                            .headline4
-                                                            .withSize(12),
-                                                      ),
-                                                      40.boxHeight,
-                                                      Text(
-                                                        DateFormat.yMEd()
-                                                            .add_jms()
-                                                            .format(
-                                                              currentNote
-                                                                  .createdAt,
-                                                            ),
-                                                        style: const TextStyle(
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
                       ],
                     ),
                   ),
