@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
-import 'package:nobook/src/features/notes/subfeatures/calculator/view/calcPages.dart';
 import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
@@ -19,7 +18,12 @@ class NoteScreen extends ConsumerStatefulWidget {
 }
 
 class NoteScreenState extends ConsumerState<NoteScreen> {
-  bool isPersonal = true;
+  bool ch = true;
+  isSwitched() {
+    setState(() {
+      ch = !ch;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,55 +59,39 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: ((context) => const CalcPage()),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                'Your Notes',
-                                style: TextStyles.headline1.withSize(24),
-                              ),
+                            Text(
+                              'Your Notes',
+                              style: TextStyles.headline1.withSize(24),
                             ),
                             Row(
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    backgroundColor: isPersonal?AppColors.blue500: Colors.white
-                                    // : Colors.white,
-                                  ),
+                                      elevation: 0,
+                                      backgroundColor: AppColors.blue500
+                                      // : Colors.white,
+                                      ),
                                   onPressed: () {
-                                    setState(() {
-                                      isPersonal = true;
-                                    });
+                                 
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Personal',
-                                    style: TextStyle(fontSize: 16, color: isPersonal?Colors.white:Colors.black),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                 ),
                                 const SizedBox(width: 10),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     elevation: 0,
-                                    backgroundColor: !isPersonal?AppColors.blue500:Colors.white,
+                                    backgroundColor: Colors.transparent,
                                     // : Colors.white,
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      isPersonal = false;
-                                    });
-                                  },
-                                  child:  Text(
+                                  onPressed: () {},
+                                  child: const Text(
                                     'General',
                                     style: TextStyle(
                                       fontSize: 16,
-                                      color: !isPersonal?Colors.white:Colors.black,
+                                      color: Colors.black54,
                                     ),
                                   ),
                                 ),
@@ -111,7 +99,6 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                             ),
                           ],
                         ),
-                        isPersonal?
                         ListView.builder(
                           shrinkWrap: true,
                           itemCount: availableSubjects.length,
@@ -179,115 +166,18 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                             .withSize(14),
                                                       ),
                                                       8.boxHeight,
-                                                      Text(
-                                                        // currentNote.noteBody.isEmpty,
-                                                        'Hello there',
-                                                        style: TextStyles
-                                                            .headline4
-                                                            .withSize(12),
-                                                      ),
+                                                      // Text(
+                                                      //   currentNote.noteBody,
+                                                      //   style: TextStyles
+                                                      //       .headline4
+                                                      //       .withSize(12),
+                                                      // ),
                                                       40.boxHeight,
                                                       Text(
                                                         DateFormat.yMEd()
                                                             .add_jms()
-                                                            .format(
-                                                              currentNote
-                                                                  .createdAt,
-                                                            ),
-                                                        style: const TextStyle(
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ):ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: availableSubjects.length,
-                          itemBuilder: (context, index) {
-                            final Subject currentSubject =
-                                availableSubjects[index];
-                            return Container(
-                              margin: const EdgeInsets.symmetric(vertical: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  20.boxHeight,
-                                  SizedBox(
-                                    height: 160,
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount:
-                                          subjectNotes[currentSubject]!.length,
-                                      itemBuilder: (context, index) {
-                                        final Note currentNote = subjectNotes[
-                                            currentSubject]![index];
-                                        return Container(
-                                          margin: const EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                          ),
-                                          width: 160,
-                                          decoration: const BoxDecoration(
-                                            color: AppColors.white,
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(8),
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                16.boxHeight,
-                                                SubjectWidget(
-                                                  subject: currentNote.subject,
-                                                  boxSize: 40,
-                                                  fontSize: 25,
-                                                ),
-                                                20.boxHeight,
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        currentNote.topic,
-                                                        style: TextStyles
-                                                            .headline3
-                                                            .withSize(14),
-                                                      ),
-                                                      8.boxHeight,
-                                                      Text(
-                                                        // currentNote.noteBody.isEmpty,
-                                                        'Hello there',
-                                                        style: TextStyles
-                                                            .headline4
-                                                            .withSize(12),
-                                                      ),
-                                                      40.boxHeight,
-                                                      Text(
-                                                        DateFormat.yMEd()
-                                                            .add_jms()
-                                                            .format(
-                                                              currentNote
-                                                                  .createdAt,
-                                                            ),
+                                                            .format(currentNote
+                                                                .createdAt),
                                                         style: const TextStyle(
                                                           fontSize: 10,
                                                           fontWeight:
@@ -318,9 +208,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
               SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0,
-                    vertical: 10.0,
-                  ),
+                      horizontal: 10.0, vertical: 10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
