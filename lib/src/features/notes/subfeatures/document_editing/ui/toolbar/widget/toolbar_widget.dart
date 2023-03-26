@@ -48,6 +48,12 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   @override
+  void activate() {
+    super.activate();
+    controller.syncNote();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.topCenter,
@@ -203,6 +209,7 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   @override
   void didUpdateWidget(covariant ToolBarWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
+    oldWidget.controller.syncNote();
     if (oldWidget.controller != widget.controller) {
       oldWidget.controller.removeListener(controllerListener);
       controller.addListener(controllerListener);

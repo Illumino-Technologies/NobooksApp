@@ -104,11 +104,14 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     _initialized = true;
   }
 
-  void changeDrawingMode(DrawingMode mode) {
+  void changeDrawingMode(
+    DrawingMode mode, [
+    bool revertToPreviousAction = false,
+  ]) {
     if (_actionStack.contains(mode)) _actionStack.remove(mode);
     _actionStack.add(mode);
 
-    drawingMode = mode;
+    drawingMode = _actionStack.lastOrNull ?? mode;
     notifyListeners();
     notifyOfSignificantUpdate();
   }
@@ -123,7 +126,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   void toggleErase() {
     //TODO: use action stack
     if (drawingMode == DrawingMode.erase) {
-      changeDrawingMode(DrawingMode.sketch);
+      changeDrawingMode(DrawingMode.sketch, true);
     } else {
       changeDrawingMode(DrawingMode.erase);
     }
@@ -191,6 +194,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     //TODO: confirm or modify
     changeDrawings([]);
     notifyOfSignificantUpdate();
+    notifyListeners();
   }
 
   Drawings _sketch(DrawingDelta delta, Drawings drawings) {
@@ -220,6 +224,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   }
 
   Drawings _drawLine(DrawingDelta delta, Drawings drawings) {
+    //TODO: implement _drawLine
     final Drawings drawnDrawings = addDeltaToDrawings(delta, drawings);
     return drawnDrawings;
   }

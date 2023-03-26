@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 
@@ -54,11 +55,6 @@ class _DrawingCanvasState extends State<DrawingCanvas> {
               // if (erasingNotifier.value) return;
               if (controller.drawingMode == DrawingMode.erase) return;
               panEnd(details);
-            },
-            onForcePressStart: (details) {},
-            onForcePressUpdate: (details) {
-              details.pressure;
-              print('force pressure: ${details.pressure}');
             },
             onPanUpdate: panUpdate,
           ),

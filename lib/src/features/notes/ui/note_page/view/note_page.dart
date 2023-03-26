@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/features/notes/subfeatures/calculator/view/calcPages.dart';
+import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
-import 'package:intl/intl.dart';
-
-import 'package:nobook/src/global/domain/domain_barrel.dart';
 
 class NoteScreen extends ConsumerStatefulWidget {
   const NoteScreen({Key? key, this.style}) : super(key: key);
@@ -20,6 +19,7 @@ class NoteScreen extends ConsumerStatefulWidget {
 
 class NoteScreenState extends ConsumerState<NoteScreen> {
   bool isPersonal = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,12 +73,12 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      elevation: 0,
-                                      backgroundColor: isPersonal
-                                          ? AppColors.blue500
-                                          : Colors.white
-                                      // : Colors.white,
-                                      ),
+                                    elevation: 0,
+                                    backgroundColor: isPersonal
+                                        ? AppColors.blue500
+                                        : Colors.white,
+                                    // : Colors.white,
+                                  ),
                                   onPressed: () {
                                     setState(() {
                                       isPersonal = true;
@@ -87,10 +87,11 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                   child: Text(
                                     'Personal',
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        color: isPersonal
-                                            ? Colors.white
-                                            : Colors.black),
+                                      fontSize: 16,
+                                      color: isPersonal
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: 10),
@@ -130,7 +131,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                       availableSubjects[index];
                                   return Container(
                                     margin: const EdgeInsets.symmetric(
-                                        vertical: 20),
+                                      vertical: 20,
+                                    ),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -149,7 +151,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                           children: [
                                             Container(
                                               margin: EdgeInsets.symmetric(
-                                                  horizontal: 20),
+                                                horizontal: 20,
+                                              ),
                                               height: 160,
                                               width: 160,
                                               decoration: const BoxDecoration(
@@ -159,19 +162,20 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                 ),
                                               ),
                                               child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Image.asset(
-                                                        'assets/plus.png'),
-                                                    8.boxHeight,
-                                                    Text(
-                                                      'Add Note',
-                                                      style: TextStyles
-                                                          .headline3
-                                                          .withSize(14),
-                                                    ),
-                                                  ]),
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Image.asset(
+                                                    'assets/plus.png',
+                                                  ),
+                                                  8.boxHeight,
+                                                  Text(
+                                                    'Add Note',
+                                                    style: TextStyles.headline3
+                                                        .withSize(14),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                             Expanded(
                                               child: SizedBox(
@@ -232,7 +236,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                                     style: TextStyles
                                                                         .headline3
                                                                         .withSize(
-                                                                            14),
+                                                                      14,
+                                                                    ),
                                                                   ),
                                                                   8.boxHeight,
                                                                   Text(
@@ -241,7 +246,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                                     style: TextStyles
                                                                         .headline4
                                                                         .withSize(
-                                                                            12),
+                                                                      12,
+                                                                    ),
                                                                   ),
                                                                   40.boxHeight,
                                                                   Text(
@@ -289,7 +295,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                       availableSubjects[index];
                                   return Container(
                                     margin: const EdgeInsets.symmetric(
-                                        vertical: 20),
+                                      vertical: 20,
+                                    ),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -321,7 +328,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                 ),
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(
-                                                      10.0),
+                                                    10.0,
+                                                  ),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
