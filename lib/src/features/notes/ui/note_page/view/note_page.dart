@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/features/notes/subfeatures/calculator/view/calcPages.dart';
@@ -90,7 +91,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                         fontSize: 16,
                                         color: isPersonal
                                             ? Colors.white
-                                            : Colors.black),
+                                            : Colors.black,),
                                   ),
                                 ),
                                 const SizedBox(width: 10),
@@ -130,7 +131,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                       availableSubjects[index];
                                   return Container(
                                     margin: const EdgeInsets.symmetric(
-                                        vertical: 20),
+                                        vertical: 20,),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -148,10 +149,10 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                         Row(
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.symmetric(
+                                              margin:const EdgeInsets.symmetric(
                                                   horizontal: 20),
-                                              height: 160,
-                                              width: 160,
+                                              height: 160.h,
+                                              width: 160.w,
                                               decoration: const BoxDecoration(
                                                 color: AppColors.white,
                                                 borderRadius: BorderRadius.all(
@@ -175,7 +176,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                             ),
                                             Expanded(
                                               child: SizedBox(
-                                                height: 160,
+                                                height: 160.h,
                                                 child: ListView.builder(
                                                   scrollDirection:
                                                       Axis.horizontal,
@@ -193,7 +194,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                           .symmetric(
                                                         horizontal: 20,
                                                       ),
-                                                      width: 160,
+                                                      width: 160.w,
                                                       decoration:
                                                           const BoxDecoration(
                                                         color: AppColors.white,
@@ -289,7 +290,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                       availableSubjects[index];
                                   return Container(
                                     margin: const EdgeInsets.symmetric(
-                                        vertical: 20),
+                                        vertical: 20,),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -311,7 +312,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                     const EdgeInsets.symmetric(
                                                   horizontal: 20,
                                                 ),
-                                                width: 160,
+                                                width: 160.w,
                                                 decoration: const BoxDecoration(
                                                   color: AppColors.white,
                                                   borderRadius:
@@ -321,7 +322,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                                 ),
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(
-                                                      10.0),
+                                                      10),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
