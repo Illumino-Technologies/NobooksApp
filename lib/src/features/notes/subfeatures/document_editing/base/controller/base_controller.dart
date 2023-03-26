@@ -5,6 +5,8 @@ abstract class DocumentEditingController extends ChangeNotifier {
   void initialize();
 
   static DocumentEditingController fromMap(Map<String, dynamic> map) {
+    final Map<String, String> value = <String, String>{'hello': 'hi'};
+
     final DocumentEditorType type = DocumentEditorType.fromString(
       map[DocumentEditorType.serializerKey],
     );

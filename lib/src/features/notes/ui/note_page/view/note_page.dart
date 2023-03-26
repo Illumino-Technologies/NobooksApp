@@ -88,10 +88,11 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                   child: Text(
                                     'Personal',
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        color: isPersonal
-                                            ? Colors.white
-                                            : Colors.black,),
+                                      fontSize: 16,
+                                      color: isPersonal
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: 10),

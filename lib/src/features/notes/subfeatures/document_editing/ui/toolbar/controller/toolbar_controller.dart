@@ -42,6 +42,7 @@ class ToolbarController extends ChangeNotifier {
     for (final DocumentEditingController controller in note.noteBody) {
       if (controller is DrawingController) {
         drawingController = controller;
+        print('drawings: ${controller.drawings}');
         notifyListeners();
       }
     }
@@ -187,6 +188,14 @@ class ToolbarController extends ChangeNotifier {
   void clear() {
     note = note.copyWith(noteBody: []);
     _noteSynchronizer.clearNotes();
+    clearDrawings();
+    notifyListeners();
+  }
+
+  void clearDrawings() {
+    drawingController.removeListener(drawingControllerListener);
+    drawingController = drawingController.copy(drawings: []);
+    drawingController.addListener(drawingControllerListener);
   }
 
   void dispatchColorChange(Color color) {

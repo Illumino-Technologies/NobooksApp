@@ -33,7 +33,7 @@ class NoteSyncLogic
         _noteSyncQueueSource = noteSyncQueueSource ?? NoteSyncQueueSource(),
         _syncQueue = Queue<NoteSyncQueueObject>(),
         _networkSource = networkSource ?? NoteLocalSource() {
-    // _fetchQueueAndRetry();
+    _fetchQueueAndRetry();
   }
 
   Queue<NoteSyncQueueObject> get syncQueue =>
