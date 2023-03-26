@@ -103,13 +103,13 @@ Layers are:
 - Encourage the use of ```super enum``` and the new ```record``` over custom classes
 
 ### UI guidelines
-- The package flutter_screenutil is being used for responsiveness, and you should make use of it's methods appropriately in *ALL* your files
-- To emphasize on the above, use the methods provided by screenutil literally *EVERYWHERE* you are to specify size in the UI
-- The package gorouter_flow is being used for navigation, and you should make use of it *ALL* through your code when handling navigation
+- The package flutter_screenutil is being used for responsiveness, and you should make use of it's methods appropriately in **ALL** your files
+- To emphasize on the above, use the methods provided by screenutil literally **EVERYWHERE** you are to specify size in the UI
+- The package gorouter_flow is being used for navigation, and you should make use of it **ALL** through your code when handling navigation
 - Use the text styles from ```TextStyles``` class in [text_styles.dart](lib/src/global/ui/text/text_styles.dart) and the extension methods on TextStyles in [text_style_extension.dart](lib/src/utils/function/extensions/text_style_extension.dart)
 - Use the ```AppColors``` in the [app_colors.dart](lib/src/global/ui/colors/app_colors.dart) for design colors.
-- _Corollary to the above_, Update and *REPORT* any colors you see in the ui template that wasn't already in the file.
-- 
+- _Corollary to the above_, Update and **REPORT** any colors you see in the ui template that wasn't already in the file.
+
 
 ### Version Control/Git
 
