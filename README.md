@@ -110,7 +110,7 @@ Layers are:
 - Use the ```AppColors``` in the [app_colors.dart](lib/src/global/ui/colors/app_colors.dart) for design colors.
 - _Corollary to the above_, Update and **REPORT** any colors you see in the ui template that wasn't already in the file.
 - Encourage extracting custom widgets from files to keep UI code lines ```less than``` 201.
-- _Corollary to the above_, Encourage the use of ```part directive``` (custom widgets part of -> it's parent) to avoid numerous imports in small widget files. 
+- _Corollary to the above_, Encourage the use of ```part directive``` (custom widgets' file part of -> it's parent's file) to avoid numerous imports in small widget files. 
 
 
 ### Version Control/Git
