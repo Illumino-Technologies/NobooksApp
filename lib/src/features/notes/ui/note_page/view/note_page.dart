@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/features/notes/subfeatures/calculator/view/calcPages.dart';
+import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
-import 'package:intl/intl.dart';
 
-import 'package:nobook/src/global/domain/domain_barrel.dart';
+part 'widgets/available_subject_widget.dart';
+
+part 'widgets/note_list_item.dart';
+
+part 'widgets/subject_note_widget.dart';
 
 class NoteScreen extends ConsumerStatefulWidget {
   const NoteScreen({Key? key, this.style}) : super(key: key);
@@ -21,6 +26,7 @@ class NoteScreen extends ConsumerStatefulWidget {
 
 class NoteScreenState extends ConsumerState<NoteScreen> {
   bool isPersonal = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +52,9 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                      vertical: 10.0,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.0.w,
+                      vertical: 10.0.h,
                     ),
                     child: Column(
                       children: [
@@ -74,12 +80,12 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      elevation: 0,
-                                      backgroundColor: isPersonal
-                                          ? AppColors.blue500
-                                          : Colors.white
-                                      // : Colors.white,
-                                      ),
+                                    elevation: 0,
+                                    backgroundColor: isPersonal
+                                        ? AppColors.blue500
+                                        : AppColors.white,
+                                    // : Colors.white,
+                                  ),
                                   onPressed: () {
                                     setState(() {
                                       isPersonal = true;
@@ -130,156 +136,9 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                 itemBuilder: (context, index) {
                                   final Subject currentSubject =
                                       availableSubjects[index];
-                                  return Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        vertical: 20,),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              currentSubject.name,
-                                              style: TextStyles.headline1
-                                                  .withSize(24),
-                                            ),
-                                          ],
-                                        ),
-                                        20.boxHeight,
-                                        Row(
-                                          children: [
-                                            Container(
-                                              margin:const EdgeInsets.symmetric(
-                                                  horizontal: 20),
-                                              height: 160.h,
-                                              width: 160.w,
-                                              decoration: const BoxDecoration(
-                                                color: AppColors.white,
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(8),
-                                                ),
-                                              ),
-                                              child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Image.asset(
-                                                        'assets/plus.png'),
-                                                    8.boxHeight,
-                                                    Text(
-                                                      'Add Note',
-                                                      style: TextStyles
-                                                          .headline3
-                                                          .withSize(14),
-                                                    ),
-                                                  ]),
-                                            ),
-                                            Expanded(
-                                              child: SizedBox(
-                                                height: 160.h,
-                                                child: ListView.builder(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  itemCount: subjectNotes[
-                                                          currentSubject]!
-                                                      .length,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    final Note currentNote =
-                                                        subjectNotes[
-                                                                currentSubject]![
-                                                            index];
-                                                    return Container(
-                                                      margin: const EdgeInsets
-                                                          .symmetric(
-                                                        horizontal: 20,
-                                                      ),
-                                                      width: 160.w,
-                                                      decoration:
-                                                          const BoxDecoration(
-                                                        color: AppColors.white,
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                          Radius.circular(8),
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(10.0),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            16.boxHeight,
-                                                            SubjectWidget(
-                                                              subject:
-                                                                  currentNote
-                                                                      .subject,
-                                                              boxSize: 40,
-                                                              fontSize: 25,
-                                                            ),
-                                                            20.boxHeight,
-                                                            Expanded(
-                                                              child: Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    currentNote
-                                                                        .topic,
-                                                                    style: TextStyles
-                                                                        .headline3
-                                                                        .withSize(
-                                                                            14),
-                                                                  ),
-                                                                  8.boxHeight,
-                                                                  Text(
-                                                                    // currentNote.noteBody.isEmpty,
-                                                                    'Hello there',
-                                                                    style: TextStyles
-                                                                        .headline4
-                                                                        .withSize(
-                                                                            12),
-                                                                  ),
-                                                                  40.boxHeight,
-                                                                  Text(
-                                                                    DateFormat
-                                                                            .yMEd()
-                                                                        .add_jms()
-                                                                        .format(
-                                                                          currentNote
-                                                                              .createdAt,
-                                                                        ),
-                                                                    style:
-                                                                        const TextStyle(
-                                                                      fontSize:
-                                                                          10,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: Colors
-                                                                          .grey,
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
+                                  return _AvailableSubjectWidget(
+                                    currentSubject: currentSubject,
+                                    subjectNotes: subjectNotes,
                                   );
                                 },
                               )
@@ -291,7 +150,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                       availableSubjects[index];
                                   return Container(
                                     margin: const EdgeInsets.symmetric(
-                                        vertical: 20,),
+                                      vertical: 20,
+                                    ),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -308,79 +168,8 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                               final Note currentNote =
                                                   subjectNotes[currentSubject]![
                                                       index];
-                                              return Container(
-                                                margin:
-                                                    const EdgeInsets.symmetric(
-                                                  horizontal: 20,
-                                                ),
-                                                width: 160.w,
-                                                decoration: const BoxDecoration(
-                                                  color: AppColors.white,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                    Radius.circular(8),
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      10),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      16.boxHeight,
-                                                      SubjectWidget(
-                                                        subject:
-                                                            currentNote.subject,
-                                                        boxSize: 40,
-                                                        fontSize: 25,
-                                                      ),
-                                                      20.boxHeight,
-                                                      Expanded(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              currentNote.topic,
-                                                              style: TextStyles
-                                                                  .headline3
-                                                                  .withSize(14),
-                                                            ),
-                                                            8.boxHeight,
-                                                            Text(
-                                                              // currentNote.noteBody.isEmpty,
-                                                              'Hello there',
-                                                              style: TextStyles
-                                                                  .headline4
-                                                                  .withSize(12),
-                                                            ),
-                                                            40.boxHeight,
-                                                            Text(
-                                                              DateFormat.yMEd()
-                                                                  .add_jms()
-                                                                  .format(
-                                                                    currentNote
-                                                                        .createdAt,
-                                                                  ),
-                                                              style:
-                                                                  const TextStyle(
-                                                                fontSize: 10,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color:
-                                                                    Colors.grey,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
+                                              return NoteListItem(
+                                                currentNote: currentNote,
                                               );
                                             },
                                           ),
@@ -410,18 +199,24 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                       ),
                       SizedBox(
                         height: context.screenHeight * 0.85,
-                        width: context.screenHeight * 0.35,
+                        width: 320.w,
                         child: ListView.builder(
                           itemCount: FakeSubjects.subjects.length,
                           itemBuilder: (context, index) {
                             return ListTile(
                               leading: SubjectWidget(
                                 subject: FakeSubjects.subjects[index],
-                                boxSize: 40,
-                                fontSize: 25,
+                                boxSize: 40.r,
+                                fontSize: 25.sp,
                               ),
-                              title: Text(FakeSubjects.subjects[index].name),
-                              trailing: const Icon(Icons.keyboard_arrow_down),
+                              title: Text(
+                                FakeSubjects.subjects[index].name,
+                                style: TextStyles.paragraph1.asSemibold,
+                              ),
+                              trailing: Icon(
+                                Icons.keyboard_arrow_down,
+                                size: 24.r,
+                              ),
                             );
                           },
                         ),
