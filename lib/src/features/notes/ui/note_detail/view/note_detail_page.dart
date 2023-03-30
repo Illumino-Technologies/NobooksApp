@@ -54,7 +54,23 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
               },
               child: const Icon(Icons.delete),
             ),
-            20.boxHeight,
+            10.boxHeight,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 30.w,
+                vertical: 20.h,
+              ),
+              child: Text(
+                'hello world',
+                style: TextStyles.headline3.copyWith(
+                  color: AppColors.subjectPink,
+                  fontSize: 30.sp,
+                  height: 2.0,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            10.boxHeight,
             ChangeNotifierBuilder<ToolbarController>(
               listenable: toolbarController,
               buildWhen: (previous, next) =>

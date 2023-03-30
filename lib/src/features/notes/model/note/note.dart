@@ -19,6 +19,17 @@ class Note {
     required this.updatedAt,
   });
 
+  factory Note.newNote(Subject subject) {
+    return Note(
+      id: '',
+      topic: '',
+      subject: subject,
+      noteBody: const [],
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+  }
+
   Note copyWith({
     String? id,
     Subject? subject,
