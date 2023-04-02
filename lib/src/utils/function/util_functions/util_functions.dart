@@ -3,6 +3,10 @@ import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class UtilFunctions {
+  static Color colorFromMap(dynamic map) {
+    return Color(int.parse(map['color'].toString()));
+  }
+
   static Color interpolateColors(double value, List<Color> colors) {
     assert(value >= 0 || value <= 1, 'value must be between 0 and 1');
 
