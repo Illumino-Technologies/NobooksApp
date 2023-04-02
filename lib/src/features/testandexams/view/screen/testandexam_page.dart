@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
 // import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,13 +12,8 @@ class TestandExamPage extends ConsumerStatefulWidget {
 }
 
 class _AssignmentPageState extends ConsumerState<TestandExamPage> {
-  final QuillController _controller = QuillController.basic();
-  final QuillController _titleController = QuillController.basic();
-
   @override
   void dispose() {
-    _controller.dispose();
-    _titleController.dispose();
     super.dispose();
   }
 
@@ -44,9 +38,9 @@ class _AssignmentPageState extends ConsumerState<TestandExamPage> {
                     width: 800,
                     height: 80,
                     decoration: const BoxDecoration(color: Colors.white),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: QuillToolbar.basic(controller: _controller),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: SizedBox.shrink(),
                     ),
                   ),
                 ),
@@ -90,13 +84,10 @@ class _AssignmentPageState extends ConsumerState<TestandExamPage> {
                           ),
                         ),
                         const SizedBox(width: 5),
-                        Expanded(
+                        const Expanded(
                           child: SizedBox(
                             width: 800,
-                            child: QuillEditor.basic(
-                              controller: _titleController,
-                              readOnly: false,
-                            ),
+                            child: SizedBox.shrink(),
                           ),
                         )
                       ],
@@ -124,12 +115,9 @@ class _AssignmentPageState extends ConsumerState<TestandExamPage> {
                     decoration: BoxDecoration(
                       border: Border.all(width: 0.5, color: Colors.black),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: QuillEditor.basic(
-                        controller: _controller,
-                        readOnly: false,
-                      ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: SizedBox.shrink(),
                     ),
                   ),
                 ),

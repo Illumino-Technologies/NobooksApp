@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:custom_edittext/custom_edittext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +10,11 @@ import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolba
     show ToolBarWidget, ToolbarController;
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:rich_editor/rich_editor.dart';
+import 'package:rich_field_controller/rich_field_controller.dart';
+
+part 'text_editing/text_editing_canvas.dart';
 
 class NoteDetailPage extends StatelessWidget {
   final Note note;
@@ -54,40 +62,29 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
               },
               child: const Icon(Icons.delete),
             ),
-            10.boxHeight,
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 30.w,
-                vertical: 20.h,
-              ),
-              child: Text(
-                'hello world',
-                style: TextStyles.headline3.copyWith(
-                  color: AppColors.subjectPink,
-                  fontSize: 30.sp,
-                  height: 2.0,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            10.boxHeight,
-            ChangeNotifierBuilder<ToolbarController>(
-              listenable: toolbarController,
-              buildWhen: (previous, next) =>
-                  previous?.drawingController == next.drawingController,
-              builder: (_, controller) {
-                return Container(
-                  color: AppColors.subjectOrange,
-                  child: DrawingCanvas(
-                    controller: controller.drawingController,
-                    size: Size(
-                      900.w,
-                      600.h,
-                    ),
-                  ),
-                );
-              },
-            ),
+            20.boxHeight,
+            SizedBox(
+              width: 900.w,
+              height: 600.h,
+              child: _TextEditingCanvas(),
+            )
+            // ChangeNotifierBuilder<ToolbarController>(
+            //   listenable: toolbarController,
+            //   buildWhen: (previous, next) =>
+            //       previous?.drawingController == next.drawingController,
+            //   builder: (_, controller) {
+            //     return Container(
+            //       color: AppColors.subjectOrange,
+            //       child: DrawingCanvas(
+            //         controller: controller.drawingController,
+            //         size: Size(
+            //           900.w,
+            //           600.h,
+            //         ),
+            //       ),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),
