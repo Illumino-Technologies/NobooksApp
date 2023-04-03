@@ -11,14 +11,14 @@ class SubjectNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 20,
+      margin:  EdgeInsets.symmetric(
+        horizontal: 20.w,
       ),
       width: 160.w,
-      decoration: const BoxDecoration(
+  decoration:  BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.all(
-          Radius.circular(8),
+          Radius.circular(8.r),
         ),
       ),
       child: Padding(
@@ -29,8 +29,8 @@ class SubjectNoteWidget extends StatelessWidget {
             16.boxHeight,
             SubjectWidget(
               subject: currentNote.subject,
-              boxSize: 40,
-              fontSize: 25,
+              boxSize: 40.r,
+              fontSize: 25.sp,
             ),
             20.boxHeight,
             Expanded(
@@ -40,7 +40,7 @@ class SubjectNoteWidget extends StatelessWidget {
                   Text(
                     currentNote.topic,
                     style: TextStyles.headline3.withSize(
-                      14,
+                      14.sp,
                     ),
                   ),
                   8.boxHeight,
@@ -48,7 +48,7 @@ class SubjectNoteWidget extends StatelessWidget {
                     // currentNote.noteBody.isEmpty,
                     'Hello there',
                     style: TextStyles.headline4.withSize(
-                      12,
+                      12.sp,
                     ),
                   ),
                   40.boxHeight,
@@ -56,12 +56,13 @@ class SubjectNoteWidget extends StatelessWidget {
                     DateFormat.yMEd().add_jms().format(
                       currentNote.createdAt,
                     ),
-                    style: const TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.grey,
+                    style: TextStyles.headline4.withSize(
+                      12.sp,
+                    ).copyWith(
+                      color: AppColors.neutral400,
                     ),
-                  ),
+                    ),
+                  
                 ],
               ),
             ),

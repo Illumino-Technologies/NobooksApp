@@ -11,8 +11,8 @@ class NoteListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 20,
+      margin:  EdgeInsets.symmetric(
+        horizontal: 20.w,
       ),
       width: 160.w,
       decoration: const BoxDecoration(
@@ -31,8 +31,8 @@ class NoteListItem extends StatelessWidget {
             16.boxHeight,
             SubjectWidget(
               subject: currentNote.subject,
-              boxSize: 40,
-              fontSize: 25,
+              boxSize: 40.r,
+              fontSize: 25.sp,
             ),
             20.boxHeight,
             Expanded(
@@ -41,25 +41,23 @@ class NoteListItem extends StatelessWidget {
                 children: [
                   Text(
                     currentNote.topic,
-                    style: TextStyles.headline3.withSize(14),
+                    style: TextStyles.headline3.withSize(14.sp),
                   ),
                   8.boxHeight,
                   Text(
                     // currentNote.noteBody.isEmpty,
                     'Hello there',
-                    style: TextStyles.headline4.withSize(12),
+                    style: TextStyles.headline4.withSize(12.sp),
                   ),
                   40.boxHeight,
                   Text(
                     DateFormat.yMEd().add_jms().format(
                           currentNote.createdAt,
                         ),
-                    style: const TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.grey,
-                    ),
-                  ),
+                    style: TextStyles.headline4.withSize(12.sp).copyWith(
+                          color: AppColors.neutral400,
+                        ),),
+                
                 ],
               ),
             ),

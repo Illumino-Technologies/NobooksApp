@@ -4,7 +4,7 @@ class _AvailableSubjectWidget extends StatelessWidget {
   const _AvailableSubjectWidget({
     required this.currentSubject,
     required this.subjectNotes,
-    super.key,
+    // super.key,
   });
 
   final Subject currentSubject;
@@ -13,8 +13,8 @@ class _AvailableSubjectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        vertical: 20,
+      margin:  EdgeInsets.symmetric(
+        vertical: 20.h,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,7 +23,7 @@ class _AvailableSubjectWidget extends StatelessWidget {
             children: [
               Text(
                 currentSubject.name,
-                style: TextStyles.headline1.withSize(24),
+                style: TextStyles.headline1.withSize(24.sp),
               ),
             ],
           ),
@@ -31,15 +31,15 @@ class _AvailableSubjectWidget extends StatelessWidget {
           Row(
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 20,
+                margin:  EdgeInsets.symmetric(
+                  horizontal: 20.w,
                 ),
-                height: 160.h,
+                height: 260.h,
                 width: 160.w,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(8),
+                  Radius.circular(8.r),
                   ),
                 ),
                 child: Column(
@@ -51,14 +51,14 @@ class _AvailableSubjectWidget extends StatelessWidget {
                     8.boxHeight,
                     Text(
                       'Add Note',
-                      style: TextStyles.headline3.withSize(14),
+                      style: TextStyles.headline3.withSize(14.sp),
                     ),
                   ],
                 ),
               ),
               Expanded(
                 child: SizedBox(
-                  height: 160.h,
+                  height: 260.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: subjectNotes[currentSubject]!.length,

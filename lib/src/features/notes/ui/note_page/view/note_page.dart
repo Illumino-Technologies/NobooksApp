@@ -25,7 +25,8 @@ class NoteScreen extends ConsumerStatefulWidget {
 }
 
 class NoteScreenState extends ConsumerState<NoteScreen> {
-  bool isPersonal = true;
+  // bool isPersonal = true;
+  final ValueNotifier<bool> isPersonalNotifier = ValueNotifier(true);
 
   @override
   Widget build(BuildContext context) {
@@ -78,107 +79,123 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                             ),
                             Row(
                               children: [
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    backgroundColor: isPersonal
-                                        ? AppColors.blue500
-                                        : AppColors.white,
-                                    // : Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      isPersonal = true;
-                                    });
+                                ValueListenableBuilder(
+                                    valueListenable: isPersonalNotifier,
+                                    builder: (context, value, child) {
+                                      return ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          elevation: 0,
+                                          backgroundColor:
+                                              isPersonalNotifier.value
+                                                  ? AppColors.blue500
+                                                  : AppColors.white,
+                                          // : Colors.white,
+                                        ),
+                                        onPressed: () {
+                                          isPersonalNotifier.value = true;
+                                        },
+                                        child: Text(
+                                          'Personal',
+                                          style: TextStyles.headline3.
+                                          withSize(16.sp).copyWith(
+                                            color: isPersonalNotifier.value?
+                                             AppColors.white
+                                            :AppColors.black,
+                                          ),
+                                       
+                                        ),
+                                      );
+                                    },),
+                                 SizedBox(width: 10.w),
+                                ValueListenableBuilder(
+                                  valueListenable: isPersonalNotifier,
+                                  builder: (context, value, child) {
+                                    return ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        elevation: 0,
+                                        backgroundColor:
+                                            !isPersonalNotifier.value
+                                                ? AppColors.blue500
+                                                : Colors.white,
+                                        // : Colors.white,
+                                      ),
+                                      onPressed: () {
+                                        isPersonalNotifier.value = false;
+                                      },
+                                      child: Text(
+                                        'General',
+                                        style: TextStyles.headline3.
+                                          withSize(16.sp).copyWith(
+                                            color: !isPersonalNotifier.value?
+                                             AppColors.white
+                                            :AppColors.black,
+                                          ),
+                                       
+                                      ),
+                                    );
                                   },
-                                  child: Text(
-                                    'Personal',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: isPersonal
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    backgroundColor: !isPersonal
-                                        ? AppColors.blue500
-                                        : Colors.white,
-                                    // : Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      isPersonal = false;
-                                    });
-                                  },
-                                  child: Text(
-                                    'General',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: !isPersonal
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
-                                  ),
                                 ),
                               ],
                             ),
                           ],
                         ),
-                        isPersonal
-                            ? ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: availableSubjects.length,
-                                itemBuilder: (context, index) {
-                                  final Subject currentSubject =
-                                      availableSubjects[index];
-                                  return _AvailableSubjectWidget(
-                                    currentSubject: currentSubject,
-                                    subjectNotes: subjectNotes,
-                                  );
-                                },
-                              )
-                            : ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: availableSubjects.length,
-                                itemBuilder: (context, index) {
-                                  final Subject currentSubject =
-                                      availableSubjects[index];
-                                  return Container(
-                                    margin: const EdgeInsets.symmetric(
-                                      vertical: 20,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        20.boxHeight,
-                                        SizedBox(
-                                          height: 160,
-                                          child: ListView.builder(
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount:
-                                                subjectNotes[currentSubject]!
-                                                    .length,
-                                            itemBuilder: (context, index) {
-                                              final Note currentNote =
-                                                  subjectNotes[currentSubject]![
-                                                      index];
-                                              return NoteListItem(
-                                                currentNote: currentNote,
-                                              );
-                                            },
+                        ValueListenableBuilder(
+                            valueListenable: isPersonalNotifier,
+                            builder: (context, value, child) {
+                              return isPersonalNotifier.value
+                                  ? ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: availableSubjects.length,
+                                      itemBuilder: (context, index) {
+                                        final Subject currentSubject =
+                                            availableSubjects[index];
+                                        return _AvailableSubjectWidget(
+                                          currentSubject: currentSubject,
+                                          subjectNotes: subjectNotes,
+                                        );
+                                      },
+                                    )
+                                  : ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: availableSubjects.length,
+                                      itemBuilder: (context, index) {
+                                        final Subject currentSubject =
+                                            availableSubjects[index];
+                                        return Container(
+                                          margin:  EdgeInsets.symmetric(
+                                            vertical: 20.h,
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              20.boxHeight,
+                                              SizedBox(
+                                                height: 260.h,
+                                                child: ListView.builder(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: subjectNotes[
+                                                          currentSubject]!
+                                                      .length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    final Note currentNote =
+                                                        subjectNotes[
+                                                                currentSubject]![
+                                                            index];
+                                                    return NoteListItem(
+                                                      currentNote: currentNote,
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                            },),
                       ],
                     ),
                   ),
@@ -186,9 +203,9 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
               ),
               SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0,
-                    vertical: 10.0,
+                  padding:  EdgeInsets.symmetric(
+                    horizontal: 10.0.w,
+                    vertical: 10.0.h,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,7 +241,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           );
         },
