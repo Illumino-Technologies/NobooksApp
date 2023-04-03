@@ -13,6 +13,16 @@ class TextDelta extends Equatable {
   @override
   List<Object?> get props => [char, metadata];
 
+  TextDelta copyWith({
+    String? char,
+    TextMetadata? metadata,
+  }) {
+    return TextDelta(
+      char: char ?? this.char,
+      metadata: metadata ?? this.metadata,
+    );
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'char': char,

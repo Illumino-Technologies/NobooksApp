@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/controller/mtext_editor_controller.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolbar/toolbar_barrel.dart'
     show ToolBarWidget, ToolbarController;
 import 'package:nobook/src/global/global_barrel.dart';

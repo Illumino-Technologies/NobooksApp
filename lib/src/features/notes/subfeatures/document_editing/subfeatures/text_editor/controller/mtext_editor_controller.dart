@@ -10,49 +10,68 @@ class TextEditorController extends TextEditingController {
 
   set metadata(TextMetadata? value) {
     _metadata = value;
+    notifyListeners();
   }
 
   TextEditorController({
     super.text,
-  }) : deltas = text == null ? [] : TextDeltasUtils.deltasFromString(text);
+  }) : deltas = text == null ? [] : TextDeltasUtils.deltasFromString(text) {
+    addListener(_internalControllerListener);
+  }
 
-  void _internalControllerListener() {}
+  void _internalControllerListener() {
+    deltas.clear();
+    deltas.addAll(TextDeltasUtils.deltasFromString(text));
+  }
 
-  void applyStyleChange(TextMetadata metaData) {}
+  void applyDefaultMetadataChange(TextMetadata changedMetadata) {
+    metadata = changedMetadata;
+  }
 
   void toggleBold() {
     final TextMetadata tempMetadata = metadata ?? const TextMetadata();
-    applyStyleChange(
-      tempMetadata.copyWith(
-        fontWeight: tempMetadata.fontWeight == FontWeight.normal
-            ? FontWeight.w700
-            : FontWeight.normal,
-      ),
+    final TextMetadata changedMetadata = tempMetadata.copyWith(
+      fontWeight: tempMetadata.fontWeight == FontWeight.normal
+          ? FontWeight.w700
+          : FontWeight.normal,
     );
+
+    applyDefaultMetadataChange(changedMetadata);
+    //TODO: add selection specific metadata change
   }
 
   void toggleItalic() {
     final TextMetadata tempMetadata = metadata ?? const TextMetadata();
 
-    applyStyleChange(
-      tempMetadata.copyWith(
-        fontStyle: tempMetadata.fontStyle == FontStyle.italic
-            ? FontStyle.normal
-            : FontStyle.italic,
-      ),
+    final TextMetadata changedMetadata = tempMetadata.copyWith(
+      fontStyle: tempMetadata.fontStyle == FontStyle.italic
+          ? FontStyle.normal
+          : FontStyle.italic,
     );
+    applyDefaultMetadataChange(changedMetadata);
+    //TODO: add selection specific metadata change
   }
 
   void toggleUnderline() {
     final TextMetadata tempMetadata = metadata ?? const TextMetadata();
 
-    applyStyleChange(tempMetadata.copyWith(decoration: tempMetadata.decoration == TextDecoration.underline ? TextDecoration.none))
-
-
-
+    final TextMetadata changedMetadata = tempMetadata.copyWith(
+      decoration: tempMetadata.decoration == TextDecorationEnum.underline
+          ? TextDecorationEnum.none
+          : TextDecorationEnum.underline,
+    );
+    applyDefaultMetadataChange(changedMetadata);
+    //TODO: add selection specific metadata change
   }
 
-  void changeAlignment() {}
+  void changeAlignment(TextAlign alignment) {
+    applyDefaultMetadataChange(
+      (metadata ?? const TextMetadata()).copyWith(alignment: alignment),
+    );
+
+
+    selection;
+  }
 
   @override
   TextSpan buildTextSpan({
@@ -75,5 +94,11 @@ class TextEditorController extends TextEditingController {
       style: metadata?.style,
       children: spanChildren,
     );
+  }
+
+  @override
+  void dispose() {
+    removeListener(_internalControllerListener);
+    super.dispose();
   }
 }

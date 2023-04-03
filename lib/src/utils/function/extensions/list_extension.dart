@@ -40,7 +40,7 @@ extension ListExtension<E> on List<E> {
     }
   }
 
-  void replaceWhere(Iterable<E> replacement, bool Function(E) test) {
+  void replaceWhere(Iterable<E> replacement, bool Function(E element) test) {
     int index = indexWhere(test);
 
     if (index == -1) throw StateError('index not found in $this');

@@ -30,7 +30,7 @@ class TextMetadata extends Equatable {
     FontWeight? fontWeight,
     FontStyle? fontStyle,
     double? fontSize,
-    TextDecoration? decoration,
+    TextDecorationEnum? decoration,
     List<FontFeature>? fontFeatures,
     TextAlign? alignment,
   }) {
@@ -45,8 +45,7 @@ class TextMetadata extends Equatable {
     );
   }
 
-  TextStyle get style =>
-      TextStyle(
+  TextStyle get style => TextStyle(
         fontSize: fontSize,
         color: color,
         decoration: decoration.value,
@@ -56,8 +55,7 @@ class TextMetadata extends Equatable {
       );
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         color,
         fontWeight,
         fontStyle,
@@ -75,7 +73,6 @@ class TextMetadata extends Equatable {
       'fontSize': fontSize,
       'fontFeatures': fontFeatures?.map((e) => _fontFeatureToMap(e)).toList(),
       'alignment': alignment.index,
-      //Todo figure out text decoration serialization
       'decoration': decoration.index,
     };
   }
@@ -91,12 +88,10 @@ class TextMetadata extends Equatable {
           .map((e) => _fontFeatureFromMap(e))
           .toList(),
       alignment: TextAlign.values[(map['alignment'])],
-      //Todo figure out text decoration serialization
-      decoration: map['decoration'] as TextDecoration,
+      decoration: TextDecorationEnum.values[(map['decoration'])],
     );
   }
 }
-
 
 FontFeature _fontFeatureFromMap(Map map) {
   return FontFeature(
@@ -112,7 +107,6 @@ Map<String, dynamic> _fontFeatureToMap(FontFeature feature) {
   };
 }
 
-
 enum TextDecorationEnum {
   none(TextDecoration.none),
   underline(TextDecoration.underline),
@@ -122,6 +116,4 @@ enum TextDecorationEnum {
   final TextDecoration value;
 
   const TextDecorationEnum(this.value);
-
-
 }

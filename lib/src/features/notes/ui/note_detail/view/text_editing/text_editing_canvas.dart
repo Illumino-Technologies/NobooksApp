@@ -8,60 +8,70 @@ class _TextEditingCanvas extends StatefulWidget {
 }
 
 class _TextEditingCanvasState extends State<_TextEditingCanvas> {
-  
-  
   final TextEditingController controller = TextEditingController();
   final RichFieldController _richController = RichFieldController();
-  
+  final TextEditorController myController = TextEditorController();
+
   @override
   Widget build(BuildContext context) {
-    
-    
-    return Column(
-      children: [
-        Row(
-          children: [
-            MaterialButton(
-              elevation: 0,
-              color: AppColors.subjectDarkOrange.withOpacity(1),
-              onPressed: () {},
-            ),
-            10.boxWidth,
-            MaterialButton(
-              elevation: 0,
-              color: AppColors.subjectOrange.withOpacity(1),
-              onPressed: () {},
-            ),
-            10.boxWidth,
-            MaterialButton(
-              elevation: 0,
-              color: AppColors.subjectBlue.withOpacity(1),
-              onPressed: () {},
-            ),
-            10.boxWidth,
-            MaterialButton(
-              elevation: 0,
-              color: AppColors.subjectWine.withOpacity(1),
-              onPressed: () {},
-            ),
-            10.boxWidth,
-            MaterialButton(
-              elevation: 0,
-              color: AppColors.subjectGreen.withOpacity(1),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        20.boxHeight,
-        20.boxHeight,
-        Container(
-          color: AppColors.subjectPink,
-          height: 400.h,
-          child: CustomEditText(
-
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              MaterialButton(
+                elevation: 0,
+                color: AppColors.subjectDarkOrange.withOpacity(1),
+                onPressed: () {
+                  myController.toggleBold();
+                },
+                child: const Text("bold"),
+              ),
+              10.boxWidth,
+              MaterialButton(
+                elevation: 0,
+                color: AppColors.subjectOrange.withOpacity(1),
+                child: const Text("underline"),
+                onPressed: () {
+                  myController.toggleUnderline();
+                },
+              ),
+              10.boxWidth,
+              MaterialButton(
+                elevation: 0,
+                color: AppColors.subjectBlue.withOpacity(1),
+                child: const Text("align left"),
+                onPressed: () {
+                  myController.changeAlignment(TextAlign.left);
+                },
+              ),
+              10.boxWidth,
+              MaterialButton(
+                elevation: 0,
+                color: AppColors.subjectWine.withOpacity(1),
+                child: const Text("align right"),
+                onPressed: () {
+                  myController.changeAlignment(TextAlign.right);
+                },
+              ),
+              10.boxWidth,
+              MaterialButton(
+                elevation: 0,
+                color: AppColors.subjectGreen.withOpacity(1),
+                onPressed: () {},
+              ),
+            ],
           ),
-        ),
-      ],
+          20.boxHeight,
+          20.boxHeight,
+          SizedBox(
+            height: 300,
+            child: TextField(
+              controller: myController,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
