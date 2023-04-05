@@ -38,4 +38,12 @@ class TextDelta extends Equatable {
           : TextMetadata.fromMap(map['metadata']),
     );
   }
+
+  TextDelta copyWithChar(String char) {
+    return TextDelta(
+      char: char,
+      metadata: metadata,
+    );
+  }
+
 }

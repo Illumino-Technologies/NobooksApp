@@ -22,6 +22,8 @@ extension TextDeltasExtension on TextDeltas {
       }
     }
   }
+
+  TextDeltas get copy => List.from(this);
 }
 
 abstract class TextDeltasUtils {

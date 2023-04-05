@@ -12,9 +12,12 @@ class _TextEditingCanvasState extends State<_TextEditingCanvas> {
   final RichFieldController _richController = RichFieldController();
   final TextEditorController myController = TextEditorController();
 
+
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return SizedBox(
+      height: 900,
       child: Column(
         children: [
           Row(
@@ -67,6 +70,7 @@ class _TextEditingCanvasState extends State<_TextEditingCanvas> {
           SizedBox(
             height: 300,
             child: TextField(
+              style: TextStyles.paragraph3.withColor(AppColors.black),
               controller: myController,
             ),
           ),

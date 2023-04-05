@@ -50,43 +50,45 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Center(
-        child: Column(
-          children: [
-            20.boxHeight,
-            ToolBarWidget(controller: toolbarController),
-            20.boxHeight,
-            MaterialButton(
-              onPressed: () {
-                print('clear called');
-                toolbarController.clear();
-              },
-              child: const Icon(Icons.delete),
-            ),
-            20.boxHeight,
-            SizedBox(
-              width: 900.w,
-              height: 600.h,
-              child: _TextEditingCanvas(),
-            )
-            // ChangeNotifierBuilder<ToolbarController>(
-            //   listenable: toolbarController,
-            //   buildWhen: (previous, next) =>
-            //       previous?.drawingController == next.drawingController,
-            //   builder: (_, controller) {
-            //     return Container(
-            //       color: AppColors.subjectOrange,
-            //       child: DrawingCanvas(
-            //         controller: controller.drawingController,
-            //         size: Size(
-            //           900.w,
-            //           600.h,
-            //         ),
-            //       ),
-            //     );
-            //   },
-            // ),
-          ],
+      child: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              20.boxHeight,
+              ToolBarWidget(controller: toolbarController),
+              20.boxHeight,
+              MaterialButton(
+                onPressed: () {
+                  print('clear called');
+                  toolbarController.clear();
+                },
+                child: const Icon(Icons.delete),
+              ),
+              20.boxHeight,
+              SizedBox(
+                width: 900.w,
+                height: 546.h,
+                child: const _TextEditingCanvas(),
+              )
+              // ChangeNotifierBuilder<ToolbarController>(
+              //   listenable: toolbarController,
+              //   buildWhen: (previous, next) =>
+              //       previous?.drawingController == next.drawingController,
+              //   builder: (_, controller) {
+              //     return Container(
+              //       color: AppColors.subjectOrange,
+              //       child: DrawingCanvas(
+              //         controller: controller.drawingController,
+              //         size: Size(
+              //           900.w,
+              //           600.h,
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // ),
+            ],
+          ),
         ),
       ),
     );
