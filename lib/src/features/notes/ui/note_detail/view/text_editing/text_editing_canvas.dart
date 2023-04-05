@@ -12,8 +12,6 @@ class _TextEditingCanvasState extends State<_TextEditingCanvas> {
   final RichFieldController _richController = RichFieldController();
   final TextEditorController myController = TextEditorController();
 
-
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -61,7 +59,19 @@ class _TextEditingCanvasState extends State<_TextEditingCanvas> {
               MaterialButton(
                 elevation: 0,
                 color: AppColors.subjectGreen.withOpacity(1),
-                onPressed: () {},
+                onPressed: () {
+                  myController.changeAlignment(TextAlign.center);
+                },
+                child: const Text("align center"),
+              ),
+              10.boxWidth,
+              MaterialButton(
+                elevation: 0,
+                color: AppColors.subjectGreen.withOpacity(1),
+                onPressed: () {
+                  myController.toggleItalic();
+                },
+                child: const Text("Italicize"),
               ),
             ],
           ),
@@ -69,8 +79,17 @@ class _TextEditingCanvasState extends State<_TextEditingCanvas> {
           20.boxHeight,
           SizedBox(
             height: 300,
-            child: TextField(
-              controller: myController,
+            child: ValueListenableBuilder<TextEditingValue>(
+              valueListenable: myController,
+              builder: (_, controllerValue, __) {
+                return TextField(
+                  textAlign:
+                      myController.metadata?.alignment ?? TextAlign.start,
+                  style: TextEditorController.defaultMetadata.style,
+                  controller: myController,
+                  maxLines: null,
+                );
+              },
             ),
           ),
         ],

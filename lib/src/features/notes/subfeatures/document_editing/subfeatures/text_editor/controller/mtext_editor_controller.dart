@@ -32,7 +32,6 @@ class TextEditorController extends TextEditingController {
   );
 
   void _internalControllerListener() {
-    print('notifylisteners called');
     final TextDeltas newDeltas = compareNewAndOldTextDeltasForChanges(
       TextDeltasUtils.deltasFromString(text),
       deltas.copy,
@@ -45,15 +44,27 @@ class TextEditorController extends TextEditingController {
     deltas.addAll(newDeltas);
 
     if (selection.isCollapsed) {
-      final TextMetadata newMetadata =
-          deltas[text.indexOf(selection.textBefore(text).chars.last)]
-                  .metadata ??
-              metadata ??
-              defaultMetadata;
+      if (selection.end == text.length || textBeforeSelection().isNullOrEmpty) {
+        return;
+      }
+      final TextMetadata newMetadata = (deltas.isNotEmpty
+              ? deltas[text.indexOf(selection.textBefore(text).chars.last)]
+                  .metadata
+              : metadata) ??
+          metadata ??
+          defaultMetadata;
 
       if (selection.end != text.length) {
-        _metadata = newMetadata;
+        _metadata = _metadata?.combineWith(newMetadata, false) ?? newMetadata;
       }
+    }
+  }
+
+  String? textBeforeSelection() {
+    try {
+      return selection.textBefore(text);
+    } catch (e) {
+      return null;
     }
   }
 
@@ -89,9 +100,7 @@ class TextEditorController extends TextEditingController {
     }
 
     if (oldChars.length > newChars.length) {
-      for (int i = minLength; i < oldChars.length; i++) {
-        modifiedDelta.removeAt(i);
-      }
+      modifiedDelta.removeRange(minLength, oldChars.length);
     } else if (oldChars.length < newChars.length) {
       for (int i = minLength; i < newChars.length; i++) {
         modifiedDelta.add(
@@ -103,6 +112,7 @@ class TextEditorController extends TextEditingController {
   }
 
   void applyDefaultMetadataChange(TextMetadata changedMetadata) {
+    // metadata = changedMetadata.combineWith(metadata ?? defaultMetadata);
     metadata = changedMetadata;
   }
 
@@ -119,7 +129,25 @@ class TextEditorController extends TextEditingController {
 
     applyDefaultMetadataChange(changedMetadata);
 
-    if (selection.isCollapsed) return;
+    if (selection.isCollapsed) {
+      // if (selection.end != text.length) {
+      //   text = text.replaceRange(
+      //     selection.start,
+      //     selection.start + 1,
+      //     '',
+      //   );
+      // }
+
+      // modifiedDeltas.insert(
+      //   selection.start,
+      //   TextDelta(
+      //     char: '',
+      //     metadata: changedMetadata,
+      //   ),
+      // );
+
+      return;
+    }
 
     setDeltas(
       applyMetadataToTextInSelection(
@@ -223,10 +251,25 @@ class TextEditorController extends TextEditingController {
       );
     }
 
-    return TextSpan(
+    final TextSpan textSpan = TextSpan(
       style: metadata?.style ?? style,
       children: spanChildren,
     );
+    // if (metadata?.alignment != null) {
+    //   return TextSpan(
+    //     style: metadata?.style ?? style,
+    //     children: [
+    //       WidgetSpan(
+    //         child: Align(
+    //           alignment:
+    //               metadata?.alignment.toAlignment ?? Alignment.centerLeft,
+    //           child: Text.rich(textSpan),
+    //         ),
+    //       ),
+    //     ],
+    //   );
+    // }
+    return textSpan;
   }
 
   @override
