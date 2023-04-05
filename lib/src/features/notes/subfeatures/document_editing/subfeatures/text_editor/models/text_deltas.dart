@@ -23,6 +23,7 @@ extension TextDeltasExtension on TextDeltas {
     }
   }
 
+
   TextDeltas get copy => List.from(this);
 }
 

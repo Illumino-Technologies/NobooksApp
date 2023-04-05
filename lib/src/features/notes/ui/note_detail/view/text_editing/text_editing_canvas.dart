@@ -70,7 +70,6 @@ class _TextEditingCanvasState extends State<_TextEditingCanvas> {
           SizedBox(
             height: 300,
             child: TextField(
-              style: TextStyles.paragraph3.withColor(AppColors.black),
               controller: myController,
             ),
           ),

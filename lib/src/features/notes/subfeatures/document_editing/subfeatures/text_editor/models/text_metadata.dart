@@ -54,6 +54,66 @@ class TextMetadata extends Equatable {
         fontFeatures: fontFeatures,
       );
 
+  factory TextMetadata.combineWhereNotEqual(
+    final TextMetadata metadata1,
+    final TextMetadata metadata2, {
+    bool favourFirst = true,
+  }) {
+    return TextMetadata(
+      color: favourFirst ? metadata1.color : metadata2.color,
+      fontWeight: favourFirst ? metadata1.fontWeight : metadata2.fontWeight,
+      fontStyle: favourFirst ? metadata1.fontStyle : metadata2.fontStyle,
+      fontSize: favourFirst ? metadata1.fontSize : metadata2.fontSize,
+      decoration: favourFirst ? metadata1.decoration : metadata2.decoration,
+      fontFeatures:
+          favourFirst ? metadata1.fontFeatures : metadata2.fontFeatures,
+      alignment: favourFirst ? metadata1.alignment : metadata2.alignment,
+    );
+  }
+
+  TextMetadata combineWith(
+    TextMetadata other, [
+    bool favourOther = true,
+  ]) {
+    return TextMetadata(
+      color: color == other.color
+          ? color
+          : favourOther
+              ? other.color
+              : color,
+      fontWeight: fontWeight == other.fontWeight
+          ? fontWeight
+          : favourOther
+              ? other.fontWeight
+              : fontWeight,
+      fontStyle: fontStyle == other.fontStyle
+          ? fontStyle
+          : favourOther
+              ? other.fontStyle
+              : fontStyle,
+      fontSize: fontSize == other.fontSize
+          ? fontSize
+          : favourOther
+              ? other.fontSize
+              : fontSize,
+      decoration: decoration == other.decoration
+          ? decoration
+          : favourOther
+              ? other.decoration
+              : decoration,
+      fontFeatures: fontFeatures == other.fontFeatures
+          ? fontFeatures
+          : favourOther
+              ? other.fontFeatures
+              : fontFeatures,
+      alignment: alignment == other.alignment
+          ? alignment
+          : favourOther
+              ? other.alignment
+              : alignment,
+    );
+  }
+
   @override
   List<Object?> get props => [
         color,

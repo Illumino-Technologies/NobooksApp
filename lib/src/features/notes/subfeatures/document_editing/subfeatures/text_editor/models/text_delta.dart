@@ -10,9 +10,6 @@ class TextDelta extends Equatable {
     this.metadata,
   });
 
-  @override
-  List<Object?> get props => [char, metadata];
-
   TextDelta copyWith({
     String? char,
     TextMetadata? metadata,
@@ -46,4 +43,6 @@ class TextDelta extends Equatable {
     );
   }
 
+  @override
+  List<Object?> get props => [char, metadata];
 }

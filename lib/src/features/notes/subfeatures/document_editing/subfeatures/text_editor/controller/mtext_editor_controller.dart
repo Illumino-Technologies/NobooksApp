@@ -32,12 +32,29 @@ class TextEditorController extends TextEditingController {
   );
 
   void _internalControllerListener() {
-    setDeltas(TextDeltasUtils.deltasFromString(text));
+    print('notifylisteners called');
+    final TextDeltas newDeltas = compareNewAndOldTextDeltasForChanges(
+      TextDeltasUtils.deltasFromString(text),
+      deltas.copy,
+    );
+    setDeltas(newDeltas);
   }
 
   void setDeltas(TextDeltas newDeltas) {
     deltas.clear();
     deltas.addAll(newDeltas);
+
+    if (selection.isCollapsed) {
+      final TextMetadata newMetadata =
+          deltas[text.indexOf(selection.textBefore(text).chars.last)]
+                  .metadata ??
+              metadata ??
+              defaultMetadata;
+
+      if (selection.end != text.length) {
+        _metadata = newMetadata;
+      }
+    }
   }
 
   TextDeltas compareNewAndOldTextDeltasForChanges(
@@ -50,12 +67,23 @@ class TextEditorController extends TextEditingController {
     final List<String> newChars = newDeltas.text.chars;
 
     final int minLength = min(oldChars.length, newChars.length);
+    final bool? newIsMoreThanOld = newDeltas.length == oldDeltas.length
+        ? null
+        : newDeltas.length > oldDeltas.length;
 
     for (int i = 0; i < minLength; i++) {
       if (oldChars[i] != newChars[i]) {
+        final TextDelta deltaForMetadata = newIsMoreThanOld == null
+            ? oldDeltas[i]
+            : newIsMoreThanOld
+                ? (i <= 1 ? oldDeltas.first : oldDeltas[i - 1])
+                : (i > (oldDeltas.length - 2)
+                    ? oldDeltas.last
+                    : oldDeltas[i + 1]);
+
         modifiedDelta[i] = modifiedDelta[i].copyWith(
           char: newChars[i],
-          metadata: newDeltas[i].metadata ?? metadata ?? defaultMetadata,
+          metadata: deltaForMetadata.metadata ?? metadata ?? defaultMetadata,
         );
       }
     }
@@ -67,10 +95,7 @@ class TextEditorController extends TextEditingController {
     } else if (oldChars.length < newChars.length) {
       for (int i = minLength; i < newChars.length; i++) {
         modifiedDelta.add(
-          TextDelta(
-            char: newChars[i],
-            metadata: defaultMetadata,
-          ),
+          TextDelta(char: newChars[i], metadata: metadata ?? defaultMetadata),
         );
       }
     }
@@ -82,26 +107,23 @@ class TextEditorController extends TextEditingController {
   }
 
   void changeStyleOnSelectionChange({
-    TextMetadata? currentMetadata,
+    TextMetadata? changedMetadata,
     required TextDeltas modifiedDeltas,
     required TextSelection selection,
   }) {
     if (!selection.isValid) return;
-    print('selection is valid');
-    currentMetadata ??=
+    changedMetadata ??=
         deltas[text.indexOf(selection.textBefore(text).chars.last)].metadata ??
             metadata ??
             defaultMetadata;
 
-    if (selection.isCollapsed) {
-      print('selection is collapsed');
-      applyDefaultMetadataChange(currentMetadata);
-      return;
-    }
+    applyDefaultMetadataChange(changedMetadata);
+
+    if (selection.isCollapsed) return;
 
     setDeltas(
       applyMetadataToTextInSelection(
-        metadata: currentMetadata,
+        newMetadata: changedMetadata,
         deltas: modifiedDeltas,
         selection: selection,
       ),
@@ -110,7 +132,7 @@ class TextEditorController extends TextEditingController {
   }
 
   TextDeltas applyMetadataToTextInSelection({
-    required TextMetadata metadata,
+    required TextMetadata newMetadata,
     required TextDeltas deltas,
     required TextSelection selection,
   }) {
@@ -119,18 +141,19 @@ class TextEditorController extends TextEditingController {
     final int start = selection.start;
     final int end = selection.end;
 
-    print('start is $start and end is $end');
-
     for (int i = start; i < end; i++) {
       modifiedDeltas[i] = modifiedDeltas[i].copyWith(
-        metadata: metadata,
+        metadata: modifiedDeltas[i].metadata?.combineWith(
+                  newMetadata,
+                ) ??
+            newMetadata,
       );
     }
     return modifiedDeltas;
   }
 
   void toggleBold() {
-    final TextMetadata tempMetadata = metadata ?? const TextMetadata();
+    final TextMetadata tempMetadata = metadata ?? defaultMetadata;
     final TextMetadata changedMetadata = tempMetadata.copyWith(
       fontWeight: tempMetadata.fontWeight == FontWeight.normal
           ? FontWeight.w700
@@ -138,14 +161,14 @@ class TextEditorController extends TextEditingController {
     );
 
     changeStyleOnSelectionChange(
-      currentMetadata: changedMetadata,
+      changedMetadata: changedMetadata,
       modifiedDeltas: deltas,
       selection: selection,
     );
   }
 
   void toggleItalic() {
-    final TextMetadata tempMetadata = metadata ?? const TextMetadata();
+    final TextMetadata tempMetadata = metadata ?? defaultMetadata;
 
     final TextMetadata changedMetadata = tempMetadata.copyWith(
       fontStyle: tempMetadata.fontStyle == FontStyle.italic
@@ -153,14 +176,14 @@ class TextEditorController extends TextEditingController {
           : FontStyle.italic,
     );
     changeStyleOnSelectionChange(
-      currentMetadata: changedMetadata,
+      changedMetadata: changedMetadata,
       modifiedDeltas: deltas,
       selection: selection,
     );
   }
 
   void toggleUnderline() {
-    final TextMetadata tempMetadata = metadata ?? const TextMetadata();
+    final TextMetadata tempMetadata = metadata ?? defaultMetadata;
 
     final TextMetadata changedMetadata = tempMetadata.copyWith(
       decoration: tempMetadata.decoration == TextDecorationEnum.underline
@@ -169,7 +192,7 @@ class TextEditorController extends TextEditingController {
     );
 
     changeStyleOnSelectionChange(
-      currentMetadata: changedMetadata,
+      changedMetadata: changedMetadata,
       modifiedDeltas: deltas,
       selection: selection,
     );
@@ -177,7 +200,7 @@ class TextEditorController extends TextEditingController {
 
   void changeAlignment(TextAlign alignment) {
     applyDefaultMetadataChange(
-      (metadata ?? const TextMetadata()).copyWith(alignment: alignment),
+      (metadata ?? defaultMetadata).copyWith(alignment: alignment),
     );
 
     selection;
