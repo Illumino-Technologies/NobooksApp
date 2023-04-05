@@ -43,21 +43,21 @@ class TextEditorController extends TextEditingController {
     deltas.clear();
     deltas.addAll(newDeltas);
 
-    if (selection.isCollapsed) {
-      if (selection.end == text.length || textBeforeSelection().isNullOrEmpty) {
-        return;
-      }
-      final TextMetadata newMetadata = (deltas.isNotEmpty
-              ? deltas[text.indexOf(selection.textBefore(text).chars.last)]
-                  .metadata
-              : metadata) ??
-          metadata ??
-          defaultMetadata;
-
-      if (selection.end != text.length) {
-        _metadata = _metadata?.combineWith(newMetadata, false) ?? newMetadata;
-      }
-    }
+    // if (selection.isCollapsed) {
+    //   if (selection.end == text.length || textBeforeSelection().isNullOrEmpty) {
+    //     return;
+    //   }
+    //   final TextMetadata newMetadata = (deltas.isNotEmpty
+    //           ? deltas[text.indexOf(selection.textBefore(text).chars.last)]
+    //               .metadata
+    //           : metadata) ??
+    //       metadata ??
+    //       defaultMetadata;
+    //
+    //   if (selection.end != text.length) {
+    //     _metadata = _metadata?.combineWith(newMetadata, false) ?? newMetadata;
+    //   }
+    // }
   }
 
   String? textBeforeSelection() {
@@ -74,8 +74,8 @@ class TextEditorController extends TextEditingController {
   ) {
     final TextDeltas modifiedDelta = oldDeltas.copy;
 
-    final List<String> oldChars = oldDeltas.text.chars;
-    final List<String> newChars = newDeltas.text.chars;
+    final List<String> oldChars = oldDeltas.text.characters.toList();
+    final List<String> newChars = newDeltas.text.characters.toList();
 
     final int minLength = min(oldChars.length, newChars.length);
     final bool? newIsMoreThanOld = newDeltas.length == oldDeltas.length
@@ -104,7 +104,10 @@ class TextEditorController extends TextEditingController {
     } else if (oldChars.length < newChars.length) {
       for (int i = minLength; i < newChars.length; i++) {
         modifiedDelta.add(
-          TextDelta(char: newChars[i], metadata: metadata ?? defaultMetadata),
+          TextDelta(
+            char: newChars[i],
+            metadata: metadata ?? defaultMetadata,
+          ),
         );
       }
     }
