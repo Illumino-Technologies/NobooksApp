@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/utils/drawing_utils_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-import '../../../../../../../../global/ui/ui_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 part 'actionable/drawing_operation.dart';
 

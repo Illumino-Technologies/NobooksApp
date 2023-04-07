@@ -21,6 +21,4 @@ enum Shape {
   }
 
   String get toSerializerString => name;
-
-
 }

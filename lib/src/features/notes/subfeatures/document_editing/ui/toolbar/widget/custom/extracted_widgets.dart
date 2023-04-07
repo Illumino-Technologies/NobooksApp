@@ -85,7 +85,6 @@ class SecondToolbarRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('rough paper: ${controllerValue.showingRoughPaper}');
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -133,7 +132,8 @@ class SecondToolbarRow extends StatelessWidget {
                       height: 42.h,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                          borderRadius: Ui.allBorderRadius(4)),
+                        borderRadius: Ui.allBorderRadius(4),
+                      ),
                       onPressed: enabled ? () => onSelected(item) : null,
                       child: child,
                     );

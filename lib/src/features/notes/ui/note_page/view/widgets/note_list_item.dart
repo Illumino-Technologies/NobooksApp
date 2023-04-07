@@ -11,7 +11,7 @@ class NoteListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.symmetric(
+      margin: EdgeInsets.symmetric(
         horizontal: 20.w,
       ),
       width: 160.w,
@@ -56,8 +56,8 @@ class NoteListItem extends StatelessWidget {
                         ),
                     style: TextStyles.headline4.withSize(12.sp).copyWith(
                           color: AppColors.neutral400,
-                        ),),
-                
+                        ),
+                  ),
                 ],
               ),
             ),

@@ -1,7 +1,7 @@
 part of 'drawing.dart';
 
 enum DrawingType {
-  shape, sketch, line;
-
-
+  shape,
+  sketch,
+  line;
 }

@@ -272,7 +272,6 @@ class ToolbarController extends ChangeNotifier {
   bool showingRoughPaper = false;
 
   void toggleRoughPaper([bool? value]) {
-    print('toggling rough paper');
     showingRoughPaper = value ?? !showingRoughPaper;
     notifyListeners();
   }

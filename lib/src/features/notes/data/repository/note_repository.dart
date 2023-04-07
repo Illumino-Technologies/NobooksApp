@@ -1,5 +1,4 @@
 import 'package:nobook/src/features/features_barrel.dart';
-import 'package:nobook/src/features/notes/data/notes_data_barrel.dart';
 
 part 'note_repo_interface.dart';
 
@@ -12,7 +11,6 @@ class NoteRepository implements NoteRepoInterface {
     NoteNetworkSourceInterface? networkSource,
   })  : _localSource = localSource ?? NoteLocalSource(),
         _networkSource = networkSource ?? NoteNetworkSource();
-
 
   @override
   Future<void> deleteAllNotes(data) {

@@ -39,7 +39,6 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
 
   @override
   Widget build(BuildContext context) {
-    print(toolbarController.showingRoughPaper);
     return Material(
       child: Stack(
         clipBehavior: Clip.none,

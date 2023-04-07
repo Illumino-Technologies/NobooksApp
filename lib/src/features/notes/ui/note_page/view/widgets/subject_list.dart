@@ -1,7 +1,5 @@
 // part of '..note_page.dart';
 
-
-
 // class SubjectsList extends StatelessWidget {
 //   const SubjectsList({super.key});
 

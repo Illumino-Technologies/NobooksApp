@@ -1,7 +1,5 @@
 part of '../toolbar_widget.dart';
 
-
-
 class MainColorSlider extends StatefulWidget {
   final ValueChanged<Color> onChanged;
   final Color color;

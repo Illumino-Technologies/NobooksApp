@@ -41,7 +41,6 @@ class _TransparencySliderState extends State<TransparencySlider> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.color.opacity);
     return GestureDetector(
       onPanStart: (details) {
         final Rect constraints = context.findRenderObject()!.paintBounds;

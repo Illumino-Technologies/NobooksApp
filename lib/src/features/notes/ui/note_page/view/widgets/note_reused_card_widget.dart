@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
+
 class BiologyNoteCards extends StatelessWidget {
   const BiologyNoteCards({
     super.key,

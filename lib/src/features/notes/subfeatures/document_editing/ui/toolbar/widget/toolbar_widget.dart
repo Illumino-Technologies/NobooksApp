@@ -242,7 +242,6 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   void onSelected(ToolBarItem item) {
-    print('item pressed');
     if (item == ToolBarItem.undo) return undo();
     if (item == ToolBarItem.redo) return redo();
 
@@ -297,7 +296,6 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   void performTextEditingActionOn(ToolBarItem item) {
-    print('performTextEditingAction $item');
     switch (item) {
       case ToolBarItem.color:
         // TODO: Handle this case.

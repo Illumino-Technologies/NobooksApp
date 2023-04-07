@@ -13,7 +13,7 @@ class _AvailableSubjectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.symmetric(
+      margin: EdgeInsets.symmetric(
         vertical: 20.h,
       ),
       child: Column(
@@ -31,15 +31,15 @@ class _AvailableSubjectWidget extends StatelessWidget {
           Row(
             children: [
               Container(
-                margin:  EdgeInsets.symmetric(
+                margin: EdgeInsets.symmetric(
                   horizontal: 20.w,
                 ),
                 height: 260.h,
                 width: 160.w,
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.all(
-                  Radius.circular(8.r),
+                    Radius.circular(8.r),
                   ),
                 ),
                 child: Column(

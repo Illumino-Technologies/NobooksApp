@@ -75,16 +75,16 @@ class _AssignmentPageState extends ConsumerState<TestandExamPage> {
                   child: SizedBox(
                     height: 32,
                     child: Row(
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           'Topic:',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        const SizedBox(width: 5),
-                        const Expanded(
+                        SizedBox(width: 5),
+                        Expanded(
                           child: SizedBox(
                             width: 800,
                             child: SizedBox.shrink(),

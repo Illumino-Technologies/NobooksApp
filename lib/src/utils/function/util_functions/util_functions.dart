@@ -10,14 +10,10 @@ abstract class UtilFunctions {
   static Color interpolateColors(double value, List<Color> colors) {
     assert(value >= 0 || value <= 1, 'value must be between 0 and 1');
 
-    print('value: $value');
     final int colorListLength = colors.length - 1;
 
     final int maxExpectedIndex = (colorListLength * value).ceil();
     final int minExpectedIndex = (colorListLength * value).floor();
-
-    print('min index: $minExpectedIndex');
-    print('max index: $maxExpectedIndex');
 
     final Color minColor = colors[minExpectedIndex];
     final Color maxColor = colors[maxExpectedIndex];

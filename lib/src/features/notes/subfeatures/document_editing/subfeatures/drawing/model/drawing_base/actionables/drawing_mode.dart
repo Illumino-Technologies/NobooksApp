@@ -14,5 +14,4 @@ enum DrawingMode {
   }
 
   String get toSerializerString => name;
-
 }

@@ -93,9 +93,8 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
 
   void reshuffleCanvasBuildersWithLast(Type lastControllerType) {
     if (lastControllerType == controllerStack.last) return;
-    print('controller type changing to $lastControllerType');
+
     controllerStack.remove(lastControllerType);
     controllerStack.add(lastControllerType);
-    print('controller stack $controllerStack');
   }
 }

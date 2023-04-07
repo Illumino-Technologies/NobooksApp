@@ -41,10 +41,9 @@ class _HueSliderState extends State<HueSlider> {
 
   void changeColorByPointOffset() {
     final double position = positionNotifier.value;
-    print('hue position: $position');
+
     final Rect rect = context.findRenderObject()!.paintBounds;
     xRatio = position / rect.width;
-    print('hue position xratio: $xRatio');
   }
 
   double xRatio = 0;
@@ -220,13 +219,7 @@ class _HueSliderState extends State<HueSlider> {
 //     //           : yAxisColor.opacity,
 //     // );
 //
-//     print('\n');
-//     print('xOpaticy: ${xAxisColor.opacity}');
-//     print('yOpaticy: ${yAxisColor.opacity}');
-//     print('\n');
-//     print('xValue: $xValue');
-//     print('yValue: $yValue');
-//     print('\n');
+
 //
 //     // if (yValue >= 0.3) {
 //       xAxisColor = xAxisColor.withOpacity(1);
@@ -244,8 +237,7 @@ class _HueSliderState extends State<HueSlider> {
 //
 //     double tValue = (xValue + yValue) / 2;
 //     // tValue = Offset(xValue, yValue).distance;
-//     print('tValue: $tValue');
-//     print('\n');
+
 //     final Color xAxisFavoured = Color.lerp(yAxisColor, xAxisColor, tValue)!;
 //     final Color yAxisFavoured = Color.lerp(xAxisColor, yAxisColor, tValue)!;
 //
@@ -286,7 +278,7 @@ class _HueSliderState extends State<HueSlider> {
 //       const Color(0xFF000000),
 //     ];
 //
-//     print(widget.color.opacity);
+
 //     return GestureDetector(
 //       onPanStart: (details) {
 //         final Rect constraints = context.findRenderObject()!.paintBounds;

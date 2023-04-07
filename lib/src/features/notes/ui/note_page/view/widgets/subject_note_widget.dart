@@ -11,11 +11,11 @@ class SubjectNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.symmetric(
+      margin: EdgeInsets.symmetric(
         horizontal: 20.w,
       ),
       width: 160.w,
-  decoration:  BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.all(
           Radius.circular(8.r),
@@ -54,15 +54,16 @@ class SubjectNoteWidget extends StatelessWidget {
                   40.boxHeight,
                   Text(
                     DateFormat.yMEd().add_jms().format(
-                      currentNote.createdAt,
-                    ),
-                    style: TextStyles.headline4.withSize(
-                      12.sp,
-                    ).copyWith(
-                      color: AppColors.neutral400,
-                    ),
-                    ),
-                  
+                          currentNote.createdAt,
+                        ),
+                    style: TextStyles.headline4
+                        .withSize(
+                          12.sp,
+                        )
+                        .copyWith(
+                          color: AppColors.neutral400,
+                        ),
+                  ),
                 ],
               ),
             ),

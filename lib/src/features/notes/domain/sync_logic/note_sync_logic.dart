@@ -50,7 +50,6 @@ class NoteSyncLogic
   Future<Note?> _fetchStoredNote() async {
     //TODO: implement network fetch
     final Note? storedNote = _localSource.fetchNote(currentNote.id);
-    print('stored note: $storedNote');
     return storedNote;
   }
 
@@ -138,7 +137,7 @@ class NoteSyncLogic
   }
 
   Future<void> _saveQueue() async {
-    if(_syncQueue.isEmpty) return;
+    if (_syncQueue.isEmpty) return;
     await _noteSyncQueueSource.storeQueue(currentNote.id, _syncQueue);
   }
 
@@ -158,7 +157,6 @@ class NoteSyncLogic
   @override
   Future<void> clearNotes() async {
     await _localSource.deleteNote(currentNote.id);
-    print('all notes deleted');
     await _noteSyncQueueSource.clearQueue(currentNote.id);
   }
 }
