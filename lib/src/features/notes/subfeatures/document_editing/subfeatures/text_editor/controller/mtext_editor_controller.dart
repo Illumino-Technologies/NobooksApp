@@ -11,6 +11,21 @@ class TextEditorController extends TextEditingController {
 
   TextMetadata? get metadata => _metadata;
 
+  bool _metadataToggled = false;
+
+  bool get metadataToggled {
+    if (_metadataToggled) {
+      final bool value = _metadataToggled;
+      _metadataToggled = false;
+      return value;
+    }
+    return _metadataToggled;
+  }
+
+  set metadataToggled(bool value) {
+    _metadataToggled = value;
+  }
+
   set metadata(TextMetadata? value) {
     _metadata = value;
     notifyListeners();
@@ -94,7 +109,9 @@ class TextEditorController extends TextEditingController {
 
         modifiedDelta[i] = modifiedDelta[i].copyWith(
           char: newChars[i],
-          metadata: deltaForMetadata.metadata ?? metadata ?? defaultMetadata,
+          metadata: metadataToggled
+              ? metadata
+              : deltaForMetadata.metadata ?? metadata ?? defaultMetadata,
         );
       }
     }
@@ -103,10 +120,15 @@ class TextEditorController extends TextEditingController {
       modifiedDelta.removeRange(minLength, oldChars.length);
     } else if (oldChars.length < newChars.length) {
       for (int i = minLength; i < newChars.length; i++) {
+        final TextDelta? deltaForMetadata =
+            i == minLength ? oldDeltas.lastOrNull : newDeltas[i - 1];
+
         modifiedDelta.add(
           TextDelta(
             char: newChars[i],
-            metadata: metadata ?? defaultMetadata,
+            metadata: metadataToggled
+                ? metadata
+                : deltaForMetadata?.metadata ?? metadata ?? defaultMetadata,
           ),
         );
       }
@@ -131,6 +153,7 @@ class TextEditorController extends TextEditingController {
             defaultMetadata;
 
     applyDefaultMetadataChange(changedMetadata);
+    metadataToggled = true;
 
     if (selection.isCollapsed) {
       // if (selection.end != text.length) {
@@ -246,6 +269,9 @@ class TextEditorController extends TextEditingController {
     final List<TextSpan> spanChildren = [];
 
     for (final TextDelta delta in deltas) {
+      if (delta.metadata == null) {
+        print('there is a null delta metadata at ${deltas.indexOf(delta)}');
+      }
       spanChildren.add(
         TextSpan(
           text: delta.char,
