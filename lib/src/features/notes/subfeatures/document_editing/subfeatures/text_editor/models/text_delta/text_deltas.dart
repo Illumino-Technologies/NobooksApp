@@ -40,7 +40,7 @@ abstract class TextDeltasUtils {
     return deltas;
   }
 
-  static TextDeltas deltasFromList(List<Map<String, dynamic>> list) {
+  static TextDeltas deltasFromList(List<Map> list) {
     final TextDeltas deltas = [];
     for (dynamic map in list) {
       deltas.add(TextDelta.fromMap((map as Map).cast<String, dynamic>()));

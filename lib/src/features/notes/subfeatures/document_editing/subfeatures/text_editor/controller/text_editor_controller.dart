@@ -71,7 +71,7 @@ class TextEditorController extends _TextEditorController
     return TextEditorController(
       text: map['text'] as String,
       deltas: TextDeltasUtils.deltasFromList(
-        (map['deltas'] as List).cast<Map<String, dynamic>>(),
+        (map['deltas'] as List).cast<Map>(),
       ),
     )
       ..value = TextEditingValue.fromJSON(

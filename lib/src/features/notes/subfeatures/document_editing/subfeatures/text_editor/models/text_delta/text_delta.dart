@@ -32,7 +32,9 @@ class TextDelta extends Equatable {
       char: map['char'] as String,
       metadata: map['metadata'] == null
           ? null
-          : TextMetadata.fromMap(map['metadata']),
+          : TextMetadata.fromMap(
+              (map['metadata'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 

@@ -210,12 +210,38 @@ class ToolbarController extends ChangeNotifier {
     assert(initialized, 'controller must be initialized');
   }
 
+  void clearCache() {
+    if (cache.isEmpty) return;
+    final DocumentEditingController currentActiveController = activeController;
+    cache.clear();
+    if (currentActiveController is DrawingController) {
+      drawingController.removeListener(drawingControllerListener);
+      cache.add(TextEditorController()..addListener(textControllerListener));
+      cache.add(
+        DrawingController()
+          ..initialize()
+          ..addListener(drawingControllerListener),
+      );
+    } else if (currentActiveController is TextEditorController) {
+      textController.removeListener(textControllerListener);
+      cache.add(
+        DrawingController()
+          ..initialize()
+          ..addListener(drawingControllerListener),
+      );
+      cache.add(TextEditorController()..addListener(textControllerListener));
+    }
+    activeCacheIndex = cache.lastIndex;
+  }
+
   void clear() {
+    clearCache();
     note = note.copyWith(noteBody: []);
     _noteSynchronizer.clearNotes();
     clearDrawings();
     clearText();
     //TODO: clear other controllers
+    clearCache();
     notifyListeners();
   }
 
