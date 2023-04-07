@@ -269,6 +269,14 @@ class ToolbarController extends ChangeNotifier {
     _color = color;
   }
 
+  bool showingRoughPaper = false;
+
+  void toggleRoughPaper([bool? value]) {
+    print('toggling rough paper');
+    showingRoughPaper = value ?? !showingRoughPaper;
+    notifyListeners();
+  }
+
   @override
   void dispose() {
     super.dispose();

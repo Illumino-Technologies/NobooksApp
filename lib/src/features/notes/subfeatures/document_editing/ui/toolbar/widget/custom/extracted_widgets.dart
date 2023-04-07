@@ -85,6 +85,7 @@ class SecondToolbarRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('rough paper: ${controllerValue.showingRoughPaper}');
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -101,6 +102,41 @@ class SecondToolbarRow extends StatelessWidget {
                 onSelected: onSelected,
                 enabled: enabled,
               );
+            }
+            if (item == ToolBarItem.roughPaper) {
+              print(
+                'this is where rough paper is and its value is: ${controllerValue.showingRoughPaper}',
+              );
+
+              final bool selected = controllerValue.showingRoughPaper;
+              final ToolBarItemWidget child = ToolBarItemWidget(
+                item: item,
+                selected: selected,
+                enabled: enabled,
+                vectorAsset: item.vectorAssetPath,
+              );
+
+              return selected
+                  ? MaterialButton(
+                      minWidth: 42.h,
+                      height: 42.h,
+                      color: AppColors.blue400,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: Ui.allBorderRadius(4),
+                      ),
+                      onPressed: () => onSelected(item),
+                      child: child,
+                    )
+                  : MaterialButton(
+                      minWidth: 42.w,
+                      height: 42.h,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: Ui.allBorderRadius(4)),
+                      onPressed: enabled ? () => onSelected(item) : null,
+                      child: child,
+                    );
             }
             return ToolbarItemButton(
               item: item,

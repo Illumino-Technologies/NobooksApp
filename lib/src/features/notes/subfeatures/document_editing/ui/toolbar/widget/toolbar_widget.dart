@@ -250,9 +250,12 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
 
     if (item == ToolBarItem.color) return showSelector(ToolItemSelector.color);
 
-    if (documentEditorTypeNotifier.value == DocumentEditorType.text) {
+    if (documentEditorTypeNotifier.value == DocumentEditorType.text &&
+        DocumentEditorType.text.toolBarItems.contains(item)) {
       return performTextEditingActionOn(item);
     }
+
+    if (item == ToolBarItem.roughPaper) return controller.toggleRoughPaper();
 
     if (selectedItemsNotifier.value.contains(item)) {
       handleSelectedItemReselected(item);
