@@ -193,10 +193,6 @@ class TextEditorController extends TextEditingController {
     final int end = selection.end;
 
     for (int i = start; i < end; i++) {
-      //check for what changed in the newMetadata and apply it to the old metadata
-      final TextMetadata oldMetadata =
-          modifiedDeltas[i].metadata ?? metadata ?? defaultMetadata;
-
       modifiedDeltas[i] = modifiedDeltas[i].copyWith(
         metadata: modifiedDeltas[i].metadata?.combineWhatChanged(
                   change,
