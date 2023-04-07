@@ -20,7 +20,7 @@ class TextToolbarButtonItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late final bool selected;
+    late bool selected;
 
     switch (item) {
       case (ToolBarItem.bold):
@@ -55,6 +55,8 @@ class TextToolbarButtonItem extends StatelessWidget {
         selected = false;
         break;
     }
+
+    selected = selected && enabled;
 
     final ToolBarItemWidget child = ToolBarItemWidget(
       item: item,

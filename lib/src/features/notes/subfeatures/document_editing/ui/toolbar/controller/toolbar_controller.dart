@@ -112,7 +112,8 @@ class ToolbarController extends ChangeNotifier {
   void notifyListeners() {
     note = note.copyWith(
       noteBody: [
-        //TODO: add other controllers
+        //Todo: add other controllers
+        textController,
         drawingController,
       ],
     );

@@ -2,10 +2,12 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/base/controller/base_controller.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/models/text_editor_models_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
-class TextEditorController extends TextEditingController {
+class TextEditorController extends TextEditingController
+    implements DocumentEditingController {
   final TextDeltas deltas;
   TextMetadata? _metadata;
 
@@ -336,5 +338,20 @@ class TextEditorController extends TextEditingController {
   void dispose() {
     removeListener(_internalControllerListener);
     super.dispose();
+  }
+
+  @override
+  void initialize() {}
+
+  @override
+  Map<String, dynamic> toDataMap() {
+    // TODO: implement toDataMap
+    throw UnimplementedError();
+  }
+
+  @override
+  Map<String, dynamic> toMap() {
+    // TODO: implement toMap
+    throw UnimplementedError();
   }
 }

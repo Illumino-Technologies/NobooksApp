@@ -19,6 +19,7 @@ enum DocumentEditorType {
     ToolBarItem.alignRight,
     ToolBarItem.bold,
     ToolBarItem.italic,
+    ToolBarItem.underline,
     ToolBarItem.color,
     ToolBarItem.subscript,
     ToolBarItem.superscript,
