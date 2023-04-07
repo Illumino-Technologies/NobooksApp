@@ -28,6 +28,7 @@ class ToolbarController extends ChangeNotifier {
   bool get initialized => _initialized;
 
   Future<void> initialize({Color? color}) async {
+    if (!drawingController.initialized) drawingController.initialize();
     final Note? note = await Future.microtask(
       _noteSynchronizer.fetchStoredNote,
     );
@@ -119,7 +120,6 @@ class ToolbarController extends ChangeNotifier {
       drawingController = controller;
       notifyListeners();
     }
-    print('active controller type: ${activeController.runtimeType}');
   }
 
   @override
@@ -259,7 +259,6 @@ class ToolbarController extends ChangeNotifier {
   Future<void> syncNote() async {
     if (_syncingNote) return;
     _syncingNote = true;
-    print('syncing note');
     await _noteSynchronizer.syncNote(note);
     _syncingNote = false;
   }

@@ -192,8 +192,8 @@ TextMetadata{
       fontWeight: FontWeight.values[(map['fontWeight'])],
       fontStyle: FontStyle.values[(map['fontStyle'])],
       fontSize: map['fontSize'] as double,
-      fontFeatures: (map['fontFeatures'] as List)
-          .cast<Map<String, dynamic>>()
+      fontFeatures: (map['fontFeatures'] as List?)
+          ?.cast<Map<String, dynamic>>()
           .map((e) => _fontFeatureFromMap(e))
           .toList(),
       alignment: TextAlign.values[(map['alignment'])],
