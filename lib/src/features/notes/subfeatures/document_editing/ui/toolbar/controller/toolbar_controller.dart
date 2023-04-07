@@ -41,17 +41,20 @@ class ToolbarController extends ChangeNotifier {
 
   void _setControllersFromNote(Note note) {
     //TODO: remove all controller listeners
+    textController.removeListener(textControllerListener);
     drawingController.removeListener(drawingControllerListener);
     for (final DocumentEditingController controller in note.noteBody) {
       if (controller is DrawingController) {
         drawingController = controller;
-        print('drawings: ${controller.drawings}');
-        notifyListeners();
+      }
+      if (controller is TextEditorController) {
+        textController = controller;
       }
     }
-
+    notifyListeners();
     //TODO: add all controller listeners [back]
     drawingController.addListener(drawingControllerListener);
+    textController.addListener(textControllerListener);
     notifyListeners();
   }
 
@@ -68,7 +71,7 @@ class ToolbarController extends ChangeNotifier {
 
   void textControllerListener() {
     addControllerToCache(
-      drawingController.copy()..addListener(drawingControllerListener),
+      textController.copy()..addListener(drawingControllerListener),
     );
     currentControllerListener();
   }
@@ -101,11 +104,22 @@ class ToolbarController extends ChangeNotifier {
     cache.remove(controller);
   }
 
-  void setDocumentValue(DocumentEditingController controller) {
+  void changeCurrentActiveController(DocumentEditingController controller) {
+    if (cache.contains(controller)) {
+      activeCacheIndex = cache.indexOf(controller);
+    } else {
+      cache.add(controller);
+      activeCacheIndex = cache.lastIndex;
+    }
+    if (controller is TextEditorController) {
+      textController = controller;
+      notifyListeners();
+    }
     if (controller is DrawingController) {
       drawingController = controller;
       notifyListeners();
     }
+    print('active controller type: ${activeController.runtimeType}');
   }
 
   @override
@@ -172,15 +186,15 @@ class ToolbarController extends ChangeNotifier {
           ..initialize()
           ..addListener(drawingControllerListener));
 
-    setDocumentValue(cachedController);
+    changeCurrentActiveController(cachedController);
   }
 
   DocumentEditingController get activeController {
-    //TODO: check action stack for other controllers
-    return drawingController;
+    return activeCacheIndex == null ? textController : cache[activeCacheIndex!];
   }
 
   void redo() {
+    assertInitialized();
     if (!canRedo) return;
     activeCacheIndex ??= cache.lastIndex;
 
@@ -189,7 +203,7 @@ class ToolbarController extends ChangeNotifier {
     activeCacheIndex = activeCacheIndex! + 1;
     DocumentEditingController cachedController = cache[activeCacheIndex!];
 
-    setDocumentValue(cachedController);
+    changeCurrentActiveController(cachedController);
   }
 
   void assertInitialized() {
@@ -200,7 +214,13 @@ class ToolbarController extends ChangeNotifier {
     note = note.copyWith(noteBody: []);
     _noteSynchronizer.clearNotes();
     clearDrawings();
+    clearText();
+    //TODO: clear other controllers
     notifyListeners();
+  }
+
+  void clearText() {
+    textController.clear();
   }
 
   void clearDrawings() {
@@ -210,13 +230,16 @@ class ToolbarController extends ChangeNotifier {
   }
 
   void dispatchColorChange(Color color) {
-    //TODO: dispatch across other controllers
     drawingController.changeColor(color);
+    textController.changeColor(color);
+    _color = color;
   }
 
   void _setDefaultColor() {
-    //TODO: compare with other controllers and set color
-    final Color color = drawingController.color;
+    // default color is text controller's color since it'll be the first active
+    // controller
+    final Color color = textController.metadata?.color ??
+        TextEditorController.defaultMetadata.color;
     _color = color;
   }
 

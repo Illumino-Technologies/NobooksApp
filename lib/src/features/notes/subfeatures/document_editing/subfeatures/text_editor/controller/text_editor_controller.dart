@@ -2,12 +2,90 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/base/controller/base_controller.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/models/text_editor_models_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
-class TextEditorController extends TextEditingController
+class TextEditorController extends _TextEditorController
     implements DocumentEditingController {
+  @override
+  // ignore: overridden_fields
+  final TextDeltas deltas;
+
+  static const TextMetadata defaultMetadata = TextMetadata(
+    alignment: TextAlign.start,
+    decoration: TextDecorationEnum.none,
+    fontSize: 14,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w400,
+    fontFeatures: null,
+  );
+
+  TextEditorController({
+    super.text,
+    TextDeltas? deltas,
+  }) : deltas = deltas ??
+            (text == null ? [] : TextDeltasUtils.deltasFromString(text)) {
+    addListener(_internalControllerListener);
+  }
+
+  @override
+  TextEditorController copy() {
+    return TextEditorController(
+      text: text,
+      deltas: deltas.copy,
+    )
+      ..value = value
+      ..metadata = metadata;
+  }
+
+  @protected
+  @override
+  void initialize({
+    TextDeltas? deltas,
+    TextEditingValue? value,
+    TextMetadata? metadata,
+  }) {
+    deltas = deltas ?? this.deltas;
+    value = value ?? this.value;
+    metadata = metadata ?? this.metadata;
+  }
+
+  @override
+  Map<String, dynamic> toDataMap() => {
+        DocumentEditorType.serializerKey:
+            DocumentEditorType.text.toSerializerString,
+        'controller': toMap(),
+      };
+
+  @override
+  Map<String, dynamic> toMap() {
+    return {
+      'text': text,
+      'deltas': deltas.map((TextDelta delta) => delta.toMap()).toList(),
+      'metadata': metadata?.toMap(),
+      'value': value.toJSON(),
+    };
+  }
+
+  factory TextEditorController.fromMap(Map<String, dynamic> map) {
+    return TextEditorController(
+      text: map['text'] as String,
+      deltas: TextDeltasUtils.deltasFromList(
+        (map['deltas'] as List).cast<Map<String, dynamic>>(),
+      ),
+    )
+      ..value = TextEditingValue.fromJSON(
+        (map['value'] as Map).cast<String, dynamic>(),
+      )
+      ..metadata = map['metadata'] == null
+          ? null
+          : TextMetadata.fromMap(
+              (map['metadata'] as Map).cast<String, dynamic>(),
+            );
+  }
+}
+
+class _TextEditorController extends TextEditingController {
   final TextDeltas deltas;
   TextMetadata? _metadata;
 
@@ -33,9 +111,33 @@ class TextEditorController extends TextEditingController
     notifyListeners();
   }
 
-  TextEditorController({
+  _TextEditorController copy() {
+    return _TextEditorController(
+      text: text,
+      deltas: deltas.copy,
+    )
+      ..value = value
+      ..metadata = metadata;
+  }
+
+  _TextEditorController copyWith({
+    TextDeltas? deltas,
+    TextEditingValue? value,
+    TextMetadata? metadata,
+  }) {
+    return _TextEditorController(
+      text: text,
+      deltas: deltas?.copy ?? this.deltas.copy,
+    )
+      ..value = value ?? this.value
+      ..metadata = metadata ?? this.metadata;
+  }
+
+  _TextEditorController({
     super.text,
-  }) : deltas = text == null ? [] : TextDeltasUtils.deltasFromString(text) {
+    TextDeltas? deltas,
+  }) : deltas = deltas ??
+            (text == null ? [] : TextDeltasUtils.deltasFromString(text)) {
     addListener(_internalControllerListener);
   }
 
@@ -290,6 +392,18 @@ class TextEditorController extends TextEditingController
     );
   }
 
+  void changeColor(Color color) {
+    final TextMetadata changedMetadata = (metadata ?? defaultMetadata).copyWith(
+      color: color,
+    );
+    changeStyleOnSelectionChange(
+      changedMetadata: changedMetadata,
+      change: TextMetadataChange.fontStyle,
+      modifiedDeltas: deltas,
+      selection: selection,
+    );
+  }
+
   void changeAlignment(TextAlign alignment) {
     applyDefaultMetadataChange(
       (metadata ?? defaultMetadata).copyWith(alignment: alignment),
@@ -314,23 +428,9 @@ class TextEditorController extends TextEditingController
     }
 
     final TextSpan textSpan = TextSpan(
-      style: metadata?.style ?? style,
+      style: metadata?.styleWithoutFontFeatures ?? style,
       children: spanChildren,
     );
-    // if (metadata?.alignment != null) {
-    //   return TextSpan(
-    //     style: metadata?.style ?? style,
-    //     children: [
-    //       WidgetSpan(
-    //         child: Align(
-    //           alignment:
-    //               metadata?.alignment.toAlignment ?? Alignment.centerLeft,
-    //           child: Text.rich(textSpan),
-    //         ),
-    //       ),
-    //     ],
-    //   );
-    // }
     return textSpan;
   }
 
@@ -338,20 +438,5 @@ class TextEditorController extends TextEditingController
   void dispose() {
     removeListener(_internalControllerListener);
     super.dispose();
-  }
-
-  @override
-  void initialize() {}
-
-  @override
-  Map<String, dynamic> toDataMap() {
-    // TODO: implement toDataMap
-    throw UnimplementedError();
-  }
-
-  @override
-  Map<String, dynamic> toMap() {
-    // TODO: implement toMap
-    throw UnimplementedError();
   }
 }

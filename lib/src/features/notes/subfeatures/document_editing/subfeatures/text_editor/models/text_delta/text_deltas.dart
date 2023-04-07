@@ -23,7 +23,6 @@ extension TextDeltasExtension on TextDeltas {
     }
   }
 
-
   TextDeltas get copy => List.from(this);
 }
 
@@ -37,6 +36,14 @@ abstract class TextDeltasUtils {
 
     for (final String char in chars) {
       deltas.add(TextDelta(char: char, metadata: metadata));
+    }
+    return deltas;
+  }
+
+  static TextDeltas deltasFromList(List<Map<String, dynamic>> list) {
+    final TextDeltas deltas = [];
+    for (dynamic map in list) {
+      deltas.add(TextDelta.fromMap((map as Map).cast<String, dynamic>()));
     }
     return deltas;
   }

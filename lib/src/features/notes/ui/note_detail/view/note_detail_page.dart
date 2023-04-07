@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
-import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/ui/widgets/text_editing_canvas.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolbar/toolbar_barrel.dart'
-    show ToolBarWidget, ToolbarController;
-import 'package:nobook/src/global/global_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
@@ -57,35 +53,10 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
                 child: const Icon(Icons.delete),
               ),
               20.boxHeight,
-              SizedBox(
-                width: 900.w,
-                height: 546.h,
-                child: ChangeNotifierBuilder<ToolbarController>(
-                  listenable: toolbarController,
-                  builder: (context, controller) {
-                    return TextEditingCanvas(
-                      controller: controller.textController,
-                    );
-                  },
-                ),
-              )
-              // ChangeNotifierBuilder<ToolbarController>(
-              //   listenable: toolbarController,
-              //   buildWhen: (previous, next) =>
-              //       previous?.drawingController == next.drawingController,
-              //   builder: (_, controller) {
-              //     return Container(
-              //       color: AppColors.subjectOrange,
-              //       child: DrawingCanvas(
-              //         controller: controller.drawingController,
-              //         size: Size(
-              //           900.w,
-              //           600.h,
-              //         ),
-              //       ),
-              //     );
-              //   },
-              // ),
+              DocumentEditorCanvas(
+                canvasSize: Size(900.w, 546.h),
+                controller: toolbarController,
+              ),
             ],
           ),
         ),

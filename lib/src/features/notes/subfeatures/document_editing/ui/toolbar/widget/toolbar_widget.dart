@@ -208,9 +208,17 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   void handlePenSelected() {
     documentEditorTypeNotifier.value =
         documentEditorTypeNotifier.value == DocumentEditorType.drawing
-            ? DocumentEditorType.text
+            ? () {
+                controller.changeCurrentActiveController(
+                  controller.textController,
+                );
+                return DocumentEditorType.text;
+              }()
             : () {
                 performDrawingAction(ToolBarItem.pen);
+                controller.changeCurrentActiveController(
+                  controller.drawingController,
+                );
                 return DocumentEditorType.drawing;
               }();
     clearSelectedItems();

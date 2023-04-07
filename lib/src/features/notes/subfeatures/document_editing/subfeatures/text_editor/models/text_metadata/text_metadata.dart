@@ -81,6 +81,14 @@ class TextMetadata extends Equatable {
         fontFeatures: fontFeatures,
       );
 
+  TextStyle get styleWithoutFontFeatures => TextStyle(
+        fontSize: fontSize,
+        color: color,
+        decoration: decoration.value,
+        fontWeight: fontWeight,
+        fontStyle: fontStyle,
+      );
+
   factory TextMetadata.combineWhereNotEqual(
     final TextMetadata metadata1,
     final TextMetadata metadata2, {
