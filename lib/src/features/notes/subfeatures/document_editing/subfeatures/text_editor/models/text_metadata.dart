@@ -6,6 +6,8 @@ import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/util_functions/util_functions.dart';
 
+import '../utils/text_metadata_enum.dart';
+
 class TextMetadata extends Equatable {
   final Color color;
   final FontWeight fontWeight;
@@ -45,6 +47,124 @@ class TextMetadata extends Equatable {
     );
   }
 
+  TextMetadata combineWhatChanged(
+    TextMetadataChange change,
+    TextMetadata other,
+  ) {
+    switch (change) {
+      case TextMetadataChange.all:
+        return other;
+      case TextMetadataChange.color:
+        return copyWith(color: other.color);
+      case TextMetadataChange.fontWeight:
+        return copyWith(fontWeight: other.fontWeight);
+      case TextMetadataChange.fontStyle:
+        return copyWith(fontStyle: other.fontStyle);
+      case TextMetadataChange.fontSize:
+        return copyWith(fontSize: other.fontSize);
+      case TextMetadataChange.alignment:
+        return copyWith(alignment: other.alignment);
+      case TextMetadataChange.fontDecoration:
+        return copyWith(decoration: other.decoration);
+      case TextMetadataChange.fontFeatures:
+        return copyWith(fontFeatures: other.fontFeatures);
+    }
+  }
+
+  TextMetadata copyWhatChanged(
+    TextMetadataChange changed, {
+    Color? color,
+    FontWeight? fontWeight,
+    FontStyle? fontStyle,
+    double? fontSize,
+    TextDecorationEnum? decoration,
+    List<FontFeature>? fontFeatures,
+    TextAlign? alignment,
+  }) {
+    switch (changed) {
+      case TextMetadataChange.color:
+        return TextMetadata(
+          color: color ?? this.color,
+          fontWeight: this.fontWeight,
+          fontStyle: this.fontStyle,
+          fontSize: this.fontSize,
+          decoration: this.decoration,
+          fontFeatures: this.fontFeatures,
+          alignment: this.alignment,
+        );
+      case TextMetadataChange.fontWeight:
+        return TextMetadata(
+          color: this.color,
+          fontWeight: fontWeight ?? this.fontWeight,
+          fontStyle: this.fontStyle,
+          fontSize: this.fontSize,
+          decoration: this.decoration,
+          fontFeatures: this.fontFeatures,
+          alignment: this.alignment,
+        );
+      case TextMetadataChange.fontStyle:
+        return TextMetadata(
+          color: this.color,
+          fontWeight: this.fontWeight,
+          fontStyle: fontStyle ?? this.fontStyle,
+          fontSize: this.fontSize,
+          decoration: this.decoration,
+          fontFeatures: this.fontFeatures,
+          alignment: this.alignment,
+        );
+      case TextMetadataChange.fontSize:
+        return TextMetadata(
+          color: this.color,
+          fontWeight: this.fontWeight,
+          fontStyle: this.fontStyle,
+          fontSize: fontSize ?? this.fontSize,
+          decoration: this.decoration,
+          fontFeatures: this.fontFeatures,
+          alignment: this.alignment,
+        );
+      case TextMetadataChange.fontDecoration:
+        return TextMetadata(
+          color: this.color,
+          fontWeight: this.fontWeight,
+          fontStyle: this.fontStyle,
+          fontSize: this.fontSize,
+          decoration: decoration ?? this.decoration,
+          fontFeatures: this.fontFeatures,
+          alignment: this.alignment,
+        );
+      case TextMetadataChange.fontFeatures:
+        return TextMetadata(
+          color: this.color,
+          fontWeight: this.fontWeight,
+          fontStyle: this.fontStyle,
+          fontSize: this.fontSize,
+          decoration: this.decoration,
+          fontFeatures: fontFeatures ?? this.fontFeatures,
+          alignment: this.alignment,
+        );
+      case TextMetadataChange.alignment:
+        return TextMetadata(
+          color: this.color,
+          fontWeight: this.fontWeight,
+          fontStyle: this.fontStyle,
+          fontSize: this.fontSize,
+          decoration: this.decoration,
+          fontFeatures: this.fontFeatures,
+          alignment: alignment ?? this.alignment,
+        );
+      case TextMetadataChange.all:
+        return TextMetadata(
+          color: color ?? this.color,
+          fontWeight: fontWeight ?? this.fontWeight,
+          fontStyle: fontStyle ?? this.fontStyle,
+          fontSize: fontSize ?? this.fontSize,
+          decoration: decoration ?? this.decoration,
+          fontFeatures: fontFeatures ?? this.fontFeatures,
+          alignment: alignment ?? this.alignment,
+        );
+    }
+  }
+
   TextStyle get style => TextStyle(
         fontSize: fontSize,
         color: color,
@@ -72,9 +192,9 @@ class TextMetadata extends Equatable {
   }
 
   TextMetadata combineWith(
-    TextMetadata other, [
+    TextMetadata other, {
     bool favourOther = true,
-  ]) {
+  }) {
     return TextMetadata(
       color: color == other.color
           ? color
@@ -104,8 +224,8 @@ class TextMetadata extends Equatable {
       fontFeatures: fontFeatures == other.fontFeatures
           ? fontFeatures
           : favourOther
-              ? other.fontFeatures
-              : fontFeatures,
+              ? other.fontFeatures ?? fontFeatures
+              : fontFeatures ?? other.fontFeatures,
       alignment: alignment == other.alignment
           ? alignment
           : favourOther
@@ -135,6 +255,20 @@ class TextMetadata extends Equatable {
       'alignment': alignment.index,
       'decoration': decoration.index,
     };
+  }
+
+  @override
+  String toString() {
+    return '''
+TextMetadata{
+      color: $color,
+      fontWeight: $fontWeight,
+      fontStyle: $fontStyle,
+      fontSize: $fontSize,
+      decoration: $decoration,
+      fontFeatures: $fontFeatures,
+      alignment: $alignment
+    }''';
   }
 
   factory TextMetadata.fromMap(Map<String, dynamic> map) {

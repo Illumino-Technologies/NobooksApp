@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/models/text_deltas.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/models/text_editor_models_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/utils/text_metadata_enum.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
 class TextEditorController extends TextEditingController {
@@ -57,22 +58,28 @@ class TextEditorController extends TextEditingController {
   void setDeltas(TextDeltas newDeltas) {
     deltas.clear();
     deltas.addAll(newDeltas);
+    resetMetadataOnSelectionCollapsed();
+  }
 
-    // if (selection.isCollapsed) {
-    //   if (selection.end == text.length || textBeforeSelection().isNullOrEmpty) {
-    //     return;
-    //   }
-    //   final TextMetadata newMetadata = (deltas.isNotEmpty
-    //           ? deltas[text.indexOf(selection.textBefore(text).chars.last)]
-    //               .metadata
-    //           : metadata) ??
-    //       metadata ??
-    //       defaultMetadata;
-    //
-    //   if (selection.end != text.length) {
-    //     _metadata = _metadata?.combineWith(newMetadata, false) ?? newMetadata;
-    //   }
-    // }
+  void resetMetadataOnSelectionCollapsed() {
+    if (!selection.isCollapsed) return;
+    if (selection.end == text.length || textBeforeSelection().isNullOrEmpty) {
+      return;
+    }
+    if (_metadataToggled) return;
+
+    final TextMetadata newMetadata = (deltas.isNotEmpty
+            ? deltas[text.indexOf(selection.textBefore(text).chars.last)]
+                .metadata
+            : metadata) ??
+        metadata ??
+        defaultMetadata;
+
+    _metadata = _metadata?.combineWith(
+          newMetadata,
+          favourOther: true,
+        ) ??
+        newMetadata;
   }
 
   String? textBeforeSelection() {
@@ -143,6 +150,7 @@ class TextEditorController extends TextEditingController {
 
   void changeStyleOnSelectionChange({
     TextMetadata? changedMetadata,
+    required TextMetadataChange change,
     required TextDeltas modifiedDeltas,
     required TextSelection selection,
   }) {
@@ -152,32 +160,20 @@ class TextEditorController extends TextEditingController {
             metadata ??
             defaultMetadata;
 
-    applyDefaultMetadataChange(changedMetadata);
+    _metadata = _metadata?.combineWhatChanged(
+          change,
+          changedMetadata,
+        ) ??
+        changedMetadata;
+
     metadataToggled = true;
 
-    if (selection.isCollapsed) {
-      // if (selection.end != text.length) {
-      //   text = text.replaceRange(
-      //     selection.start,
-      //     selection.start + 1,
-      //     '',
-      //   );
-      // }
-
-      // modifiedDeltas.insert(
-      //   selection.start,
-      //   TextDelta(
-      //     char: '',
-      //     metadata: changedMetadata,
-      //   ),
-      // );
-
-      return;
-    }
+    if (selection.isCollapsed) return notifyListeners();
 
     setDeltas(
       applyMetadataToTextInSelection(
         newMetadata: changedMetadata,
+        change: change,
         deltas: modifiedDeltas,
         selection: selection,
       ),
@@ -188,6 +184,7 @@ class TextEditorController extends TextEditingController {
   TextDeltas applyMetadataToTextInSelection({
     required TextMetadata newMetadata,
     required TextDeltas deltas,
+    required TextMetadataChange change,
     required TextSelection selection,
   }) {
     final TextDeltas modifiedDeltas = deltas.copy;
@@ -196,8 +193,13 @@ class TextEditorController extends TextEditingController {
     final int end = selection.end;
 
     for (int i = start; i < end; i++) {
+      //check for what changed in the newMetadata and apply it to the old metadata
+      final TextMetadata oldMetadata =
+          modifiedDeltas[i].metadata ?? metadata ?? defaultMetadata;
+
       modifiedDeltas[i] = modifiedDeltas[i].copyWith(
-        metadata: modifiedDeltas[i].metadata?.combineWith(
+        metadata: modifiedDeltas[i].metadata?.combineWhatChanged(
+                  change,
                   newMetadata,
                 ) ??
             newMetadata,
@@ -216,8 +218,9 @@ class TextEditorController extends TextEditingController {
 
     changeStyleOnSelectionChange(
       changedMetadata: changedMetadata,
-      modifiedDeltas: deltas,
-      selection: selection,
+      change: TextMetadataChange.fontWeight,
+      modifiedDeltas: deltas.copy,
+      selection: selection.copyWith(),
     );
   }
 
@@ -231,6 +234,7 @@ class TextEditorController extends TextEditingController {
     );
     changeStyleOnSelectionChange(
       changedMetadata: changedMetadata,
+      change: TextMetadataChange.fontStyle,
       modifiedDeltas: deltas,
       selection: selection,
     );
@@ -247,6 +251,7 @@ class TextEditorController extends TextEditingController {
 
     changeStyleOnSelectionChange(
       changedMetadata: changedMetadata,
+      change: TextMetadataChange.fontDecoration,
       modifiedDeltas: deltas,
       selection: selection,
     );
@@ -269,9 +274,6 @@ class TextEditorController extends TextEditingController {
     final List<TextSpan> spanChildren = [];
 
     for (final TextDelta delta in deltas) {
-      if (delta.metadata == null) {
-        print('there is a null delta metadata at ${deltas.indexOf(delta)}');
-      }
       spanChildren.add(
         TextSpan(
           text: delta.char,
