@@ -4,15 +4,11 @@ typedef TransformerCallback<E> = E Function(E element);
 typedef ElementTestCallback<E> = bool Function(E element);
 
 extension ListExtension<E> on List<E> {
-  bool containsWhere(bool Function(E value) test) {
-    for (E element in this) {
-      bool satisfied = test(element);
-      if (satisfied) {
-        return true;
-      }
-    }
-    return false;
-  }
+  int get lastIndex => length - 1;
+
+  bool isFirst(E element) => indexOf(element) == 0;
+
+  bool isLast(E element) => indexOf(element) == (length - 1);
 
   void pushFront(E element) {
     return insert(0, element);
@@ -44,7 +40,7 @@ extension ListExtension<E> on List<E> {
     }
   }
 
-  void replaceWhere(Iterable<E> replacement, bool Function(E) test) {
+  void replaceWhere(Iterable<E> replacement, bool Function(E element) test) {
     int index = indexWhere(test);
 
     if (index == -1) throw StateError('index not found in $this');
@@ -84,6 +80,24 @@ extension ListExtension<E> on List<E> {
       tempList.add(element);
     }
     return tempList;
+  }
+
+  E? lastWhereOrNull(
+    bool Function(E element) test, {
+    E Function()? orElse,
+  }) {
+    try {
+      return lastWhere(test, orElse: orElse);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  void forceAdd(E value, int fixedLength) {
+    if (length == fixedLength && isNotEmpty) {
+      removeAt(0);
+    }
+    add(value);
   }
 
   E? firstWhereOrNull(bool Function(E element) test) {

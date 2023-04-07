@@ -63,23 +63,27 @@ class _NavDrawerState extends State<_NavDrawer> {
             itemShowIconOnly ? VectorAssets.logoSmall : VectorAssets.logo,
           ),
           56.boxHeight,
-          ValueListenableBuilder<NavItem>(
-            valueListenable: selectedItemNotifier,
-            builder: (_, selectedItem, __) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ...NavItem.values.map(
-                    (item) => _NavItemWidget(
-                      item: item,
-                      selected: item == selectedItem,
-                      showIconOnly: itemShowIconOnly,
-                      onPressed: () => onItemSelected(item),
-                    ),
-                  ),
-                ],
-              );
-            },
+          Expanded(
+            child: SingleChildScrollView(
+              child: ValueListenableBuilder<NavItem>(
+                valueListenable: selectedItemNotifier,
+                builder: (_, selectedItem, __) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ...NavItem.values.map(
+                        (item) => _NavItemWidget(
+                          item: item,
+                          selected: item == selectedItem,
+                          showIconOnly: itemShowIconOnly,
+                          onPressed: () => onItemSelected(item),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
           ),
         ],
       ),
@@ -109,7 +113,7 @@ class _NavDrawerState extends State<_NavDrawer> {
   }
 
   void onItemSelected(NavItem item) {
-    if (item == selectedItemNotifier.value) return;
+    // if (item == selectedItemNotifier.value) return;
     widget.onNavItemChanged(item);
     selectedItemNotifier.value = item;
   }

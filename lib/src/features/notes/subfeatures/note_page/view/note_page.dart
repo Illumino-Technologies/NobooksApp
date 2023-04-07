@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
+import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
+import 'package:intl/intl.dart';
 
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 
@@ -16,6 +18,13 @@ class NoteScreen extends ConsumerStatefulWidget {
 }
 
 class NoteScreenState extends ConsumerState<NoteScreen> {
+  bool ch = true;
+  isSwitched() {
+    setState(() {
+      ch = !ch;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,171 +45,206 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
             });
           }
 
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: availableSubjects.length,
-            itemBuilder: (context, index) {
-              final Subject currentSubject = availableSubjects[index];
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+          return Row(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                      vertical: 10.0,
+                    ),
+                    child: Column(
+                      children: [
+                        10.boxHeight,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Your Notes',
+                              style: TextStyles.headline1.withSize(24),
+                            ),
+                            Row(
+                              children: [
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    elevation: 0,
+                                    backgroundColor: AppColors.blue500,
+                                    // : Colors.white,
+                                  ),
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Personal',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    elevation: 0,
+                                    backgroundColor: Colors.transparent,
+                                    // : Colors.white,
+                                  ),
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'General',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: availableSubjects.length,
+                          itemBuilder: (context, index) {
+                            final Subject currentSubject =
+                                availableSubjects[index];
+                            return Container(
+                              margin: const EdgeInsets.symmetric(vertical: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        currentSubject.name,
+                                        style:
+                                            TextStyles.headline1.withSize(24),
+                                      ),
+                                    ],
+                                  ),
+                                  20.boxHeight,
+                                  SizedBox(
+                                    height: 160,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount:
+                                          subjectNotes[currentSubject]!.length,
+                                      itemBuilder: (context, index) {
+                                        final Note currentNote = subjectNotes[
+                                            currentSubject]![index];
+                                        return Container(
+                                          margin: const EdgeInsets.symmetric(
+                                            horizontal: 20,
+                                          ),
+                                          width: 160,
+                                          decoration: const BoxDecoration(
+                                            color: AppColors.white,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(8),
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                16.boxHeight,
+                                                SubjectWidget(
+                                                  subject: currentNote.subject,
+                                                  boxSize: 40,
+                                                  fontSize: 25,
+                                                ),
+                                                20.boxHeight,
+                                                Expanded(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        currentNote.topic,
+                                                        style: TextStyles
+                                                            .headline3
+                                                            .withSize(14),
+                                                      ),
+                                                      8.boxHeight,
+                                                      // Text(
+                                                      //   currentNote.noteBody,
+                                                      //   style: TextStyles
+                                                      //       .headline4
+                                                      //       .withSize(12),
+                                                      // ),
+                                                      40.boxHeight,
+                                                      Text(
+                                                        DateFormat.yMEd()
+                                                            .add_jms()
+                                                            .format(
+                                                              currentNote
+                                                                  .createdAt,
+                                                            ),
+                                                        style: const TextStyle(
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors.grey,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0,
+                    vertical: 10.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        currentSubject.name,
-                        style: TextStyles.headline1.withSize(24),
+                        'Your Subjects',
+                        style: TextStyles.headline1.withSize(18),
                       ),
-                      SubjectWidget(
-                        subject: currentSubject,
-                        boxSize: 80,
-                        fontSize: 50,
+                      SizedBox(
+                        height: context.screenHeight * 0.85,
+                        width: context.screenHeight * 0.35,
+                        child: ListView.builder(
+                          itemCount: FakeSubjects.subjects.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              leading: SubjectWidget(
+                                subject: FakeSubjects.subjects[index],
+                                boxSize: 40,
+                                fontSize: 25,
+                              ),
+                              title: Text(FakeSubjects.subjects[index].name),
+                              trailing: const Icon(Icons.keyboard_arrow_down),
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 200,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: subjectNotes[currentSubject]!.length,
-                      itemBuilder: (context, index) {
-                        final Note currentNote =
-                            subjectNotes[currentSubject]![index];
-                        return Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Text(currentNote.topic),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              );
-            },
+                ),
+              )
+            ],
           );
         },
       ),
-
-      // Row(
-      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //   children: [
-      //     Column(
-      //       children: [
-      //         10.boxHeight,
-      //         Padding(
-      //           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      //           child: Row(
-      //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //             children: [
-      //               const Text(
-      //                 'Your Notes',
-      //                 style: TextStyle(
-      //                   fontSize: 24,
-      //                   color: Colors.black,
-      //                   fontWeight: FontWeight.bold,
-      //                 ),
-      //               ),
-      //               // Spacer(),
-      //
-      //
-      //               Row(
-      //                 children: [
-      //                   ElevatedButton(
-      //                     style: ElevatedButton.styleFrom(
-      //                       elevation: 0,
-      //                       backgroundColor: Colors.blue,
-      //                       // : Colors.white,
-      //                     ),
-      //                     onPressed: () {
-      //                       context.goNamed(
-      //                         AppRoute.notePage.name,
-      //                         extra: NoteModel(),
-      //                       );
-      //                     },
-      //                     child: const Text(
-      //                       'Personal',
-      //                       style: TextStyle(fontSize: 16),
-      //                     ),
-      //                   ),
-      //                   const SizedBox(width: 10),
-      //                   ElevatedButton(
-      //                     style: ElevatedButton.styleFrom(
-      //                       elevation: 0,
-      //                       backgroundColor: Colors.transparent,
-      //                       // : Colors.white,
-      //                     ),
-      //                     onPressed: () {},
-      //                     child: const Text(
-      //                       'General',
-      //                       style: TextStyle(
-      //                         fontSize: 16,
-      //                         color: Colors.black54,
-      //                       ),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ],
-      //           ),
-      //         ),
-      //         30.boxHeight,
-      //         const BiologyNoteCards(),
-      //         30.boxHeight,
-      //         const ChemistryNoteCards(),
-      //         30.boxHeight,
-      //         const BookKeepingNoteCards(),
-      //         30.boxHeight,
-      //         const CivicNoteCards()
-      //       ],
-      //     ),
-      //
-      //     // SingleChildScrollView(
-      //     //   child: Column(
-      //     //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     //     children: [
-      //     //       const Text(
-      //     //         'Your Subjects',
-      //     //         style: TextStyle(
-      //     //           fontSize: 18,
-      //     //           color: Colors.black54,
-      //     //           // fontWeight: FontWeight.bold,
-      //     //         ),
-      //     //       ),
-      //     //       SizedBox(
-      //     //         height: context.screenHeight * 0.85,
-      //     //         width: context.screenHeight * 0.35,
-      //     //         child: ListView.builder(
-      //     //           physics: const NeverScrollableScrollPhysics(),
-      //     //           itemCount: FakeAssignmentData.timeTable.length,
-      //     //           scrollDirection: Axis.vertical,
-      //     //           shrinkWrap: true,
-      //     //           itemBuilder: (context, index) {
-      //     //             return ListTile(
-      //     //               leading: Container(
-      //     //                 height: 32,
-      //     //                 width: 32,
-      //     //                 decoration: BoxDecoration(
-      //     //                   borderRadius: const BorderRadius.all(
-      //     //                     Radius.circular(4),
-      //     //                   ),
-      //     //                   image: DecorationImage(
-      //     //                     image: AssetImage(
-      //     //                       FakeAssignmentData.timeTable[index].subjectLogo,
-      //     //                     ),
-      //     //                     fit: BoxFit.fill,
-      //     //                   ),
-      //     //                 ),
-      //     //               ),
-      //     //               title:
-      //     //                   Text(FakeAssignmentData.timeTable[index].subject),
-      //     //               trailing: const Icon(Icons.keyboard_arrow_down),
-      //     //             );
-      //     //           },
-      //     //         ),
-      //     //       )
-      //     //     ],
-      //     //   ),
-      //     // ),
-      //   ],
-      // ),
     );
   }
 }

@@ -35,7 +35,6 @@ class ReuseableCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          // ignore: prefer_const_literals_to_create_immutables
           children: [
             const SizedBox(
               width: 16,
@@ -86,7 +85,6 @@ class ReuseableCard extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 14,
                   ),
-                  // ignore: prefer_const_literals_to_create_immutables
                   children: <TextSpan>[
                     TextSpan(
                       text: '\n$subTitle',

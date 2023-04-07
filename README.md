@@ -1,4 +1,3 @@
-
 # No'Book
 
 ```Ensure to read through```<br>
@@ -12,14 +11,14 @@ to [design file ->](https://www.figma.com/file/qlhO5tA7U1wy8SWkePOb4t/No'Books?n
 Features:
 
 - Note-taking
-  - Personal notes (create, update, read, delete)
-  - Teacher’s notes (read, make annotations which saves to their account)
+    - Personal notes (create, update, read, delete)
+    - Teacher’s notes (read, make annotations which saves to their account)
 - Assignment (read, submit)
 - Tests (read, submit)
 - Exams (read, submit)
 - Timetable
-  - Personal timetable (create, update, read, delete) - currently unavailable in MVP
-  - School timetable (read only)
+    - Personal timetable (create, update, read, delete) - currently unavailable in MVP
+    - School timetable (read only)
 - Records (read only)
 
 ## Teacher
@@ -63,10 +62,13 @@ Layers are:
 
 - Data<br>
   *Everything concerning external data transfer apis are contained here*
-    - **Data sources**<br> *Fetches data from external sources through custom Apis for the ```Repository```*
-    - **Repositories**<br> *Fetches data from ```Data source(s)``` and transforms it into more feature specific usable
+    - **Data sources**<br> *Fetches data from external sources through custom Apis for
+      the ```Repository```*
+    - **Repositories**<br> *Fetches data from ```Data source(s)``` and transforms it into more
+      feature specific usable
       objects*
-- Domain<br> *Contains all Feature specific business logic (```Managers```, ```State```, etc) and ```data models```*
+- Domain<br> *Contains all Feature specific business logic (```Managers```, ```State```, etc)
+  and ```data models```*
     - business logic
     - models
 - Ui<br> *Contains everything relating to User interface*
@@ -76,12 +78,15 @@ Layers are:
 
 ### Note:
 
-- All reusable utility code should be put in a ```utils``` folder relative to the current scope and if the scope is a
+- All reusable utility code should be put in a ```utils``` folder relative to the current scope and
+  if the scope is a
   global scope it should be put in the [global utils](lib/src/utils) folder
-- Should there be a feature specific reusable component in a scope that is found to be needed in an outer scope, such
+- Should there be a feature specific reusable component in a scope that is found to be needed in an
+  outer scope, such
   reusable component
   should 'lifted' to an outer scope (like lifting state up in flutter 🙂).
-- Corollary to the above, all global feature specific components are in the [global folder](lib/src/global)
+- Corollary to the above, all global feature specific components are in
+  the [global folder](lib/src/global)
 
 # Code conventions
 
@@ -93,12 +98,15 @@ Layers are:
 - Always add Types your code (including LHS of variable assignments 🙂)
 - DO NOT ```//ignore for file: $lint_rule``` lint rules in your code
 - ALWAYS use import barrels
-- Use ErrorHandlers (create one if none) instead of ```try - catch``` block where the catch block contents is repeated
+- Use ErrorHandlers (create one if none) instead of ```try - catch``` block where the catch block
+  contents is repeated
 - Always use the [Failure](lib/src/utils/error_handling/failure.dart) class for holding error data
-- Use abstract ```{FeatureName}UtilFunctions``` classes to hold feature specific reusable functions (top-level)
+- Use abstract ```{FeatureName}UtilFunctions``` classes to hold feature specific reusable
+  functions (top-level)
 - Use mixins to encapsulate reusable methods/logic
 - Encourage the use private ```_Private``` widgets first before public.
-- _Corollary to the above_, Encourage the use of ```part directive``` to enable access to private classes/functions in
+- _Corollary to the above_, Encourage the use of ```part directive``` to enable access to private
+  classes/functions in
   other files (wisely 🙂)
 - Encourage the use of ```super enum``` and the new ```record``` over custom classes
 
@@ -125,6 +133,8 @@ Layers are:
 
 # Project Guide/Tips
 
-- Go through the [utils](lib/src/utils) and [global](lib/src/global) folder before working on this codebase
-- Understand how dart mixins, extensions, super enums, and the new recors, work to make so you can flow easily with the
+- Go through the [utils](lib/src/utils) and [global](lib/src/global) folder before working on this
+  codebase
+- Understand how dart mixins, extensions, super enums, and the new recors, work to make so you can
+  flow easily with the
   project. 
