@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/base/document_editing_base_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/text_editor_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 class ToolbarController extends ChangeNotifier {
   final NoteSyncLogicInterface _noteSynchronizer;
   DrawingController drawingController = DrawingController();
+  TextEditorController textController = TextEditorController();
   Note note;
 
   ToolbarController({
@@ -14,6 +16,7 @@ class ToolbarController extends ChangeNotifier {
   }) : _noteSynchronizer =
             noteSynchronizer ?? NoteSyncLogic(currentNote: note) {
     drawingController.addListener(drawingControllerListener);
+    textController.addListener(textControllerListener);
   }
 
   late Color _color;
@@ -60,6 +63,13 @@ class ToolbarController extends ChangeNotifier {
         drawingController.copy()..addListener(drawingControllerListener),
       );
     }
+    currentControllerListener();
+  }
+
+  void textControllerListener() {
+    addControllerToCache(
+      drawingController.copy()..addListener(drawingControllerListener),
+    );
     currentControllerListener();
   }
 
@@ -214,10 +224,10 @@ class ToolbarController extends ChangeNotifier {
     super.dispose();
     syncNote();
     _noteSynchronizer.dispose();
-    drawingController.removeListener(
-      drawingControllerListener,
-    );
+    drawingController.removeListener(drawingControllerListener);
     drawingController.dispose();
+    textController.removeListener(textControllerListener);
+    textController.dispose();
   }
 
   bool _syncingNote = false;

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,6 +7,8 @@ import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatur
 import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolbar/toolbar_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
+
+import '../../../subfeatures/text_editor/text_editor_barrel.dart';
 
 part 'custom/color_wheel_dialog.dart';
 
@@ -15,6 +19,8 @@ part 'custom/knob.dart';
 part 'custom/main_color_slider.dart';
 
 part 'custom/shape_selector_dialog.dart';
+
+part 'custom/text_toolbar_item_widget.dart';
 
 part 'custom/tool_bar_item_widget.dart';
 
@@ -144,16 +150,31 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ...bottomItems.map(
-                                  (item) => ToolbarItemButton(
-                                    item: item,
-                                    enabled: DocumentEditorType
+                                  (item) {
+                                    bool enabled = DocumentEditorType
                                             .general.toolBarItems
                                             .contains(item) ||
                                         documentEditorType.toolBarItems
-                                            .contains(item),
-                                    onSelected: onSelected,
-                                    selected: selectedItems.contains(item),
-                                  ),
+                                            .contains(item);
+                                    if (DocumentEditorType.text.toolBarItems
+                                        .contains(item)) {
+                                      return TextToolbarButtonItem(
+                                        item: item,
+                                        metadata: controller
+                                                .textController.metadata ??
+                                            TextEditorController
+                                                .defaultMetadata,
+                                        onSelected: onSelected,
+                                        enabled: enabled,
+                                      );
+                                    }
+                                    return ToolbarItemButton(
+                                      item: item,
+                                      enabled: enabled,
+                                      onSelected: onSelected,
+                                      selected: selectedItems.contains(item),
+                                    );
+                                  },
                                 )
                               ],
                             ),
@@ -287,6 +308,10 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
             : reverseDrawingAction();
       }
 
+      if (documentEditorTypeNotifier.value == DocumentEditorType.text) {
+        performTextEditingActionOn(item);
+      }
+
       selectedItemsNotifier.value = List.from(selectedItemsNotifier.value)
         ..remove(item);
       return;
@@ -323,6 +348,49 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
     }
 
     addItemToSelected(item);
+  }
+
+  void performTextEditingActionOn(ToolBarItem item) {
+    switch (item) {
+      case ToolBarItem.color:
+        // TODO: Handle this case.
+        break;
+      case ToolBarItem.alignLeft:
+        controller.textController.changeAlignment(TextAlign.left);
+        break;
+      case ToolBarItem.alignCenter:
+        controller.textController.changeAlignment(TextAlign.center);
+        break;
+      case ToolBarItem.alignRight:
+        controller.textController.changeAlignment(TextAlign.right);
+        break;
+      case ToolBarItem.bold:
+        controller.textController.toggleBold();
+        break;
+      case ToolBarItem.italic:
+        controller.textController.toggleItalic();
+        break;
+      case ToolBarItem.underline:
+        controller.textController.toggleUnderline();
+        break;
+      case ToolBarItem.subscript:
+        controller.textController.toggleSubscript();
+        break;
+      case ToolBarItem.superscript:
+        controller.textController.toggleSuperscript();
+        break;
+      case ToolBarItem.roughPaper:
+      case ToolBarItem.pen:
+      case ToolBarItem.eraser:
+      case ToolBarItem.ruler:
+      case ToolBarItem.shapes:
+      case ToolBarItem.calculator:
+      case ToolBarItem.table:
+      case ToolBarItem.fourFigTable:
+      case ToolBarItem.undo:
+      case ToolBarItem.redo:
+      case ToolBarItem.equation:
+    }
   }
 
   void onColorChanged(Color color) {

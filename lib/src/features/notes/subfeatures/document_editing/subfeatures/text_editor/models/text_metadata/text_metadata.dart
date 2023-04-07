@@ -3,10 +3,11 @@ import 'dart:ui';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/features_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/models/text_metadata/text_metadata_enum.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/util_functions/util_functions.dart';
 
-import '../utils/text_metadata_enum.dart';
+part 'text_decoration_enum.dart';
 
 class TextMetadata extends Equatable {
   final Color color;
@@ -68,100 +69,6 @@ class TextMetadata extends Equatable {
         return copyWith(decoration: other.decoration);
       case TextMetadataChange.fontFeatures:
         return copyWith(fontFeatures: other.fontFeatures);
-    }
-  }
-
-  TextMetadata copyWhatChanged(
-    TextMetadataChange changed, {
-    Color? color,
-    FontWeight? fontWeight,
-    FontStyle? fontStyle,
-    double? fontSize,
-    TextDecorationEnum? decoration,
-    List<FontFeature>? fontFeatures,
-    TextAlign? alignment,
-  }) {
-    switch (changed) {
-      case TextMetadataChange.color:
-        return TextMetadata(
-          color: color ?? this.color,
-          fontWeight: this.fontWeight,
-          fontStyle: this.fontStyle,
-          fontSize: this.fontSize,
-          decoration: this.decoration,
-          fontFeatures: this.fontFeatures,
-          alignment: this.alignment,
-        );
-      case TextMetadataChange.fontWeight:
-        return TextMetadata(
-          color: this.color,
-          fontWeight: fontWeight ?? this.fontWeight,
-          fontStyle: this.fontStyle,
-          fontSize: this.fontSize,
-          decoration: this.decoration,
-          fontFeatures: this.fontFeatures,
-          alignment: this.alignment,
-        );
-      case TextMetadataChange.fontStyle:
-        return TextMetadata(
-          color: this.color,
-          fontWeight: this.fontWeight,
-          fontStyle: fontStyle ?? this.fontStyle,
-          fontSize: this.fontSize,
-          decoration: this.decoration,
-          fontFeatures: this.fontFeatures,
-          alignment: this.alignment,
-        );
-      case TextMetadataChange.fontSize:
-        return TextMetadata(
-          color: this.color,
-          fontWeight: this.fontWeight,
-          fontStyle: this.fontStyle,
-          fontSize: fontSize ?? this.fontSize,
-          decoration: this.decoration,
-          fontFeatures: this.fontFeatures,
-          alignment: this.alignment,
-        );
-      case TextMetadataChange.fontDecoration:
-        return TextMetadata(
-          color: this.color,
-          fontWeight: this.fontWeight,
-          fontStyle: this.fontStyle,
-          fontSize: this.fontSize,
-          decoration: decoration ?? this.decoration,
-          fontFeatures: this.fontFeatures,
-          alignment: this.alignment,
-        );
-      case TextMetadataChange.fontFeatures:
-        return TextMetadata(
-          color: this.color,
-          fontWeight: this.fontWeight,
-          fontStyle: this.fontStyle,
-          fontSize: this.fontSize,
-          decoration: this.decoration,
-          fontFeatures: fontFeatures ?? this.fontFeatures,
-          alignment: this.alignment,
-        );
-      case TextMetadataChange.alignment:
-        return TextMetadata(
-          color: this.color,
-          fontWeight: this.fontWeight,
-          fontStyle: this.fontStyle,
-          fontSize: this.fontSize,
-          decoration: this.decoration,
-          fontFeatures: this.fontFeatures,
-          alignment: alignment ?? this.alignment,
-        );
-      case TextMetadataChange.all:
-        return TextMetadata(
-          color: color ?? this.color,
-          fontWeight: fontWeight ?? this.fontWeight,
-          fontStyle: fontStyle ?? this.fontStyle,
-          fontSize: fontSize ?? this.fontSize,
-          decoration: decoration ?? this.decoration,
-          fontFeatures: fontFeatures ?? this.fontFeatures,
-          alignment: alignment ?? this.alignment,
-        );
     }
   }
 
@@ -299,15 +206,4 @@ Map<String, dynamic> _fontFeatureToMap(FontFeature feature) {
     'feature': feature.feature,
     'value': feature.value,
   };
-}
-
-enum TextDecorationEnum {
-  none(TextDecoration.none),
-  underline(TextDecoration.underline),
-  strikeThrough(TextDecoration.lineThrough),
-  ;
-
-  final TextDecoration value;
-
-  const TextDecorationEnum(this.value);
 }

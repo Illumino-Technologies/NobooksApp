@@ -1,21 +1,14 @@
-import 'dart:ui';
-
-import 'package:custom_edittext/custom_edittext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/controller/mtext_editor_controller.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/ui/widgets/text_editing_canvas.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolbar/toolbar_barrel.dart'
     show ToolBarWidget, ToolbarController;
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
-import 'package:rich_editor/rich_editor.dart';
-import 'package:rich_field_controller/rich_field_controller.dart';
-
-part 'text_editing/text_editing_canvas.dart';
 
 class NoteDetailPage extends StatelessWidget {
   final Note note;
@@ -59,7 +52,6 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
               20.boxHeight,
               MaterialButton(
                 onPressed: () {
-                  print('clear called');
                   toolbarController.clear();
                 },
                 child: const Icon(Icons.delete),
@@ -68,7 +60,14 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
               SizedBox(
                 width: 900.w,
                 height: 546.h,
-                child: const _TextEditingCanvas(),
+                child: ChangeNotifierBuilder<ToolbarController>(
+                  listenable: toolbarController,
+                  builder: (context, controller) {
+                    return TextEditingCanvas(
+                      controller: controller.textController,
+                    );
+                  },
+                ),
               )
               // ChangeNotifierBuilder<ToolbarController>(
               //   listenable: toolbarController,
