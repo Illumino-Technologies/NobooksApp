@@ -32,17 +32,17 @@ class Structure extends StatelessWidget {
 
   getwidth(expanded, top, left, right, size) {
     if (left == false && right == false) {
-      return size.width;
+      return size.size;
     } else if (left == false && right == true) {
-      return (size.width * 0.5) + (size.width * 0.2);
+      return (size.size * 0.5) + (size.size * 0.2);
     } else if (left == true && right == false) {
       return (expanded
-          ? (size.width * 0.5) + (size.width * 0.3)
-          : (size.width * 0.5) + (size.width * 0.14) + (size.width * 0.30));
+          ? (size.size * 0.5) + (size.size * 0.3)
+          : (size.size * 0.5) + (size.size * 0.14) + (size.size * 0.30));
     } else {
       return (expanded
-          ? (size.width * 0.5)
-          : (size.width * 0.5) + (size.width * 0.14));
+          ? (size.size * 0.5)
+          : (size.size * 0.5) + (size.size * 0.14));
     }
   }
 

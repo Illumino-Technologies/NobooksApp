@@ -113,7 +113,7 @@ class _NavDrawerState extends State<_NavDrawer> {
   }
 
   void onItemSelected(NavItem item) {
-    if (item == selectedItemNotifier.value) return;
+    // if (item == selectedItemNotifier.value) return;
     widget.onNavItemChanged(item);
     selectedItemNotifier.value = item;
   }

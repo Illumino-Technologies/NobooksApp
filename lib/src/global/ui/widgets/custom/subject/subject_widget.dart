@@ -26,6 +26,7 @@ class SubjectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // padding: EdgeInsets.all(4.0),
       width: boxSize.r,
       height: boxSize.r,
       decoration: BoxDecoration(

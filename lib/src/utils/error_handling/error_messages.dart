@@ -24,6 +24,8 @@ abstract class ErrorMessages {
   static const String biometricAuthFailedRetry = 'biometric authentication '
       'failed, Please use Passcode instead';
 
+  static const String localNoteSyncFailure = 'Local-Note-Sync-Failure';
+  static const String networkNoteSyncFailure = 'Network-Note-Sync-Failure';
   static const String serverError = 'Server Error';
   static const String clientError = 'Client Error';
 }

@@ -47,9 +47,11 @@ final GoRouter _router = GoRouter(
             GoRoute(
               path: AppRoute.noteDetailPage.path,
               name: AppRoute.noteDetailPage.name,
-              builder: (context, state) => NoteDetailPage(
-                note: (state.extra as Note),
-              ),
+              builder: (context, state) {
+                return NoteDetailPage(
+                  note: (state.extra as Note),
+                );
+              },
             ),
           ],
         ),
