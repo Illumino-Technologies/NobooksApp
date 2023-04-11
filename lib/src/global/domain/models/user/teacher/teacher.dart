@@ -34,4 +34,16 @@ class Teacher extends User {
       'profilePhoto': profilePhoto,
     };
   }
+
+
+  factory Teacher.fromMap(Map<String, dynamic> map) {
+    return Teacher(
+      id: map['id'] as String,
+      firstname: map['firstname'] as String,
+      lastname: map['lastname'] as String,
+      profilePhoto: map['profilePhoto'] as String,
+    );
+  }
+
+
 }

@@ -2,19 +2,19 @@ import 'package:nobook/src/features/assignments/assignment_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class FakeAssignmentData {
-  static final List<TimeTable> timeTable = [
-    TimeTable(subject: 'Maths', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Physics', subjectLogo: Assets.ph),
-    TimeTable(subject: 'Chemistry', subjectLogo: Assets.ch),
-    TimeTable(subject: 'Biology', subjectLogo: Assets.bio),
-    TimeTable(subject: 'English', subjectLogo: Assets.eng),
-    TimeTable(subject: 'Further Mathematics', subjectLogo: Assets.fm),
-    TimeTable(subject: 'Maths', subjectLogo: Assets.mt),
-    TimeTable(subject: 'Physics', subjectLogo: Assets.ph),
-    TimeTable(subject: 'Chemistry', subjectLogo: Assets.ch),
-    TimeTable(subject: 'Biology', subjectLogo: Assets.bio),
-    TimeTable(subject: 'English', subjectLogo: Assets.eng),
-    TimeTable(subject: 'Further Mathematics', subjectLogo: Assets.fm),
+  static final List<TimeTableUiModel> timeTable = [
+    TimeTableUiModel(subject: 'Maths', subjectLogo: Assets.mt),
+    TimeTableUiModel(subject: 'Physics', subjectLogo: Assets.ph),
+    TimeTableUiModel(subject: 'Chemistry', subjectLogo: Assets.ch),
+    TimeTableUiModel(subject: 'Biology', subjectLogo: Assets.bio),
+    TimeTableUiModel(subject: 'English', subjectLogo: Assets.eng),
+    TimeTableUiModel(subject: 'Further Mathematics', subjectLogo: Assets.fm),
+    TimeTableUiModel(subject: 'Maths', subjectLogo: Assets.mt),
+    TimeTableUiModel(subject: 'Physics', subjectLogo: Assets.ph),
+    TimeTableUiModel(subject: 'Chemistry', subjectLogo: Assets.ch),
+    TimeTableUiModel(subject: 'Biology', subjectLogo: Assets.bio),
+    TimeTableUiModel(subject: 'English', subjectLogo: Assets.eng),
+    TimeTableUiModel(subject: 'Further Mathematics', subjectLogo: Assets.fm),
   ];
 
   static final List<Assignment> assignments = [

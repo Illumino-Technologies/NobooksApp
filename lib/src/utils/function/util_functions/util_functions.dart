@@ -7,6 +7,22 @@ abstract class UtilFunctions {
     return Color(int.parse(map['color'].toString()));
   }
 
+  static TimeOfDay timeOfDayFromMap(dynamic map) {
+    return TimeOfDay(
+      hour: int.parse(map['hour'].toString()),
+      minute: int.parse(map['minute'].toString()),
+    );
+  }
+
+  static Duration simpleDurationFromString(String string) {
+    final List<String> parts = string.split(':');
+    return Duration(
+      hours: int.parse(parts[0]),
+      minutes: int.parse(parts[1]),
+      seconds: int.parse(parts[2]),
+    );
+  }
+
   static Color interpolateColors(double value, List<Color> colors) {
     assert(value >= 0 || value <= 1, 'value must be between 0 and 1');
 

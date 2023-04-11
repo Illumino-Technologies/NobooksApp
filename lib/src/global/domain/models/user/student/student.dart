@@ -4,7 +4,7 @@ class Student extends User {
   final Class studentClass;
   final List<Subject> subjects;
 
-  //TODO: confirm adding the following fields: dob, gender, email address, phoneNumber?...
+  /// TODO: confirm adding the following fields: dob, gender, email address, phoneNumber?...
   const Student({
     required super.id,
     required this.studentClass,
@@ -18,8 +18,8 @@ class Student extends User {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'studentClass': studentClass,
-      'subjects': subjects,
+      'studentClass': studentClass.toMap(),
+      'subjects': subjects.map((e) => e.toMap()).toList(),
       'firstname': firstname,
       'lastname': lastname,
       'profilePhoto': profilePhoto,
@@ -29,8 +29,11 @@ class Student extends User {
   factory Student.fromMap(Map<String, dynamic> map) {
     return Student(
       id: map['id'] as String,
-      studentClass: map['studentClass'] as Class,
-      subjects: map['subjects'] as List<Subject>,
+      studentClass: Class.fromMap((map['studentClass'] as Map).cast()),
+      subjects: (map['subjects'] as List?)?.map((e) {
+            return Subject.fromMap(e);
+          }).toList() ??
+          [],
       firstname: map['firstname'] as String,
       lastname: map['lastname'] as String,
       profilePhoto: map['profilePhoto'] as String,
