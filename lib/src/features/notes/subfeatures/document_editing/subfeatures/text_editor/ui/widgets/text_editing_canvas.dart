@@ -35,9 +35,9 @@ class _TextEditingCanvasState extends State<TextEditingCanvas> {
         valueListenable: controller,
         builder: (_, controllerValue, __) {
           return TextField(
+            controller: controller,
             textAlign: controller.metadata?.alignment ?? TextAlign.start,
             style: TextEditorController.defaultMetadata.style,
-            controller: controller,
             decoration: const InputDecoration(
               border: InputBorder.none,
             ),

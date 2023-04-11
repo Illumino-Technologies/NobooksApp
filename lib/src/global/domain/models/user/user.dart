@@ -1,33 +1,22 @@
-class User {
+abstract class User {
+  final String id;
   final String firstname;
+  final String lastname;
   final String profilePhoto;
 
   const User({
+    required this.id,
     required this.firstname,
+    required this.lastname,
     required this.profilePhoto,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'firstname': firstname,
-      'profilePhoto': profilePhoto,
-    };
-  }
-
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
-      firstname: map['firstname'] as String,
-      profilePhoto: map['profilePhoto'] as String,
-    );
-  }
+  Map<String, dynamic> toMap();
 
   User copyWith({
+    String? id,
     String? firstname,
     String? profilePhoto,
-  }) {
-    return User(
-      firstname: firstname ?? this.firstname,
-      profilePhoto: profilePhoto ?? this.profilePhoto,
-    );
-  }
+    String? lastname,
+  });
 }

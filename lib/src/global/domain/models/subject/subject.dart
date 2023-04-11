@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class Subject {
   final String code;
@@ -10,6 +11,13 @@ class Subject {
     required this.name,
     required this.color,
   });
+
+  String get firstTwoAlphas {
+    return code.chars
+        .where((element) => Values.alphabets.contains(element))
+        .take(2)
+        .join();
+  }
 
   Map<String, dynamic> toMap() {
     return {
