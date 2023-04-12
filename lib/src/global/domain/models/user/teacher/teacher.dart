@@ -4,7 +4,6 @@ import 'package:nobook/src/utils/function/util_functions/util_functions.dart';
 class Teacher extends User {
   final List<Subject> subjectsTaught;
   final List<Class> classesTaught;
-  final String phoneNumber;
   final String email;
 
   const Teacher({
@@ -16,7 +15,7 @@ class Teacher extends User {
     required this.classesTaught,
     required super.gender,
     required super.dob,
-    required this.phoneNumber,
+    required super.phoneNumber,
     required this.email,
   });
 

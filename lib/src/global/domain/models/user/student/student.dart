@@ -1,10 +1,10 @@
 import 'package:nobook/src/global/domain/domain_barrel.dart';
+import 'package:nobook/src/utils/function/util_functions/util_functions.dart';
 
 class Student extends User {
   final Class studentClass;
   final List<Subject> subjects;
 
-  /// TODO: confirm adding the following fields: dob, gender, email address, phoneNumber?...
   const Student({
     required super.id,
     required this.studentClass,
@@ -12,6 +12,9 @@ class Student extends User {
     required super.firstname,
     required super.lastname,
     required super.profilePhoto,
+    required super.gender,
+    required super.dob,
+    required super.phoneNumber,
   });
 
   @override
@@ -23,6 +26,9 @@ class Student extends User {
       'firstname': firstname,
       'lastname': lastname,
       'profilePhoto': profilePhoto,
+      'gender': gender,
+      'dob': dob,
+      'phoneNumber': phoneNumber,
     };
   }
 
@@ -37,6 +43,9 @@ class Student extends User {
       firstname: map['firstname'] as String,
       lastname: map['lastname'] as String,
       profilePhoto: map['profilePhoto'] as String,
+      gender: Gender.values[(map['gender'])],
+      phoneNumber: map['phoneNumber'] as String,
+      dob: UtilFunctions.dateTimeFromMap(map['dob'])!,
     );
   }
 
@@ -48,6 +57,9 @@ class Student extends User {
     String? lastname,
     Class? studentClass,
     List<Subject>? subjects,
+    final Gender? gender,
+    final DateTime? dob,
+    final String? phoneNumber,
   }) {
     return Student(
       id: id ?? this.id,
@@ -56,6 +68,9 @@ class Student extends User {
       firstname: firstname ?? this.firstname,
       lastname: lastname ?? this.lastname,
       profilePhoto: profilePhoto ?? this.profilePhoto,
+      dob: dob ?? this.dob,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      gender: gender ?? this.gender,
     );
   }
 }

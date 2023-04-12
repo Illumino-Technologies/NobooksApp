@@ -7,6 +7,7 @@ abstract class User {
   final String profilePhoto;
   final Gender gender;
   final DateTime dob;
+  final String? phoneNumber;
 
   const User({
     required this.id,
@@ -15,6 +16,7 @@ abstract class User {
     required this.profilePhoto,
     required this.gender,
     required this.dob,
+    this.phoneNumber,
   });
 
   Map<String, dynamic> toMap();
