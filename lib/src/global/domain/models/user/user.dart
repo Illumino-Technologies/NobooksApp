@@ -1,14 +1,20 @@
+import 'package:nobook/src/global/domain/models/models_barrel.dart';
+
 abstract class User {
   final String id;
   final String firstname;
   final String lastname;
   final String profilePhoto;
+  final Gender gender;
+  final DateTime dob;
 
   const User({
     required this.id,
     required this.firstname,
     required this.lastname,
     required this.profilePhoto,
+    required this.gender,
+    required this.dob,
   });
 
   Map<String, dynamic> toMap();
