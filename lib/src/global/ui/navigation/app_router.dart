@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/features_barrel.dart';
+import 'package:nobook/src/features/records/ui/record_page/view/record_page.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 
 part 'app_route.dart';
@@ -37,6 +38,7 @@ final GoRouter _router = GoRouter(
             return const DashBoardScreen();
           },
         ),
+        
         GoRoute(
           path: AppRoute.note.path,
           name: AppRoute.note.name,
@@ -55,6 +57,14 @@ final GoRouter _router = GoRouter(
             ),
           ],
         ),
+         GoRoute(
+          path: AppRoute.record.path,
+          name: AppRoute.record.name,
+          builder: (context, state) {
+            return const RecordPage();
+          },
+        ),
+        // routes:
       ],
     ),
   ],
