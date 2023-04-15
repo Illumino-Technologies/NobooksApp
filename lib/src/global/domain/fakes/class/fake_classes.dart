@@ -6,10 +6,13 @@ abstract class FakeClasses {
     id: 'uniqueString-x',
     name: 'SS 3',
     subjects: FakeSubjects.subjects,
-    classTeacher: FakeUsers.mrOgunyemi,
-    students: [FakeUsers.bolu],
+    classTeacher: FakeUsers.mrAkpan,
+    students: [],
     subjectTeachers: FakeSubjects.subjects.map((e) {
-      return SubjectTeachers(subject: e, teachers: [FakeUsers.mrOgunyemi]);
+      return SubjectTeachers(
+        subject: e,
+        teachers: [],
+      );
     }).toList(),
   );
 
@@ -18,9 +21,12 @@ abstract class FakeClasses {
     name: 'SS 3',
     subjects: FakeSubjects.subjects,
     classTeacher: FakeUsers.mrOgunyemi,
-    students: [FakeUsers.bolu],
+    students: [],
     subjectTeachers: FakeSubjects.subjects.map((e) {
-      return SubjectTeachers(subject: e, teachers: [FakeUsers.mrOgunyemi]);
+      return SubjectTeachers(
+        subject: e,
+        teachers: [],
+      );
     }).toList(),
   );
 }

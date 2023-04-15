@@ -26,8 +26,8 @@ class Student extends User {
       'firstname': firstname,
       'lastname': lastname,
       'profilePhoto': profilePhoto,
-      'gender': gender,
-      'dob': dob,
+      'gender': gender.index,
+      'dob': dob.toIso8601String(),
       'phoneNumber': phoneNumber,
     };
   }

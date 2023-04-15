@@ -55,9 +55,9 @@ class Teacher extends User {
       'profilePhoto': profilePhoto,
       'subjectsTaught': subjectsTaught.map((e) => e.toMap()).toList(),
       'classesTaught': classesTaught.map((e) => e.toMap()).toList(),
-      'dob': dob,
+      'dob': dob.toIso8601String(),
       'email': email,
-      'gender': gender.name,
+      'gender': gender.index,
       'phoneNumber': phoneNumber,
     };
   }
