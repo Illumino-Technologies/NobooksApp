@@ -30,9 +30,10 @@ class _RecordPageState extends ConsumerState<RecordPage> {
                 vertical: 10.h,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('All Subjects Taken Up',
-                      style: TextStyles.headline1.withSize(24)),
+                      style: TextStyles.headline3.withSize(18),),
                   SizedBox(
                     height: context.screenHeight * 0.85,
                     width: 320.w,
@@ -48,18 +49,20 @@ class _RecordPageState extends ConsumerState<RecordPage> {
                           FakeSubjects.subjects[index].name,
                           style: TextStyles.paragraph1.asSemibold,
                         ),
+                        childrenPadding: EdgeInsets.symmetric(
+                          horizontal: 10.w,
+                          vertical: 20.h,
+                        ),
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Continous Assessment',
-                                  style: TextStyles.headline1.withSize(20)),
+                                  style: TextStyles.paragraph1.withSize(10),),
                               SizedBox(
-                                height: 20.h,
-                                width: 20.w,
                                 child: Padding(
                                     padding: EdgeInsets.all(5.w),
-                                    child: const Text('40')),
+                                    child: const Text('40'),),
                               ),
                             ],
                           ),
@@ -67,10 +70,9 @@ class _RecordPageState extends ConsumerState<RecordPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Examination',
-                                  style: TextStyles.headline1.withSize(20)),
+                                  style: TextStyles.paragraph1.withSize(10),),
                               SizedBox(
-                                height: 20.h,
-                                width: 20.w,
+                               
                                 child: Padding(
                                     padding: EdgeInsets.all(5.w),
                                     child: const Text('40'),),
@@ -78,6 +80,7 @@ class _RecordPageState extends ConsumerState<RecordPage> {
                             ],
                           )
                         ],
+                        
                       ),
                     ),
                   ),
