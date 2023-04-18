@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,8 +6,16 @@ import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
+part 'custom/record_graph.dart';
+
+part 'custom/record_view.dart';
+
 class RecordPage extends ConsumerStatefulWidget {
-  const RecordPage({super.key, this.styles});
+  const RecordPage({
+    super.key,
+    this.styles,
+  });
+
   final TextStyles? styles;
 
   @override
@@ -20,8 +29,8 @@ class _RecordPageState extends ConsumerState<RecordPage> {
       body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            child: Text('Record Page'),
+          const Expanded(
+            child: _RecordView(),
           ),
           SingleChildScrollView(
             child: Padding(
@@ -32,8 +41,10 @@ class _RecordPageState extends ConsumerState<RecordPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('All Subjects Taken Up',
-                      style: TextStyles.headline3.withSize(18),),
+                  Text(
+                    'All Subjects Taken Up',
+                    style: TextStyles.headline3.withSize(18),
+                  ),
                   SizedBox(
                     height: context.screenHeight * 0.85,
                     width: 320.w,
@@ -57,30 +68,34 @@ class _RecordPageState extends ConsumerState<RecordPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Continous Assessment',
-                                  style: TextStyles.paragraph1.withSize(10),),
+                              Text(
+                                'Continuous Assessment',
+                                style: TextStyles.paragraph1.withSize(10),
+                              ),
                               SizedBox(
                                 child: Padding(
-                                    padding: EdgeInsets.all(5.w),
-                                    child: const Text('40'),),
+                                  padding: EdgeInsets.all(5.w),
+                                  child: const Text('40'),
+                                ),
                               ),
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Examination',
-                                  style: TextStyles.paragraph1.withSize(10),),
+                              Text(
+                                'Examination',
+                                style: TextStyles.paragraph1.withSize(10),
+                              ),
                               SizedBox(
-                               
                                 child: Padding(
-                                    padding: EdgeInsets.all(5.w),
-                                    child: const Text('40'),),
+                                  padding: EdgeInsets.all(5.w),
+                                  child: const Text('40'),
+                                ),
                               ),
                             ],
                           )
                         ],
-                        
                       ),
                     ),
                   ),

@@ -13,7 +13,7 @@ class Subject {
   });
 
   String get firstTwoAlphas {
-    return code.chars
+    return code.toUpperCase().chars
         .where((element) => Values.alphabets.contains(element))
         .take(2)
         .join();
