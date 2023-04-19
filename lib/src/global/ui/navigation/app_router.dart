@@ -3,7 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/features_barrel.dart';
+<<<<<<< HEAD
 import 'package:nobook/src/features/records/domain/view/record_screen.dart';
+=======
+import 'package:nobook/src/features/records/ui/record_page/view/record_page.dart';
+>>>>>>> e085079845b0cd5a709cc4e7ca612021b58b91f1
 import 'package:nobook/src/global/global_barrel.dart';
 
 part 'app_route.dart';
@@ -38,6 +42,7 @@ final GoRouter _router = GoRouter(
             return const DashBoardScreen();
           },
         ),
+        
         GoRoute(
           path: AppRoute.note.path,
           name: AppRoute.note.name,
@@ -56,6 +61,7 @@ final GoRouter _router = GoRouter(
             ),
           ],
         ),
+<<<<<<< HEAD
           GoRoute(
           path: AppRoute.record.path,
           name: AppRoute.record.name,
@@ -63,6 +69,16 @@ final GoRouter _router = GoRouter(
             return const RecordScreen();
           },
         ),
+=======
+         GoRoute(
+          path: AppRoute.record.path,
+          name: AppRoute.record.name,
+          builder: (context, state) {
+            return const RecordPage();
+          },
+        ),
+        // routes:
+>>>>>>> e085079845b0cd5a709cc4e7ca612021b58b91f1
       ],
     ),
   ],
