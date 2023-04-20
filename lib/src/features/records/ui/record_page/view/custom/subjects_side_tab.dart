@@ -39,8 +39,8 @@ class _SubjectsSideTab extends StatelessWidget {
                     style: TextStyles.paragraph1.asSemibold,
                   ),
                   childrenPadding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 20.h,
+                    horizontal: 15.w,
+                    vertical: 30.h,
                   ),
                   children: [
                     Row(
@@ -59,12 +59,12 @@ class _SubjectsSideTab extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal:15.w,
                              vertical: 5.h,),
                             child:  Text('40', style:TextStyles.
-                            paragraph1.withSize(10),),
+                            headline6.withSize(10).withBlack,),
                           ),
                         ),
                       ],
                     ),
-                    10.boxHeight,
+                    20.boxHeight,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -79,9 +79,9 @@ class _SubjectsSideTab extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal:15.w,
-                             vertical: 5.h),
+                             vertical: 5.h,),
                             child: Text('40', style:TextStyles.
-                            paragraph1.withSize(10),),
+                            headline6.withSize(10).withBlack,),
                           ),
                         ),
                       ],
