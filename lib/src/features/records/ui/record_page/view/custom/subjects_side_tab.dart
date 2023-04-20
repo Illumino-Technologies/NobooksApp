@@ -18,18 +18,21 @@ class _SubjectsSideTab extends StatelessWidget {
           children: [
             Text(
               'All Subjects Taken Up',
-              style: TextStyles.headline3.withSize(18),
+              style: TextStyles.paragraph3.withSize(14).copyWith(
+                color: AppColors.neutral200,
+              ),
             ),
             SizedBox(
               height: context.screenHeight * 0.85,
               width: 320.w,
               child: ListView.builder(
                 itemCount: FakeSubjects.subjects.length,
-                itemBuilder: (context, index) => ExpansionTile(
+                itemBuilder: (context, index) => 
+                ExpansionTile(
                   leading: SubjectWidget(
                     subject: FakeSubjects.subjects[index],
-                    boxSize: 40.r,
-                    fontSize: 25.sp,
+                    boxSize: 60.r,
+                    fontSize: 30.sp,
                   ),
                   title: Text(
                     FakeSubjects.subjects[index].name,
@@ -47,14 +50,21 @@ class _SubjectsSideTab extends StatelessWidget {
                           'Continuous Assessment',
                           style: TextStyles.paragraph1.withSize(10),
                         ),
-                        SizedBox(
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.neutral100,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.w),
-                            child: const Text('40'),
+                            padding: EdgeInsets.symmetric(horizontal:15.w,
+                             vertical: 5.h,),
+                            child:  Text('40', style:TextStyles.
+                            paragraph1.withSize(10),),
                           ),
                         ),
                       ],
                     ),
+                    10.boxHeight,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -62,10 +72,16 @@ class _SubjectsSideTab extends StatelessWidget {
                           'Examination',
                           style: TextStyles.paragraph1.withSize(10),
                         ),
-                        SizedBox(
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.neutral100,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.w),
-                            child: const Text('40'),
+                            padding: EdgeInsets.symmetric(horizontal:15.w,
+                             vertical: 5.h),
+                            child: Text('40', style:TextStyles.
+                            paragraph1.withSize(10),),
                           ),
                         ),
                       ],
