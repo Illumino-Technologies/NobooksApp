@@ -63,6 +63,9 @@ abstract class AppColors {
   ///#EAEBED
   static const Color neutral50 = Color(0xFFEAEBED);
 
+  ///#EAEBED
+  static const Color neutral00 = Color(0xFF1B1D2B);
+
   ///#F9F2E7
   static const Color paper = Color(0xFFF9F2E7);
 
@@ -96,6 +99,12 @@ abstract class AppColors {
 
   ///#E7EBFF
   static const Color blue50 = Color(0xFFE7EBFF);
+
+  ///#2548FF
+  static const Color blueVariant = Color(0xFF2548FF);
+
+  ///#2548FF
+  static const Color blueVariant05 = Color(0x0D2548FF);
 
   ///Success
   ///#005723
@@ -192,6 +201,12 @@ abstract class AppColors {
 
   ///#FBFBFB
   static const Color backgroundGrey = Color(0xFFFBFBFB);
+
+  ///#7C7C7C
+  static const Color grey = Color(0xFF7C7C7C);
+
+  ///#ECECEC
+  static const Color grey100 = Color(0xFFECECEC);
 
   ///#0A0807
   static const Color backgroundBlack = Color(0xFF0A0807);

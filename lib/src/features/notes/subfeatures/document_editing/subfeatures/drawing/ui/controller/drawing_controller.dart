@@ -66,7 +66,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     Shape? shape,
     Drawings? drawings,
   }) {
-    //TODO: initializeValues from cache/storage
+    // TODO: initializeValues from cache/storage
 
     if (_initialized) return;
     _drawings = drawings ?? _drawings;

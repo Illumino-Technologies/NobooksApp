@@ -6,7 +6,6 @@ import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/features/notes/subfeatures/calculator/view/calcPages.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
-import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
