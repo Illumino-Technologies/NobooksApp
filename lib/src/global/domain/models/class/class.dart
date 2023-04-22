@@ -1,4 +1,6 @@
+import 'package:nobook/src/global/domain/fakes/grading_system/fake_grading_system.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
+import 'package:nobook/src/utils/constants/constants_barrel.dart';
 
 part 'subject_teacher.dart';
 
@@ -22,6 +24,12 @@ class Class {
     this.assistantClassCaptain,
     required this.students,
   });
+
+  Map<DoubleRange, String> get gradings {
+    return FakeGradingSystem.fakeGradingSystem
+        .firstWhere((element) => element.gradeClassId == id)
+        .gradings;
+  }
 
   Map<String, dynamic> toMap() {
     return {

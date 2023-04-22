@@ -2,7 +2,7 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 
 class ClassGradingSystem {
   final String gradeClassId;
-  final Map<DoubleRange, String> gradings;
+  final Gradings gradings;
 
   const ClassGradingSystem({
     required this.gradeClassId,

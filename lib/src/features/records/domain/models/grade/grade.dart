@@ -1,5 +1,6 @@
 import 'package:nobook/src/features/records/domain/models/grade/term_period.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
+import 'package:nobook/src/utils/constants/constants_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
 class Grade {
@@ -31,6 +32,10 @@ class Grade {
   double? get exam => (examScore ?? 0 / examPercent).nullIfZero;
 
   double? get total => (ca ?? 0 + (exam ?? 0)).nullIfZero;
+
+  String? gradingFor(Class gClass) {
+    return gClass.gradings.getGrading(total ?? 0);
+  }
 
   const Grade({
     required this.id,

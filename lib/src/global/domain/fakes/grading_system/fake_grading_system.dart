@@ -3,7 +3,7 @@ import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class FakeGradingSystem {
-  final List<ClassGradingSystem> fakeGradingSystem = [
+  static final List<ClassGradingSystem> fakeGradingSystem = [
     ...FakeClasses.classes.map<ClassGradingSystem>((fakeClass) =>
         ClassGradingSystem(
           gradeClassId: fakeClass.id, gradings: fakeGradings,

@@ -41,7 +41,11 @@ enum GradeTableColumn {
 
   const GradeTableColumn(this.text);
 
-  String getGradeTextForValue(Grade grade, String serialNumber) {
+  String getGradeTextForValue(
+    Grade grade,
+    String serialNumber,
+    Student student,
+  ) {
     switch (this) {
       case GradeTableColumn.serialNumber:
         return serialNumber;
@@ -56,7 +60,7 @@ enum GradeTableColumn {
       case GradeTableColumn.total:
         return grade.total?.toString() ?? '—';
       case GradeTableColumn.grade:
-        return 'grade.grade';
+        return grade.gradingFor(student.studentClass) ?? '—';
     }
   }
 }
