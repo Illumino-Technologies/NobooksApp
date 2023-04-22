@@ -136,70 +136,78 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
                               color: AppColors.blue50,
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child: DropdownButton(
-                              value: dropdownvalue,
-                              icon: const Icon(Icons.keyboard_arrow_down),
-                              items: [
-                                'SS 1',
-                                'SS 2',
-                                'SS 3',
-                              ].map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Text(
-                                    items,
-                                    style: TextStyles.subHeading.copyWith(
-                                      color: AppColors.neutral800,
-                                      fontWeight: FontWeight.w600,
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton(
+                                value: dropdownvalue,
+                                icon: const Icon(Icons.keyboard_arrow_down),
+                                items: [
+                                  'SS 1',
+                                  'SS 2',
+                                  'SS 3',
+                                ].map((String items) {
+                                  return DropdownMenuItem(
+                                    value: items,
+                                    child: Text(
+                                      items,
+                                      style: TextStyles.subHeading.copyWith(
+                                        color: AppColors.neutral800,
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  dropdownvalue = newValue!;
-                                });
-                              },
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    dropdownvalue = newValue!;
+                                  });
+                                },
+                              ),
                             ),
                           ),
                           10.boxWidth,
                           Container(
-                            height: 30,
-                            width: 110,
+                            height: 33.h,
+                            width: 120.w,
                             padding: const EdgeInsets.symmetric(horizontal: 7),
                             decoration: BoxDecoration(
                               color: AppColors.blue50,
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child: DropdownButton<String>(
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(10),
-                              icon: const Icon(Icons.expand_more,
-                                  color: Colors.black),
-                              value: dropdownValue,
-                              items: [
-                                '1st term',
-                                '2nd term',
-                                '3rd term',
-                              ]
-                                  .map(
-                                    (week) => DropdownMenuItem<String>(
-                                      value: week,
-                                      child: Text(
-                                        week,
-                                        style: TextStyles.subHeading.copyWith(
-                                          color: AppColors.blue500,
-                                          fontWeight: FontWeight.w600,
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                elevation: 0,
+                                borderRadius: BorderRadius.circular(10),
+                                icon: const Icon(
+                                  Icons.expand_more,
+                                  color: Colors.black,
+                                ),
+                                value: dropdownValue,
+                                items: [
+                                  '1st term',
+                                  '2nd term',
+                                  '3rd term',
+                                ]
+                                    .map(
+                                      (week) => DropdownMenuItem<String>(
+                                        value: week,
+                                        child: Text(
+                                          week,
+                                          style: TextStyles.paragraph1.copyWith(
+                                            color: AppColors.blue500,
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  )
-                                  .toList(),
-                              onChanged: (val) {
-                                setState(() {
-                                  dropdownValue = val!;
-                                });
-                              },
+                                    )
+                                    .toList(),
+                                onChanged: (val) {
+                                  setState(() {
+                                    dropdownValue = val!;
+                                  });
+                                },
+                              ),
                             ),
                           ),
                         ],

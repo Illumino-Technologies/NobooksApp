@@ -18,8 +18,7 @@ class _Track extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapUp: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
+      child: Container(
         height: height?.h ?? double.infinity,
         width: width?.w ?? 16.w,
         decoration: BoxDecoration(

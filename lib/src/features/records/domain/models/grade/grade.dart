@@ -31,7 +31,7 @@ class Grade {
 
   double? get exam => (examScore ?? 0 / examPercent).nullIfZero;
 
-  double? get total => (ca ?? 0 + (exam ?? 0)).nullIfZero;
+  double? get total => ((ca ?? 0) + (exam ?? 0)).nullIfZero;
 
   String? gradingFor(Class gClass) {
     return gClass.gradings.getGrading(total ?? 0);

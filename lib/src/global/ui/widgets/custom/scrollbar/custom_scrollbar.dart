@@ -137,7 +137,9 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
                 top: thumbYOffset,
                 child: _Thumb(
                   onTapDown: (details) => active = true,
-                  height: thumbHeight,
+                  height: maxScrollExtent == null || minScrollExtent == null
+                      ? thumbHeight
+                      : (height / (maxScrollExtent! - minScrollExtent!)),
                   onVerticalDragEnd: onVerticalDragEnd,
                   onVerticalDragStart: onVerticalDragStart,
                   onVerticalDrag: onVerticalDragUpdate,
@@ -154,7 +156,21 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
   double thumbHeight = 161.h;
 
   double get thumbYOffset =>
-      (height - thumbHeight) *
-      controller.offset /
-      controller.position.maxScrollExtent;
+      (height - thumbHeight) * controller.offset / (maxScrollExtent ?? height);
+
+  double? get maxScrollExtent {
+    try {
+      return controller.position.maxScrollExtent;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  double? get minScrollExtent {
+    try {
+      return controller.position.minScrollExtent;
+    } catch (e) {
+      return null;
+    }
+  }
 }

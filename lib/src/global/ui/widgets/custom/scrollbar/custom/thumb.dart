@@ -30,8 +30,7 @@ class _Thumb extends StatelessWidget {
         onVerticalDragStart: onVerticalDragStart,
         onVerticalDragEnd: onVerticalDragEnd,
         onTapDown: onTapDown,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+        child: Container(
           height: height ?? 161.h,
           width: width ?? 16.w,
           decoration: BoxDecoration(

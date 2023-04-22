@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
-import 'package:nobook/src/global/domain/fakes/subject/fake_subjects.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
@@ -48,25 +47,39 @@ class _RecordPageState extends ConsumerState<RecordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                children: [
-                  _RecordView(),
-                  _GradesTable(),
-                ],
+      body: ScrollbarTheme(
+        data: ScrollbarThemeData(
+          trackBorderColor: MaterialStateProperty.all(Colors.transparent),
+          trackColor: MaterialStateProperty.all(AppColors.grey100),
+          thumbColor: MaterialStateProperty.all(AppColors.grey),
+        ),
+        child: Scrollbar(
+          controller: _scrollController,
+          thickness: 16.w,
+          radius: const Radius.circular(100),
+          interactive: true,
+          thumbVisibility: true,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  reverse: true,
+                  controller: _scrollController,
+                  child: Column(
+                    children: [
+                      const _RecordView(),
+                      48.boxHeight,
+                      const _GradesTable(),
+                      48.boxHeight,
+                    ],
+                  ),
+                ),
               ),
-            ),
+              const _SubjectsSideTab(),
+            ],
           ),
-          _SubjectsSideTab(),
-          CustomScrollbar(
-            controller: _scrollController,
-          ),
-        ],
+        ),
       ),
     );
   }
