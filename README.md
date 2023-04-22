@@ -1,8 +1,7 @@
 # No'Book
 
 ```Ensure to read through```<br>
-Link
-to [design file ->](https://www.figma.com/file/qlhO5tA7U1wy8SWkePOb4t/No'Books?node-id=343%3A21602&t=hSkBxTqtgx4BfD5m-0)
+Link to [design file ->](https://www.figma.com/file/qlhO5tA7U1wy8SWkePOb4t/No'Books?node-id=343%3A21602&t=hSkBxTqtgx4BfD5m-0)
 
 ## Feature Specifications
 
