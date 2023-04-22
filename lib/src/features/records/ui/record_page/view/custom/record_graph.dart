@@ -8,7 +8,7 @@ class _RecordGraph extends ConsumerStatefulWidget {
 }
 
 class _DashboardScreenState extends ConsumerState<_RecordGraph> {
-  List<Color> gradientColors = [AppColors.blue00, AppColors.white];
+  List<Color> gradientColors = [AppColors.blueVariant, AppColors.white];
   String dropdownvalue = 'SS 2';
   String dropdownValue = '1st term';
 

@@ -62,6 +62,7 @@ abstract class AppColors {
 
   ///#EAEBED
   static const Color neutral50 = Color(0xFFEAEBED);
+
   ///#EAEBED
   static const Color neutral00 = Color(0xFF1B1D2B);
 
@@ -98,9 +99,12 @@ abstract class AppColors {
 
   ///#E7EBFF
   static const Color blue50 = Color(0xFFE7EBFF);
-  
+
   ///#2548FF
-  static const Color blue00 = Color(0xFF2548FF);
+  static const Color blueVariant = Color(0xFF2548FF);
+
+  ///#2548FF
+  static const Color blueVariant05 = Color(0x0D2548FF);
 
   ///Success
   ///#005723

@@ -34,7 +34,7 @@ class _RecordPageState extends ConsumerState<RecordPage> {
           Expanded(
             child: _RecordView(),
           ),
-          _SubjectsSideTab()
+          _SubjectsSideTab(),
         ],
       ),
     );
