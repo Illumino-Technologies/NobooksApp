@@ -9,11 +9,15 @@ import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
 part 'custom/grades_table.dart';
 
+part 'custom/grading_column.dart';
+
 part 'custom/record_graph.dart';
 
 part 'custom/record_view.dart';
 
 part 'custom/subjects_side_tab.dart';
+
+part 'utils/enum/grading_table_column.dart';
 
 class RecordPage extends ConsumerStatefulWidget {
   const RecordPage({
@@ -34,14 +38,6 @@ class _RecordPageState extends ConsumerState<RecordPage> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
-  }
-
-  void jump() {
-    _scrollController.animateTo(
-      _scrollController.position.maxScrollExtent.percent(80),
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.linear,
-    );
   }
 
   @override
