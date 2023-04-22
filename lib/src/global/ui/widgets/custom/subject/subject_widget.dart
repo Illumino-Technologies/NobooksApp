@@ -35,6 +35,7 @@ class SubjectWidget extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: Text(
+        textAlign: TextAlign.center,
         subject.firstTwoAlphas.cleanUpper,
         style: TextStyles.headline6.copyWith(
           color: AppColors.white,
