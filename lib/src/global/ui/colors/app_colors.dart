@@ -202,6 +202,12 @@ abstract class AppColors {
   ///#FBFBFB
   static const Color backgroundGrey = Color(0xFFFBFBFB);
 
+  ///#7C7C7C
+  static const Color grey = Color(0xFF7C7C7C);
+
+  ///#ECECEC
+  static const Color grey100 = Color(0xFFECECEC);
+
   ///#0A0807
   static const Color backgroundBlack = Color(0xFF0A0807);
 

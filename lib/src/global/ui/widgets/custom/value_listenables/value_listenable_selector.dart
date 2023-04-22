@@ -45,6 +45,15 @@ class _ValueListenableSelectorState<T>
     super.dispose();
   }
 
+  @override
+  void didUpdateWidget(ValueListenableSelector<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.listenable != listenable) {
+      oldWidget.listenable.removeListener(listenableChangeCallback);
+      listenable.addListener(listenableChangeCallback);
+    }
+  }
+
   void listenableChangeCallback() {
     final bool shouldBuild = widget.buildWhen.call(
       value,

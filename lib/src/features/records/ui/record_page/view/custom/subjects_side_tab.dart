@@ -22,7 +22,7 @@ class _SubjectsSideTab extends StatelessWidget {
           Text(
             'All Subjects Taken Up',
             style: TextStyles.headline1.withSize(18.sp).copyWith(
-                  color: AppColors.neutral200,
+                  color: AppColors.neutral500,
                 ),
           ),
           24.boxHeight,
@@ -46,10 +46,8 @@ class _SubjectsSideTab extends StatelessWidget {
                     color: context.theme.colorScheme.background,
                   ),
                   child: ExpansionTile(
-                    key: UniqueKey(),
                     iconColor: AppColors.neutral600,
                     textColor: AppColors.neutral600,
-                    initiallyExpanded: true,
                     shape: const RoundedRectangleBorder(
                       side: BorderSide.none,
                     ),
