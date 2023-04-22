@@ -3,6 +3,11 @@ import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class UtilFunctions {
+
+  static DoubleRange doubleRangefromList(List<double> list) {
+    return (val1: list[0], val2: list[1]);
+  }
+
   static Color colorFromMap(dynamic map) {
     return Color(int.parse(map['color'].toString()));
   }
@@ -59,8 +64,7 @@ abstract class UtilFunctions {
     return colorIndex / (colors.length - 1);
   }
 
-  static DateTime? dateTimeFromMap(
-    dynamic data, {
+  static DateTime? dateTimeFromMap(dynamic data, {
     bool mustReturnData = false,
     DateTime? fallBack,
   }) {
@@ -73,11 +77,11 @@ abstract class UtilFunctions {
     return (DateTime.tryParse(data) ?? fallbackDateTime).toLocal();
   }
 
-  static String formatDate(
-    DateTime date, {
+  static String formatDate(DateTime date, {
     String separator = ' / ',
   }) {
-    return '${date.day.toString().padLeft(2, '0')}$separator${date.month.toString().padLeft(2, '0')}$separator${date.year}';
+    return '${date.day.toString().padLeft(2, '0')}$separator${date.month
+        .toString().padLeft(2, '0')}$separator${date.year}';
   }
 
   static String formatMinutesDuration(Duration duration) {
@@ -93,21 +97,24 @@ abstract class UtilFunctions {
     String phoneNumberBody = phoneNumber.length > 10
         ? phoneNumber.substring((phoneNumber.length - 10), phoneNumber.length)
         : '';
-    if (phoneNumberBody.trim().isEmpty) return null;
+    if (phoneNumberBody
+        .trim()
+        .isEmpty) return null;
 
-    final List<String> chars = phoneNumberBody.chars
-      ..insert(3, ' ')
-      ..insert(8, ' ');
+    final List<String> chars = phoneNumberBody.chars..insert(3, ' ')..insert(
+        8, ' ');
     phoneNumberBody = chars.join();
 
-    return phoneNumberBody.trim().nullIfEmpty;
+    return phoneNumberBody
+        .trim()
+        .nullIfEmpty;
   }
 
   static ThemeMode themeModeFromName(String name) {
     name = name.trim();
     assert(
-      ThemeMode.values.containsWhere((value) => value.name != name),
-      'name: $name is not a ThemeMode',
+    ThemeMode.values.containsWhere((value) => value.name != name),
+    'name: $name is not a ThemeMode',
     );
     return ThemeMode.values.firstWhere((element) => element.name == name);
   }

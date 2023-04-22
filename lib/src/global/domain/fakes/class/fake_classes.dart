@@ -2,9 +2,13 @@ import 'package:nobook/src/global/domain/fakes/fakes_barrel.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
 
 abstract class FakeClasses {
+  static List<Class> classes = [
+    ss2,
+    ss3,
+  ];
   static Class ss2 = Class(
-    id: 'uniqueString-x',
-    name: 'SS 3',
+    id: 'ss-2-x',
+    name: 'SS 2',
     subjects: FakeSubjects.subjects,
     classTeacher: FakeUsers.mrAkpan,
     students: [],

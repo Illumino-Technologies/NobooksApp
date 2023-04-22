@@ -14,3 +14,11 @@ extension NumExtension on num {
         width: w.toDouble(),
       );
 }
+
+extension DoubleExtension on double {
+  double? get nullIfZero => this == 0 ? null : this;
+}
+
+extension IntExtension on int {
+  int? get nullIfZero => this == 0 ? null : this;
+}
