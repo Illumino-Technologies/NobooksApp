@@ -51,9 +51,10 @@ class _SubjectsSideTab extends StatelessWidget {
                     shape: const RoundedRectangleBorder(
                       side: BorderSide.none,
                     ),
-                    expandedAlignment: Alignment.centerLeft,
+                    expandedAlignment: Alignment.centerLeft,  
                     expandedCrossAxisAlignment: CrossAxisAlignment.start,
                     title: Row(
+                      // mainAxisAlignment: MainAxisAlignment.start,
                       children:[
                    SubjectWidget(
                       subject: FakeSubjects.subjects[index],
