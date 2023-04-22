@@ -24,13 +24,10 @@ class AssignmentPageState extends ConsumerState<AssignmentPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 29),
               child: Column(
-                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   const SizedBox(
                     height: 32,
                   ),
-                  // ignore: sort_child_properties_last
-                  // ignore: prefer_const_literals_to_create_immutables
 
                   const Align(
                     alignment: Alignment.centerLeft,
