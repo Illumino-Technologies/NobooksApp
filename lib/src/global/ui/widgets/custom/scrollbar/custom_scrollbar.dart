@@ -1,4 +1,11 @@
-part of '../record_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+
+part 'custom/thumb.dart';
+
+part 'custom/track.dart';
 
 class CustomScrollbar extends StatefulWidget {
   final ScrollController controller;
@@ -150,79 +157,4 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
       (height - thumbHeight) *
       controller.offset /
       controller.position.maxScrollExtent;
-}
-
-class _Track extends StatelessWidget {
-  final double? width;
-  final double? height;
-  final bool active;
-  final GestureTapUpCallback onTap;
-
-  const _Track({
-    Key? key,
-    this.width,
-    this.height,
-    required this.active,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapUp: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        height: height?.h ?? double.infinity,
-        width: width?.w ?? 16.w,
-        decoration: BoxDecoration(
-          color: AppColors.grey100.withOpacity(active ? 1 : 0.5),
-          borderRadius: Ui.allBorderRadius(100.r),
-        ),
-      ),
-    );
-  }
-}
-
-class _Thumb extends StatelessWidget {
-  final double? width;
-  final double? height;
-  final GestureDragUpdateCallback onVerticalDrag;
-  final GestureDragStartCallback onVerticalDragStart;
-  final GestureDragEndCallback onVerticalDragEnd;
-  final GestureTapDownCallback onTapDown;
-  final bool active;
-
-  const _Thumb({
-    Key? key,
-    this.width,
-    this.height,
-    required this.onVerticalDrag,
-    required this.onVerticalDragStart,
-    required this.active,
-    required this.onVerticalDragEnd,
-    required this.onTapDown,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: height ?? 161.h,
-      width: width ?? 16.w,
-      child: GestureDetector(
-        onVerticalDragUpdate: onVerticalDrag,
-        onVerticalDragStart: onVerticalDragStart,
-        onVerticalDragEnd: onVerticalDragEnd,
-        onTapDown: onTapDown,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          height: height ?? 161.h,
-          width: width ?? 16.w,
-          decoration: BoxDecoration(
-            color: AppColors.grey.withOpacity(active ? 1 : 0.2),
-            borderRadius: Ui.allBorderRadius(100.r),
-          ),
-        ),
-      ),
-    );
-  }
 }

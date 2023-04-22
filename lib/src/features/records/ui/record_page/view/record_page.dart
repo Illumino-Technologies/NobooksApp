@@ -12,8 +12,6 @@ part 'custom/record_graph.dart';
 
 part 'custom/record_view.dart';
 
-part 'custom/scroll_bar.dart';
-
 part 'custom/subjects_side_tab.dart';
 
 class RecordPage extends ConsumerStatefulWidget {
