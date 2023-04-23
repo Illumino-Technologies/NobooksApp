@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/features/assignments/assignment_barrel.dart';
+import 'package:nobook/src/features/assignments/assignments_barrel.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DashboardCalender extends StatefulWidget {
