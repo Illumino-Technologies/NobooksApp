@@ -50,7 +50,25 @@ final GoRouter _router = GoRouter(
               name: AppRoute.noteDetailPage.name,
               builder: (context, state) {
                 return NoteDetailPage(
-                  note: (state.extra as Note),
+                  note: state.extra as Note,
+                );
+              },
+            ),
+          ],
+        ),
+        GoRoute(
+          path: AppRoute.assignments.path,
+          name: AppRoute.assignments.name,
+          builder: (context, state) {
+            return const AssignmentsPage();
+          },
+          routes: [
+            GoRoute(
+              path: AppRoute.assignment.path,
+              name: AppRoute.assignment.name,
+              builder: (context, state) {
+                return AssignmentScreen(
+                  assignment: state.extra as Assignment,
                 );
               },
             ),
