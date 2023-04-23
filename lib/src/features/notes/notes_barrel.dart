@@ -6,4 +6,3 @@ export 'package:nobook/src/features/notes/subfeatures/calculator/calculator_barr
 export 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
 export 'package:nobook/src/features/notes/ui/note_detail/view/note_detail_page.dart';
 export 'package:nobook/src/features/notes/ui/note_page/view/note_page.dart';
-export 'package:nobook/src/features/notes/ui/note_page/view/widgets/note_reused_card_widget.dart';

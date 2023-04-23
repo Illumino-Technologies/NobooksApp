@@ -56,6 +56,11 @@ final GoRouter _router = GoRouter(
             ),
           ],
         ),
+        // GoRoute(
+        //   path:AppRoute.assignment.path,
+        //   name: AppRoute.assignment.name,
+        //   builder: (context, state) => const AssignmentPage(),
+        // ),
         GoRoute(
           path: AppRoute.record.path,
           name: AppRoute.record.name,
@@ -63,6 +68,7 @@ final GoRouter _router = GoRouter(
             return const RecordPage();
           },
         ),
+        
       ],
     ),
   ],
