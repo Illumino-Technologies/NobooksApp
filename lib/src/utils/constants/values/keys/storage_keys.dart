@@ -1,4 +1,5 @@
 enum StorageKey {
+  assignment,
   user,
   note,
   noteSyncQueue,

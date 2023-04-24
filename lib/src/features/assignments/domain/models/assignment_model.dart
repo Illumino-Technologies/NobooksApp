@@ -11,6 +11,7 @@ class Assignment {
   final List<NoteDocument>? answers;
   final DateTime createdDate;
   final DateTime submissionDate;
+  // final bool? submitted;
 
   Assignment({
     required this.id,
