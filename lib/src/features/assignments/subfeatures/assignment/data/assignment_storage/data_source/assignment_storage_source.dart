@@ -57,4 +57,14 @@ class AssignmentStorageSource
     }
     await _box.put(assignment.id, assignment.toMap());
   }
+
+  @override
+  Future<void> clearAssignments() async {
+    await _box.clear();
+  }
+
+  @override
+  Future<void> deleteAssignment(String id) async {
+    await _box.delete(id);
+  }
 }

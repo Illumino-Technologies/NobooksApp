@@ -1,7 +1,7 @@
-part of 'assignment_storage_source.dart';
+part of 'assignment_cache_manager.dart';
 
-abstract class AssignmentStorageSourceInterface {
-  Assignment? fetchAssignment(String id);
+abstract class AssignmentCacheManagerInterface {
+  Assignment? fetchStoredAssignment(String id);
 
   List<Assignment>? fetchStoredAssignments();
 
