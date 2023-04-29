@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/assignments/assignments_barrel.dart';
 import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/widgets/assignment_note.dart';
@@ -41,12 +40,14 @@ class AvailableAssignmentWidget extends StatelessWidget {
                   height: 260.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: assignmentNotes[currentAssignmentSubject]!.length,
+                    itemCount:
+                        assignmentNotes[currentAssignmentSubject]!.length,
                     itemBuilder: (context, index) {
                       final Assignment currentAssignment =
                           assignmentNotes[currentAssignmentSubject]![index];
                       return AssignmentNoteWidget(
-                          currentAssignment: currentAssignment,);
+                        currentAssignment: currentAssignment,
+                      );
                     },
                   ),
                 ),

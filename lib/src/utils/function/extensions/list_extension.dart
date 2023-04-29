@@ -10,6 +10,8 @@ extension ListExtension<E> on List<E> {
 
   bool isLast(E element) => indexOf(element) == (length - 1);
 
+  List<E> get copy => List.of(this);
+
   void pushFront(E element) {
     return insert(0, element);
   }

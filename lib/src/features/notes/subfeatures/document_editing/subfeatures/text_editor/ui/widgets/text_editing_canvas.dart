@@ -5,9 +5,11 @@ import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class TextEditingCanvas extends StatefulWidget {
   final TextEditorController controller;
+  final bool readOnly;
 
   const TextEditingCanvas({
     Key? key,
+    this.readOnly = false,
     required this.controller,
   }) : super(key: key);
 
@@ -36,6 +38,7 @@ class _TextEditingCanvasState extends State<TextEditingCanvas> {
         builder: (_, controllerValue, __) {
           return TextField(
             controller: controller,
+            enabled: !widget.readOnly,
             textAlign: controller.metadata?.alignment ?? TextAlign.start,
             style: TextEditorController.defaultMetadata.style,
             decoration: const InputDecoration(

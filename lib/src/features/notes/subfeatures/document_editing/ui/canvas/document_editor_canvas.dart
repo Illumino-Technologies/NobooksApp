@@ -7,9 +7,11 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 class DocumentEditorCanvas extends StatefulWidget {
   final Size canvasSize;
   final NoteDocumentController controller;
+  final bool readOnly;
 
   const DocumentEditorCanvas({
     Key? key,
+    this.readOnly = false,
     required this.canvasSize,
     required this.controller,
   }) : super(key: key);
@@ -54,12 +56,14 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
 
   Widget buildTextEditingCanvas(NoteDocumentController controller) {
     return TextEditingCanvas(
+      readOnly: widget.readOnly,
       controller: controller.textController,
     );
   }
 
   Widget buildDrawingCanvas(NoteDocumentController controller) {
     return DrawingCanvas(
+      readOnly: widget.readOnly,
       controller: controller.drawingController,
       size: Size(
         900.w,
@@ -68,7 +72,8 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
     );
   }
 
-  Widget Function(NoteDocumentController) canvasBuilderFor(Type controllerType) {
+  Widget Function(NoteDocumentController) canvasBuilderFor(
+      Type controllerType) {
     if (controllerType == DrawingController) {
       return buildDrawingCanvas;
     } else if (controllerType == TextEditorController) {
