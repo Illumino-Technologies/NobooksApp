@@ -9,9 +9,11 @@ class NoteDocumentController extends ChangeNotifier {
   TextEditorController textController = TextEditorController();
   NoteDocument _noteDocument;
 
+  NoteDocument get noteDocument => List.from(_noteDocument);
+
   NoteDocumentController({
-    required NoteDocument note,
-  }) : _noteDocument = note {
+    required NoteDocument noteDocument,
+  }) : _noteDocument = noteDocument {
     drawingController.addListener(drawingControllerListener);
 
     textController.addListener(textControllerListener);
@@ -25,10 +27,10 @@ class NoteDocumentController extends ChangeNotifier {
 
   bool get initialized => _initialized;
 
-  Future<void> initialize({
+  void initialize({
     Color? color,
     NoteDocument? noteDocument,
-  }) async {
+  }) {
     if (!drawingController.initialized) drawingController.initialize();
     drawingController.initialize();
 

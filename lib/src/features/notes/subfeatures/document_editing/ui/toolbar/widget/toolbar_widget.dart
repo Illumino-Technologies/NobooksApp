@@ -167,11 +167,10 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       controller.addListener(controllerListener);
     }
 
-
     syncNote();
   }
 
-  void syncNote(){}
+  void syncNote() {}
 
   void changeShapeSelectionByController() {
     final DrawingMode currentDrawingMode =
@@ -417,11 +416,4 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
     toolItemSelectorNotifier.dispose();
     documentEditorTypeNotifier.dispose();
   }
-}
-
-enum ToolItemSelector {
-  none,
-  shape,
-  color,
-  ;
 }

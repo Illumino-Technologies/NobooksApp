@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
+import 'package:nobook/src/features/notes/domain/sync_logic/note_sync_logic.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolbar/ioc/toolbar_inherited_widget.dart';
 import 'package:nobook/src/global/global_barrel.dart';
@@ -41,7 +42,7 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
   @override
   Widget build(BuildContext context) {
     return NoteDocumentContainer(
-      controller: toolbarController,
+      controller: documentController,
       child: Material(
         child: Stack(
           clipBehavior: Clip.none,
@@ -51,18 +52,18 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
                 child: Column(
                   children: [
                     20.boxHeight,
-                    ToolBarWidget(controller: toolbarController),
+                    ToolBarWidget(controller: documentController),
                     20.boxHeight,
                     MaterialButton(
                       onPressed: () {
-                        toolbarController.clear();
+                        documentController.clear();
                       },
                       child: const Icon(Icons.delete),
                     ),
                     20.boxHeight,
                     DocumentEditorCanvas(
                       canvasSize: Size(900.w, 546.h),
-                      controller: toolbarController,
+                      controller: documentController,
                     ),
                   ],
                 ),
@@ -72,7 +73,7 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
               margin: EdgeInsets.only(right: 32.w),
               alignment: Alignment.centerRight,
               child: ChangeNotifierBuilder<NoteDocumentController>(
-                listenable: toolbarController,
+                listenable: documentController,
                 builder: (_, controllerValue) {
                   return controllerValue.showingRoughPaper
                       ? RoughPaper(
@@ -90,41 +91,52 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
     );
   }
 
-  void changeColor(Color color) {
-    controller.changeColor(color);
-  }
+  late final NoteSyncLogic noteSyncLogic = NoteSyncLogic(
+    currentNote: widget.note,
+  );
 
-  final DrawingController controller = DrawingController();
   final ValueNotifier<bool> erasingNotifier = ValueNotifier<bool>(false);
 
-  void erasingCheckingCallback() {
-    final bool isCurrentlyErasing = controller.drawingMode == DrawingMode.erase;
-
-    if (isCurrentlyErasing ^ erasingNotifier.value) {
-      erasingNotifier.value = isCurrentlyErasing;
-    }
+  @override
+  void activate() {
+    super.activate();
+    syncNote();
   }
 
-  late final NoteDocumentController toolbarController = NoteDocumentController(
-    note: widget.note.noteBody,
+  @override
+  void didUpdateWidget(covariant NoteDetailPageX oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    syncNote();
+  }
+
+  Future<void> syncNote() async {
+    await noteSyncLogic.syncNote(
+      widget.note.copyWith(noteBody: documentController.noteDocument),
+    );
+  }
+
+  Future<void> initializeNoteEditor() async {
+    final Note? cachedNote = await noteSyncLogic.fetchStoredNote();
+    if (cachedNote == null) return;
+    documentController.initialize(noteDocument: cachedNote.noteBody);
+  }
+
+  late final NoteDocumentController documentController = NoteDocumentController(
+    noteDocument: widget.note.noteBody,
   );
 
   @override
   void initState() {
-    controller.initialize();
-    toolbarController.initialize();
-
-    controller.addListener(erasingCheckingCallback);
-
     super.initState();
+    documentController.initialize();
+    initializeNoteEditor();
   }
 
   @override
   void dispose() {
-    controller.removeListener(erasingCheckingCallback);
-    controller.dispose();
+    syncNote();
     erasingNotifier.dispose();
-    toolbarController.dispose();
+    documentController.dispose();
 
     super.dispose();
   }
