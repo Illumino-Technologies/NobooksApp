@@ -48,12 +48,30 @@ abstract class FakeAssignments {
     fakeQuestion4,
   ];
 
+  static AssignmentOperation operation(
+    NoteDocument content,
+    DateTime createdAt,
+    DateTime updatedAt,
+  ) =>
+      AssignmentOperation(
+        serialId: '1',
+        content: content,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+      );
+
   static final Assignment geographyAssignment = Assignment(
     id: UniqueKey().toString(),
     subject: FakeSubjects.geography,
     topic: 'Current Affairs',
     teacher: FakeUsers.mrOgunyemi,
-    questions: questions,
+    questions: questions.map((e) {
+      return operation(
+        e,
+        DateTime.now().copySubtract(day: 1),
+        DateTime.now().copySubtract(day: 1),
+      );
+    }).toList(),
     answers: null,
     createdDate: DateTime.now().copySubtract(day: 1),
     submissionDate: DateTime.now().copyAdd(day: 5),
@@ -64,7 +82,13 @@ abstract class FakeAssignments {
     subject: FakeSubjects.biology,
     topic: 'Current Affairs',
     teacher: FakeUsers.mrOgunyemi,
-    questions: questions,
+    questions: questions.map((content) {
+      return operation(
+        content,
+        DateTime.now().copySubtract(day: 1),
+        DateTime.now().copySubtract(day: 1),
+      );
+    }).toList(),
     answers: null,
     createdDate: DateTime.now().copySubtract(day: 1),
     submissionDate: DateTime.now().copyAdd(day: 5),
@@ -75,7 +99,13 @@ abstract class FakeAssignments {
     subject: FakeSubjects.chemistry,
     topic: 'Current Affairs',
     teacher: FakeUsers.mrOgunyemi,
-    questions: questions,
+    questions: questions.map((content) {
+      return operation(
+        content,
+        DateTime.now().copySubtract(day: 1),
+        DateTime.now().copySubtract(day: 1),
+      );
+    }).toList(),
     answers: null,
     createdDate: DateTime.now().copySubtract(day: 1),
     submissionDate: DateTime.now().copyAdd(day: 5),
@@ -86,7 +116,13 @@ abstract class FakeAssignments {
     subject: FakeSubjects.physics,
     topic: 'Current Affairs',
     teacher: FakeUsers.mrOgunyemi,
-    questions: questions,
+    questions: questions.map((content) {
+      return operation(
+        content,
+        DateTime.now().copySubtract(day: 1),
+        DateTime.now().copySubtract(day: 1),
+      );
+    }).toList(),
     answers: null,
     createdDate: DateTime.now().copySubtract(day: 1),
     submissionDate: DateTime.now().copyAdd(day: 5),
@@ -97,7 +133,13 @@ abstract class FakeAssignments {
     subject: FakeSubjects.maths,
     topic: 'Current Affairs',
     teacher: FakeUsers.mrOgunyemi,
-    questions: questions,
+    questions: questions.map((content) {
+      return operation(
+        content,
+        DateTime.now().copySubtract(day: 1),
+        DateTime.now().copySubtract(day: 1),
+      );
+    }).toList(),
     answers: null,
     createdDate: DateTime.now().copySubtract(day: 1),
     submissionDate: DateTime.now().copyAdd(day: 5),
@@ -108,7 +150,13 @@ abstract class FakeAssignments {
     subject: FakeSubjects.englishLanguage,
     topic: 'Current Affairs',
     teacher: FakeUsers.mrOgunyemi,
-    questions: questions,
+    questions: questions.map((content) {
+      return operation(
+        content,
+        DateTime.now().copySubtract(day: 1),
+        DateTime.now().copySubtract(day: 1),
+      );
+    }).toList(),
     answers: null,
     createdDate: DateTime.now().copySubtract(day: 1),
     submissionDate: DateTime.now().copyAdd(day: 5),

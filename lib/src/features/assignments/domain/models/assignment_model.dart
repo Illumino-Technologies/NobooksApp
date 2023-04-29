@@ -2,15 +2,18 @@ import 'package:nobook/src/features/notes/notes_barrel.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
+part 'components/assignment_operation.dart';
+
 class Assignment {
   final String id;
   final Subject subject;
   final String topic;
   final Teacher teacher;
-  final List<NoteDocument> questions;
-  final List<NoteDocument>? answers;
+  final List<AssignmentOperation> questions;
+  final List<AssignmentOperation>? answers;
   final DateTime createdDate;
   final DateTime submissionDate;
+
   // final bool? submitted;
 
   Assignment({
@@ -45,8 +48,8 @@ class Assignment {
       'subject': subject.toMap(),
       'topic': topic,
       'teacher': teacher.toMap(),
-      'questions': questions.map((e) => e.toSerializerList()).toList(),
-      'answers': answers?.map((e) => e.toSerializerList()).toList(),
+      'questions': questions.map((e) => e.toMap()).toList(),
+      'answers': answers?.map((e) => e.toMap()).toList(),
       'createdDate': createdDate.toIso8601String(),
       'submissionDate': submissionDate.toIso8601String(),
     };
