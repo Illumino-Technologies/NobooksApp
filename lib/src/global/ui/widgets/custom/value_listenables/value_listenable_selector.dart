@@ -37,6 +37,7 @@ class _ValueListenableSelectorState<T>
   void didChangeDependencies() {
     super.didChangeDependencies();
     widget.listenable.addListener(listenableChangeCallback);
+    value = listenable.value;
   }
 
   @override

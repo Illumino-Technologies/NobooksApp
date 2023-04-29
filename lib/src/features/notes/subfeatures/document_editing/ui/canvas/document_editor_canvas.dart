@@ -6,7 +6,7 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DocumentEditorCanvas extends StatefulWidget {
   final Size canvasSize;
-  final ToolbarController controller;
+  final NoteDocumentController controller;
 
   const DocumentEditorCanvas({
     Key? key,
@@ -19,7 +19,7 @@ class DocumentEditorCanvas extends StatefulWidget {
 }
 
 class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
-  late ToolbarController controller = widget.controller;
+  late NoteDocumentController controller = widget.controller;
 
   @override
   void didUpdateWidget(DocumentEditorCanvas oldWidget) {
@@ -33,7 +33,7 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
   Widget build(BuildContext context) {
     return SizedBox.fromSize(
       size: widget.canvasSize,
-      child: ChangeNotifierBuilder<ToolbarController>(
+      child: ChangeNotifierBuilder<NoteDocumentController>(
         listenable: controller,
         builder: (context, controller) {
           reshuffleCanvasBuildersWithLast(
@@ -52,13 +52,13 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
 
   final Size canvasSize = Size(900.w, 546.h);
 
-  Widget buildTextEditingCanvas(ToolbarController controller) {
+  Widget buildTextEditingCanvas(NoteDocumentController controller) {
     return TextEditingCanvas(
       controller: controller.textController,
     );
   }
 
-  Widget buildDrawingCanvas(ToolbarController controller) {
+  Widget buildDrawingCanvas(NoteDocumentController controller) {
     return DrawingCanvas(
       controller: controller.drawingController,
       size: Size(
@@ -68,7 +68,7 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
     );
   }
 
-  Widget Function(ToolbarController) canvasBuilderFor(Type controllerType) {
+  Widget Function(NoteDocumentController) canvasBuilderFor(Type controllerType) {
     if (controllerType == DrawingController) {
       return buildDrawingCanvas;
     } else if (controllerType == TextEditorController) {

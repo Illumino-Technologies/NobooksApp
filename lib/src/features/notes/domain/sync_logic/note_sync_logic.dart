@@ -20,7 +20,7 @@ class NoteSyncLogic
   Note _currentNote;
   final Queue<NoteSyncQueueObject> _syncQueue;
 
-  Note get currentNote => _currentNote;
+  Note get currentNoteDocument => _currentNote;
 
   NoteSyncLogic({
     required Note currentNote,
@@ -49,7 +49,7 @@ class NoteSyncLogic
 
   Future<Note?> _fetchStoredNote() async {
     //TODO: implement network fetch
-    final Note? storedNote = _localSource.fetchNote(currentNote.id);
+    final Note? storedNote = _localSource.fetchNote(currentNoteDocument.id);
     return storedNote;
   }
 
@@ -60,10 +60,10 @@ class NoteSyncLogic
     try {
       _currentNote = _currentNote.copyWith(noteBody: note.noteBody);
 
-      await _storeNoteLocally(currentNote);
+      await _storeNoteLocally(currentNoteDocument);
       object = object.copyWith(status: NoteSyncStatus.localSynced);
 
-      await _storeNoteOnNetwork(currentNote);
+      await _storeNoteOnNetwork(currentNoteDocument);
       object = object.copyWith(status: NoteSyncStatus.networkSynced);
     } on Failure catch (failure) {
       if (failure.message == ErrorMessages.localNoteSyncFailure) {
@@ -81,7 +81,7 @@ class NoteSyncLogic
     _syncQueue.clear();
 
     final Queue<NoteSyncQueueObject> queue = _noteSyncQueueSource.fetchQueue(
-      currentNote.id,
+      currentNoteDocument.id,
     );
 
     if (queue.isEmpty) return;
@@ -90,7 +90,7 @@ class NoteSyncLogic
 
     await _retryStoringNotesFromQueue();
 
-    await _noteSyncQueueSource.clearQueue(currentNote.id);
+    await _noteSyncQueueSource.clearQueue(currentNoteDocument.id);
   }
 
   Future<void> _retryStoringNotesFromQueue() async {
@@ -138,7 +138,7 @@ class NoteSyncLogic
 
   Future<void> _saveQueue() async {
     if (_syncQueue.isEmpty) return;
-    await _noteSyncQueueSource.storeQueue(currentNote.id, _syncQueue);
+    await _noteSyncQueueSource.storeQueue(currentNoteDocument.id, _syncQueue);
   }
 
   Future<void> _storeNoteLocally(Note note) async {
@@ -156,7 +156,7 @@ class NoteSyncLogic
 
   @override
   Future<void> clearNotes() async {
-    await _localSource.deleteNote(currentNote.id);
-    await _noteSyncQueueSource.clearQueue(currentNote.id);
+    await _localSource.deleteNote(currentNoteDocument.id);
+    await _noteSyncQueueSource.clearQueue(currentNoteDocument.id);
   }
 }

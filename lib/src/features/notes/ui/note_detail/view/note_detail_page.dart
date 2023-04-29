@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart' show Note;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolbar/ioc/toolbar_inherited_widget.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -39,48 +40,52 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  20.boxHeight,
-                  ToolBarWidget(controller: toolbarController),
-                  20.boxHeight,
-                  MaterialButton(
-                    onPressed: () {
-                      toolbarController.clear();
-                    },
-                    child: const Icon(Icons.delete),
-                  ),
-                  20.boxHeight,
-                  DocumentEditorCanvas(
-                    canvasSize: Size(900.w, 546.h),
-                    controller: toolbarController,
-                  ),
-                ],
+    return NoteDocumentContainer(
+      controller: toolbarController,
+      child: Material(
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    20.boxHeight,
+                    ToolBarWidget(controller: toolbarController),
+                    20.boxHeight,
+                    MaterialButton(
+                      onPressed: () {
+                        toolbarController.clear();
+                      },
+                      child: const Icon(Icons.delete),
+                    ),
+                    20.boxHeight,
+                    DocumentEditorCanvas(
+                      canvasSize: Size(900.w, 546.h),
+                      controller: toolbarController,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(right: 32.w),
-            alignment: Alignment.centerRight,
-            child: ChangeNotifierBuilder<ToolbarController>(
-              listenable: toolbarController,
-              builder: (_, controllerValue) {
-                return controllerValue.showingRoughPaper
-                    ? RoughPaper(
-                        onClose: () => controllerValue.toggleRoughPaper(false),
-                        size: Size(400.w, 528.h),
-                      )
-                    : const SizedBox.shrink();
-              },
+            Container(
+              margin: EdgeInsets.only(right: 32.w),
+              alignment: Alignment.centerRight,
+              child: ChangeNotifierBuilder<NoteDocumentController>(
+                listenable: toolbarController,
+                builder: (_, controllerValue) {
+                  return controllerValue.showingRoughPaper
+                      ? RoughPaper(
+                          onClose: () =>
+                              controllerValue.toggleRoughPaper(false),
+                          size: Size(400.w, 528.h),
+                        )
+                      : const SizedBox.shrink();
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -100,8 +105,8 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
     }
   }
 
-  late final ToolbarController toolbarController = ToolbarController(
-    note: widget.note,
+  late final NoteDocumentController toolbarController = NoteDocumentController(
+    note: widget.note.noteBody,
   );
 
   @override

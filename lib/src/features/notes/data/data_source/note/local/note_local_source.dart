@@ -63,9 +63,9 @@ class NoteLocalSource
   @override
   Future<void> storeNote(Note note) => handleError(
         _storeNote(note),
-        catcher: (failure) {
-          throw failure.copyWith(message: ErrorMessages.localNoteSyncFailure);
-        },
+        catcher: (failure) async => throw failure.copyWith(
+          message: ErrorMessages.localNoteSyncFailure,
+        ),
       );
 
   Future<void> _storeNote(Note note) async {

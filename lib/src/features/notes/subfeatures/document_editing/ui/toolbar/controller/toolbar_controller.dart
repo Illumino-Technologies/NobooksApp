@@ -4,18 +4,16 @@ import 'package:nobook/src/features/notes/subfeatures/document_editing/base/docu
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/text_editor_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-class ToolbarController extends ChangeNotifier {
-  final NoteSyncLogicInterface _noteSynchronizer;
+class NoteDocumentController extends ChangeNotifier {
   DrawingController drawingController = DrawingController();
   TextEditorController textController = TextEditorController();
-  Note note;
+  NoteDocument _noteDocument;
 
-  ToolbarController({
-    required this.note,
-    NoteSyncLogic? noteSynchronizer,
-  }) : _noteSynchronizer =
-            noteSynchronizer ?? NoteSyncLogic(currentNote: note) {
+  NoteDocumentController({
+    required NoteDocument note,
+  }) : _noteDocument = note {
     drawingController.addListener(drawingControllerListener);
+
     textController.addListener(textControllerListener);
   }
 
@@ -27,24 +25,23 @@ class ToolbarController extends ChangeNotifier {
 
   bool get initialized => _initialized;
 
-  Future<void> initialize({Color? color}) async {
+  Future<void> initialize({
+    Color? color,
+    NoteDocument? noteDocument,
+  }) async {
     if (!drawingController.initialized) drawingController.initialize();
-    final Note? note = await Future.microtask(
-      _noteSynchronizer.fetchStoredNote,
-    );
-
     drawingController.initialize();
 
-    if (note != null) _setControllersFromNote(note);
+    if (noteDocument != null) _setControllersFromNote(noteDocument);
     _setDefaultColor();
     _initialized = true;
   }
 
-  void _setControllersFromNote(Note note) {
+  void _setControllersFromNote(NoteDocument noteDocument) {
     //TODO: remove all controller listeners
     textController.removeListener(textControllerListener);
     drawingController.removeListener(drawingControllerListener);
-    for (final DocumentEditingController controller in note.noteBody) {
+    for (final DocumentEditingController controller in noteDocument) {
       if (controller is DrawingController) {
         drawingController = controller;
       }
@@ -124,13 +121,11 @@ class ToolbarController extends ChangeNotifier {
 
   @override
   void notifyListeners() {
-    note = note.copyWith(
-      noteBody: [
-        //Todo: add other controllers
-        textController,
-        drawingController,
-      ],
-    );
+    _noteDocument = [
+      //Todo: add other controllers
+      textController,
+      drawingController,
+    ];
     currentControllerListener();
     super.notifyListeners();
   }
@@ -236,8 +231,7 @@ class ToolbarController extends ChangeNotifier {
 
   void clear() {
     clearCache();
-    note = note.copyWith(noteBody: []);
-    _noteSynchronizer.clearNotes();
+    _noteDocument.clear();
     clearDrawings();
     clearText();
     //TODO: clear other controllers
@@ -278,21 +272,10 @@ class ToolbarController extends ChangeNotifier {
 
   @override
   void dispose() {
-    super.dispose();
-    syncNote();
-    _noteSynchronizer.dispose();
     drawingController.removeListener(drawingControllerListener);
     drawingController.dispose();
     textController.removeListener(textControllerListener);
     textController.dispose();
-  }
-
-  bool _syncingNote = false;
-
-  Future<void> syncNote() async {
-    if (_syncingNote) return;
-    _syncingNote = true;
-    await _noteSynchronizer.syncNote(note);
-    _syncingNote = false;
+    super.dispose();
   }
 }

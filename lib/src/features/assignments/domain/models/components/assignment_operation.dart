@@ -13,9 +13,10 @@ class AssignmentOperation {
     required this.updatedAt,
   });
 
+  //generate fromMap and toMap functions
   AssignmentOperation.fromMap(Map<String, dynamic> map)
       : serialId = map['serialId'],
-        content = UtilFunctions.noteDocumentFromList(map['content']),
+        content =  UtilFunctions.noteDocumentFromList(map['content']),
         createdAt = UtilFunctions.dateTimeFromMap(map['createdAt'])!,
         updatedAt = UtilFunctions.dateTimeFromMap(map['updatedAt'])!;
 

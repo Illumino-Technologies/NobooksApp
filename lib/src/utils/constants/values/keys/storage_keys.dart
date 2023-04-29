@@ -1,6 +1,8 @@
 enum StorageKey {
   assignment,
+  assignmentDocument,
   user,
+  noteMod,
   note,
   noteSyncQueue,
   ;
