@@ -104,6 +104,17 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     _initialized = true;
   }
 
+  void changeDrawingModeToPrevious([DrawingMode? currentAction]) {
+    currentAction ??= _actionStack.lastOrNull;
+    if (currentAction == null) return changeDrawingMode(DrawingMode.sketch);
+
+    _actionStack.remove(currentAction);
+
+    if (_actionStack.isEmpty) return changeDrawingMode(DrawingMode.sketch);
+
+    changeDrawingMode(_actionStack.last);
+  }
+
   void changeDrawingMode(
     DrawingMode mode, [
     bool revertToPreviousAction = false,
@@ -126,7 +137,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   void toggleErase() {
     //TODO: use action stack
     if (drawingMode == DrawingMode.erase) {
-      changeDrawingMode(DrawingMode.sketch, true);
+      changeDrawingModeToPrevious(DrawingMode.erase);
     } else {
       changeDrawingMode(DrawingMode.erase);
     }

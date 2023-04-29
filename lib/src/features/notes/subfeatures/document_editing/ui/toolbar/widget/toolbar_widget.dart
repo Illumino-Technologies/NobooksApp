@@ -30,7 +30,7 @@ part 'custom/toolbar_item_button.dart';
 part 'custom/transparency_slider.dart';
 
 class ToolBarWidget extends StatefulWidget {
-  final ToolbarController controller;
+  final NoteDocumentController controller;
 
   const ToolBarWidget({
     Key? key,
@@ -50,14 +50,14 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
     return element.position == ToolBarItemPosition.bottom;
   }).toList();
 
-  ToolbarController get controller {
+  NoteDocumentController get controller {
     return widget.controller;
   }
 
   @override
 void activate() {
     super.activate();
-    controller.syncNote();
+    syncNote();
   }
 
   @override
@@ -78,7 +78,7 @@ void activate() {
               return ValueListenableBuilder<List<ToolBarItem>>(
                 valueListenable: selectedItemsNotifier,
                 builder: (_, selectedItems, __) {
-                  return ChangeNotifierBuilder<ToolbarController>(
+                  return ChangeNotifierBuilder<NoteDocumentController>(
                     listenable: controller,
                     builder: (_, controllerValue) {
                       return Padding(
@@ -161,14 +161,16 @@ void activate() {
   @override
   void didUpdateWidget(covariant ToolBarWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    oldWidget.controller.syncNote();
+    syncNote();
     if (oldWidget.controller != widget.controller) {
       oldWidget.controller.removeListener(controllerListener);
       controller.addListener(controllerListener);
     }
 
-    controller.syncNote();
+    syncNote();
   }
+
+  void syncNote() {}
 
   void changeShapeSelectionByController() {
     final DrawingMode currentDrawingMode =
@@ -414,11 +416,4 @@ void activate() {
     toolItemSelectorNotifier.dispose();
     documentEditorTypeNotifier.dispose();
   }
-}
-
-enum ToolItemSelector {
-  none,
-  shape,
-  color,
-  ;
 }
