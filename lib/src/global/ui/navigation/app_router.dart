@@ -63,17 +63,17 @@ final GoRouter _router = GoRouter(
           builder: (context, state) {
             return const AssignmentPage();
           },
-          routes: [
-            GoRoute(
-              path: AppRoute.assignment.path,
-              name: AppRoute.assignment.name,
-              builder: (context, state) {
-                return AssignmentScreen(
-                  assignment: state.extra as Assignment,
-                );
-              },
-            ),
-          ],
+          // routes: [
+          //   // GoRoute(
+          //   //   path: AppRoute.assignment.path,
+          //   //   name: AppRoute.assignment.name,
+          //   //   builder: (context, state) {
+          //   //     return AssignmentScreen(
+          //   //       assignment: state.extra as Assignment,
+          //   //     );
+          //     },
+          //   ),
+          // ],
         ),
         GoRoute(
           path: AppRoute.record.path,
