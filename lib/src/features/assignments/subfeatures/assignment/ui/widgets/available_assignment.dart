@@ -8,12 +8,12 @@ import 'package:nobook/src/utils/function/utility_functions_barrel.dart';
 
 class AvailableAssignmentWidget extends StatelessWidget {
   const AvailableAssignmentWidget({
-    required this.currentSubject,
+    required this.currentAssignmentSubject,
     required this.assignmentNotes,
     super.key,
   });
 
-  final Subject currentSubject;
+  final Subject currentAssignmentSubject;
   final Map<Subject, List<Assignment>> assignmentNotes;
 
   @override
@@ -28,7 +28,7 @@ class AvailableAssignmentWidget extends StatelessWidget {
           Row(
             children: [
               Text(
-                currentSubject.name,
+                currentAssignmentSubject.name,
                 style: TextStyles.headline1.withSize(24.sp),
               ),
             ],
@@ -36,43 +36,17 @@ class AvailableAssignmentWidget extends StatelessWidget {
           20.boxHeight,
           Row(
             children: [
-              Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 20.w,
-                ),
-                height: 260.h,
-                width: 160.w,
-                decoration: BoxDecoration(
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8.r),
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/plus.png',
-                    ),
-                    8.boxHeight,
-                    Text(
-                      'Add Note',
-                      style: TextStyles.headline3.withSize(14.sp),
-                    ),
-                  ],
-                ),
-              ),
               Expanded(
                 child: SizedBox(
                   height: 260.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: assignmentNotes[currentSubject]!.length,
+                    itemCount: assignmentNotes[currentAssignmentSubject]!.length,
                     itemBuilder: (context, index) {
                       final Assignment currentAssignment =
-                          assignmentNotes[currentSubject]![index];
+                          assignmentNotes[currentAssignmentSubject]![index];
                       return AssignmentNoteWidget(
-                          currentAssignment: currentAssignment);
+                          currentAssignment: currentAssignment,);
                     },
                   ),
                 ),

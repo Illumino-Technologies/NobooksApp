@@ -19,7 +19,7 @@ class AssignmentNoteWidget extends StatelessWidget {
       margin: EdgeInsets.symmetric(
         horizontal: 20.w,
       ),
-      width: 160.w,
+      width: 200.w,
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.all(
@@ -34,8 +34,8 @@ class AssignmentNoteWidget extends StatelessWidget {
             16.boxHeight,
             SubjectWidget(
               subject: currentAssignment.subject,
-              boxSize: 40.r,
-              fontSize: 25.sp,
+              boxSize: 60.r,
+              fontSize: 30.sp,
             ),
             20.boxHeight,
             Expanded(
@@ -45,18 +45,10 @@ class AssignmentNoteWidget extends StatelessWidget {
                   Text(
                     currentAssignment.topic,
                     style: TextStyles.headline3.withSize(
-                      14.sp,
+                      16.sp,
                     ),
                   ),
-                  8.boxHeight,
-                  Text(
-                    // currentNote.noteBody.isEmpty,
-                    'Hello there',
-                    style: TextStyles.headline4.withSize(
-                      12.sp,
-                    ),
-                  ),
-                  40.boxHeight,
+                  30.boxHeight,
                   Text(
                     DateFormat.yMEd().add_jms().format(
                           currentAssignment.createdDate,
@@ -68,6 +60,21 @@ class AssignmentNoteWidget extends StatelessWidget {
                         .copyWith(
                           color: AppColors.neutral400,
                         ),
+                  ),
+                  20.boxHeight,
+                  Expanded(
+                    child: Text(
+                      'Expires ${DateFormat.yMEd().add_jms().format(
+                            currentAssignment.submissionDate,
+                          )}',
+                      style: TextStyles.headline4
+                          .withSize(
+                            12.sp,
+                          )
+                          .copyWith(
+                            color: AppColors.black,
+                          ),
+                    ),
                   ),
                 ],
               ),

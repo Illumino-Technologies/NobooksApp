@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/assignments/assignments_barrel.dart';
 import 'package:nobook/src/features/assignments/domain/fakes/fake_assignments.dart';
+import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/widgets/available_assignment.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -35,15 +36,37 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
           }
           return Row(
             children: [
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: availableAssignments.length,
-                itemBuilder: (context, index) {
-                  final Subject currentAssignment = availableAssignments[index];
-                  return;
-                },
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                    vertical: 20.h,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Your Assignments',
+                        style: TextStyles.headline1.withSize(40.sp),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: availableAssignments.length,
+                          itemBuilder: (context, index) {
+                            final Subject currentAssignment =
+                                availableAssignments[index];
+                            return AvailableAssignmentWidget(
+                              currentAssignmentSubject: currentAssignment,
+                              assignmentNotes: assignmentsBySubject,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              const Expanded(child: Text('kush')),
               Container(
                 width: 320.w,
                 margin: EdgeInsets.symmetric(vertical: 32.h, horizontal: 32.w),
@@ -58,7 +81,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                     24.boxHeight,
                     Text(
                       'Your Subject',
-                      style: TextStyles.headline1.withSize(18.sp).copyWith(
+                      style: TextStyles.headline1.withSize(20.sp).copyWith(
                             color: AppColors.neutral500,
                           ),
                     ),
@@ -70,113 +93,47 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                           itemCount: FakeAssignments.assignments.length,
                           separatorBuilder: (_, __) => 16.boxHeight,
                           itemBuilder: (context, index) => Container(
-                            decoration: BoxDecoration(
-                              borderRadius: Ui.allBorderRadius(8.r),
-                              boxShadow: [
-                                BoxShadow(
-                                  offset: Offset.zero,
-                                  blurRadius: 5,
-                                  spreadRadius: 0,
-                                  color: AppColors.black.withOpacity(0.05),
-                                )
-                              ],
-                              color: context.theme.colorScheme.background,
-                            ),
-                            child: ExpansionTile(
-                              iconColor: AppColors.neutral600,
-                              textColor: AppColors.neutral600,
-                              shape: const RoundedRectangleBorder(
-                                side: BorderSide.none,
-                              ),
-                              expandedAlignment: Alignment.centerLeft,
-                              expandedCrossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                              title: Row(
-                                // mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SubjectWidget(
-                                    subject: FakeAssignments
-                                        .assignments[index].subject,
-                                    boxSize: 60.r,
-                                    fontSize: 30.sp,
-                                  ),
-                                  10.boxWidth,
-                                  Expanded(
-                                    child: Text(
-                                      FakeAssignments
-                                          .assignments[index].subject.name,
-                                      style: TextStyles.paragraph1.asSemibold,
-                                    ),
-                                  ),
+                              decoration: BoxDecoration(
+                                borderRadius: Ui.allBorderRadius(8.r),
+                                boxShadow: [
+                                  BoxShadow(
+                                    offset: Offset.zero,
+                                    blurRadius: 5,
+                                    spreadRadius: 0,
+                                    color: AppColors.black.withOpacity(0.05),
+                                  )
                                 ],
+                                color: context.theme.colorScheme.background,
                               ),
-                              childrenPadding: EdgeInsets.symmetric(
-                                horizontal: 8.w,
-                                vertical: 8.h,
-                              ),
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                              child: ExpansionTile(
+                                iconColor: AppColors.neutral600,
+                                textColor: AppColors.neutral600,
+                                shape: const RoundedRectangleBorder(
+                                  side: BorderSide.none,
+                                ),
+                                expandedAlignment: Alignment.centerLeft,
+                                expandedCrossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                title: Row(
+                                  // mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      'Continuous Assessment',
-                                      style: TextStyles.paragraph1.withSize(10),
+                                    SubjectWidget(
+                                      subject: FakeAssignments
+                                          .assignments[index].subject,
+                                      boxSize: 60.r,
+                                      fontSize: 30.sp,
                                     ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: AppColors.blueVariant05,
-                                        borderRadius:
-                                            BorderRadius.circular(10.r),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 15.w,
-                                          vertical: 5.h,
-                                        ),
-                                        child: Text(
-                                          '40',
-                                          style: TextStyles.headline6
-                                              .withSize(10)
-                                              .withBlack,
-                                        ),
+                                    10.boxWidth,
+                                    Expanded(
+                                      child: Text(
+                                        FakeAssignments
+                                            .assignments[index].subject.name,
+                                        style: TextStyles.paragraph1.asSemibold,
                                       ),
                                     ),
                                   ],
                                 ),
-                                20.boxHeight,
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Examination',
-                                      style: TextStyles.paragraph1.withSize(10),
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: AppColors.blueVariant05,
-                                        borderRadius:
-                                            BorderRadius.circular(10.r),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 15.w,
-                                          vertical: 5.h,
-                                        ),
-                                        child: Text(
-                                          '40',
-                                          style: TextStyles.headline6
-                                              .withSize(10)
-                                              .withBlack,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
+                              )),
                         ),
                       ),
                     ),
