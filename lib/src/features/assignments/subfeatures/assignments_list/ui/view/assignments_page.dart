@@ -38,17 +38,15 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
-                    vertical: 20.h,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 32.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                       Text(
                         'Your Assignments',
                         style: TextStyles.headline1.withSize(40.sp),
                       ),
+                      20.boxHeight,
                       Expanded(
                         child: ListView.builder(
                           shrinkWrap: true,
@@ -81,7 +79,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                     24.boxHeight,
                     Text(
                       'Your Subject',
-                      style: TextStyles.headline1.withSize(20.sp).copyWith(
+                      style: TextStyles.headline1.withSize(18.sp).copyWith(
                             color: AppColors.neutral500,
                           ),
                     ),
@@ -93,47 +91,113 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                           itemCount: FakeAssignments.assignments.length,
                           separatorBuilder: (_, __) => 16.boxHeight,
                           itemBuilder: (context, index) => Container(
-                              decoration: BoxDecoration(
-                                borderRadius: Ui.allBorderRadius(8.r),
-                                boxShadow: [
-                                  BoxShadow(
-                                    offset: Offset.zero,
-                                    blurRadius: 5,
-                                    spreadRadius: 0,
-                                    color: AppColors.black.withOpacity(0.05),
-                                  )
-                                ],
-                                color: context.theme.colorScheme.background,
+                            decoration: BoxDecoration(
+                              borderRadius: Ui.allBorderRadius(8.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: Offset.zero,
+                                  blurRadius: 5,
+                                  spreadRadius: 0,
+                                  color: AppColors.black.withOpacity(0.05),
+                                )
+                              ],
+                              color: context.theme.colorScheme.background,
+                            ),
+                            child: ExpansionTile(
+                              iconColor: AppColors.neutral600,
+                              textColor: AppColors.neutral600,
+                              shape: const RoundedRectangleBorder(
+                                side: BorderSide.none,
                               ),
-                              child: ExpansionTile(
-                                iconColor: AppColors.neutral600,
-                                textColor: AppColors.neutral600,
-                                shape: const RoundedRectangleBorder(
-                                  side: BorderSide.none,
-                                ),
-                                expandedAlignment: Alignment.centerLeft,
-                                expandedCrossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                title: Row(
-                                  // mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SubjectWidget(
-                                      subject: FakeAssignments
-                                          .assignments[index].subject,
-                                      boxSize: 60.r,
-                                      fontSize: 30.sp,
+                              expandedAlignment: Alignment.centerLeft,
+                              expandedCrossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                              title: Row(
+                                // mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SubjectWidget(
+                                    subject: FakeAssignments
+                                        .assignments[index].subject,
+                                    boxSize: 60.r,
+                                    fontSize: 30.sp,
+                                  ),
+                                  10.boxWidth,
+                                  Expanded(
+                                    child: Text(
+                                      FakeAssignments
+                                          .assignments[index].subject.name,
+                                      style: TextStyles.paragraph1.asSemibold,
                                     ),
-                                    10.boxWidth,
-                                    Expanded(
-                                      child: Text(
-                                        FakeAssignments
-                                            .assignments[index].subject.name,
-                                        style: TextStyles.paragraph1.asSemibold,
+                                  ),
+                                ],
+                              ),
+                              childrenPadding: EdgeInsets.symmetric(
+                                horizontal: 8.w,
+                                vertical: 8.h,
+                              ),
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Continuous Assessment',
+                                      style: TextStyles.paragraph1.withSize(10),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: AppColors.blueVariant05,
+                                        borderRadius:
+                                            BorderRadius.circular(10.r),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 15.w,
+                                          vertical: 5.h,
+                                        ),
+                                        child: Text(
+                                          '40',
+                                          style: TextStyles.headline6
+                                              .withSize(10)
+                                              .withBlack,
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              )),
+                                20.boxHeight,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Examination',
+                                      style: TextStyles.paragraph1.withSize(10),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: AppColors.blueVariant05,
+                                        borderRadius:
+                                            BorderRadius.circular(10.r),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 15.w,
+                                          vertical: 5.h,
+                                        ),
+                                        child: Text(
+                                          '40',
+                                          style: TextStyles.headline6
+                                              .withSize(10)
+                                              .withBlack,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
