@@ -13,7 +13,7 @@ class AssignmentState {
 
   Assignment get assignment => _assignment!;
 
-  void seControllersOffOfAssignment() {
+  void setControllersOffOfAssignment() {
     if (_assignment == null) return;
     questionControllers.clear();
     answerControllers.clear();

@@ -25,5 +25,6 @@ class AssignmentStateNotifier extends StateNotifier<AssignmentState> {
 
   void initializeAssignment(Assignment assignment) {
     state = state.copyWith(assignment: assignment);
+    state.setControllersOffOfAssignment();
   }
 }
