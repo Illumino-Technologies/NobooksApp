@@ -5,7 +5,7 @@ class FirstToolbarRow extends StatelessWidget {
   final List<ToolBarItem> selectedItems;
   final List<ToolBarItem> topItems;
   final ValueChanged<ToolBarItem> onSelected;
-  final ToolbarController controllerValue;
+  final NoteDocumentController controllerValue;
 
   const FirstToolbarRow({
     Key? key,
@@ -72,7 +72,7 @@ class SecondToolbarRow extends StatelessWidget {
   final List<ToolBarItem> selectedItems;
   final List<ToolBarItem> bottomItems;
   final ValueChanged<ToolBarItem> onSelected;
-  final ToolbarController controllerValue;
+  final NoteDocumentController controllerValue;
 
   const SecondToolbarRow({
     Key? key,
@@ -103,10 +103,6 @@ class SecondToolbarRow extends StatelessWidget {
               );
             }
             if (item == ToolBarItem.roughPaper) {
-              print(
-                'this is where rough paper is and its value is: ${controllerValue.showingRoughPaper}',
-              );
-
               final bool selected = controllerValue.showingRoughPaper;
               final ToolBarItemWidget child = ToolBarItemWidget(
                 item: item,

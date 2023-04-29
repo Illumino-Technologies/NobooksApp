@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/features_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/base/controller/base_controller.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class UtilFunctions {
+
+  static NoteDocument noteDocumentFromList(List data) {
+    final NoteDocument document = [];
+    for (final Map noteData in data) {
+      document.add(DocumentEditingController.fromMap(noteData.cast()));
+    }
+    return document;
+  }
 
   static DoubleRange doubleRangefromList(List<double> list) {
     return (val1: list[0], val2: list[1]);

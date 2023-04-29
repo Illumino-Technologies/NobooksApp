@@ -38,7 +38,6 @@ class TextEditorController extends _TextEditorController
       ..metadata = metadata;
   }
 
-  @protected
   @override
   void initialize({
     TextDeltas? deltas,
