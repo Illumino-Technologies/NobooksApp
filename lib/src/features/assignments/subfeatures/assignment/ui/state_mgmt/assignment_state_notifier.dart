@@ -13,10 +13,10 @@ final StateNotifierProvider<AssignmentStateNotifier, AssignmentState>
 class AssignmentStateNotifier extends StateNotifier<AssignmentState> {
   AssignmentStateNotifier()
       : super(
-          const AssignmentState(
-            answerControllers: [],
+          AssignmentState(
+            answerControllers: List.empty(growable: true),
             assignment: null,
-            questionControllers: [],
+            questionControllers: List.empty(growable: true),
           ),
         );
 
@@ -24,7 +24,11 @@ class AssignmentStateNotifier extends StateNotifier<AssignmentState> {
       get provider => _assignmentStateNotifierProvider;
 
   void initializeAssignment(Assignment assignment) {
-    state = state.copyWith(assignment: assignment);
+    state = state.copyWith(
+      assignment: assignment,
+      answerControllers: [],
+      questionControllers: [],
+    );
     state.setControllersOffOfAssignment();
   }
 }
