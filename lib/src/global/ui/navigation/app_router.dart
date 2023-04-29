@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
+import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/assignments_page.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/records/ui/record_page/view/record_page.dart';
 import 'package:nobook/src/global/global_barrel.dart';
@@ -60,19 +61,19 @@ final GoRouter _router = GoRouter(
           path: AppRoute.assignments.path,
           name: AppRoute.assignments.name,
           builder: (context, state) {
-            return const AssignmentsPage();
+            return const AssignmentPage();
           },
-          routes: [
-            GoRoute(
-              path: AppRoute.assignment.path,
-              name: AppRoute.assignment.name,
-              builder: (context, state) {
-                return AssignmentScreen(
-                  assignment: state.extra as Assignment,
-                );
-              },
-            ),
-          ],
+          // routes: [
+          //   // GoRoute(
+          //   //   path: AppRoute.assignment.path,
+          //   //   name: AppRoute.assignment.name,
+          //   //   builder: (context, state) {
+          //   //     return AssignmentScreen(
+          //   //       assignment: state.extra as Assignment,
+          //   //     );
+          //     },
+          //   ),
+          // ],
         ),
         GoRoute(
           path: AppRoute.record.path,

@@ -55,7 +55,7 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   @override
-  void activate() {
+void activate() {
     super.activate();
     syncNote();
   }

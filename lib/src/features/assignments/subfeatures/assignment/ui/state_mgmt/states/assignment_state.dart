@@ -1,8 +1,8 @@
 part of '../assignment_state_notifier.dart';
 
 class AssignmentState {
-  final List<NoteDocumentController> questionControllers;
-  final List<NoteDocumentController> answerControllers;
+  final List<ToolbarController> questionControllers;
+  final List<ToolbarController> answerControllers;
   final Assignment? _assignment;
 
   const AssignmentState({
@@ -17,21 +17,21 @@ class AssignmentState {
     questionControllers.clear();
     answerControllers.clear();
 
-    // NoteDocumentController(
-    //   note: Note(
-    //     id: id,
-    //     subject: subject,
-    //     topic: topic,
-    //     noteBody: noteBody,
-    //     createdAt: createdAt,
-    //     updatedAt: updatedAt,
-    //   ),
-    // );
+    ToolbarController(
+      note: Note(
+        id: id,
+        subject: subject,
+        topic: topic,
+        noteBody: noteBody,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+      ),
+    );
   }
 
   AssignmentState copyWith({
-    List<NoteDocumentController>? questionControllers,
-    List<NoteDocumentController>? answerControllers,
+    List<ToolbarController>? questionControllers,
+    List<ToolbarController>? answerControllers,
     Assignment? assignment,
   }) {
     return AssignmentState(
