@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -61,12 +60,11 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
           );
   }
 
-  final Size canvasSize = Size(900.w, 546.h);
-
   Widget buildTextEditingCanvas(NoteDocumentController controller) {
     return TextEditingCanvas(
       readOnly: widget.readOnly,
       controller: controller.textController,
+      size: widget.readOnly ? null : widget.canvasSize,
     );
   }
 
@@ -74,15 +72,13 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
     return DrawingCanvas(
       readOnly: widget.readOnly,
       controller: controller.drawingController,
-      size: Size(
-        900.w,
-        600.h,
-      ),
+      size: widget.canvasSize,
     );
   }
 
   Widget Function(NoteDocumentController) canvasBuilderFor(
-      Type controllerType) {
+    Type controllerType,
+  ) {
     if (controllerType == DrawingController) {
       return buildDrawingCanvas;
     } else if (controllerType == TextEditorController) {

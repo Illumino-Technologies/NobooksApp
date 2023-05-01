@@ -37,7 +37,7 @@ class _QuestionViewState extends State<_QuestionView> {
     if (size == Size.zero) return;
     size = Size(
       size.width + 50.w,
-      size.height + 50.h,
+      size.height,
     );
 
     canvasSize = size;
@@ -51,10 +51,12 @@ class _QuestionViewState extends State<_QuestionView> {
 
   @override
   Widget build(BuildContext context) {
-    return DocumentEditorCanvas(
-      readOnly: true,
-      canvasSize: canvasSize,
-      controller: controller,
+    return Container(color: AppColors.subjectWine,
+      child: DocumentEditorCanvas(
+        readOnly: true,
+        canvasSize: canvasSize,
+        controller: controller,
+      ),
     );
   }
 }

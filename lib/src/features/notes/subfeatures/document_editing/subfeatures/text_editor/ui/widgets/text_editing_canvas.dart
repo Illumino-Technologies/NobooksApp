@@ -5,11 +5,13 @@ import 'package:nobook/src/global/global_barrel.dart';
 class TextEditingCanvas extends StatefulWidget {
   final TextEditorController controller;
   final bool readOnly;
+  final Size? size;
 
   const TextEditingCanvas({
     Key? key,
     this.readOnly = false,
     required this.controller,
+    this.size,
   }) : super(key: key);
 
   @override
@@ -30,7 +32,9 @@ class _TextEditingCanvasState extends State<TextEditingCanvas> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.grey100,
+      color: AppColors.grey100.withOpacity(0.6),
+      height: widget.readOnly ? null : widget.size?.height,
+      width: widget.readOnly ? null : widget.size?.width,
       child: ValueListenableBuilder<TextEditingValue>(
         valueListenable: controller,
         builder: (_, controllerValue, __) {
