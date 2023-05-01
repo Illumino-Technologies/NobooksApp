@@ -33,23 +33,32 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-      size: widget.canvasSize,
-      child: ChangeNotifierBuilder<NoteDocumentController>(
-        listenable: controller,
-        builder: (context, controller) {
-          reshuffleCanvasBuildersWithLast(
-            controller.activeController.runtimeType,
+    return widget.readOnly
+        ? ListenableBuilder(
+            listenable: controller,
+            builder: (context) {
+              return Stack(
+                children: [
+                  buildDrawingCanvas(controller),
+                  buildTextEditingCanvas(controller),
+                ],
+              );
+            },
+          )
+        : ChangeNotifierBuilder<NoteDocumentController>(
+            listenable: controller,
+            builder: (context, controller) {
+              reshuffleCanvasBuildersWithLast(
+                controller.activeController.runtimeType,
+              );
+              removeFocusIfExists(context);
+              return Stack(
+                children: controllerStack.map<Widget>((e) {
+                  return canvasBuilderFor(e).call(controller);
+                }).toList(),
+              );
+            },
           );
-          removeFocusIfExists(context);
-          return Stack(
-            children: controllerStack.map<Widget>((e) {
-              return canvasBuilderFor(e).call(controller);
-            }).toList(),
-          );
-        },
-      ),
-    );
   }
 
   final Size canvasSize = Size(900.w, 546.h);

@@ -38,7 +38,7 @@ class _QuestionAnswerViewState extends State<_QuestionAnswerView> {
                   _QuestionView(question: widget.question),
                   // DocumentEditorCanvas(
                   //   controller: controller,
-                  //   canvasSize: Size(double.infinity, 300.h),
+                  //   canvasSize: canvasSize,
                   // ),
                 ],
               ),

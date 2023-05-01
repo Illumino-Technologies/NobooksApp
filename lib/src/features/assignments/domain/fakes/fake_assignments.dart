@@ -18,28 +18,44 @@ abstract class FakeAssignments {
   static final NoteDocument fakeQuestion1 = [
     TextEditorController(
       text: 'What is the capital of Nigeria?',
-      deltas: [],
+      deltas: 'What is the capital of Nigeria?'.chars.map(
+        (e) {
+          return TextDelta(char: e, metadata: questionMetadata);
+        },
+      ).toList(),
     )..initialize(metadata: questionMetadata),
   ];
 
   static final NoteDocument fakeQuestion2 = [
     TextEditorController(
       text: 'How many states are in Nigeria?',
-      deltas: [],
+      deltas: 'What is the capital of Nigeria?'.chars.map(
+        (e) {
+          return TextDelta(char: e, metadata: questionMetadata);
+        },
+      ).toList(),
     )..initialize(metadata: questionMetadata),
   ];
 
   static final NoteDocument fakeQuestion3 = [
     TextEditorController(
       text: 'How many geopolitical zones are in Nigeria?',
-      deltas: [],
+      deltas: 'What is the capital of Nigeria?'.chars.map(
+        (e) {
+          return TextDelta(char: e, metadata: questionMetadata);
+        },
+      ).toList(),
     )..initialize(metadata: questionMetadata),
   ];
 
   static final NoteDocument fakeQuestion4 = [
     TextEditorController(
       text: 'What is your name?',
-      deltas: [],
+      deltas: 'What is the capital of Nigeria?'.chars.map(
+        (e) {
+          return TextDelta(char: e, metadata: questionMetadata);
+        },
+      ).toList(),
     )..initialize(metadata: questionMetadata),
   ];
 
