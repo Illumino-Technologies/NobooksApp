@@ -26,7 +26,7 @@ class _QuestionViewState extends State<_QuestionView> {
     )..initialize(noteDocument: widget.question.content);
   }
 
-  Size canvasSize = Size(double.infinity, 300.h);
+  Size canvasSize = Size(double.infinity, 50.h);
 
   void computeDrawingSize() {
     if (controller.drawingController.drawings.isEmpty) return;
@@ -37,7 +37,7 @@ class _QuestionViewState extends State<_QuestionView> {
     if (size == Size.zero) return;
     size = Size(
       size.width + 50.w,
-      size.height,
+      size.height + 50.h,
     );
 
     canvasSize = size;
@@ -51,7 +51,8 @@ class _QuestionViewState extends State<_QuestionView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: AppColors.subjectWine,
+    return Container(
+      color: AppColors.subjectWine,
       child: DocumentEditorCanvas(
         readOnly: true,
         canvasSize: canvasSize,

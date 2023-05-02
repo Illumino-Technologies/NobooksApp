@@ -36,11 +36,14 @@ class _QuestionAnswerViewState extends State<_QuestionAnswerView> {
                 children: [
                   200.boxHeight,
                   _QuestionView(question: widget.question),
-                  DocumentEditorCanvas(
-                    controller: controller,
-                    canvasSize: Size(
-                      context.screenWidth,
-                      context.screenHeight * 1.5,
+                  Container(
+                    color: AppColors.paper,
+                    child: DocumentEditorCanvas(
+                      controller: controller,
+                      canvasSize: Size(
+                        context.screenWidth,
+                        context.screenHeight * 1.5,
+                      ),
                     ),
                   ),
                 ],

@@ -26,7 +26,6 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
   void didUpdateWidget(DocumentEditorCanvas oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.controller != widget.controller) {
-
       controller = widget.controller;
     }
   }
