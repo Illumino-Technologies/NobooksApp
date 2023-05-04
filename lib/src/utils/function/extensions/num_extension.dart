@@ -13,6 +13,26 @@ extension NumExtension on num {
         height: 0,
         width: w.toDouble(),
       );
+
+  String toOrdinal() {
+    final int number = toInt();
+    final int mod = number % 100;
+
+    if (mod >= 11 && mod <= 13) {
+      return '${number}th';
+    }
+
+    switch (number % 10) {
+      case 1:
+        return '${number}st';
+      case 2:
+        return '${number}nd';
+      case 3:
+        return '${number}rd';
+      default:
+        return '${number}th';
+    }
+  }
 }
 
 extension DoubleExtension on double {

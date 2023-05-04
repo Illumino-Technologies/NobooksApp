@@ -1,10 +1,9 @@
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/view/custom/allow_pointer.dart';
+import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/view/custom/n_pointer_single_child_scroll_view.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
@@ -30,6 +29,14 @@ class AssignmentScreen extends ConsumerStatefulWidget {
 
 class _AssignmentScreenState extends ConsumerState<AssignmentScreen> {
   @override
+  void initState() {
+    super.initState();
+    ref
+        .read(AssignmentStateNotifier.provider.notifier)
+        .resetAssignmentProvider();
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     ref.read(AssignmentStateNotifier.provider.notifier).initializeAssignment(
@@ -39,7 +46,12 @@ class _AssignmentScreenState extends ConsumerState<AssignmentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AssignmentPageView(assignment: widget.assignment);
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: AssignmentPageView(
+        assignment: widget.assignment,
+      ),
+    );
   }
 }
 
@@ -96,6 +108,8 @@ class _AssignmentPageViewState extends State<AssignmentPageView> {
 
   void syncCallback() {}
 
+
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -106,20 +120,29 @@ class _AssignmentPageViewState extends State<AssignmentPageView> {
           currentIndex: currentIndex,
           questionLength: assignment.questions.length,
         ),
-        Padding(
-          padding: EdgeInsets.only(top: 66.h),
-          child: Builder(
-            builder: (context) {
-              final AssignmentOperation question =
-                  assignment.questions[currentIndex];
-              return _QuestionAnswerView(
-                question: question,
-                answer: assignment.answers?.firstWhereOrNull(
-                  (element) => element.serialId == question.serialId,
-                ),
-              );
-            },
-          ),
+        Consumer(
+          builder: (context, ref, child) {
+            return Padding(
+              padding: EdgeInsets.only(top: 66.h),
+              child: Builder(
+                builder: (context) {
+                  final AssignmentOperation question =
+                      assignment.questions[currentIndex];
+                  return _QuestionAnswerView(
+                    assignment: assignment,
+                    key: ValueKey('question answer view ${question.serialId}'),
+                    question: question,
+                    answer: assignment.answers?.firstWhereOrNull(
+                      (element) => element.serialId == question.serialId,
+                    ),
+                    answerController: ref
+                        .read(AssignmentStateNotifier.provider)
+                        .answerControllers[currentIndex],
+                  );
+                },
+              ),
+            );
+          },
         ),
       ],
     );

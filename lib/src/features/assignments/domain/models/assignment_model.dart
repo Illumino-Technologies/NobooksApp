@@ -1,4 +1,5 @@
 import 'package:nobook/src/features/notes/notes_barrel.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 

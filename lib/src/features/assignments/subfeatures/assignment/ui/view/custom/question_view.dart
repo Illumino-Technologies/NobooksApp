@@ -51,13 +51,10 @@ class _QuestionViewState extends State<_QuestionView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.subjectWine,
-      child: DocumentEditorCanvas(
-        readOnly: true,
-        canvasSize: canvasSize,
-        controller: controller,
-      ),
+    return DocumentEditorCanvas(
+      readOnly: true,
+      canvasSize: canvasSize,
+      controller: controller,
     );
   }
 }

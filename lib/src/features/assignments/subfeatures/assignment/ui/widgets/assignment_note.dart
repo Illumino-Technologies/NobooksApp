@@ -16,11 +16,12 @@ class AssignmentNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () =>Navigator.push(
+      onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => AssignmentScreen(
-            assignment: currentAssignment,) ,
+            assignment: currentAssignment,
+          ),
         ),
       ),
       child: Container(
