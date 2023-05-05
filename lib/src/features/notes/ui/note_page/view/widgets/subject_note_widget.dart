@@ -11,10 +11,7 @@ class SubjectNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 20.w,
-      ),
-      width: 160.w,
+      width: 200.w,
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.all(

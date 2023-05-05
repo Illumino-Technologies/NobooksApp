@@ -208,6 +208,12 @@ abstract class AppColors {
   ///#ECECEC
   static const Color grey100 = Color(0xFFECECEC);
 
+  ///#333333
+  static const Color grey200 = Color(0xFF333333);
+
+  ///#333333 70%
+  static const Color grey270 = Color(0xB3333333);
+
   ///#0A0807
   static const Color backgroundBlack = Color(0xFF0A0807);
 

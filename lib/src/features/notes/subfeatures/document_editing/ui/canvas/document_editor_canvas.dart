@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 class DocumentEditorCanvas extends StatefulWidget {
   final Size canvasSize;
-  final ToolbarController controller;
+  final NoteDocumentController controller;
+  final bool readOnly;
 
   const DocumentEditorCanvas({
     Key? key,
+    this.readOnly = false,
     required this.canvasSize,
     required this.controller,
   }) : super(key: key);
@@ -19,7 +20,7 @@ class DocumentEditorCanvas extends StatefulWidget {
 }
 
 class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
-  late ToolbarController controller = widget.controller;
+  late NoteDocumentController controller = widget.controller;
 
   @override
   void didUpdateWidget(DocumentEditorCanvas oldWidget) {
@@ -31,44 +32,53 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-      size: widget.canvasSize,
-      child: ChangeNotifierBuilder<ToolbarController>(
-        listenable: controller,
-        builder: (context, controller) {
-          reshuffleCanvasBuildersWithLast(
-            controller.activeController.runtimeType,
+    return widget.readOnly
+        ? ListenableBuilder(
+            listenable: controller,
+            builder: (context) {
+              return Stack(
+                children: [
+                  buildDrawingCanvas(controller),
+                  buildTextEditingCanvas(controller),
+                ],
+              );
+            },
+          )
+        : ChangeNotifierBuilder<NoteDocumentController>(
+            listenable: controller,
+            builder: (context, controller) {
+              reshuffleCanvasBuildersWithLast(
+                controller.activeController.runtimeType,
+              );
+              removeFocusIfExists(context);
+              return Stack(
+                children: controllerStack.map<Widget>((e) {
+                  return canvasBuilderFor(e).call(controller);
+                }).toList(),
+              );
+            },
           );
-          removeFocusIfExists(context);
-          return Stack(
-            children: controllerStack.map<Widget>((e) {
-              return canvasBuilderFor(e).call(controller);
-            }).toList(),
-          );
-        },
-      ),
-    );
   }
 
-  final Size canvasSize = Size(900.w, 546.h);
-
-  Widget buildTextEditingCanvas(ToolbarController controller) {
+  Widget buildTextEditingCanvas(NoteDocumentController controller) {
     return TextEditingCanvas(
+      readOnly: widget.readOnly,
       controller: controller.textController,
+      size: widget.readOnly ? null : widget.canvasSize,
     );
   }
 
-  Widget buildDrawingCanvas(ToolbarController controller) {
+  Widget buildDrawingCanvas(NoteDocumentController controller) {
     return DrawingCanvas(
+      readOnly: widget.readOnly,
       controller: controller.drawingController,
-      size: Size(
-        900.w,
-        600.h,
-      ),
+      size: widget.canvasSize,
     );
   }
 
-  Widget Function(ToolbarController) canvasBuilderFor(Type controllerType) {
+  Widget Function(NoteDocumentController) canvasBuilderFor(
+    Type controllerType,
+  ) {
     if (controllerType == DrawingController) {
       return buildDrawingCanvas;
     } else if (controllerType == TextEditorController) {

@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:math' as math;
+import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
@@ -16,6 +18,41 @@ extension DrawingsExentension on Drawings {
     }
     return false;
   }
+
+  Size computeCanvasSizeByOffets() {
+    if (isEmpty) return Size.zero;
+    final List<PointDouble> offsets = fold<List<PointDouble>>(
+      [],
+      (previousValue, element) => previousValue
+        ..addAll(
+          element.deltas.fold<List<PointDouble>>(
+            [],
+            (previousValue, element) => previousValue..add(element.point),
+          ),
+        ),
+    );
+
+    final double maxX = offsets.map((e) => e.x).reduce(max);
+    final double maxY = offsets.map((e) => e.y).reduce(max);
+    final double minX = offsets.map((e) => e.x).reduce(min);
+    final double minY = offsets.map((e) => e.y).reduce(min);
+
+    final double width = maxX - minX;
+    final double height = maxY - minY;
+
+    return Size(width, height);
+  }
+
+  Drawings copyWithRelativeSize() => map((e) {
+        final List<DrawingDelta> deltas = e.deltas.map((e) {
+          return DrawingDelta(
+            point: PointDouble(e.point.x.w, e.point.y.h),
+            metadata: e.metadata,
+            operation: e.operation,
+          );
+        }).toList();
+        return e.copyWith(deltas: deltas);
+      }).toList();
 }
 
 extension NoteDocumentExtension on NoteDocument {

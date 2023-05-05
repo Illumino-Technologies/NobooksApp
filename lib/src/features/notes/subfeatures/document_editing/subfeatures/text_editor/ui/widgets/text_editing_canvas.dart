@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/text_editor/text_editor_barrel.dart';
-import 'package:nobook/src/global/ui/ui_barrel.dart';
 
 class TextEditingCanvas extends StatefulWidget {
   final TextEditorController controller;
+  final bool readOnly;
+  final Size? size;
 
   const TextEditingCanvas({
     Key? key,
+    this.readOnly = false,
     required this.controller,
+    this.size,
   }) : super(key: key);
 
   @override
@@ -28,14 +30,16 @@ class _TextEditingCanvasState extends State<TextEditingCanvas> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 900.h,
-      color: AppColors.backgroundBlack.withOpacity(0.04),
+    return SizedBox(
+      height: widget.readOnly ? null : widget.size?.height,
+      width: widget.readOnly ? null : widget.size?.width,
       child: ValueListenableBuilder<TextEditingValue>(
         valueListenable: controller,
         builder: (_, controllerValue, __) {
           return TextField(
             controller: controller,
+            enabled: !widget.readOnly,
+            keyboardType: TextInputType.multiline,
             textAlign: controller.metadata?.alignment ?? TextAlign.start,
             style: TextEditorController.defaultMetadata.style,
             decoration: const InputDecoration(
