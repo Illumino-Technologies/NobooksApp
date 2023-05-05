@@ -44,13 +44,18 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                     children: [
                        Text(
                         'Your Assignments',
-                        style: TextStyles.headline1.withSize(40.sp),
+                        style: TextStyles.headline2.copyWith(
+                          fontSize: 28.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.neutral600,
+                        ),
                       ),
                       20.boxHeight,
                       Expanded(
-                        child: ListView.builder(
+                        child: ListView.separated(
                           shrinkWrap: true,
                           itemCount: availableAssignments.length,
+                          separatorBuilder: (_, __) => 48.boxHeight,
                           itemBuilder: (context, index) {
                             final Subject currentAssignment =
                                 availableAssignments[index];

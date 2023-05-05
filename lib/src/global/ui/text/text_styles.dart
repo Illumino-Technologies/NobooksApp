@@ -69,7 +69,7 @@ abstract class TextStyles {
     fontWeight: FontWeight.w400,
   );
 
-  ///18sp | 400(normal) | 1.222
+    ///18sp | 400(normal) | 1.222
   static final TextStyle paragraph3 = TextStyle(
     fontSize: 18.sp,
     height: 1.222,
