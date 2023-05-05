@@ -34,13 +34,12 @@ class _QuestionAnswerViewState extends ConsumerState<_QuestionAnswerView> {
             thumbColor: MaterialStateProperty.all(AppColors.grey),
           ),
           child: Scrollbar(
-
             thickness: 16.w,
             radius: const Radius.circular(100),
             interactive: true,
             thumbVisibility: true,
-            child: NPointerSingleChildScrollView(
-              numberOfPointers: 2,
+            child: MultiPointerSingleChildScrollView(
+              pointerCount: 2,
               padding: EdgeInsets.symmetric(horizontal: 32.0.w),
               child: Column(
                 children: [

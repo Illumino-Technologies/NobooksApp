@@ -1,9 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/view/custom/allow_pointer.dart';
-import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/view/custom/n_pointer_single_child_scroll_view.dart';
+import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/view/custom/custom_scrollable/multi_point_scroll_view.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
@@ -107,8 +105,6 @@ class _AssignmentPageViewState extends State<AssignmentPageView> {
   }
 
   void syncCallback() {}
-
-
 
   @override
   Widget build(BuildContext context) {
