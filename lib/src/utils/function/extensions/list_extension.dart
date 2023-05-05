@@ -49,6 +49,18 @@ extension ListExtension<E> on List<E> {
     replaceRange(index, index + 1, replacement);
   }
 
+  bool tryReplaceWhere(Iterable<E> replacement, bool Function(E element) test) {
+    try {
+      int index = indexWhere(test);
+
+      if (index == -1) throw StateError('index not found in $this');
+      replaceRange(index, index + 1, replacement);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   void replace(E value, Iterable<E> replacement) {
     int index = indexWhere((element) => element == value);
 

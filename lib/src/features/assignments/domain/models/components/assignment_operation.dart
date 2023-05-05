@@ -13,6 +13,12 @@ class AssignmentOperation {
     required this.updatedAt,
   });
 
+  AssignmentOperation.create({
+    required this.serialId,
+    required this.content,
+  })  : createdAt = DateTime.now(),
+        updatedAt = DateTime.now();
+
   NoteDocumentController get newController => NoteDocumentController(
         noteDocument: content,
       );

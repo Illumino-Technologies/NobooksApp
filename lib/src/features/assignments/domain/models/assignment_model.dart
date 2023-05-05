@@ -1,4 +1,3 @@
-import 'package:nobook/src/features/notes/notes_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -54,6 +53,29 @@ class Assignment {
       'createdDate': createdDate.toIso8601String(),
       'submissionDate': submissionDate.toIso8601String(),
     };
+  }
+
+  //generate copyWith method
+  Assignment copyWith({
+    String? id,
+    Subject? subject,
+    String? topic,
+    Teacher? teacher,
+    List<AssignmentOperation>? questions,
+    List<AssignmentOperation>? answers,
+    DateTime? createdDate,
+    DateTime? submissionDate,
+  }) {
+    return Assignment(
+      id: id ?? this.id,
+      subject: subject ?? this.subject,
+      topic: topic ?? this.topic,
+      teacher: teacher ?? this.teacher,
+      questions: questions ?? this.questions,
+      answers: answers ?? this.answers,
+      createdDate: createdDate ?? this.createdDate,
+      submissionDate: submissionDate ?? this.submissionDate,
+    );
   }
 }
 
