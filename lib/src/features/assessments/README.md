@@ -7,10 +7,10 @@ Things to note:
 - The term `Assessment` represents either `Test` or `Exam` or both `TestAndExam` semantically
 - Assignment feature may come into this feature as a subfeature during refactoring (after feature completion)
 - Please go through the following class code:
-    - `Assessment` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/63c6967b17e058f61450fb5d36950be3cf88450e/lib/src/features/assessments/domain/models/assessment/assessment.dart)
-    - `AssessmentType` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/63c6967b17e058f61450fb5d36950be3cf88450e/lib/src/features/assessments/domain/models/assessment_type/assessment_type.dart)
-    - `AssessmentOperation` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/63c6967b17e058f61450fb5d36950be3cf88450e/lib/src/features/assessments/domain/models/assessment/content/assessment_operation.dart)
-    - `QuestionType` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/63c6967b17e058f61450fb5d36950be3cf88450e/lib/src/features/assessments/domain/models/assessment/content/question_type.dart)
+    - `Assessment` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/assessment.dart)
+    - `AssessmentType` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment_type/assessment_type.dart)
+    - `AssessmentOperation` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/content/assessment_operation.dart)
+    - `QuestionType` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/content/question_type.dart)
 
 Requirements:
 
