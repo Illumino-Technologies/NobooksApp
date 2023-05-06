@@ -8,6 +8,8 @@ enum AppRoute {
   noteDetailPage('note-detail-page'),
   assignments('/assignments'),
   assignment('assignment'),
+  assessmentListing('/assessment-listing'),
+  assessmentDetail('/assessment-detail'),
   record('/record'),
   testAndExam('/test-and-exam'),
   forum('/forum'),

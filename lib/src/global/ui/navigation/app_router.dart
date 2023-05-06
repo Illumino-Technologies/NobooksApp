@@ -75,6 +75,25 @@ final GoRouter _router = GoRouter(
           ],
         ),
         GoRoute(
+          path: AppRoute.assessmentListing.path,
+          name: AppRoute.assessmentListing.name,
+          builder: (context, state) {
+            return const AssessmentsPage();
+          },
+          routes: [
+            GoRoute(
+              parentNavigatorKey: _navigationKey,
+              path: AppRoute.assessmentDetail.path,
+              name: AppRoute.assessmentDetail.name,
+              builder: (context, state) {
+                return AssessmentDetailPage(
+                  assessment: state.extra as Assessment,
+                );
+              },
+            ),
+          ],
+        ),
+        GoRoute(
           path: AppRoute.record.path,
           name: AppRoute.record.name,
           builder: (context, state) {
