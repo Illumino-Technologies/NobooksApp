@@ -20,7 +20,7 @@ part of 'timetable.dart';
 class TimetablePeriod {
   final Subject? subject;
   final String? periodName;
-  final Duration duration;
+  final int duration;
   final TimeOfDay startTime;
 
   const TimetablePeriod({
@@ -30,13 +30,13 @@ class TimetablePeriod {
     required this.startTime,
   });
 
-  TimeOfDay get endTime => startTime.copyAdd(duration);
+  TimeOfDay get endTime => startTime.copyAdd(Duration(minutes: duration));
 
   Map<String, dynamic> toMap() {
     return {
       'subject': subject?.toMap(),
       'periodName': periodName,
-      'duration': duration.toString(),
+      'duration': duration,
       'startTime': startTime.toMap(),
     };
   }
@@ -45,9 +45,7 @@ class TimetablePeriod {
     return TimetablePeriod(
       subject: Subject.fromMap(map['subject']),
       periodName: map['periodName'] as String,
-      duration: UtilFunctions.simpleDurationFromString(
-        map['duration'] as String,
-      ),
+      duration: map['duration'] as int,
       startTime: UtilFunctions.timeOfDayFromMap(map['startTime']),
     );
   }
