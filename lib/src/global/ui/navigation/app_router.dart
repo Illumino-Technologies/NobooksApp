@@ -27,9 +27,10 @@ final GoRouter _router = GoRouter(
   routes: [
     ShellRoute(
       navigatorKey: _shellRouteKey,
-      builder: (context, state, child) => HomeScreen(
-        child: child,
-      ),
+      builder: (context, state, child) =>
+          HomeScreen(
+            child: child,
+          ),
       routes: [
         GoRoute(
           path: AppRoute.dashboard.path,
@@ -86,8 +87,12 @@ final GoRouter _router = GoRouter(
               path: AppRoute.assessmentDetail.path,
               name: AppRoute.assessmentDetail.name,
               builder: (context, state) {
+                final (Assessment, AssessmentType) record = state
+                    .extra as (Assessment, AssessmentType);
                 return AssessmentDetailPage(
-                  assessment: state.extra as Assessment,
+                  assessment: record.$0,
+                  type: record.$1,
+
                 );
               },
             ),
