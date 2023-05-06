@@ -23,7 +23,6 @@ class AssessmentOperation {
     required this.marks,
   });
 
-  //generate copyWith
   AssessmentOperation copyWith({
     String? id,
     DateTime? createdAt,
@@ -42,7 +41,6 @@ class AssessmentOperation {
     );
   }
 
-  //generate fromMap and toMap
   factory AssessmentOperation.fromMap(Map<String, dynamic> map) {
     return AssessmentOperation(
       id: map['id'] as String,

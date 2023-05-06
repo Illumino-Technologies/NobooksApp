@@ -11,7 +11,7 @@ Requirements:
 
 - [x] foundational model
 - [x] foundational fake data
-- [ ] foundational structure
+- [x] foundational structure
 - [ ] Fake data
 - [ ] Models
 - [ ] Assessment listings
