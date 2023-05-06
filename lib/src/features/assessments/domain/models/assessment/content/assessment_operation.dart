@@ -1,5 +1,11 @@
 part of '../assessment.dart';
 
+/// This class encapsulates the data of an assessment primarily namely:
+/// - question
+/// - answer
+/// - marks attached to a question
+///
+/// The object of this class is what will carry the answer the user gives
 class AssessmentOperation {
   final String id;
   final DateTime createdAt;
