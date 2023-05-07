@@ -10,6 +10,4 @@ extension DoubleRangeExtension on DoubleRange {
   }
 
   List<double> toList() => [val1, val2];
-
-
 }

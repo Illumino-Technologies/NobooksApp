@@ -10,6 +10,8 @@ extension ListExtension<E> on List<E> {
 
   bool isLast(E element) => indexOf(element) == (length - 1);
 
+  List<E> get copy => List.of(this);
+
   void pushFront(E element) {
     return insert(0, element);
   }
@@ -45,6 +47,18 @@ extension ListExtension<E> on List<E> {
 
     if (index == -1) throw StateError('index not found in $this');
     replaceRange(index, index + 1, replacement);
+  }
+
+  bool tryReplaceWhere(Iterable<E> replacement, bool Function(E element) test) {
+    try {
+      int index = indexWhere(test);
+
+      if (index == -1) throw StateError('index not found in $this');
+      replaceRange(index, index + 1, replacement);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   void replace(E value, Iterable<E> replacement) {

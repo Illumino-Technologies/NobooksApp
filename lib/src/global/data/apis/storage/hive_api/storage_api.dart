@@ -16,6 +16,7 @@ class StorageApi<T>
   static Future<void> initialize() async {
     await Hive.initFlutter();
     await Hive.openBox<Map>(StorageKey.user.box);
+    await Hive.openBox<List>(StorageKey.noteMod.box);
     await Hive.openBox<Map>(StorageKey.note.box);
     await Hive.openBox<List>(
       StorageKey.noteSyncQueue.box,

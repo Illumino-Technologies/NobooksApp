@@ -19,8 +19,7 @@ abstract class DocumentEditingController extends ChangeNotifier {
       case DocumentEditorType.text:
         return TextEditorController.fromMap(mapData);
       case DocumentEditorType.drawing:
-        // TODO: Handle this case.
-        break;
+        return DrawingController.fromMap(mapData);
       case DocumentEditorType.math:
         // TODO: Handle this case.
         break;
