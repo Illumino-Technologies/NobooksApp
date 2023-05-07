@@ -17,4 +17,7 @@ mixin NetworkUtilMixin {
     }
   }
 
+  Options get optionsWithToken => Options(
+        headers: {'Authorization': 'Bearer $nonNullToken'},
+      );
 }
