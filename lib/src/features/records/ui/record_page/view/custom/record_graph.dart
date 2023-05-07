@@ -1,7 +1,12 @@
 part of '../record_page.dart';
 
 class _RecordGraph extends ConsumerStatefulWidget {
-  const _RecordGraph({Key? key}) : super(key: key);
+  final List<Grade> grades;
+
+  const _RecordGraph(
+    this.grades, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   ConsumerState<_RecordGraph> createState() => _DashboardScreenState();
@@ -12,43 +17,21 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
   String dropdownvalue = 'SS 2';
   String dropdownValue = '1st term';
 
+  late final List<Grade> grades = widget.grades;
+
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
+    const TextStyle style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 10,
     );
-    Widget text;
-    switch (value.toInt()) {
-      case 1:
-        text = const Text('MTH', style: style);
-        break;
-      case 2:
-        text = const Text('ENG', style: style);
-        break;
-      case 3:
-        text = const Text('CHE', style: style);
-        break;
-      case 4:
-        text = const Text('PHY', style: style);
-        break;
-      case 5:
-        text = const Text('BIO', style: style);
-        break;
-      case 6:
-        text = const Text('ECN', style: style);
-        break;
-      case 7:
-        text = const Text('FMT', style: style);
-        break;
-      case 8:
-        text = const Text('CIV', style: style);
 
-        break;
-      default:
-        text = const Text('', style: style);
-        break;
-    }
+    print('value: $value');
 
+    final Widget text = Text(
+      grades[value.toInt()].subject.code.toUpperCase(),
+      style: style,
+      textAlign: TextAlign.center,
+    );
     return SideTitleWidget(
       axisSide: meta.axisSide,
       child: text,
@@ -60,47 +43,20 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
       fontWeight: FontWeight.bold,
       fontSize: 10,
     );
-    String text;
-    switch (value.toInt()) {
-      case 1:
-        text = '0%';
-        break;
-      case 2:
-        text = '10%';
-        break;
-      case 3:
-        text = '20%';
-        break;
-      case 4:
-        text = '30%';
-        break;
-      case 5:
-        text = '40%';
-        break;
-      case 6:
-        text = '50%';
-        break;
-      case 7:
-        text = '60%';
-        break;
-      case 8:
-        text = '70%';
-        break;
-      case 9:
-        text = '80%';
-        break;
-      case 10:
-        text = '90%';
-        break;
-      case 11:
-        text = '100%';
-        break;
-
-      default:
-        return Container();
-    }
+    String text = '${value.toInt()}';
 
     return Text(text, style: style, textAlign: TextAlign.left);
+  }
+
+  List<FlSpot> computeSpotListFromGrades() {
+    return grades.map((e) {
+      return FlSpot(
+        grades.indexOf(e).toDouble(),
+        (e.total ?? 0) < 20
+            ? 20
+            : (e.total ?? 0) - (Random().nextBool() ? 20 : 10),
+      );
+    }).toList();
   }
 
   @override
@@ -251,25 +207,14 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
                           show: false,
                           border: Border.all(color: const Color(0xff37434d)),
                         ),
-                        minX: 0,
-                        maxX: 11,
                         minY: 0,
-                        maxY: 6,
+                        maxY: 100,
                         lineBarsData: [
                           LineChartBarData(
-                            spots: const [
-                              FlSpot(0, 3),
-                              FlSpot(2.6, 2),
-                              FlSpot(4.9, 5),
-                              FlSpot(6.8, 3.1),
-                              FlSpot(8, 4),
-                              FlSpot(9.5, 3),
-                              FlSpot(11, 4),
-                            ],
+                            spots: computeSpotListFromGrades(),
                             isCurved: true,
-                            gradient: LinearGradient(
-                              colors: gradientColors,
-                            ),
+                            color: Color(0xFF2548FF),
+                            show: true,
                             barWidth: 3,
                             isStrokeCapRound: true,
                             dotData: FlDotData(
@@ -280,9 +225,10 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
                               gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
-                                colors: gradientColors
-                                    .map((color) => color.withOpacity(0.3))
-                                    .toList(),
+                                colors: [
+                                  Color(0xFF2548FF).withOpacity(0.24),
+                                  Color(0xFF2548FF).withOpacity(0),
+                                ],
                               ),
                             ),
                           ),

@@ -21,7 +21,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
     return Scaffold(
       body: Builder(
         builder: (context) {
-          final List<Assignment> assignments = FakeAssignments.assignments;
+          final List<Assignment> assignments = FakeAssignmentData.assignments;
           final List<Subject> availableAssignments =
               Set<Subject>.from(assignments.map((e) => e.subject)).toList();
 
@@ -93,7 +93,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                       child: SizedBox(
                         width: 320.w,
                         child: ListView.separated(
-                          itemCount: FakeAssignments.assignments.length,
+                          itemCount: FakeAssignmentData.assignments.length,
                           separatorBuilder: (_, __) => 16.boxHeight,
                           itemBuilder: (context, index) => Container(
                             decoration: BoxDecoration(
@@ -121,7 +121,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                                 // mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SubjectWidget(
-                                    subject: FakeAssignments
+                                    subject: FakeAssignmentData
                                         .assignments[index].subject,
                                     boxSize: 60.r,
                                     fontSize: 30.sp,
@@ -129,7 +129,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                                   10.boxWidth,
                                   Expanded(
                                     child: Text(
-                                      FakeAssignments
+                                      FakeAssignmentData
                                           .assignments[index].subject.name,
                                       style: TextStyles.paragraph1.asSemibold,
                                     ),

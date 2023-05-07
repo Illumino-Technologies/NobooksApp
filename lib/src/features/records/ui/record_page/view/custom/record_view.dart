@@ -11,8 +11,8 @@ class _RecordViewState extends State<_RecordView> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        _RecordGraph(),
+      children: [
+        _RecordGraph(FakeGrades.allGrades),
       ],
     );
   }
