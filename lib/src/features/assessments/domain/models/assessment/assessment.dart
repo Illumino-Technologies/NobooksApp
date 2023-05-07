@@ -7,7 +7,7 @@ part 'content/assessment_operation.dart';
 
 part 'content/question_type.dart';
 
-class Assessment {
+class Assessment with Comparable<Assessment> {
   final String id;
   final Subject subject;
   final List<QuestionType> questionTypes;
@@ -88,4 +88,7 @@ class Assessment {
       totalMarks: totalMarks ?? this.totalMarks,
     );
   }
+
+  @override
+  int compareTo(Assessment other) => startTime.compareTo(other.startTime);
 }

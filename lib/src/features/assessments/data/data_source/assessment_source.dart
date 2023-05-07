@@ -7,12 +7,20 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'assessment_source_interface.dart';
 
-class AssignmentSource
+class AssessmentSource
     with DioErrorHandlerMixin, NetworkUtilMixin
     implements AssessmentSourceInterface {
   final Dio _client;
 
-  AssignmentSource({
+  AssessmentSource._({
+    NetworkApi? api,
+  }) : _client = api?.client ?? NetworkApi().client;
+
+  static final AssessmentSource _instance = AssessmentSource._();
+
+  factory AssessmentSource() => _instance;
+
+  AssessmentSource.test({
     NetworkApi? api,
   }) : _client = api?.client ?? NetworkApi().client;
 
