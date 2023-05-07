@@ -17,19 +17,17 @@ Requirements:
 - [x] foundational model
 - [x] foundational fake data
 - [x] foundational structure
-- [ ] Assessment listings
+- [x] general Assessments data source 
+- [ ]Assessment listings
     - [ ] Ui
         - [ ] Presentation
         - [ ] State management (should depend on assessment data layer)
-    - [ ] Data
-        - [ ] Repository (should store the list of assessments)
-        - [ ] Data source
+    - [x] Data
+        - [x] Repository (should store the list of assessments)
 - [ ] Assessment detail
     - [ ] UI
         - [ ] Presentation
         - [ ] State management (should depend on assessment data layer)
-    - [ ] Data
-        - [ ] Data source
 
 User flow: Assessments listing
 
