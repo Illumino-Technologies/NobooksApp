@@ -15,233 +15,99 @@ class _RecordGraph extends ConsumerStatefulWidget {
 class _DashboardScreenState extends ConsumerState<_RecordGraph> {
   List<Color> gradientColors = [AppColors.blueVariant, AppColors.white];
   String dropdownvalue = 'SS 2';
-  String dropdownValue = '1st term';
+  late String dropdownValue = termGrades.keys.first.name;
 
-  late final List<Grade> grades = widget.grades;
+  final Map<TermPeriod, List<Grade>> termGrades = {};
 
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const TextStyle style = TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 10,
-    );
+  late final ValueNotifier<TermPeriod> termPeriodNotifier;
 
-    print('value: $value');
-
-    final Widget text = Text(
-      grades[value.toInt()].subject.code.toUpperCase(),
-      style: style,
-      textAlign: TextAlign.center,
-    );
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      child: text,
-    );
+  //TODO: should rename
+  void computeTermGrades() {
+    termGrades.clear();
+    for (final Grade grade in widget.grades) {
+      if (termGrades.containsKey(grade.term)) {
+        termGrades[grade.term]!.add(grade);
+      } else {
+        termGrades[grade.term] = [grade];
+      }
+    }
   }
 
-  Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 10,
-    );
-    String text = '${value.toInt()}';
-
-    return Text(text, style: style, textAlign: TextAlign.left);
+  @override
+  void initState() {
+    super.initState();
+    computeTermGrades();
+    if (termGrades.isEmpty) return;
+    termPeriodNotifier = ValueNotifier(termGrades.keys.first);
   }
 
-  List<FlSpot> computeSpotListFromGrades() {
-    return grades.map((e) {
-      return FlSpot(
-        grades.indexOf(e).toDouble(),
-        (e.total ?? 0) < 20
-            ? 20
-            : (e.total ?? 0) - (Random().nextBool() ? 20 : 10),
-      );
-    }).toList();
+  void onTermChanged(TermPeriod? term) {
+    if (term == null) return;
+    termPeriodNotifier.value = term;
   }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        width: 761.w,
-        decoration: const BoxDecoration(
-          color: AppColors.backgroundGrey,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              Column(
+    return Container(
+      width: 761.w,
+      decoration: const BoxDecoration(
+        color: AppColors.backgroundGrey,
+      ),
+      child: termGrades.isEmpty
+          ? const _NoRecordsWidget()
+          : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
                     children: [
-                      Text(
-                        'Your Results',
-                        style: TextStyles.headline6.copyWith(
-                          color: AppColors.black,
-                        ),
-                      ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            height: 30,
-                            width: 90,
-                            padding: const EdgeInsets.symmetric(horizontal: 7),
-                            decoration: BoxDecoration(
-                              color: AppColors.blue50,
-                              borderRadius: BorderRadius.circular(5),
+                          Text(
+                            'Your Results',
+                            style: TextStyles.headline6.copyWith(
+                              color: AppColors.black,
                             ),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton(
-                                value: dropdownvalue,
-                                icon: const Icon(Icons.keyboard_arrow_down),
-                                items: [
-                                  'SS 1',
-                                  'SS 2',
-                                  'SS 3',
-                                ].map((String items) {
-                                  return DropdownMenuItem(
-                                    value: items,
-                                    child: Text(
-                                      items,
-                                      style: TextStyles.subHeading.copyWith(
-                                        color: AppColors.neutral800,
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  );
-                                }).toList(),
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    dropdownvalue = newValue!;
-                                  });
-                                },
+                          ),
+                          Row(
+                            children: [
+                              _ClassDropDown(),
+                              10.boxWidth,
+                              _TermDropDown(
+                                terms: termGrades.keys,
+                                onTermChanged: onTermChanged,
                               ),
-                            ),
-                          ),
-                          10.boxWidth,
-                          Container(
-                            height: 33.h,
-                            width: 120.w,
-                            padding: const EdgeInsets.symmetric(horizontal: 7),
-                            decoration: BoxDecoration(
-                              color: AppColors.blue50,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                                elevation: 0,
-                                borderRadius: BorderRadius.circular(10),
-                                icon: const Icon(
-                                  Icons.expand_more,
-                                  color: Colors.black,
-                                ),
-                                value: dropdownValue,
-                                items: [
-                                  '1st term',
-                                  '2nd term',
-                                  '3rd term',
-                                ]
-                                    .map(
-                                      (week) => DropdownMenuItem<String>(
-                                        value: week,
-                                        child: Text(
-                                          week,
-                                          style: TextStyles.paragraph1.copyWith(
-                                            color: AppColors.blue500,
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                    .toList(),
-                                onChanged: (val) {
-                                  setState(() {
-                                    dropdownValue = val!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  20.boxHeight,
-                  SizedBox(
-                    height: 500,
-                    child: LineChart(
-                      LineChartData(
-                        gridData: FlGridData(
-                          show: false,
-                        ),
-                        titlesData: FlTitlesData(
-                          show: true,
-                          rightTitles: AxisTitles(
-                            sideTitles: SideTitles(showTitles: false),
-                          ),
-                          topTitles: AxisTitles(
-                            sideTitles: SideTitles(showTitles: false),
-                          ),
-                          bottomTitles: AxisTitles(
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              reservedSize: 30,
-                              interval: 1.2,
-                              getTitlesWidget: bottomTitleWidgets,
-                            ),
-                          ),
-                          leftTitles: AxisTitles(
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              // interval: 1,
-                              getTitlesWidget: leftTitleWidgets,
-                              reservedSize: 42,
-                            ),
-                          ),
-                        ),
-                        borderData: FlBorderData(
-                          show: false,
-                          border: Border.all(color: const Color(0xff37434d)),
-                        ),
-                        minY: 0,
-                        maxY: 100,
-                        lineBarsData: [
-                          LineChartBarData(
-                            spots: computeSpotListFromGrades(),
-                            isCurved: true,
-                            color: Color(0xFF2548FF),
-                            show: true,
-                            barWidth: 3,
-                            isStrokeCapRound: true,
-                            dotData: FlDotData(
-                              show: false,
-                            ),
-                            belowBarData: BarAreaData(
-                              show: true,
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xFF2548FF).withOpacity(0.24),
-                                  Color(0xFF2548FF).withOpacity(0),
-                                ],
-                              ),
-                            ),
-                          ),
+                            ],
+                          )
                         ],
                       ),
-                    ),
+                      20.boxHeight,
+                      SizedBox(
+                        height: 500,
+                        child: ValueListenableBuilder<TermPeriod>(
+                          valueListenable: termPeriodNotifier,
+                          builder: (_, termPeriod, __) {
+                            return LineChartWidget(
+                              grades: termGrades[termPeriod]!,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
+  }
+}
+
+class _NoRecordsWidget extends StatelessWidget {
+  const _NoRecordsWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

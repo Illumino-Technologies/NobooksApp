@@ -5,19 +5,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart';
+import 'package:nobook/src/features/records/domain/models/grade/term_period.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
+part 'custom/class_drop_down.dart';
+
 part 'custom/grades_table.dart';
 
 part 'custom/grading_column.dart';
+
+part 'custom/line_chart_widget.dart';
 
 part 'custom/record_graph.dart';
 
 part 'custom/record_view.dart';
 
 part 'custom/subjects_side_tab.dart';
+
+part 'custom/term_drop_down.dart';
 
 part 'utils/enum/grading_table_column.dart';
 
@@ -62,7 +69,6 @@ class _RecordPageState extends ConsumerState<RecordPage> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  reverse: true,
                   controller: _scrollController,
                   child: Column(
                     children: [
