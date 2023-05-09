@@ -43,6 +43,18 @@ class RecordPage extends ConsumerStatefulWidget {
 class _RecordPageState extends ConsumerState<RecordPage> {
   final ScrollController _scrollController = ScrollController();
 
+  Future<void> initializeProvider() async {
+    await ref
+        .read(RecordsNotifier.newProvider(source: FakeRecordsSource()).notifier)
+        .fetchAllGrades();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(initializeProvider);
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();

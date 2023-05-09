@@ -1,7 +1,7 @@
 part of '../records_notifier.dart';
 
 class RecordsState extends RiverpodStateWithStatus {
-  final Map<Class, Grade> classGrades;
+  final Map<Class, List<Grade>> classGrades;
 
   const RecordsState({
     required this.classGrades,
@@ -10,9 +10,13 @@ class RecordsState extends RiverpodStateWithStatus {
     super.error,
   });
 
+  List<Grade> get allGrades => classGrades.values
+      .reduce((value, element) => value..addAll(element))
+      .toList();
+
   @override
   RecordsState copyWith({
-    Map<Class, Grade>? classGrades,
+    Map<Class, List<Grade>>? classGrades,
     bool? loading,
     bool? success,
     Failure? error,

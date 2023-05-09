@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/features_barrel.dart';
-import 'package:nobook/src/features/records/ui/record_page/view/record_page.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 
 part 'app_route.dart';

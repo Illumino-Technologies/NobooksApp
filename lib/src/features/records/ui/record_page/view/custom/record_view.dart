@@ -1,18 +1,16 @@
 part of '../record_page.dart';
 
-class _RecordView extends StatefulWidget {
+class _RecordView extends ConsumerWidget {
   const _RecordView({super.key});
 
   @override
-  State<_RecordView> createState() => _RecordViewState();
-}
-
-class _RecordViewState extends State<_RecordView> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final List<Grade> allGrades = ref.watch(
+      RecordsNotifier.provider.select((value) => value.allGrades),
+    );
     return Column(
       children: [
-        _RecordGraph(FakeGrades.allGrades),
+        _RecordGraph(allGrades),
       ],
     );
   }
