@@ -86,7 +86,7 @@ class LineChartWidget extends StatelessWidget {
           LineChartBarData(
             spots: computeSpotListFromGrades(),
             isCurved: true,
-            color: Color(0xFF2548FF),
+            color: const Color(0xFF2548FF),
             show: true,
             barWidth: 3,
             isStrokeCapRound: true,
@@ -99,8 +99,8 @@ class LineChartWidget extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFF2548FF).withOpacity(0.24),
-                  Color(0xFF2548FF).withOpacity(0),
+                  const Color(0xFF2548FF).withOpacity(0.24),
+                  const Color(0xFF2548FF).withOpacity(0),
                 ],
               ),
             ),

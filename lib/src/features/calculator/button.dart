@@ -11,12 +11,13 @@ class MyButton extends StatelessWidget {
   final buttontapped;
 
 //Constructor
-  const MyButton(
-      {super.key,
-      this.color,
-      this.textColor,
-      required this.buttonText,
-      this.buttontapped});
+  const MyButton({
+    super.key,
+    this.color,
+    this.textColor,
+    required this.buttonText,
+    this.buttontapped,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,9 @@ class MyButton extends StatelessWidget {
             height: 48,
             width: 72,
             decoration: BoxDecoration(
-                color: color, borderRadius: BorderRadius.circular(4.0)),
+              color: color,
+              borderRadius: BorderRadius.circular(4.0),
+            ),
             child: Center(
               child: Text(
                 buttonText,

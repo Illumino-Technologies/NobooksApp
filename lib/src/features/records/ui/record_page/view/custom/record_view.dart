@@ -1,7 +1,7 @@
 part of '../record_page.dart';
 
 class _RecordView extends ConsumerWidget {
-  const _RecordView({super.key});
+  const _RecordView();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

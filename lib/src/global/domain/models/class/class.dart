@@ -62,7 +62,8 @@ class Class extends Equatable {
       subjectTeachers: (map['subjectTeachers'] as List?)
               ?.cast<Map>()
               .map<SubjectTeachers>(
-                  (e) => SubjectTeachers.fromMap(e.cast<String, dynamic>()))
+                (e) => SubjectTeachers.fromMap(e.cast<String, dynamic>()),
+              )
               .toList() ??
           [],
       classTeacher:

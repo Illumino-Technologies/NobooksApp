@@ -11,6 +11,6 @@ class AssignmentPage extends ConsumerStatefulWidget {
 class AssignmentPageState extends ConsumerState<AssignmentPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

@@ -2,7 +2,6 @@ part of '../record_page.dart';
 
 class _TermDropDown extends StatelessWidget {
   const _TermDropDown({
-    super.key,
     required this.terms,
     required this.onTermChanged,
   });

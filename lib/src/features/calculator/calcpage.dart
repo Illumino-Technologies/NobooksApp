@@ -27,15 +27,17 @@ class CalcPage extends StatelessWidget {
             tabs: myTabs,
           ),
         ),
-        body: TabBarView(children: [
-          Container(
-            color: Colors.red,
-            child: const Center(
-              child: Text('scientific calc'),
+        body: TabBarView(
+          children: [
+            Container(
+              color: Colors.red,
+              child: const Center(
+                child: Text('scientific calc'),
+              ),
             ),
-          ),
-          const ScientificCalculator(),
-        ]),
+            const ScientificCalculator(),
+          ],
+        ),
       ),
     );
   }

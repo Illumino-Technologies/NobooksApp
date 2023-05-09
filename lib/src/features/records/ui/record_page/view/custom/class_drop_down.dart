@@ -5,7 +5,6 @@ class _ClassDropDown extends ConsumerStatefulWidget {
 
   const _ClassDropDown({
     required this.onChanged,
-    super.key,
   });
 
   @override
