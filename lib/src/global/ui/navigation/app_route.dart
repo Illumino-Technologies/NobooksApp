@@ -8,6 +8,9 @@ enum AppRoute {
   noteDetailPage('note-detail-page'),
   assignments('/assignments'),
   assignment('assignment'),
+  assessmentListing('/assessment-listing'),
+  ///This takes in a record parameter of type `(Assessment, AssessmentType)`
+  assessmentDetail('/assessment-detail'),
   record('/record'),
   testAndExam('/test-and-exam'),
   forum('/forum'),

@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:nobook/src/global/data/apis/network/network_api_barrel.dart';
+import 'package:nobook/src/global/domain/logics/token_manager/token_manager.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-part 'network_api_interface.dart';
-
-class NetworkApi with DioErrorHandlerMixin implements NetworkApiInterface {
+class NetworkApi with DioErrorHandlerMixin {
   final Dio _client;
 
   NetworkApi._({
@@ -13,137 +14,46 @@ class NetworkApi with DioErrorHandlerMixin implements NetworkApiInterface {
     _initialize();
   }
 
-  Future<void> _initialize() async {
-    //todo: fetch and set token
-    _client.interceptors.add(PrettyDioLogger());
-  }
-
-  Dio get client => _client;
-
   static final NetworkApi instance = NetworkApi._();
 
   factory NetworkApi() => instance;
 
-  @override
-  Future<T> delete<T>(
-    String path, {
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) =>
-      handleError(
-        _delete(
-          path,
-          requireToken: requireToken,
-          cancelToken: cancelToken,
-        ),
-      );
+  Dio get client => _client;
+  static const int pageLength = 25;
 
-  Future<T> _delete<T>(
-    String path, {
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  void changeTokenInHeaders([String? token]) {
+    token = token ?? TokenManager.token;
+    if (token.isNullOrEmpty) return;
+    client.options.headers['Authorization'] = 'Bearer $token';
   }
 
-  @override
-  Future<T> get<T>(
-    String path, {
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) =>
-      handleError(
-        _get(
-          path,
-          requireToken: requireToken,
-          cancelToken: cancelToken,
-        ),
-      );
+  Future<void> _initialize() async {
+    final String? authToken = TokenManager.token;
+    debugPrint("authToken: $authToken");
+    if (authToken.isNotNullOrEmpty) {
+      client.options.contentType = Headers.jsonContentType;
+      client.options.headers["Authorization"] = 'Bearer $authToken';
+    }
 
-  Future<T> _get<T>(
-    String path, {
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) {
-    // TODO: implement get
-    throw UnimplementedError();
-  }
+    client.options.connectTimeout = const Duration(seconds: 20);
+    client.options.sendTimeout = const Duration(seconds: 20);
 
-  @override
-  Future<T> patch<T>(
-    String path, {
-    required dynamic params,
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) =>
-      handleError(
-        _patch(
-          path,
-          params: params,
-          requireToken: requireToken,
-          cancelToken: cancelToken,
-        ),
-      );
+    final RegExp htmlRegex = RegExp(r'<[a-z]*>', multiLine: true);
 
-  Future<T> _patch<T>(
-    String path, {
-    required dynamic params,
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) {
-    // TODO: implement patch
-    throw UnimplementedError();
-  }
+    client.interceptors.add(
+      InterceptorsWrapper(
+        onError: (DioError e, handler) async {
+          if (e.response?.data.runtimeType == String &&
+              htmlRegex.hasMatch(e.response?.data)) {
+            e.response!.data = ErrorMessages.serverError;
+          }
+          return handler.next(e);
+        },
+      ),
+    );
 
-  @override
-  Future<T> post<T>(
-    String path, {
-    required dynamic params,
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) =>
-      handleError(
-        _post(
-          path,
-          params: params,
-          requireToken: requireToken,
-        ),
-      );
-
-  Future<T> _post<T>(
-    String path, {
-    required dynamic params,
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) {
-    // TODO: implement post
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<T> put<T>(
-    String path, {
-    required dynamic params,
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) =>
-      handleError(
-        _put(
-          path,
-          params: params,
-          requireToken: requireToken,
-          cancelToken: cancelToken,
-        ),
-      );
-
-  Future<T> _put<T>(
-    String path, {
-    required dynamic params,
-    bool requireToken = true,
-    CancelToken? cancelToken,
-  }) {
-    // TODO: implement put
-    throw UnimplementedError();
+    client.interceptors.add(
+      PrettyDioLogger(responseBody: true, requestBody: true),
+    );
   }
 }
