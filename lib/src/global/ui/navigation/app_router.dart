@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/features_barrel.dart';
-import 'package:nobook/src/features/records/ui/record_page/view/record_page.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 
 part 'app_route.dart';
@@ -27,9 +26,10 @@ final GoRouter _router = GoRouter(
   routes: [
     ShellRoute(
       navigatorKey: _shellRouteKey,
-      builder: (context, state, child) => HomeScreen(
-        child: child,
-      ),
+      builder: (context, state, child) =>
+          HomeScreen(
+            child: child,
+          ),
       routes: [
         GoRoute(
           path: AppRoute.dashboard.path,
@@ -75,12 +75,36 @@ final GoRouter _router = GoRouter(
           ],
         ),
         GoRoute(
+          path: AppRoute.assessmentListing.path,
+          name: AppRoute.assessmentListing.name,
+          builder: (context, state) {
+            return const AssessmentsPage();
+          },
+          routes: [
+            GoRoute(
+              parentNavigatorKey: _navigationKey,
+              path: AppRoute.assessmentDetail.path,
+              name: AppRoute.assessmentDetail.name,
+              builder: (context, state) {
+                final (Assessment, AssessmentType) record = state
+                    .extra as (Assessment, AssessmentType);
+                return AssessmentDetailPage(
+                  assessment: record.$0,
+                  type: record.$1,
+
+                );
+              },
+            ),
+          ],
+        ),
+        GoRoute(
           path: AppRoute.record.path,
           name: AppRoute.record.name,
           builder: (context, state) {
             return const RecordPage();
           },
         ),
+        
       ],
     ),
   ],

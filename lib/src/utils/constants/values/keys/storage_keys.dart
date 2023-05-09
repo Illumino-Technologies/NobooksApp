@@ -1,4 +1,5 @@
 enum StorageKey {
+  token,
   assignment,
   assignmentDocument,
   user,

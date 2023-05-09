@@ -8,7 +8,7 @@ import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart' show AppColors;
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-abstract class FakeAssignments {
+abstract class FakeAssignmentData {
   static final TextMetadata questionMetadata = TextMetadata(
     fontSize: 18.sp,
     fontWeight: FontWeight.w700,

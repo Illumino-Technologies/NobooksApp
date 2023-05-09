@@ -138,7 +138,7 @@ abstract class UtilFunctions {
         .isEmpty) return null;
 
     final List<String> chars = phoneNumberBody.chars..insert(3, ' ')..insert(
-        8, ' ');
+        8, ' ',);
     phoneNumberBody = chars.join();
 
     return phoneNumberBody
