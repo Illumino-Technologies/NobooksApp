@@ -17,7 +17,7 @@ class _ClassDropDown extends StatelessWidget {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton(
-          value: '',
+          value: 'SS 1',
           icon: const Icon(Icons.keyboard_arrow_down),
           items: [
             'SS 1',

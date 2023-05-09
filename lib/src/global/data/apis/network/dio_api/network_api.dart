@@ -18,6 +18,8 @@ class NetworkApi with DioErrorHandlerMixin implements NetworkApiInterface {
     _client.interceptors.add(PrettyDioLogger());
   }
 
+  Dio get client => _client;
+
   static final NetworkApi instance = NetworkApi._();
 
   factory NetworkApi() => instance;
