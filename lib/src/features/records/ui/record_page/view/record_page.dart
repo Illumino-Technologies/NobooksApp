@@ -46,7 +46,7 @@ class _RecordPageState extends ConsumerState<RecordPage> {
   Future<void> initializeProvider() async {
     await ref
         .read(RecordsNotifier.newProvider(source: FakeRecordsSource()).notifier)
-        .fetchAllGrades();
+        .initializeNotifier();
   }
 
   @override

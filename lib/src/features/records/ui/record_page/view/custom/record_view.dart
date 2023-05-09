@@ -5,12 +5,12 @@ class _RecordView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<Grade> allGrades = ref.watch(
-      RecordsNotifier.provider.select((value) => value.allGrades),
+    final Map<Class, List<Grade>> classGrades = ref.watch(
+      RecordsNotifier.provider.select((value) => value.classGrades),
     );
     return Column(
       children: [
-        _RecordGraph(allGrades),
+        _RecordGraph(classGrades: classGrades),
       ],
     );
   }

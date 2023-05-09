@@ -46,11 +46,17 @@ class ClassRepository implements ClassRepoInterface {
 
   @override
   Future<List<Class>> fetchStudentClasses(
-    String studentId, [
+    String studentId, {
     bool fetchAFresh = false,
-  ]) async {
+  }) async {
     if (fetchAFresh) _classes.clear();
     _classes.addAll(await _source.fetchStudentClasses(studentId));
+    return _classes.toList();
+  }
+
+  @override
+  Future<List<Class>> fetchClassesIfEmpty(String studentId) async {
+    if (_classes.isEmpty) return await fetchStudentClasses(studentId);
     return _classes.toList();
   }
 }

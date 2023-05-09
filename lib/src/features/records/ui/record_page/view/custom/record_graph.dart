@@ -1,10 +1,10 @@
 part of '../record_page.dart';
 
 class _RecordGraph extends ConsumerStatefulWidget {
-  final List<Grade> grades;
+  final Map<Class, List<Grade>> classGrades;
 
-  const _RecordGraph(
-    this.grades, {
+  const _RecordGraph({
+    required this.classGrades,
     Key? key,
   }) : super(key: key);
 
@@ -16,14 +16,19 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
   List<Color> gradientColors = [AppColors.blueVariant, AppColors.white];
   late String dropdownValue = termGrades.keys.first.name;
 
+  late final List<Grade> currentClassGrades = widget.classGrades[
+          ref.read(RecordsNotifier.provider).currentClass ??
+              widget.classGrades.keys.first] ??
+      [];
+
   final Map<TermPeriod, List<Grade>> termGrades = {};
 
   late final ValueNotifier<TermPeriod> termPeriodNotifier;
 
   //TODO: should rename
-  void computeTermGrades() {
+  void computeTermGrades(List<Grade> grades) {
     termGrades.clear();
-    for (final Grade grade in widget.grades) {
+    for (final Grade grade in grades) {
       if (termGrades.containsKey(grade.term)) {
         termGrades[grade.term]!.add(grade);
       } else {
@@ -35,7 +40,7 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
   @override
   void initState() {
     super.initState();
-    computeTermGrades();
+    computeTermGrades(currentClassGrades);
     if (termGrades.isEmpty) return;
     termPeriodNotifier = ValueNotifier(termGrades.keys.first);
   }
@@ -43,6 +48,14 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
   void onTermChanged(TermPeriod? term) {
     if (term == null) return;
     termPeriodNotifier.value = term;
+  }
+
+  void onClassChanged(Class class_) {
+    setState(() {
+      computeTermGrades(widget.classGrades[class_] ?? []);
+    });
+    if (termGrades.isEmpty) return;
+    termPeriodNotifier.value = termGrades.keys.first;
   }
 
   @override
@@ -71,7 +84,7 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
                           ),
                           Row(
                             children: [
-                              _ClassDropDown(),
+                              _ClassDropDown(onChanged: onClassChanged),
                               10.boxWidth,
                               _TermDropDown(
                                 terms: termGrades.keys,
