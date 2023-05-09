@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:nobook/src/global/domain/fakes/grading_system/fake_grading_system.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/utils/constants/constants_barrel.dart';
 
 part 'subject_teacher.dart';
 
-class Class {
+class Class extends Equatable {
   final String id;
   final String name;
   final List<Subject> subjects;
@@ -99,4 +100,16 @@ class Class {
       classTeacher: classTeacher ?? this.classTeacher,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        ...subjects,
+        ...subjectTeachers,
+        ...students,
+        classCaptain,
+        assistantClassCaptain,
+        classTeacher,
+      ];
 }

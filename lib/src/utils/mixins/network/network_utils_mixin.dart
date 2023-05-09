@@ -21,7 +21,7 @@ mixin NetworkUtilMixin {
         headers: {'Authorization': 'Bearer $nonNullToken'},
       );
 
-  dataOf(Response response) {
+  dynamic dataOf(Response response) {
     return response.data['data'] ?? response.data;
   }
 }

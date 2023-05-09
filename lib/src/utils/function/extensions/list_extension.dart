@@ -114,6 +114,10 @@ extension ListExtension<E> on List<E> {
     add(value);
   }
 
+  void addIf(E value, bool condition) {
+    if (condition) add(value);
+  }
+
   E? firstWhereOrNull(bool Function(E element) test) {
     try {
       return firstWhere(test);
