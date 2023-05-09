@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/records/domain/models/grade/term_period.dart';
+import 'package:nobook/src/global/data/data_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
@@ -44,15 +45,26 @@ class _RecordPageState extends ConsumerState<RecordPage> {
   final ScrollController _scrollController = ScrollController();
 
   Future<void> initializeProvider() async {
+    if (ref.read(RecordsNotifier.provider).allGrades.isNotEmpty) {
+      return WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        ref.read(RecordsNotifier.provider.notifier).refresh(shouldLoad: false);
+      });
+    }
+    ref.read(RecordsNotifier.provider.notifier).dispose();
     await ref
-        .read(RecordsNotifier.newProvider(source: FakeRecordsSource()).notifier)
+        .read(
+          RecordsNotifier.newProvider(
+            source: FakeRecordsSource(),
+            classRepo: ClassRepository.new_(source: FakeClassSource()),
+          ).notifier,
+        )
         .initializeNotifier();
   }
 
   @override
   void initState() {
     super.initState();
-    Future.microtask(initializeProvider);
+    initializeProvider();
   }
 
   @override
@@ -63,40 +75,62 @@ class _RecordPageState extends ConsumerState<RecordPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ScrollbarTheme(
-        data: ScrollbarThemeData(
-          trackBorderColor: MaterialStateProperty.all(Colors.transparent),
-          trackColor: MaterialStateProperty.all(AppColors.grey100),
-          thumbColor: MaterialStateProperty.all(AppColors.grey),
-        ),
-        child: Scrollbar(
-          controller: _scrollController,
-          thickness: 16.w,
-          radius: const Radius.circular(100),
-          interactive: true,
-          thumbVisibility: true,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  controller: _scrollController,
-                  child: Column(
-                    children: [
-                      const _RecordView(),
-                      48.boxHeight,
-                      const _GradesTable(),
-                      48.boxHeight,
-                    ],
+    final bool loading = ref.watch(
+      RecordsNotifier.provider.select(
+        (value) => value.loading,
+      ),
+    );
+    final bool shouldShowWidgets = ref.watch(
+      RecordsNotifier.provider.select(
+        (value) => value.classGrades.isNotEmpty,
+      ),
+    );
+    if (!shouldShowWidgets && loading) {
+      return const LoaderWidget();
+    }
+
+    return Stack(
+      children: [
+        Scaffold(
+          body: ScrollbarTheme(
+            data: ScrollbarThemeData(
+              trackBorderColor: MaterialStateProperty.all(Colors.transparent),
+              trackColor: MaterialStateProperty.all(AppColors.grey100),
+              thumbColor: MaterialStateProperty.all(AppColors.grey),
+            ),
+            child: Scrollbar(
+              controller: _scrollController,
+              thickness: 16.w,
+              radius: const Radius.circular(100),
+              interactive: true,
+              thumbVisibility: true,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Column(
+                        children: [
+                          const _RecordView(),
+                          48.boxHeight,
+                          const _GradesTable(),
+                          48.boxHeight,
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                  const _SubjectsSideTab(),
+                ],
               ),
-              const _SubjectsSideTab(),
-            ],
+            ),
           ),
         ),
-      ),
+        if (loading)
+          LoaderWidget(
+            backgroundColor: AppColors.black.withOpacity(0.2),
+          ),
+      ],
     );
   }
 }

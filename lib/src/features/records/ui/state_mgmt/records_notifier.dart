@@ -24,18 +24,19 @@ class RecordsNotifier extends StateNotifier<RecordsState>
   })  : _source = source ?? RecordsSource(),
         _classRepo = classRepo ?? ClassRepository(),
         super(
-          const RecordsState(
+          RecordsState(
             classGrades: {},
             currentClass: null,
-            classes: [],
+            classes: List.empty(growable: true),
           ),
         );
 
   static StateNotifierProvider<RecordsNotifier, RecordsState> newProvider({
     RecordsSourceInterface? source,
+    ClassRepoInterface? classRepo,
   }) {
     _recordsNotifierProvider = StateNotifierProvider(
-      (ref) => RecordsNotifier(ref, source: source),
+      (ref) => RecordsNotifier(ref, source: source, classRepo: classRepo),
     );
     return _recordsNotifierProvider;
   }
@@ -69,13 +70,13 @@ class RecordsNotifier extends StateNotifier<RecordsState>
     state = state.copyWith(currentClass: class_, classes: classes);
   }
 
-  Future<void> fetchAllGrades() => handleError(
-        _fetchAllGrades(),
+  Future<void> fetchAllGrades({bool shouldLoad = true}) => handleError(
+        _fetchAllGrades(shouldLoad),
         catcher: notifyOnError,
       );
 
-  Future<void> _fetchAllGrades() async {
-    notifyLoading();
+  Future<void> _fetchAllGrades(bool shouldLoad) async {
+    if (shouldLoad) notifyLoading();
     final Map<Class, List<Grade>> classGrades = await _source.fetchAllGrades();
     notifySuccess(newState: state.copyWith(classGrades: classGrades));
   }
@@ -95,11 +96,14 @@ class RecordsNotifier extends StateNotifier<RecordsState>
     );
   }
 
-  Future<void> refresh() => handleError(_refresh());
+  Future<void> refresh({
+    bool shouldLoad = true,
+  }) =>
+      handleError(_refresh(shouldLoad), catcher: notifyOnError);
 
-  Future<void> _refresh() async {
-    notifyLoading();
-    await fetchAllGrades();
+  Future<void> _refresh(bool shouldLoad) async {
+    if (shouldLoad) notifyLoading();
+    await fetchAllGrades(shouldLoad: shouldLoad);
     await _classRepo.fetchStudentClasses(
       _ref.read(StudentNotifier.provider)!.id,
       fetchAFresh: true,

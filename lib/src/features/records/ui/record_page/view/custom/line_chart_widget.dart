@@ -39,9 +39,7 @@ class LineChartWidget extends StatelessWidget {
     return grades.map((e) {
       return FlSpot(
         grades.indexOf(e).toDouble(),
-        (e.total ?? 0) < 20
-            ? 20
-            : (e.total ?? 0) - (Random().nextBool() ? 20 : 10),
+        e.total ?? 0,
       );
     }).toList();
   }

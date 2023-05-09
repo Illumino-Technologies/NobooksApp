@@ -39,7 +39,7 @@ class ClassRepository implements ClassRepoInterface {
   @override
   Future<Class> fetchCurrentClass(String studentId) async {
     final Class class_ = await _source.fetchStudentClass(studentId);
-    _class = _class;
+    _class = class_;
     _classes.add(class_);
     return _class!;
   }

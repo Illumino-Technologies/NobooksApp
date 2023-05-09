@@ -16,9 +16,10 @@ class RecordsState extends RiverpodStateWithStatus {
 
   Class? get currentClass => _currentClass;
 
-  List<Grade> get allGrades => classGrades.values
-      .reduce((value, element) => value..addAll(element))
-      .toList();
+  List<Grade> get allGrades =>
+      classGrades.values.fold<List<Grade>>([], (previousValue, element) {
+        return previousValue..addAll(element);
+      });
 
   @override
   RecordsState copyWith({

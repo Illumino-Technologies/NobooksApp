@@ -8,10 +8,6 @@ class _RecordView extends ConsumerWidget {
     final Map<Class, List<Grade>> classGrades = ref.watch(
       RecordsNotifier.provider.select((value) => value.classGrades),
     );
-    return Column(
-      children: [
-        _RecordGraph(classGrades: classGrades),
-      ],
-    );
+    return _RecordGraph(classGrades: classGrades);
   }
 }
