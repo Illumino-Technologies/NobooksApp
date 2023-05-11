@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/assignments/domain/fakes/fake_assignments.dart';
+import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
@@ -37,7 +38,9 @@ class DashboardWidget extends ConsumerWidget {
                     ),
                     8.boxHeight,
                     Text(
-                      'The First term examination for the 2022/2023 Academic session comes up on the 3rd of December, 2022. You need to study your notes to prepare well for the exam.',
+                      'The First term examination for the 2022/2023 Academic '
+                      'session comes up on the 3rd of December, 2022. You need '
+                      'to study your notes to prepare well for the exam.',
                       style: TextStyles.paragraph1.asSemibold.withColor(
                         AppColors.neutral50,
                       ),
@@ -60,8 +63,8 @@ class DashboardWidget extends ConsumerWidget {
                       ),
                       onPressed: () {
                         context.pushNamed(
-                          AppRoute.assignment.name,
-                          extra: FakeAssignments.biologyAssignment,
+                          AppRoute.noteDetailPage.name,
+                          extra: FakeNotes.allNotes[0],
                         );
                       },
                     )

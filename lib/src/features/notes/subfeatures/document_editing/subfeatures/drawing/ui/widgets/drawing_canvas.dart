@@ -5,9 +5,11 @@ import 'package:nobook/src/global/ui/ui_barrel.dart';
 class DrawingCanvas extends StatefulWidget {
   final DrawingController controller;
   final Size size;
+  final bool readOnly;
 
   const DrawingCanvas({
     Key? key,
+    this.readOnly = false,
     required this.controller,
     required this.size,
   }) : super(key: key);
@@ -47,16 +49,17 @@ class _DrawingCanvasState extends State<DrawingCanvas> {
               },
             ),
           ),
-          GestureDetector(
-            onPanStart: panStart,
-            onPanEnd: (details) {
-              details.velocity.pixelsPerSecond;
-              // if (erasingNotifier.value) return;
-              if (controller.drawingMode == DrawingMode.erase) return;
-              panEnd(details);
-            },
-            onPanUpdate: panUpdate,
-          ),
+          if (!widget.readOnly)
+            GestureDetector(
+              onPanStart: panStart,
+              onPanEnd: (details) {
+                details.velocity.pixelsPerSecond;
+                // if (erasingNotifier.value) return;
+                if (controller.drawingMode == DrawingMode.erase) return;
+                panEnd(details);
+              },
+              onPanUpdate: panUpdate,
+            ),
         ],
       ),
     );

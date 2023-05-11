@@ -5,39 +5,57 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/assignments/domain/models/assignment_model.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
+import 'package:nobook/src/global/ui/ui_barrel.dart' show AppColors;
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class FakeAssignments {
   static final TextMetadata questionMetadata = TextMetadata(
     fontSize: 18.sp,
     fontWeight: FontWeight.w700,
+    color: AppColors.black,
   );
 
   static final NoteDocument fakeQuestion1 = [
     TextEditorController(
       text: 'What is the capital of Nigeria?',
-      deltas: [],
+      deltas: 'What is the capital of Nigeria?'.chars.map(
+        (e) {
+          return TextDelta(char: e, metadata: questionMetadata);
+        },
+      ).toList(),
     )..initialize(metadata: questionMetadata),
   ];
 
   static final NoteDocument fakeQuestion2 = [
     TextEditorController(
       text: 'How many states are in Nigeria?',
-      deltas: [],
+      deltas: 'What is the capital of Nigeria?'.chars.map(
+        (e) {
+          return TextDelta(char: e, metadata: questionMetadata);
+        },
+      ).toList(),
     )..initialize(metadata: questionMetadata),
   ];
 
   static final NoteDocument fakeQuestion3 = [
     TextEditorController(
       text: 'How many geopolitical zones are in Nigeria?',
-      deltas: [],
+      deltas: 'What is the capital of Nigeria?'.chars.map(
+        (e) {
+          return TextDelta(char: e, metadata: questionMetadata);
+        },
+      ).toList(),
     )..initialize(metadata: questionMetadata),
   ];
 
   static final NoteDocument fakeQuestion4 = [
     TextEditorController(
       text: 'What is your name?',
-      deltas: [],
+      deltas: 'What is the capital of Nigeria?'.chars.map(
+        (e) {
+          return TextDelta(char: e, metadata: questionMetadata);
+        },
+      ).toList(),
     )..initialize(metadata: questionMetadata),
   ];
 
@@ -49,12 +67,13 @@ abstract class FakeAssignments {
   ];
 
   static AssignmentOperation operation(
+    String serialId,
     NoteDocument content,
     DateTime createdAt,
     DateTime updatedAt,
   ) =>
       AssignmentOperation(
-        serialId: '1',
+        serialId: serialId,
         content: content,
         createdAt: createdAt,
         updatedAt: updatedAt,
@@ -65,9 +84,10 @@ abstract class FakeAssignments {
     subject: FakeSubjects.geography,
     topic: 'Current Affairs',
     teacher: FakeUsers.mrOgunyemi,
-    questions: questions.map((e) {
+    questions: questions.map((content) {
       return operation(
-        e,
+        (questions.indexOf(content) + 1).toString(),
+        content,
         DateTime.now().copySubtract(day: 1),
         DateTime.now().copySubtract(day: 1),
       );
@@ -84,6 +104,7 @@ abstract class FakeAssignments {
     teacher: FakeUsers.mrOgunyemi,
     questions: questions.map((content) {
       return operation(
+        (questions.indexOf(content) + 1).toString(),
         content,
         DateTime.now().copySubtract(day: 1),
         DateTime.now().copySubtract(day: 1),
@@ -101,6 +122,7 @@ abstract class FakeAssignments {
     teacher: FakeUsers.mrOgunyemi,
     questions: questions.map((content) {
       return operation(
+        (questions.indexOf(content) + 1).toString(),
         content,
         DateTime.now().copySubtract(day: 1),
         DateTime.now().copySubtract(day: 1),
@@ -118,6 +140,7 @@ abstract class FakeAssignments {
     teacher: FakeUsers.mrOgunyemi,
     questions: questions.map((content) {
       return operation(
+        (questions.indexOf(content) + 1).toString(),
         content,
         DateTime.now().copySubtract(day: 1),
         DateTime.now().copySubtract(day: 1),
@@ -135,6 +158,7 @@ abstract class FakeAssignments {
     teacher: FakeUsers.mrOgunyemi,
     questions: questions.map((content) {
       return operation(
+        (questions.indexOf(content) + 1).toString(),
         content,
         DateTime.now().copySubtract(day: 1),
         DateTime.now().copySubtract(day: 1),
@@ -152,6 +176,7 @@ abstract class FakeAssignments {
     teacher: FakeUsers.mrOgunyemi,
     questions: questions.map((content) {
       return operation(
+        (questions.indexOf(content) + 1).toString(),
         content,
         DateTime.now().copySubtract(day: 1),
         DateTime.now().copySubtract(day: 1),

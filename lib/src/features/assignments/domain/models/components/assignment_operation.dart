@@ -13,10 +13,23 @@ class AssignmentOperation {
     required this.updatedAt,
   });
 
+  AssignmentOperation.create({
+    required this.serialId,
+    required this.content,
+  })  : createdAt = DateTime.now(),
+        updatedAt = DateTime.now();
+
+  NoteDocumentController get newController => NoteDocumentController(
+        noteDocument: content,
+      );
+
+  NoteDocumentController get newInitializedController =>
+      newController..initialize(noteDocument: content);
+
   //generate fromMap and toMap functions
   AssignmentOperation.fromMap(Map<String, dynamic> map)
       : serialId = map['serialId'],
-        content =  UtilFunctions.noteDocumentFromList(map['content']),
+        content = UtilFunctions.noteDocumentFromList(map['content']),
         createdAt = UtilFunctions.dateTimeFromMap(map['createdAt'])!,
         updatedAt = UtilFunctions.dateTimeFromMap(map['updatedAt'])!;
 

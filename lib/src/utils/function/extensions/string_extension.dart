@@ -72,6 +72,12 @@ extension StringExtension on String {
     if (contains('?')) return '$this&$queryParam';
     return '$this?$queryParam';
   }
+
+  String get withNumberOrdinal {
+    final int? number = int.tryParse(this);
+    if (number == null) return this;
+    return number.toOrdinal();
+  }
 }
 
 extension NullableStringExtension on String? {
