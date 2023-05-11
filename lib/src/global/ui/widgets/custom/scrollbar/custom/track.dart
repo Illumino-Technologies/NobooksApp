@@ -8,8 +8,6 @@ class _Track extends StatelessWidget {
 
   const _Track({
     Key? key,
-    this.width,
-    this.height,
     required this.active,
     required this.onTap,
   }) : super(key: key);

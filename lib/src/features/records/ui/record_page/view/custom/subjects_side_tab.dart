@@ -1,9 +1,7 @@
 part of '../record_page.dart';
 
 class _SubjectsSideTab extends StatelessWidget {
-  const _SubjectsSideTab({
-    super.key,
-  });
+  const _SubjectsSideTab();
 
   @override
   Widget build(BuildContext context) {

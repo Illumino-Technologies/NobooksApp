@@ -70,12 +70,12 @@ class _AssignmentPageState extends ConsumerState<TestandExamPage> {
                 const SizedBox(
                   height: 15,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: SizedBox(
                     height: 32,
                     child: Row(
-                      children: const [
+                      children: [
                         Text(
                           'Topic:',
                           style: TextStyle(

@@ -18,8 +18,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
+    return const Row(
+      children: [
         DashboardBoardPage(),
         DashboardCalender(),
       ],

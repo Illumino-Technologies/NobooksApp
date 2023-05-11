@@ -1,7 +1,7 @@
 part of '../record_page.dart';
 
 class _RecordView extends StatefulWidget {
-  const _RecordView({super.key});
+  const _RecordView();
 
   @override
   State<_RecordView> createState() => _RecordViewState();
@@ -10,8 +10,8 @@ class _RecordView extends StatefulWidget {
 class _RecordViewState extends State<_RecordView> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         _RecordGraph(),
       ],
     );

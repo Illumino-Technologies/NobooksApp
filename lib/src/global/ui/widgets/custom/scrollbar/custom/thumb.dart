@@ -11,7 +11,6 @@ class _Thumb extends StatelessWidget {
 
   const _Thumb({
     Key? key,
-    this.width,
     this.height,
     required this.onVerticalDrag,
     required this.onVerticalDragStart,
