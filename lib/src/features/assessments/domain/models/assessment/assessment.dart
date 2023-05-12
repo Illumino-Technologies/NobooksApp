@@ -7,7 +7,7 @@ part 'content/assessment_operation.dart';
 
 part 'content/question_type.dart';
 
-class Assessment with Comparable<Assessment> {
+class Assessment {
   final String id;
   final Subject subject;
   final List<QuestionType> questionTypes;
