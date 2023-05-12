@@ -28,6 +28,24 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   late DrawingMetadata sketchMetadata;
   late Shape shape;
 
+  Drawings get mutableDrawings => _drawings;
+
+  Drawing? _currentDrawing;
+
+  Drawing? get currentDrawing => _currentDrawing;
+
+  set currentDrawing(Drawing? value) {
+    _currentDrawing = value;
+    notifyListeners();
+  }
+
+  void startDrawing() {
+    currentDrawing = switch (drawingMode) {
+      DrawingMode.shape => ShapeDrawing(shape: shape, deltas: []),
+      _ => SketchDrawing(deltas: []),
+    };
+  }
+
   DrawingMetadata metadataFor([DrawingMode? mode]) {
     switch (_actionStack.lastOrNull) {
       case DrawingMode.erase:
