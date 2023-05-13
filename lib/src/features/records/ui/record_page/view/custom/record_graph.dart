@@ -1,7 +1,8 @@
 part of '../record_page.dart';
 
 class _RecordGraph extends ConsumerStatefulWidget {
-  const _RecordGraph({Key? key}) : super(key: key);
+  final List<Grade> grades;
+  const _RecordGraph({required this.grades, Key? key}) : super(key: key);
 
   @override
   ConsumerState<_RecordGraph> createState() => _DashboardScreenState();
@@ -17,37 +18,12 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
       fontWeight: FontWeight.bold,
       fontSize: 10,
     );
-    Widget text;
-    switch (value.toInt()) {
-      case 1:
-        text = const Text('MTH', style: style);
-        break;
-      case 2:
-        text = const Text('ENG', style: style);
-        break;
-      case 3:
-        text = const Text('CHE', style: style);
-        break;
-      case 4:
-        text = const Text('PHY', style: style);
-        break;
-      case 5:
-        text = const Text('BIO', style: style);
-        break;
-      case 6:
-        text = const Text('ECN', style: style);
-        break;
-      case 7:
-        text = const Text('FMT', style: style);
-        break;
-      case 8:
-        text = const Text('CIV', style: style);
+    final int index = value.toInt();
 
-        break;
-      default:
-        text = const Text('', style: style);
-        break;
-    }
+    final Widget text = Text(
+      grades[index].subject.code.toUpperCase(),
+      style: style,
+    );
 
     return SideTitleWidget(
       axisSide: meta.axisSide,
@@ -60,46 +36,7 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
       fontWeight: FontWeight.bold,
       fontSize: 10,
     );
-    String text;
-    switch (value.toInt()) {
-      case 1:
-        text = '0%';
-        break;
-      case 2:
-        text = '10%';
-        break;
-      case 3:
-        text = '20%';
-        break;
-      case 4:
-        text = '30%';
-        break;
-      case 5:
-        text = '40%';
-        break;
-      case 6:
-        text = '50%';
-        break;
-      case 7:
-        text = '60%';
-        break;
-      case 8:
-        text = '70%';
-        break;
-      case 9:
-        text = '80%';
-        break;
-      case 10:
-        text = '90%';
-        break;
-      case 11:
-        text = '100%';
-        break;
-
-      default:
-        return Container();
-    }
-
+    String text = '${(value.toInt() + 1) * 10}%';
     return Text(text, style: style, textAlign: TextAlign.left);
   }
 
@@ -257,15 +194,7 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
                         maxY: 6,
                         lineBarsData: [
                           LineChartBarData(
-                            spots: const [
-                              FlSpot(0, 3),
-                              FlSpot(2.6, 2),
-                              FlSpot(4.9, 5),
-                              FlSpot(6.8, 3.1),
-                              FlSpot(8, 4),
-                              FlSpot(9.5, 3),
-                              FlSpot(11, 4),
-                            ],
+                            spots: spots,
                             isCurved: true,
                             gradient: LinearGradient(
                               colors: gradientColors,
@@ -297,5 +226,19 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
         ),
       ),
     );
+  }
+
+  final List<FlSpot> spots = [];
+  late final List<Grade> grades = widget.grades;
+
+  void manipulateData() {
+    spots.clear();
+    spots.addAll(convertGradesToPoints(grades));
+  }
+
+  List<FlSpot> convertGradesToPoints(List<Grade> grades) {
+    return grades.map<FlSpot>((e) {
+      return FlSpot(grades.indexOf(e).toDouble(), e.total ?? 0);
+    }).toList();
   }
 }

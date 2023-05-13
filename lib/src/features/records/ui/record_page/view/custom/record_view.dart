@@ -12,7 +12,9 @@ class _RecordViewState extends State<_RecordView> {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        _RecordGraph(),
+        _RecordGraph(
+          grades: FakeGrades.allGrades,
+        ),
       ],
     );
   }
