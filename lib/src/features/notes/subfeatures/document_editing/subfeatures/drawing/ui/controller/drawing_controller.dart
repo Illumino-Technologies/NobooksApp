@@ -39,18 +39,24 @@ class DrawingController extends DocumentEditingController {
     notifyListeners();
   }
 
+  @override
+  void notifyListeners() {
+    super.notifyListeners();
+    print('listeners notified');
+  }
+
   void startDrawing() {
     if (drawingMode == DrawingMode.erase) return;
-    print('starting drawing');
+    print('start drawing called ');
     _currentlyActiveDrawing = switch (drawingMode) {
       DrawingMode.shape => ShapeDrawing(
           shape: shape,
           deltas: [],
-          metadata: metadataFor(),
+          metadata: shapeMetadata,
         ),
       _ => SketchDrawing(
           deltas: [],
-          metadata: metadataFor(),
+          metadata: sketchMetadata,
         ),
     };
   }
@@ -199,10 +205,10 @@ class DrawingController extends DocumentEditingController {
 
   void draw(DrawingDelta delta) {
     Drawings drawings = List.from(_drawings);
-    if (delta.operation == DrawingOperation.start ||
-        (currentlyActiveDrawing == null && drawingMode != DrawingMode.erase)
-    ) {
+    if (delta.operation == DrawingOperation.start) {
+      print('this identifier: $hashCode');
       startDrawing();
+      print('currently active drawing: $currentlyActiveDrawing');
     }
     Drawing? drawing = currentlyActiveDrawing;
 
@@ -212,8 +218,8 @@ class DrawingController extends DocumentEditingController {
           region: eraser.region.copyWith(centre: delta.point),
         );
         drawings = _erase(eraser, drawings);
-        // notifyOfSignificantUpdate();
-        break;
+        changeDrawings(drawings);
+        return;
       case DrawingMode.sketch:
         {
           drawing = _sketch(delta, drawing!);
@@ -226,9 +232,10 @@ class DrawingController extends DocumentEditingController {
         drawing = _drawLine(delta, drawing!);
         break;
     }
+
     //adds drawing if it's the last operation in the drawing, else updates the current drawing
     if (delta.operation == DrawingOperation.end) {
-      drawings.add(drawing!);
+      drawings.add(drawing);
       _currentlyActiveDrawing = null;
       changeDrawings(drawings);
     } else {
@@ -334,6 +341,7 @@ class DrawingController extends DocumentEditingController {
         controller.drawingMode == drawingMode &&
         controller.eraser == eraser &&
         controller.shape == shape &&
+        controller.currentlyActiveDrawing == currentlyActiveDrawing &&
         UtilFunctions.listEqual(controller._actionStack, _actionStack) &&
         UtilFunctions.listEqual(controller._drawings, _drawings) &&
         controller.sketchMetadata == sketchMetadata;
