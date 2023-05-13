@@ -113,20 +113,6 @@ class _DashboardScreenState extends ConsumerState<_RecordGraph> {
             ),
     );
   }
-
-  final List<FlSpot> spots = [];
-  late final List<Grade> grades = widget.grades;
-
-  void manipulateData() {
-    spots.clear();
-    spots.addAll(convertGradesToPoints(grades));
-  }
-
-  List<FlSpot> convertGradesToPoints(List<Grade> grades) {
-    return grades.map<FlSpot>((e) {
-      return FlSpot(grades.indexOf(e).toDouble(), e.total ?? 0);
-    }).toList();
-  }
 }
 
 class _NoRecordsWidget extends StatelessWidget {
