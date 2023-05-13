@@ -65,7 +65,12 @@ class NoteDocumentController extends ChangeNotifier {
             DrawingOperation.end) ||
         drawingController.drawings.isEmpty) {
       addControllerToCache(
-        drawingController.copy()..addListener(drawingControllerListener),
+        (drawingController
+              ..initialize(
+                currentActiveDrawing: drawingController.currentlyActiveDrawing,
+              ))
+            .copy()
+          ..addListener(drawingControllerListener),
       );
     }
     currentControllerListener();

@@ -1,10 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-class DrawingController extends DocumentEditingController with EquatableMixin {
+class DrawingController extends DocumentEditingController {
   DrawingController();
 
   late Eraser eraser;
@@ -31,19 +30,28 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   @protected
   Drawings get mutableDrawings => _drawings;
 
-  Drawing? _currentDrawing;
+  Drawing? _currentlyActiveDrawing;
 
-  Drawing? get currentlyActiveDrawing => _currentDrawing;
+  Drawing? get currentlyActiveDrawing => _currentlyActiveDrawing;
 
   set currentlyActiveDrawing(Drawing? value) {
-    _currentDrawing = value;
+    _currentlyActiveDrawing = value;
     notifyListeners();
   }
 
   void startDrawing() {
-    currentlyActiveDrawing = switch (drawingMode) {
-      DrawingMode.shape => ShapeDrawing(shape: shape, deltas: []),
-      _ => SketchDrawing(deltas: []),
+    if (drawingMode == DrawingMode.erase) return;
+    print('starting drawing');
+    _currentlyActiveDrawing = switch (drawingMode) {
+      DrawingMode.shape => ShapeDrawing(
+          shape: shape,
+          deltas: [],
+          metadata: metadataFor(),
+        ),
+      _ => SketchDrawing(
+          deltas: [],
+          metadata: metadataFor(),
+        ),
     };
   }
 
@@ -82,6 +90,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     DrawingMetadata? lineMetadata,
     DrawingMetadata? shapeMetadata,
     DrawingMetadata? sketchMetadata,
+    Drawing? currentActiveDrawing,
     Shape? shape,
     Drawings? drawings,
   }) {
@@ -91,6 +100,8 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     _drawings = drawings ?? _drawings;
 
     this.shape = shape ?? Shape.rectangle;
+
+    _currentlyActiveDrawing = currentActiveDrawing;
 
     this.lineMetadata = lineMetadata ??
         DrawingMetadata(
@@ -188,7 +199,9 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
 
   void draw(DrawingDelta delta) {
     Drawings drawings = List.from(_drawings);
-    if (delta.operation == DrawingOperation.start) {
+    if (delta.operation == DrawingOperation.start ||
+        (currentlyActiveDrawing == null && drawingMode != DrawingMode.erase)
+    ) {
       startDrawing();
     }
     Drawing? drawing = currentlyActiveDrawing;
@@ -202,8 +215,10 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
         // notifyOfSignificantUpdate();
         break;
       case DrawingMode.sketch:
-        drawing = _sketch(delta, drawing!);
-        break;
+        {
+          drawing = _sketch(delta, drawing!);
+          break;
+        }
       case DrawingMode.shape:
         drawing = _drawShape(delta, drawing!);
         break;
@@ -214,7 +229,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     //adds drawing if it's the last operation in the drawing, else updates the current drawing
     if (delta.operation == DrawingOperation.end) {
       drawings.add(drawing!);
-      currentlyActiveDrawing = null;
+      _currentlyActiveDrawing = null;
       changeDrawings(drawings);
     } else {
       currentlyActiveDrawing = drawing;
@@ -386,6 +401,9 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
       ..initialize(
         eraser: Eraser.fromMap((map['eraser'] as Map).cast()),
         drawingMode: DrawingMode.values[map['drawingMode'] as int],
+        currentActiveDrawing: map['currentActiveDrawing'] == null
+            ? null
+            : Drawing.fromMap((map['currentActiveDrawing'] as Map).cast()),
         drawings: (map['drawings'] as List)
             .cast<Map>()
             .map((data) => Drawing.fromMap(data.cast()))
@@ -403,14 +421,4 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     }
     return controller;
   }
-
-  @override
-  List<Object?> get props => [
-        shapeMetadata,
-        lineMetadata,
-        sketchMetadata,
-        _drawingMode,
-        _initialized,
-        ..._drawings,
-      ];
 }
