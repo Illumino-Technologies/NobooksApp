@@ -9,7 +9,8 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class FakeAssessmentsData {
   /// the questions for each assessment
-  static final List<NoteDocument> questionContents = FakeAssignments.questions;
+  static final List<NoteDocument> questionContents =
+      FakeAssignmentData.questions;
 
   /// this simply generates AssessmentOperations (question and answer)
   static List<AssessmentOperation> getOperations() {

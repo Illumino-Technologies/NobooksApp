@@ -20,4 +20,8 @@ mixin NetworkUtilMixin {
   Options get optionsWithToken => Options(
         headers: {'Authorization': 'Bearer $nonNullToken'},
       );
+
+  dynamic dataOf(Response response) {
+    return response.data['data'] ?? response.data;
+  }
 }
