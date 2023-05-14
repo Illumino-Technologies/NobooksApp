@@ -74,8 +74,8 @@ final GoRouter _router = GoRouter(
           ],
         ),
         GoRoute(
-          path: AppRoute.assessmentListing.path,
-          name: AppRoute.assessmentListing.name,
+          path: AppRoute.testAndExam.path,
+          name: AppRoute.testAndExam.name,
           builder: (context, state) {
             return const AssessmentsPage();
           },
