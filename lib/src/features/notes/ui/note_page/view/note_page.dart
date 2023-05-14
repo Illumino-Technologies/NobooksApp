@@ -106,7 +106,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                     );
                                   },
                                 ),
-                                SizedBox(width: 10.w),
+                                
                                 ValueListenableBuilder(
                                   valueListenable: isPersonalNotifier,
                                   builder: (context, value, child) {
