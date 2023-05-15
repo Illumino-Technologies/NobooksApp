@@ -1,10 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-class DrawingController extends DocumentEditingController with EquatableMixin {
+class DrawingController extends DocumentEditingController {
   DrawingController();
 
   late Eraser eraser;
@@ -27,6 +26,38 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   late DrawingMetadata shapeMetadata;
   late DrawingMetadata sketchMetadata;
   late Shape shape;
+
+  @protected
+  Drawings get mutableDrawings => _drawings;
+
+  Drawing? _currentlyActiveDrawing;
+
+  Drawing? get currentlyActiveDrawing => _currentlyActiveDrawing;
+
+  set currentlyActiveDrawing(Drawing? value) {
+    _currentlyActiveDrawing = value;
+    notifyListeners();
+  }
+
+  @override
+  void notifyListeners() {
+    super.notifyListeners();
+  }
+
+  void startDrawing() {
+    if (drawingMode == DrawingMode.erase) return;
+    _currentlyActiveDrawing = switch (drawingMode) {
+      DrawingMode.shape => ShapeDrawing(
+          shape: shape,
+          deltas: [],
+          metadata: shapeMetadata,
+        ),
+      _ => SketchDrawing(
+          deltas: [],
+          metadata: sketchMetadata,
+        ),
+    };
+  }
 
   DrawingMetadata metadataFor([DrawingMode? mode]) {
     switch (_actionStack.lastOrNull) {
@@ -63,6 +94,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     DrawingMetadata? lineMetadata,
     DrawingMetadata? shapeMetadata,
     DrawingMetadata? sketchMetadata,
+    Drawing? currentActiveDrawing,
     Shape? shape,
     Drawings? drawings,
   }) {
@@ -72,6 +104,8 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     _drawings = drawings ?? _drawings;
 
     this.shape = shape ?? Shape.rectangle;
+
+    _currentlyActiveDrawing = currentActiveDrawing;
 
     this.lineMetadata = lineMetadata ??
         DrawingMetadata(
@@ -160,6 +194,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
   }
 
   void changeDrawings(Drawings drawings) {
+    print('change drawings called');
     if (drawings.isEmpty) {
       changeDrawingMode(_actionStack.lastOrNull ?? DrawingMode.sketch);
     }
@@ -169,29 +204,63 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
 
   void draw(DrawingDelta delta) {
     Drawings drawings = List.from(_drawings);
-
-    if (delta.operation == DrawingOperation.end) {
-      notifyOfSignificantUpdate();
+    if (delta.operation == DrawingOperation.start) {
+      print('this identifier: $hashCode');
+      startDrawing();
     }
+    Drawing? drawing = currentlyActiveDrawing;
+
     switch (drawingMode) {
       case DrawingMode.erase:
-        eraser = eraser.copyWith(
-          region: eraser.region.copyWith(centre: delta.point),
-        );
-        drawings = _erase(eraser, drawings);
-        // notifyOfSignificantUpdate();
-        break;
+        {
+          eraser = eraser.copyWith(
+            region: eraser.region.copyWith(centre: delta.point),
+          );
+          drawings = _erase(eraser, drawings);
+          if (drawings.length != _drawings.length) {
+            changeDrawings(drawings);
+          }
+          return;
+        }
       case DrawingMode.sketch:
-        drawings = _sketch(delta, drawings);
-        break;
+        {
+          drawing = _sketch(delta, drawing!);
+          break;
+        }
       case DrawingMode.shape:
-        drawings = _drawShape(delta, drawings);
+        {
+          if (delta.operation == DrawingOperation.end) {
+            drawing = drawing!.copyWith(
+              deltas: List.from(drawing.deltas)
+                ..replaceRange(
+                  drawing.deltas.lastIndex,
+                  drawing.deltas.lastIndex,
+                  [
+                    drawing.deltas.last.copyWith(
+                      operation: DrawingOperation.end,
+                    )
+                  ],
+                ),
+            );
+            break;
+          }
+          drawing = _drawShape(delta, drawing!);
+        }
         break;
       case DrawingMode.line:
-        drawings = _drawLine(delta, drawings);
+        drawing = _drawLine(delta, drawing!);
         break;
     }
-    changeDrawings(drawings);
+
+    // adds drawing if it's the last operation in the drawing, else updates the
+    // current drawing
+    if (delta.operation == DrawingOperation.end) {
+      _currentlyActiveDrawing = null;
+      drawings.add(drawing);
+      changeDrawings(drawings);
+    } else {
+      currentlyActiveDrawing = drawing;
+    }
   }
 
   void notifyOfSignificantUpdate() {
@@ -208,13 +277,11 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     notifyListeners();
   }
 
-  Drawings _sketch(DrawingDelta delta, Drawings drawings) {
-    final Drawings sketchedDrawings = addDeltaToDrawings<SketchDrawing>(
-      delta,
-      drawings,
-      newMetadata: metadataFor(DrawingMode.sketch),
+  Drawing _sketch(DrawingDelta delta, Drawing drawing) {
+    drawing = drawing.copyWith(
+      deltas: List.from(drawing.deltas)..add(delta),
     );
-    return sketchedDrawings;
+    return drawing;
   }
 
   Drawings _erase(Eraser eraser, Drawings drawings) {
@@ -234,17 +301,15 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     return erasedDrawings;
   }
 
-  Drawings _drawLine(DrawingDelta delta, Drawings drawings) {
-    //TODO: implement _drawLine
-    final Drawings drawnDrawings = addDeltaToDrawings(delta, drawings);
-    return drawnDrawings;
+  Drawing _drawLine(DrawingDelta delta, Drawing drawing) {
+    // TODO: implement _drawLine
+    throw UnimplementedError();
   }
 
-  Drawings _drawShape(DrawingDelta delta, Drawings drawings) {
-    final Drawings drawnDrawings = addDeltaToDrawings<ShapeDrawing>(
-      delta,
-      drawings,
-      newMetadata: metadataFor(DrawingMode.shape),
+  Drawing _drawShape(DrawingDelta delta, Drawing drawing) {
+    print('delta: $delta');
+    final Drawing drawnDrawings = drawing.copyWith(
+      deltas: List.from(drawing.deltas)..add(delta),
     );
     return drawnDrawings;
   }
@@ -297,6 +362,7 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
         controller.drawingMode == drawingMode &&
         controller.eraser == eraser &&
         controller.shape == shape &&
+        controller.currentlyActiveDrawing == currentlyActiveDrawing &&
         UtilFunctions.listEqual(controller._actionStack, _actionStack) &&
         UtilFunctions.listEqual(controller._drawings, _drawings) &&
         controller.sketchMetadata == sketchMetadata;
@@ -364,6 +430,9 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
       ..initialize(
         eraser: Eraser.fromMap((map['eraser'] as Map).cast()),
         drawingMode: DrawingMode.values[map['drawingMode'] as int],
+        currentActiveDrawing: map['currentActiveDrawing'] == null
+            ? null
+            : Drawing.fromMap((map['currentActiveDrawing'] as Map).cast()),
         drawings: (map['drawings'] as List)
             .cast<Map>()
             .map((data) => Drawing.fromMap(data.cast()))
@@ -381,14 +450,4 @@ class DrawingController extends DocumentEditingController with EquatableMixin {
     }
     return controller;
   }
-
-  @override
-  List<Object?> get props => [
-        shapeMetadata,
-        lineMetadata,
-        sketchMetadata,
-        _drawingMode,
-        _initialized,
-        ..._drawings,
-      ];
 }

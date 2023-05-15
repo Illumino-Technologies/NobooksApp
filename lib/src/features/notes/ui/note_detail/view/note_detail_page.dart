@@ -56,6 +56,12 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
                     20.boxHeight,
                     MaterialButton(
                       onPressed: () {
+                        NoteSyncLogic(
+                          currentNote: widget.note.copyWith(
+                            noteBody: documentController.noteDocument,
+                          ),
+                        ).clearNotes();
+
                         documentController.clear();
                       },
                       child: const Icon(Icons.delete),
@@ -77,8 +83,9 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
                 builder: (_, controllerValue) {
                   return controllerValue.showingRoughPaper
                       ? RoughPaper(
-                          onClose: () =>
-                              controllerValue.toggleRoughPaper(false),
+                          onClose: () => controllerValue.toggleRoughPaper(
+                            false,
+                          ),
                           size: Size(400.w, 528.h),
                         )
                       : const SizedBox.shrink();
