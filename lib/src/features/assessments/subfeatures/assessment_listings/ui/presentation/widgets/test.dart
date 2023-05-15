@@ -96,7 +96,8 @@ class TestPage extends ConsumerWidget {
                                     '${UtilFunctions.formatLongDate(
                                       assessment.startTime,
                                       ', ',
-                                    )} • ${UtilFunctions.formatTime(assessment.endTime)}',
+                                    )} • ${UtilFunctions.
+                                    formatTime(assessment.endTime)}',
                                     style: TextStyles.footer.copyWith(
                                       fontSize: 8.sp,
                                       height: 1.5,
@@ -107,7 +108,9 @@ class TestPage extends ConsumerWidget {
                                   Text(
                                     'Expires ${DateFormat.MMMd().format(
                                       assessment.endTime,
-                                    )}, ${DateFormat.jm().format(assessment.endTime).removeAllSpaces.toLowerCase()}',
+                                    )}, ${DateFormat.jm()
+                                    .format(assessment.endTime)
+                                    .removeAllSpaces.toLowerCase()}',
                                     style: TextStyles.headline4.copyWith(
                                       fontSize: 8.sp,
                                       color: AppColors.neutral400,
@@ -125,6 +128,7 @@ class TestPage extends ConsumerWidget {
                 },
               ),
             ),
+         24.boxHeight,
           ],
         );
       },

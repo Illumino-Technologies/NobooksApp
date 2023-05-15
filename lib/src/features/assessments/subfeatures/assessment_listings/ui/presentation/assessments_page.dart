@@ -54,7 +54,7 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Your Assignments',
+                              'Your Tests and Exams',
                               style: TextStyles.headline2.copyWith(
                                 fontSize: 28.sp,
                                 fontWeight: FontWeight.w700,
