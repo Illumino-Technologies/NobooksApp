@@ -61,15 +61,15 @@ class NoteDocumentController extends ChangeNotifier {
   }
 
   void drawingControllerListener() {
-    print(
-        'last - last operation: ${drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation}');
-    print(
-        'last - first operation: ${drawingController.drawings.lastOrNull?.deltas.firstOrNull?.operation}');
-
-    print(
-        'first - last operation: ${drawingController.drawings.firstOrNull?.deltas.lastOrNull?.operation}');
-    print(
-        'first - first operation: ${drawingController.drawings.firstOrNull?.deltas.firstOrNull?.operation}');
+    // print(
+    //     'last - last operation: ${drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation}');
+    // print(
+    //     'last - first operation: ${drawingController.drawings.lastOrNull?.deltas.firstOrNull?.operation}');
+    //
+    // print(
+    //     'first - last operation: ${drawingController.drawings.firstOrNull?.deltas.lastOrNull?.operation}');
+    // print(
+    //     'first - first operation: ${drawingController.drawings.firstOrNull?.deltas.firstOrNull?.operation}');
 
     if (drawingController.drawingMode == DrawingMode.erase) {
       if (drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation ==
@@ -89,8 +89,8 @@ class NoteDocumentController extends ChangeNotifier {
     addControllerToCache(
       (drawingController.copy()
         ..initialize(
-          currentActiveDrawing: drawingController.currentlyActiveDrawing,
-        ))
+            // currentActiveDrawing: drawingController.currentlyActiveDrawing,
+            ))
         ..addListener(drawingControllerListener),
     );
   }
@@ -110,7 +110,10 @@ class NoteDocumentController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addControllerToCache(DocumentEditingController controller) {
+  void addControllerToCache(
+    DocumentEditingController controller, [
+    bool shouldSetAsCurrent = false,
+  ]) {
     if (activeCacheIndex != null && activeCacheIndex != cache.lastIndex) {
       if (cache.isNotEmpty) {
         cache.removeRange(activeCacheIndex! + 1, cache.length);
@@ -120,7 +123,8 @@ class NoteDocumentController extends ChangeNotifier {
       cache.removeAt(0);
     }
     cache.add(controller);
-    if (controller is DrawingController &&
+    if (shouldSetAsCurrent &&
+        controller is DrawingController &&
         !drawingController.equalsOther(controller)) {
       setDrawingController(controller);
     }

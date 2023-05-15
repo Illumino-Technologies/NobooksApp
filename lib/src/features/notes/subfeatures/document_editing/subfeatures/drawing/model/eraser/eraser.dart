@@ -103,7 +103,7 @@ class Eraser {
         }
 
         return drawing.deltas.containsWhere(
-          (value) => region.containsPoint(value.point),
+          (delta) => region.containsPoint(delta.point),
         );
       },
     );

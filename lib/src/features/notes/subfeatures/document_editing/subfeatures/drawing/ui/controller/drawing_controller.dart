@@ -42,12 +42,10 @@ class DrawingController extends DocumentEditingController {
   @override
   void notifyListeners() {
     super.notifyListeners();
-    print('listeners notified');
   }
 
   void startDrawing() {
     if (drawingMode == DrawingMode.erase) return;
-    print('start drawing called ');
     _currentlyActiveDrawing = switch (drawingMode) {
       DrawingMode.shape => ShapeDrawing(
           shape: shape,
@@ -196,6 +194,7 @@ class DrawingController extends DocumentEditingController {
   }
 
   void changeDrawings(Drawings drawings) {
+    print('change drawings called');
     if (drawings.isEmpty) {
       changeDrawingMode(_actionStack.lastOrNull ?? DrawingMode.sketch);
     }
@@ -208,18 +207,22 @@ class DrawingController extends DocumentEditingController {
     if (delta.operation == DrawingOperation.start) {
       print('this identifier: $hashCode');
       startDrawing();
-      print('currently active drawing: $currentlyActiveDrawing');
     }
     Drawing? drawing = currentlyActiveDrawing;
 
     switch (drawingMode) {
       case DrawingMode.erase:
-        eraser = eraser.copyWith(
-          region: eraser.region.copyWith(centre: delta.point),
-        );
-        drawings = _erase(eraser, drawings);
-        changeDrawings(drawings);
-        return;
+        {
+          print('erasing drawings is empty: ${drawings.isEmpty}');
+          eraser = eraser.copyWith(
+            region: eraser.region.copyWith(centre: delta.point),
+          );
+          drawings = _erase(eraser, drawings);
+          if (drawings.length != _drawings.length) {
+            changeDrawings(drawings);
+          }
+          return;
+        }
       case DrawingMode.sketch:
         {
           drawing = _sketch(delta, drawing!);
@@ -235,8 +238,8 @@ class DrawingController extends DocumentEditingController {
 
     //adds drawing if it's the last operation in the drawing, else updates the current drawing
     if (delta.operation == DrawingOperation.end) {
-      drawings.add(drawing);
       _currentlyActiveDrawing = null;
+      drawings.add(drawing);
       changeDrawings(drawings);
     } else {
       currentlyActiveDrawing = drawing;
@@ -274,6 +277,7 @@ class DrawingController extends DocumentEditingController {
         erasedDrawings = eraser.eraseAreaFrom(drawings);
         break;
     }
+    print('erased drawings: $erasedDrawings');
     if (erasedDrawings.every((element) => element.deltas.isEmpty)) {
       erasedDrawings.clear();
     }
