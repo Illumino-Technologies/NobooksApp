@@ -213,7 +213,6 @@ class DrawingController extends DocumentEditingController {
     switch (drawingMode) {
       case DrawingMode.erase:
         {
-          print('erasing drawings is empty: ${drawings.isEmpty}');
           eraser = eraser.copyWith(
             region: eraser.region.copyWith(centre: delta.point),
           );
@@ -229,14 +228,32 @@ class DrawingController extends DocumentEditingController {
           break;
         }
       case DrawingMode.shape:
-        drawing = _drawShape(delta, drawing!);
+        {
+          if (delta.operation == DrawingOperation.end) {
+            drawing = drawing!.copyWith(
+              deltas: List.from(drawing.deltas)
+                ..replaceRange(
+                  drawing.deltas.lastIndex,
+                  drawing.deltas.lastIndex,
+                  [
+                    drawing.deltas.last.copyWith(
+                      operation: DrawingOperation.end,
+                    )
+                  ],
+                ),
+            );
+            break;
+          }
+          drawing = _drawShape(delta, drawing!);
+        }
         break;
       case DrawingMode.line:
         drawing = _drawLine(delta, drawing!);
         break;
     }
 
-    //adds drawing if it's the last operation in the drawing, else updates the current drawing
+    // adds drawing if it's the last operation in the drawing, else updates the
+    // current drawing
     if (delta.operation == DrawingOperation.end) {
       _currentlyActiveDrawing = null;
       drawings.add(drawing);
@@ -277,7 +294,6 @@ class DrawingController extends DocumentEditingController {
         erasedDrawings = eraser.eraseAreaFrom(drawings);
         break;
     }
-    print('erased drawings: $erasedDrawings');
     if (erasedDrawings.every((element) => element.deltas.isEmpty)) {
       erasedDrawings.clear();
     }
@@ -291,6 +307,7 @@ class DrawingController extends DocumentEditingController {
   }
 
   Drawing _drawShape(DrawingDelta delta, Drawing drawing) {
+    print('delta: $delta');
     final Drawing drawnDrawings = drawing.copyWith(
       deltas: List.from(drawing.deltas)..add(delta),
     );

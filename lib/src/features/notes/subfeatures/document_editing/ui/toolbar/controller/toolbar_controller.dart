@@ -71,6 +71,11 @@ class NoteDocumentController extends ChangeNotifier {
     // print(
     //     'first - first operation: ${drawingController.drawings.firstOrNull?.deltas.firstOrNull?.operation}');
 
+    print(
+        'first point: ${drawingController.drawings.lastOrNull?.deltas.firstOrNull?.point}');
+    print(
+        'last point: ${drawingController.drawings.lastOrNull?.deltas.lastOrNull?.point}');
+
     if (drawingController.drawingMode == DrawingMode.erase) {
       if (drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation ==
           DrawingOperation.end) {
