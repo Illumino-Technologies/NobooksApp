@@ -49,4 +49,15 @@ abstract class FakeAssessmentsData {
           ),
         );
       }).reduce((value, element) => value..addAll(element));
+
+  static List<Assessment> generateTestAssessments({
+    required DateTime startTime,
+  }) {
+
+
+
+
+
+
+  }
 }

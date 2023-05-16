@@ -1,4 +1,6 @@
+import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
+
 import 'package:nobook/src/global/domain/models/models_barrel.dart'
     show Subject;
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -15,9 +17,16 @@ class Assessment implements Comparable<Assessment> {
   final int duration;
   final DateTime startTime;
   final DateTime endTime;
+  final TermPeriod term;
+  final String assessmentNumber;
+  final String session;
   final int? totalMarks;
+  final AssessmentType type;
 
   const Assessment({
+    required this.term,
+    required this.assessmentNumber,
+    required this.session,
     required this.id,
     required this.subject,
     required this.questionTypes,
@@ -25,6 +34,7 @@ class Assessment implements Comparable<Assessment> {
     required this.duration,
     required this.startTime,
     required this.endTime,
+    required this.type,
     this.totalMarks,
   });
 
@@ -64,6 +74,12 @@ class Assessment implements Comparable<Assessment> {
       startTime: UtilFunctions.dateTimeFromMap(map['startTime'])!,
       endTime: UtilFunctions.dateTimeFromMap(map['endTime'])!,
       totalMarks: map['totalMarks'] as int?,
+      term: map['term'] == null
+          ? TermPeriod.first
+          : TermPeriod.values[map['term'] as int],
+      assessmentNumber: map['assessmentNumber'] as String? ?? '',
+      session: map['session'] as String? ?? '',
+      type: AssessmentType.values[map['type'] as int],
     );
   }
 
@@ -76,6 +92,10 @@ class Assessment implements Comparable<Assessment> {
     DateTime? startTime,
     DateTime? endTime,
     int? totalMarks,
+    TermPeriod? term,
+    String? assessmentNumber,
+    String? session,
+    AssessmentType? type,
   }) {
     return Assessment(
       id: id ?? this.id,
@@ -86,6 +106,10 @@ class Assessment implements Comparable<Assessment> {
       startTime: startTime ?? this.startTime,
       endTime: endTime ?? this.endTime,
       totalMarks: totalMarks ?? this.totalMarks,
+      term: term ?? this.term,
+      assessmentNumber: assessmentNumber ?? this.assessmentNumber,
+      session: session ?? this.session,
+      type: type ?? this.type,
     );
   }
 

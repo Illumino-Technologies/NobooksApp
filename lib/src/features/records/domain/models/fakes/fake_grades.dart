@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:nobook/src/features/records/domain/models/grade/grade.dart';
-import 'package:nobook/src/features/records/domain/models/grade/term_period.dart';
+
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 
 abstract class FakeGrades {
