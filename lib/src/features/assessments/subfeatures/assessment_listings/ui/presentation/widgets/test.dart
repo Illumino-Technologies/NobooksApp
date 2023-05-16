@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:intl/intl.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
+
 // import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/global/global_barrel.dart';
+
 // import 'package:nobook/src/utils/function/extensions/extensions.dart';
 import 'package:nobook/src/utils/function/utility_functions_barrel.dart';
 
-
 class TestPage extends ConsumerWidget {
   const TestPage({
-  required this.assessmentsBySubject, 
-  required this.availableSubjects,
-      super.key,});
+    required this.assessmentsBySubject,
+    required this.availableSubjects,
+    super.key,
+  });
 
   final Map<Subject, List<Assessment>> assessmentsBySubject;
   final List<Subject> availableSubjects;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListView.builder(
+    return ListView.separated(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
       itemCount: assessmentsBySubject.length,
+      separatorBuilder: (_, __) => 48.boxHeight,
       itemBuilder: (context, index) {
         final Subject subject = availableSubjects[index];
         return Column(
@@ -46,9 +51,16 @@ class TestPage extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   final Assessment assessment =
                       assessmentsBySubject[subject]![index];
-                  return Align(
+                  return InkWell(
+                    onTap: () {
+                      context.goNamed(
+                        AppRoute.assessmentDetail.name,
+                        extra: (assessment, AssessmentType.test),
+                      );
+                    },
                     child: Container(
                       height: 160.h,
+                      width: 160.w,
                       decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: BorderRadius.all(
@@ -96,7 +108,9 @@ class TestPage extends ConsumerWidget {
                                     '${UtilFunctions.formatLongDate(
                                       assessment.startTime,
                                       ', ',
-                                    )} • ${UtilFunctions.formatTime(assessment.endTime)}',
+                                    )} • ${UtilFunctions.formatTime(
+                                      assessment.endTime,
+                                    )}',
                                     style: TextStyles.footer.copyWith(
                                       fontSize: 8.sp,
                                       height: 1.5,

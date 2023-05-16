@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 import 'package:nobook/src/features/assessments/subfeatures/assessment_listings/ui/presentation/widgets/test.dart';
-// import 'package:nobook/src/features/assignments/domain/fakes/fake_assignments.dart';
-import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
-
-import '../../../../../../utils/function/util_functions/util_functions.dart';
 
 class AssessmentsPage extends StatefulWidget {
   const AssessmentsPage({Key? key}) : super(key: key);
@@ -19,6 +14,7 @@ class AssessmentsPage extends StatefulWidget {
 
 class _AssessmentsPageState extends State<AssessmentsPage> {
   final ValueNotifier<bool> isTest = ValueNotifier<bool>(true);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +50,7 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Your Assignments',
+                              'Your Tests and Exams',
                               style: TextStyles.headline2.copyWith(
                                 fontSize: 28.sp,
                                 fontWeight: FontWeight.w700,
@@ -97,7 +93,7 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                                     return ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                         elevation: 0,
-                                        backgroundColor: !isTest.value
+                                        backgroundColor: !value
                                             ? AppColors.blue500
                                             : AppColors.white,
                                         // : Colors.white,
@@ -128,8 +124,9 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                           builder: (context, value, child) {
                             return isTest.value
                                 ? TestPage(
-                                assessmentsBySubject: assessmentsBySubject, 
-                                availableSubjects: availableSubjects,)
+                                    assessmentsBySubject: assessmentsBySubject,
+                                    availableSubjects: availableSubjects,
+                                  )
                                 : Container();
                           },
                         )
@@ -152,9 +149,9 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                     24.boxHeight,
                     Text(
                       'Your Subject',
-                      style: TextStyles.headline1.withSize(18.sp).copyWith(
-                            color: AppColors.neutral500,
-                          ),
+                      style: TextStyles.headline1
+                          .withSize(18.sp)
+                          .copyWith(color: AppColors.neutral500),
                     ),
                     24.boxHeight,
                     Expanded(
@@ -219,8 +216,9 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                                     Container(
                                       decoration: BoxDecoration(
                                         color: AppColors.blueVariant05,
-                                        borderRadius:
-                                            BorderRadius.circular(10.r),
+                                        borderRadius: BorderRadius.circular(
+                                          10.r,
+                                        ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
@@ -249,8 +247,9 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                                     Container(
                                       decoration: BoxDecoration(
                                         color: AppColors.blueVariant05,
-                                        borderRadius:
-                                            BorderRadius.circular(10.r),
+                                        borderRadius: BorderRadius.circular(
+                                          10.r,
+                                        ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
