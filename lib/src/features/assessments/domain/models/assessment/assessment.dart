@@ -1,8 +1,6 @@
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
-
-import 'package:nobook/src/global/domain/models/models_barrel.dart'
-    show Subject;
+import 'package:nobook/src/global/domain/models/models_barrel.dart' show Subject, TermPeriod;
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'content/assessment_operation.dart';
@@ -18,7 +16,7 @@ class Assessment implements Comparable<Assessment> {
   final DateTime startTime;
   final DateTime endTime;
   final TermPeriod term;
-  final String assessmentNumber;
+  final int? assessmentNumber;
   final String session;
   final int? totalMarks;
   final AssessmentType type;
@@ -77,7 +75,7 @@ class Assessment implements Comparable<Assessment> {
       term: map['term'] == null
           ? TermPeriod.first
           : TermPeriod.values[map['term'] as int],
-      assessmentNumber: map['assessmentNumber'] as String? ?? '',
+      assessmentNumber: map['assessmentNumber'] as int? ?? 0,
       session: map['session'] as String? ?? '',
       type: AssessmentType.values[map['type'] as int],
     );
@@ -93,7 +91,7 @@ class Assessment implements Comparable<Assessment> {
     DateTime? endTime,
     int? totalMarks,
     TermPeriod? term,
-    String? assessmentNumber,
+    int? assessmentNumber,
     String? session,
     AssessmentType? type,
   }) {

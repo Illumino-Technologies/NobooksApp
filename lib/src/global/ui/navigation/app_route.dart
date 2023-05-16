@@ -10,8 +10,9 @@ enum AppRoute {
   assignment('assignment'),
   assessmentListing('/assessments'),
 
-  ///This takes in a record parameter of type `(Assessment, AssessmentType)`
-  assessmentDetail('assessment-detail'),
+  ///This takes in a parameter of type [Assessment]
+  assessmentStage('assessment-stage'),
+  assessmentPreview('assessment-preview'),
   record('/record'),
   forum('/forum'),
   arena('/arena'),

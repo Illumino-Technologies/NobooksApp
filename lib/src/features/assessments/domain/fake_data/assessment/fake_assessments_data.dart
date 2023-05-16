@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
-import 'package:nobook/src/features/assessments/domain/models/assessment/assessment.dart';
+import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 import 'package:nobook/src/features/assignments/domain/fakes/fake_assignments.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
@@ -29,6 +29,8 @@ abstract class FakeAssessmentsData {
   /// Generates a List of Assessments such that
   /// There exists three assessments per subject
   static List<Assessment> getSubjectAssessments({
+    required AssessmentType type,
+    TermPeriod term = TermPeriod.first,
     required DateTime startTime,
   }) =>
       FakeSubjects.subjects.map<List<Assessment>>((subject) {
@@ -46,18 +48,11 @@ abstract class FakeAssessmentsData {
             duration: duration,
             startTime: startTime,
             endTime: startTime.copyAdd(minute: duration),
+            term: term,
+            assessmentNumber: term.index,
+            type: type,
+            session: '2021/2022',
           ),
         );
       }).reduce((value, element) => value..addAll(element));
-
-  static List<Assessment> generateTestAssessments({
-    required DateTime startTime,
-  }) {
-
-
-
-
-
-
-  }
 }

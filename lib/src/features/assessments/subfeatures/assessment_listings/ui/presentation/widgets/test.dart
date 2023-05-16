@@ -54,7 +54,7 @@ class TestPage extends ConsumerWidget {
                   return InkWell(
                     onTap: () {
                       context.goNamed(
-                        AppRoute.assessmentDetail.name,
+                        AppRoute.assessmentStage.name,
                         extra: (assessment, AssessmentType.test),
                       );
                     },

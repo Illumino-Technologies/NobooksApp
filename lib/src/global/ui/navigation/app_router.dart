@@ -81,15 +81,21 @@ final GoRouter _router = GoRouter(
           },
           routes: [
             GoRoute(
-              parentNavigatorKey: _navigationKey,
-              path: AppRoute.assessmentDetail.path,
-              name: AppRoute.assessmentDetail.name,
+              path: AppRoute.assessmentPreview.path,
+              name: AppRoute.assessmentPreview.name,
               builder: (context, state) {
-                final (Assessment, AssessmentType) record =
-                    state.extra as (Assessment, AssessmentType);
-                return AssessmentDetailPage(
-                  assessment: record.$1,
-                  type: record.$2,
+                return AssessmentPreviewPage(
+                  assessment: (state.extra as Assessment),
+                );
+              },
+            ),
+            GoRoute(
+              parentNavigatorKey: _navigationKey,
+              path: AppRoute.assessmentStage.path,
+              name: AppRoute.assessmentStage.name,
+              builder: (context, state) {
+                return AssessmentStagePage(
+                  assessment: (state.extra as Assessment),
                 );
               },
             ),

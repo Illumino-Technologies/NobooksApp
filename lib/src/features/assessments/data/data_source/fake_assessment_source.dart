@@ -4,7 +4,10 @@ final class FakeAssessmentSource implements AssessmentSourceInterface {
   @override
   Future<List<Assessment>> fetchAssessments(AssessmentType type) async {
     await Future.delayed(const Duration(seconds: 1));
-    return FakeAssessmentsData.getSubjectAssessments(startTime: DateTime.now());
+    return FakeAssessmentsData.getSubjectAssessments(
+      startTime: DateTime.now(),
+      type: type,
+    );
   }
 
   @override

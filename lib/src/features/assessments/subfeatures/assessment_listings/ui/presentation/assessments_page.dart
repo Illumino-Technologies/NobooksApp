@@ -23,6 +23,8 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
           final List<Assessment> assessments =
               FakeAssessmentsData.getSubjectAssessments(
             startTime: DateTime.now(),
+            // TODO(Bashir): confirm this
+            type: isTest.value ? AssessmentType.test : AssessmentType.exam,
           );
           final List<Subject> availableSubjects =
               Set<Subject>.from(assessments.map((e) => e.subject)).toList();
