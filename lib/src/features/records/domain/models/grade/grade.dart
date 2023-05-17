@@ -1,4 +1,3 @@
-import 'package:nobook/src/features/records/domain/models/grade/term_period.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/utils/constants/constants_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';

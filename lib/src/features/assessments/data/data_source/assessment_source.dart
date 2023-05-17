@@ -6,6 +6,7 @@ import 'package:nobook/src/global/data/data_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'assessment_source_interface.dart';
+part 'fake_assessment_source.dart';
 
 class AssessmentSource
     with DioErrorHandlerMixin, NetworkUtilMixin

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart' hide ListenableBuilder;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:nobook/src/global/ui/widgets/custom/value_listenables/listenable_builder.dart'
+    as ListenableBuilder;
 
 part 'custom/thumb.dart';
 
@@ -130,7 +132,7 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
             active: active,
             onTap: onTap,
           ),
-          ListenableBuilder(
+          ListenableBuilder.ListenableBuilder(
             listenable: controller,
             builder: (context) {
               return Positioned(

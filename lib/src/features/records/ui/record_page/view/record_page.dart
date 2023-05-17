@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/features_barrel.dart';
-import 'package:nobook/src/features/records/domain/models/grade/term_period.dart';
 import 'package:nobook/src/global/data/data_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';

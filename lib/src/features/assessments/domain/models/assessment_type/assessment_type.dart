@@ -2,8 +2,8 @@
 /// disambiguate test from exam and vice-versa.
 enum AssessmentType {
   //TODO: change these to the actual api paths
-  test('test_api_path'),
   exam('exam_api_path'),
+  test('test_api_path'),
   ;
 
   final String apiPath;

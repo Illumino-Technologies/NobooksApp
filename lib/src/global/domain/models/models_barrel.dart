@@ -1,6 +1,7 @@
 export 'package:nobook/src/global/domain/models/class/class.dart';
 export 'package:nobook/src/global/domain/models/gender/gender.dart';
 export 'package:nobook/src/global/domain/models/grading/grading_system.dart';
+export 'package:nobook/src/global/domain/models/grading/term_period.dart';
 export 'package:nobook/src/global/domain/models/school/school.dart';
 export 'package:nobook/src/global/domain/models/subject/subject.dart';
 export 'package:nobook/src/global/domain/models/timetable/timetable.dart';
