@@ -24,7 +24,9 @@ abstract class FakeUsers {
     gender: Gender.male,
     dob: DateTime(1996, math.Random().nextInt(10) + 1, 3),
     phoneNumber: '08012345678',
-    classesTaught: [FakeClasses.ss2],
+    // This is intentionally empty to avoid stackoverflow issues with
+    // constructors calling themselves
+    classesTaught: [],
     subjectsTaught: FakeSubjects.subjects,
     email: 'peterogunyemi@gmail.com',
   );
@@ -37,6 +39,8 @@ abstract class FakeUsers {
     gender: Gender.male,
     dob: DateTime(1996, math.Random().nextInt(10) + 1, 3),
     phoneNumber: '08012345678',
+    // This is intentionally empty to avoid stackoverflow issues with
+    // constructors calling themselves
     classesTaught: [],
     subjectsTaught: FakeSubjects.subjects,
     email: 'peterogunyemi@gmail.com',
