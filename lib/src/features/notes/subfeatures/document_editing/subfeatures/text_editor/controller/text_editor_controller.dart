@@ -49,6 +49,13 @@ class TextEditorController extends _TextEditorController
     metadata = metadata ?? this.metadata;
   }
 
+  void setDeltasToTextWithMetadata({
+    TextMetadata? metaData = TextEditorController.defaultMetadata,
+  }) {
+    deltas.clear();
+    deltas.addAll(TextDeltasUtils.deltasFromString(text));
+  }
+
   @override
   Map<String, dynamic> toDataMap() => {
         DocumentEditorType.serializerKey:

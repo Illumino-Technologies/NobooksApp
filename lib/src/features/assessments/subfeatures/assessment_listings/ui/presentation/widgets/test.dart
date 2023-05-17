@@ -54,8 +54,8 @@ class TestPage extends ConsumerWidget {
                   return InkWell(
                     onTap: () {
                       context.goNamed(
-                        AppRoute.assessmentStage.name,
-                        extra: (assessment, AssessmentType.test),
+                        AppRoute.assessmentPreview.name,
+                        extra: assessment,
                       );
                     },
                     child: Container(
@@ -96,7 +96,7 @@ class TestPage extends ConsumerWidget {
                                   ),
                                   4.boxHeight,
                                   Text(
-                                    assessment.questionTypes.first.name,
+                                    assessment.paperType.name,
                                     style: TextStyles.subHeading.copyWith(
                                       fontSize: 12.sp,
                                       height: 1.33,
