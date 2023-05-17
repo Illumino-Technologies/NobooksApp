@@ -11,13 +11,13 @@ class _Thumb extends StatelessWidget {
 
   const _Thumb({
     Key? key,
-    this.width,
     this.height,
     required this.onVerticalDrag,
     required this.onVerticalDragStart,
     required this.active,
     required this.onVerticalDragEnd,
     required this.onTapDown,
+    this.width,
   }) : super(key: key);
 
   @override

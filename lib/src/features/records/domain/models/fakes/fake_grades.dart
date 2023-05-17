@@ -1,109 +1,112 @@
+import 'dart:math';
+
+import 'package:flutter/foundation.dart';
 import 'package:nobook/src/features/records/domain/models/grade/grade.dart';
-import 'package:nobook/src/features/records/domain/models/grade/term_period.dart';
+
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 
 abstract class FakeGrades {
-  static const Grade mathGrade = Grade(
-    id: 'math grade',
+  static Grade mathGrade = Grade(
+    id: 'math grade ${UniqueKey().toString()}',
     subject: FakeSubjects.maths,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade englishGrade = Grade(
-    id: 'english grade',
+  static Grade englishGrade = Grade(
+    id: 'english grade ${UniqueKey().toString()}',
     subject: FakeSubjects.englishLanguage,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade chemistry = Grade(
-    id: 'science grade',
+  static Grade chemistry = Grade(
+    id: 'science grade ${UniqueKey().toString()}',
     subject: FakeSubjects.chemistry,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade biology = Grade(
-    id: 'biology grade',
+  static Grade biology = Grade(
+    id: 'biology grade ${UniqueKey().toString()}',
     subject: FakeSubjects.biology,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade physics = Grade(
-    id: 'physics grade',
+  static Grade physics = Grade(
+    id: 'physics grade ${UniqueKey().toString()}',
     subject: FakeSubjects.physics,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade economics = Grade(
-    id: 'economics grade',
+  static Grade economics = Grade(
+    id: 'economics grade ${UniqueKey().toString()}',
     subject: FakeSubjects.economics,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade geography = Grade(
-    id: 'geography grade',
+  static Grade geography = Grade(
+    id: 'geography grade ${UniqueKey().toString()}',
     subject: FakeSubjects.geography,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade furtherMaths = Grade(
-    id: 'furtherMaths grade',
+  static Grade furtherMaths = Grade(
+    id: 'furtherMaths grade ${UniqueKey().toString()}',
     subject: FakeSubjects.furtherMaths,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade civicEducation = Grade(
-    id: 'civicEducation grade',
+  static Grade civicEducation = Grade(
+    id: 'civicEducation grade ${UniqueKey().toString()}',
     subject: FakeSubjects.civicEducation,
-    examScore: 59,
-    caScores: [20, 18],
+    examScore: Random().nextBool() ? 59 : 49,
+    caScores: Random().nextBool() ? [15, 15] : [20, 18],
     caPercent: 40,
     examPercent: 60,
     term: TermPeriod.first,
   );
 
-  static const Grade bookKeeping = Grade(
-    id: 'bookKeeping grade',
-    subject: FakeSubjects.bookKeeping,
-    examScore: 59,
-    caScores: [20, 18],
-    caPercent: 40,
-    examPercent: 60,
-    term: TermPeriod.first,
-  );
+  static Grade get bookKeeping => Grade(
+        id: 'bookKeeping grade ${UniqueKey().toString()}',
+        subject: FakeSubjects.bookKeeping,
+        examScore: Random().nextBool() ? 59 : 49,
+        caScores: Random().nextBool() ? [15, 15] : [20, 18],
+        caPercent: 40,
+        examPercent: 60,
+        term: TermPeriod.first,
+      );
 
-  static const List<Grade> allGrades = [
+  static final List<Grade> allGrades = [
     mathGrade,
     englishGrade,
     chemistry,
@@ -115,4 +118,9 @@ abstract class FakeGrades {
     civicEducation,
     bookKeeping,
   ];
+
+  static final Map<Class, List<Grade>> classGrades = {
+    FakeClasses.ss2: allGrades,
+    FakeClasses.ss3: allGrades,
+  };
 }

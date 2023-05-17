@@ -11,7 +11,7 @@ mixin RiverpodUtilsMixin<State extends RiverpodStateWithStatus>
     );
   }
 
-  void notifyLoading([nullifyError = true]) {
+  void notifyLoading([bool nullifyError = true]) {
     state = state.copyWith(
       loading: true,
       success: false,
@@ -19,8 +19,8 @@ mixin RiverpodUtilsMixin<State extends RiverpodStateWithStatus>
     );
   }
 
-  void notifySuccess([nullifyError = true]) {
-    state = state.copyWith(
+  void notifySuccess({bool nullifyError = true, State? newState}) {
+    state = (newState ?? state).copyWith(
       success: true,
       loading: false,
       error: nullifyError ? null : state.error,

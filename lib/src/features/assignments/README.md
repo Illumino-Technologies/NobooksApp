@@ -6,15 +6,15 @@
 - [x] foundational structure
 - [x] documentation
 - [ ] Assignments (assignments listing)
-    - [ ] ui
+    - [x] ui
     - [ ] data layer
-- [ ] Assignment (assignment details)
-    - [ ] ui layer
-    - [ ] domain layer
-        - [ ] `cache manager`
-    - [ ] data layer
-        - [ ] caching api
-        - [ ] `Data Transfer` api
+- [x] Assignment (assignment details)
+    - [x] ui layer
+    - [x] domain layer
+        - [x] `cache manager`
+    - [x] data layer
+        - [x] caching api
+        - [x] `Data Transfer` api
 
 ## Introduction
 

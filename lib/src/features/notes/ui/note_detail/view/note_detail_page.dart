@@ -111,7 +111,10 @@ class _NotePageState extends ConsumerState<NoteDetailPageX> {
 
   Future<void> syncNote() async {
     await noteSyncLogic.syncNote(
-      widget.note.copyWith(noteBody: documentController.noteDocument),
+      widget.note.copyWith(
+        noteBody: documentController.noteDocument,
+        updatedAt: DateTime.now(),
+      ),
     );
   }
 

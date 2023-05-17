@@ -37,7 +37,9 @@ class DashboardWidget extends ConsumerWidget {
                     ),
                     8.boxHeight,
                     Text(
-                      'The First term examination for the 2022/2023 Academic session comes up on the 3rd of December, 2022. You need to study your notes to prepare well for the exam.',
+                      'The First term examination for the 2022/2023 Academic '
+                      'session comes up on the 3rd of December, 2022. You need '
+                      'to study your notes to prepare well for the exam.',
                       style: TextStyles.paragraph1.asSemibold.withColor(
                         AppColors.neutral50,
                       ),
@@ -59,9 +61,9 @@ class DashboardWidget extends ConsumerWidget {
                         ),
                       ),
                       onPressed: () {
-                        context.goNamed(
+                        context.pushNamed(
                           AppRoute.noteDetailPage.name,
-                          extra: FakeNotes.allNotes.first,
+                          extra: FakeNotes.allNotes[0],
                         );
                       },
                     )

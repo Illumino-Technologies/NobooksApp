@@ -11,7 +11,7 @@ abstract class FakeClasses {
     name: 'SS 2',
     subjects: FakeSubjects.subjects,
     classTeacher: FakeUsers.mrAkpan,
-    students: [],
+    students: const [],
     subjectTeachers: FakeSubjects.subjects.map((e) {
       return SubjectTeachers(
         subject: e,
@@ -25,7 +25,7 @@ abstract class FakeClasses {
     name: 'SS 3',
     subjects: FakeSubjects.subjects,
     classTeacher: FakeUsers.mrOgunyemi,
-    students: [],
+    students: const [],
     subjectTeachers: FakeSubjects.subjects.map((e) {
       return SubjectTeachers(
         subject: e,

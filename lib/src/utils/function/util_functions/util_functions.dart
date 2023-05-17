@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/base/controller/base_controller.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -86,6 +87,32 @@ abstract class UtilFunctions {
     return (DateTime.tryParse(data) ?? fallbackDateTime).toLocal();
   }
 
+
+  static String formatDateAndTime(DateTime dateTime) {
+    final String time = intl.DateFormat
+        .jm()
+        .format(dateTime)
+        .toLowerCase()
+        .removeAllSpaces;
+    final String dateDay = intl.DateFormat
+        .d()
+        .format(dateTime)
+        .withNumberOrdinal;
+    final String dateMY = intl.DateFormat.yMMMM().format(dateTime);
+    return '$time, $dateDay $dateMY';
+  }
+
+
+  static String formatLongDate(DateTime date, [String monthSeparator = ' ',]) {
+    final String dateDay = intl.DateFormat
+        .d()
+        .format(date)
+        .withNumberOrdinal;
+    final String month = intl.DateFormat.MMMM().format(date);
+    final String year = intl.DateFormat.y().format(date);
+    return '$dateDay $month$monthSeparator$year';
+  }
+
   static String formatDate(DateTime date, {
     String separator = ' / ',
   }) {
@@ -111,12 +138,19 @@ abstract class UtilFunctions {
         .isEmpty) return null;
 
     final List<String> chars = phoneNumberBody.chars..insert(3, ' ')..insert(
-        8, ' ');
+        8, ' ',);
     phoneNumberBody = chars.join();
 
     return phoneNumberBody
         .trim()
         .nullIfEmpty;
+  }
+
+  static String formatTime(DateTime time, [bool addMeridian = true,]) {
+    final String hour = time.hour.toString().padLeft(2, '0');
+    final String minute = time.minute.toString().padLeft(2, '0');
+    final String meridian = addMeridian ? time.hour < 12 ? 'am' : 'pm' : '';
+    return '$hour:$minute$meridian';
   }
 
   static ThemeMode themeModeFromName(String name) {

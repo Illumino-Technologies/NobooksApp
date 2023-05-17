@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
-import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/assignments_page.dart';
 import 'package:nobook/src/features/features_barrel.dart';
-import 'package:nobook/src/features/records/ui/record_page/view/record_page.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 
 part 'app_route.dart';
@@ -61,19 +59,47 @@ final GoRouter _router = GoRouter(
           path: AppRoute.assignments.path,
           name: AppRoute.assignments.name,
           builder: (context, state) {
-            return const AssignmentPage();
+            return const AssignmentsPage();
           },
-          // routes: [
-          //   // GoRoute(
-          //   //   path: AppRoute.assignment.path,
-          //   //   name: AppRoute.assignment.name,
-          //   //   builder: (context, state) {
-          //   //     return AssignmentScreen(
-          //   //       assignment: state.extra as Assignment,
-          //   //     );
-          //     },
-          //   ),
-          // ],
+          routes: [
+            GoRoute(
+              path: AppRoute.assignment.path,
+              name: AppRoute.assignment.name,
+              builder: (context, state) {
+                return AssignmentScreen(
+                  assignment: state.extra as Assignment,
+                );
+              },
+            ),
+          ],
+        ),
+        GoRoute(
+          path: AppRoute.assessmentListing.path,
+          name: AppRoute.assessmentListing.name,
+          builder: (context, state) {
+            return const AssessmentsPage();
+          },
+          routes: [
+            GoRoute(
+              path: AppRoute.assessmentPreview.path,
+              name: AppRoute.assessmentPreview.name,
+              builder: (context, state) {
+                return AssessmentPreviewPage(
+                  assessment: (state.extra as Assessment),
+                );
+              },
+            ),
+            GoRoute(
+              parentNavigatorKey: _navigationKey,
+              path: AppRoute.assessmentStage.path,
+              name: AppRoute.assessmentStage.name,
+              builder: (context, state) {
+                return AssessmentStagePage(
+                  assessment: (state.extra as Assessment),
+                );
+              },
+            ),
+          ],
         ),
         GoRoute(
           path: AppRoute.record.path,

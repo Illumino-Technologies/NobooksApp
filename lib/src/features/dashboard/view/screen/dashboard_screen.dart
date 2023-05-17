@@ -11,20 +11,13 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   bool expand = true;
 
-  toggleminimize() {
-    expand = !expand;
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Row(
-        children: const [
-          DashboardBoardPage(),
-          DashboardCalender(),
-        ],
-      ),
+    return Row(
+      children: const [
+        DashboardBoardPage(),
+        DashboardCalender(),
+      ],
     );
   }
 }

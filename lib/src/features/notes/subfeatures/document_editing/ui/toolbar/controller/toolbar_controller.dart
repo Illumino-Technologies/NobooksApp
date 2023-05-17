@@ -51,6 +51,8 @@ class NoteDocumentController extends ChangeNotifier {
         textController = controller;
       }
     }
+    drawingController.initialize();
+    textController.initialize();
     notifyListeners();
     //TODO: add all controller listeners [back]
     drawingController.addListener(drawingControllerListener);
