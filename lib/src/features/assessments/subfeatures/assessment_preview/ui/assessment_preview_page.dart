@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 
+part 'custom/assessment_conduct.dart';
+
+part 'custom/assessment_instructions.dart';
+
+part 'custom/info_row.dart';
+
+part 'custom/student_declaration.dart';
+
+part 'custom/title_widget.dart';
+
 class AssessmentPreviewPage extends StatelessWidget {
   final Assessment assessment;
 
@@ -18,47 +28,5 @@ class AssessmentPreviewPage extends StatelessWidget {
         _InfoRow(assessment: assessment),
       ],
     );
-  }
-}
-
-class _Instructions extends StatelessWidget {
-  final Assessment assessment;
-
-  const _Instructions({
-    Key? key,
-    required this.assessment,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-class _InfoRow extends StatelessWidget {
-  final Assessment assessment;
-
-  const _InfoRow({
-    Key? key,
-    required this.assessment,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-class _TitleWidget extends ConsumerWidget {
-  final Assessment assessment;
-
-  const _TitleWidget({
-    required this.assessment,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Container();
   }
 }
