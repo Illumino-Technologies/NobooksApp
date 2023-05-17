@@ -27,11 +27,11 @@ enum GradeTableColumn {
       case GradeTableColumn.code:
         return grade.subject.code;
       case GradeTableColumn.ca:
-        return grade.ca?.toString() ?? '—';
+        return grade.ca?.toStringAsFixed(1) ?? '—';
       case GradeTableColumn.exam:
-        return grade.exam?.toString() ?? '—';
+        return grade.exam?.toStringAsFixed(1) ?? '—';
       case GradeTableColumn.total:
-        return grade.total?.toString() ?? '—';
+        return grade.total?.toStringAsFixed(1) ?? '—';
       case GradeTableColumn.grade:
         return grade.gradingFor(student.studentClass) ?? '—';
     }
