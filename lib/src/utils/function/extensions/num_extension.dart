@@ -14,6 +14,11 @@ extension NumExtension on num {
         width: w.toDouble(),
       );
 
+  String get pluralValue {
+    if (this == 1) return '';
+    return 's';
+  }
+
   String toOrdinal() {
     final int number = toInt();
     final int mod = number % 100;

@@ -2,11 +2,13 @@
 /// disambiguate test from exam and vice-versa.
 enum AssessmentType {
   //TODO: change these to the actual api paths
-  exam('exam_api_path'),
-  test('test_api_path'),
+  exam('exam_api_path', 'Examination'),
+  test('test_api_path', 'Test'),
   ;
 
-  final String apiPath;
 
-  const AssessmentType(this.apiPath);
+  final String apiPath;
+  final String longName;
+
+  const AssessmentType(this.apiPath, this.longName);
 }

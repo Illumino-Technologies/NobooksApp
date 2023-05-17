@@ -1,10 +1,13 @@
 import 'dart:math' as math;
+import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 import 'package:nobook/src/features/assignments/domain/fakes/fake_assignments.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
+import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'fake_assessment_preview_data.dart';
