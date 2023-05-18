@@ -4,7 +4,7 @@ import 'package:nobook/src/utils/constants/constants_barrel.dart';
 
 part 'subject_teacher.dart';
 
-class Class extends Equatable {
+class Class {
   final String id;
   final String name;
   final List<Subject> subjects;
@@ -101,14 +101,27 @@ class Class extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        id,
-        name,
-        ...subjects,
-        ...subjectTeachers,
-        ...students,
-        classCaptain,
-        assistantClassCaptain,
-        classTeacher,
-      ];
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Class &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          name == other.name &&
+          subjects == other.subjects &&
+          classCaptain == other.classCaptain &&
+          assistantClassCaptain == other.assistantClassCaptain &&
+          classTeacher == other.classTeacher &&
+          subjectTeachers == other.subjectTeachers &&
+          students == other.students;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      name.hashCode ^
+      subjects.hashCode ^
+      classCaptain.hashCode ^
+      assistantClassCaptain.hashCode ^
+      classTeacher.hashCode ^
+      subjectTeachers.hashCode ^
+      students.hashCode;
 }
