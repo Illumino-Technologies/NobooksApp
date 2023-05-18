@@ -9,7 +9,7 @@ part 'states/assignment_state.dart';
 StateNotifierProvider<AssignmentStateNotifier, AssignmentState>
     _assignmentStateNotifierProvider =
     StateNotifierProvider<AssignmentStateNotifier, AssignmentState>(
-  (ref) => AssignmentStateNotifier()..fetchAssignment(),
+  (ref) => AssignmentStateNotifier(),
 );
 
 class AssignmentStateNotifier extends StateNotifier<AssignmentState>
@@ -33,7 +33,9 @@ class AssignmentStateNotifier extends StateNotifier<AssignmentState>
   void resetAssignmentProvider() {
     _assignmentStateNotifierProvider =
         StateNotifierProvider<AssignmentStateNotifier, AssignmentState>(
-      (ref) => AssignmentStateNotifier()..fetchAssignment(),
+      (ref) => AssignmentStateNotifier()
+        ..initializeAssignment(state.assignment)
+        ..fetchAssignment(),
     );
   }
 

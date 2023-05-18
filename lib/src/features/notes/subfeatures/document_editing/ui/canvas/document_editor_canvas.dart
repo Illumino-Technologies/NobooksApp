@@ -2,6 +2,8 @@ import 'package:flutter/material.dart' hide ListenableBuilder;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
+import 'package:nobook/src/global/ui/widgets/custom/value_listenables/listenable_builder.dart' as ListenableBuilder;
+
 
 class DocumentEditorCanvas extends StatefulWidget {
   final Size canvasSize;
@@ -33,7 +35,7 @@ class _DocumentEditorCanvasState extends State<DocumentEditorCanvas> {
   @override
   Widget build(BuildContext context) {
     return widget.readOnly
-        ? ListenableBuilder(
+        ? ListenableBuilder.ListenableBuilder(
             listenable: controller,
             builder: (context) {
               return Stack(

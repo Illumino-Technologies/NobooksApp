@@ -1214,7 +1214,7 @@ class MultiPointScrollableState extends State<MultiPointScrollable>
     final ScrollableDetails details = ScrollableDetails(
       direction: widget.axisDirection,
       controller: _effectiveScrollController,
-      clipBehavior: widget.clipBehavior,
+      decorationClipBehavior: widget.clipBehavior,
     );
 
     result = _configuration.buildScrollbar(

@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:nobook/src/global/domain/fakes/grading_system/fake_grading_system.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/utils/constants/constants_barrel.dart';
@@ -62,8 +61,7 @@ class Class extends Equatable {
       subjectTeachers: (map['subjectTeachers'] as List?)
               ?.cast<Map>()
               .map<SubjectTeachers>(
-                (e) => SubjectTeachers.fromMap(e.cast<String, dynamic>()),
-              )
+                  (e) => SubjectTeachers.fromMap(e.cast<String, dynamic>()))
               .toList() ??
           [],
       classTeacher:

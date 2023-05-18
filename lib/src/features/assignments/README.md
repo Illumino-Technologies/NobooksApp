@@ -5,9 +5,9 @@
 - [x] foundational model(s) and fake data
 - [x] foundational structure
 - [x] documentation
-- [ ] Assignments (assignments listing)
+- [x] Assignments (assignments listing)
     - [x] ui
-    - [ ] data layer
+    - [x] data layer
 - [x] Assignment (assignment details)
     - [x] ui layer
     - [x] domain layer
@@ -15,6 +15,7 @@
     - [x] data layer
         - [x] caching api
         - [x] `Data Transfer` api
+- [ ] integrate with backend
 
 ## Introduction
 
