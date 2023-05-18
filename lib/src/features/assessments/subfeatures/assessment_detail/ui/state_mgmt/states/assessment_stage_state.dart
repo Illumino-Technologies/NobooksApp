@@ -1,21 +1,27 @@
 part of '../assessment_detail_state_notifier.dart';
 
-class AssessmentStateState extends AssignmentDetailState with TimerMixin {
-  AssessmentStateState({
-    required super.assessment,
+class AssessmentArenaState extends AssessmentStageState with TimerMixin {
+  final Assessment? _assessment;
+
+  AssessmentArenaState({
+    Assessment? assessment,
     super.success = false,
     super.loading = false,
     Failure? error,
-  });
+  })  : _assessment = assessment,
+        super(assessment: assessment);
 
   @override
-  AssessmentStateState copyWith({
+  Assessment get assessment => _assessment!;
+
+  @override
+  AssessmentArenaState copyWith({
     Assessment? assessment,
     bool? success,
     bool? loading,
     Failure? error,
   }) {
-    return AssessmentStateState(
+    return AssessmentArenaState(
       assessment: assessment ?? this.assessment,
       success: success ?? this.success,
       loading: loading ?? this.loading,

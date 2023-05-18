@@ -1,9 +1,9 @@
 part of '../assessment_detail_state_notifier.dart';
 
-sealed class AssignmentDetailState extends RiverpodStateWithStatus {
-  final Assessment assessment;
+sealed class AssessmentStageState extends RiverpodStateWithStatus {
+  final Assessment? assessment;
 
-  AssignmentDetailState({
+  AssessmentStageState({
     required this.assessment,
     super.success = false,
     super.loading = false,
@@ -11,7 +11,7 @@ sealed class AssignmentDetailState extends RiverpodStateWithStatus {
   });
 
   @override
-  AssignmentDetailState copyWith({
+  AssessmentStageState copyWith({
     Assessment? assessment,
     bool? success,
     bool? loading,
