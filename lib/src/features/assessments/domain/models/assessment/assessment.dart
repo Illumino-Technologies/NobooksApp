@@ -4,7 +4,7 @@ import 'package:nobook/src/global/domain/models/models_barrel.dart'
     show Subject, TermPeriod;
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-part 'content/question_type.dart';
+part 'content/paper_type.dart';
 
 class Assessment implements Comparable<Assessment> {
   final String id;
