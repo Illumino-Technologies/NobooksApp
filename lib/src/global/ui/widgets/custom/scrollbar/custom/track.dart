@@ -9,7 +9,9 @@ class _Track extends StatelessWidget {
   const _Track({
     Key? key,
     required this.active,
-    required this.onTap, this.width, this.height,
+    required this.onTap,
+    this.width,
+    this.height,
   }) : super(key: key);
 
   @override

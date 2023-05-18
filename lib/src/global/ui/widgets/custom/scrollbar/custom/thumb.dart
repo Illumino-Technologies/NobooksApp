@@ -16,7 +16,8 @@ class _Thumb extends StatelessWidget {
     required this.onVerticalDragStart,
     required this.active,
     required this.onVerticalDragEnd,
-    required this.onTapDown, this.width,
+    required this.onTapDown,
+    this.width,
   }) : super(key: key);
 
   @override

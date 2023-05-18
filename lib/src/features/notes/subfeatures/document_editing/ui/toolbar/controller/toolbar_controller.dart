@@ -61,19 +61,48 @@ class NoteDocumentController extends ChangeNotifier {
   }
 
   void drawingControllerListener() {
-    if ((drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation ==
-            DrawingOperation.end) ||
-        drawingController.drawings.isEmpty) {
-      addControllerToCache(
-        drawingController.copy()..addListener(drawingControllerListener),
-      );
+    // print(
+    //     'last - last operation: ${drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation}');
+    // print(
+    //     'last - first operation: ${drawingController.drawings.lastOrNull?.deltas.firstOrNull?.operation}');
+    //
+    // print(
+    //     'first - last operation: ${drawingController.drawings.firstOrNull?.deltas.lastOrNull?.operation}');
+    // print(
+    //     'first - first operation: ${drawingController.drawings.firstOrNull?.deltas.firstOrNull?.operation}');
+
+    print(
+        'first point: ${drawingController.drawings.lastOrNull?.deltas.firstOrNull?.point}');
+    print(
+        'last point: ${drawingController.drawings.lastOrNull?.deltas.lastOrNull?.point}');
+
+    if (drawingController.drawingMode == DrawingMode.erase) {
+      if (drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation ==
+          DrawingOperation.end) {
+        _drawingControllerListenerAction();
+      }
+    } else {
+      if (drawingController.currentlyActiveDrawing == null) {
+        _drawingControllerListenerAction();
+      }
     }
+
     currentControllerListener();
+  }
+
+  void _drawingControllerListenerAction() {
+    addControllerToCache(
+      (drawingController.copy()
+        ..initialize(
+            // currentActiveDrawing: drawingController.currentlyActiveDrawing,
+            ))
+        ..addListener(drawingControllerListener),
+    );
   }
 
   void textControllerListener() {
     addControllerToCache(
-      textController.copy()..addListener(drawingControllerListener),
+      textController.copy()..addListener(textControllerListener),
     );
     currentControllerListener();
   }
@@ -81,11 +110,15 @@ class NoteDocumentController extends ChangeNotifier {
   late final List<DocumentEditingController> cache = [];
 
   void setDrawingController(DrawingController controller) {
+    print('set drawing controller called');
     drawingController = controller;
     notifyListeners();
   }
 
-  void addControllerToCache(DocumentEditingController controller) {
+  void addControllerToCache(
+    DocumentEditingController controller, [
+    bool shouldSetAsCurrent = false,
+  ]) {
     if (activeCacheIndex != null && activeCacheIndex != cache.lastIndex) {
       if (cache.isNotEmpty) {
         cache.removeRange(activeCacheIndex! + 1, cache.length);
@@ -95,7 +128,8 @@ class NoteDocumentController extends ChangeNotifier {
       cache.removeAt(0);
     }
     cache.add(controller);
-    if (controller is DrawingController &&
+    if (shouldSetAsCurrent &&
+        controller is DrawingController &&
         !drawingController.equalsOther(controller)) {
       setDrawingController(controller);
     }
@@ -234,13 +268,13 @@ class NoteDocumentController extends ChangeNotifier {
   }
 
   void clear() {
-    clearCache();
     _noteDocument.clear();
     clearDrawings();
     clearText();
     //TODO: clear other controllers
     clearCache();
     notifyListeners();
+    initialize();
   }
 
   void clearText() {

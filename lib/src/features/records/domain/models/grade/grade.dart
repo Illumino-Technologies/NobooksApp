@@ -22,14 +22,13 @@ class Grade {
   final double examPercent;
   final TermPeriod term;
 
-  double? get ca => (caScores?.fold<double>(
-            0,
-            (previousValue, element) => element + previousValue,
-          ) ??
-          0 / caPercent)
-      .nullIfZero;
+  double? get ca => ((caScores?.fold<double>(
+                0,
+                (previousValue, element) => element + previousValue,
+              ) ?? 0) /
+          caPercent).nullIfZero;
 
-  double? get exam => (examScore ?? 0 / examPercent).nullIfZero;
+  double? get exam => ((examScore ?? 0) / examPercent).nullIfZero;
 
   double? get total => ((ca ?? 0) + (exam ?? 0)).nullIfZero;
 

@@ -26,7 +26,6 @@ class NoteNetworkSource
         _storeNote(noteDocument),
         catcher: (failure) {
           throw failure.copyWith(message: ErrorMessages.localNoteSyncFailure);
-          return;
         },
       );
 

@@ -26,7 +26,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
     return Scaffold(
       body: Builder(
         builder: (context) {
-          final List<Assignment> assignments = FakeAssignments.assignments;
+          final List<Assignment> assignments = FakeAssignmentData.assignments;
           final List<Subject> availableAssignments =
               Set<Subject>.from(assignments.map((e) => e.subject)).toList();
 
@@ -48,7 +48,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                       Text(
                         'Your Assignments',
                         style: TextStyles.headline2.copyWith(
                           fontSize: 28.sp,
@@ -99,7 +99,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                       child: SizedBox(
                         width: 320.w,
                         child: ListView.separated(
-                          itemCount: FakeAssignments.assignments.length,
+                          itemCount: FakeAssignmentData.assignments.length,
                           separatorBuilder: (_, __) => 16.boxHeight,
                           itemBuilder: (context, index) => Container(
                             decoration: BoxDecoration(

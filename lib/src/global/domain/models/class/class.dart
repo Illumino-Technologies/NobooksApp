@@ -4,7 +4,7 @@ import 'package:nobook/src/utils/constants/constants_barrel.dart';
 
 part 'subject_teacher.dart';
 
-class Class {
+class Class extends Equatable {
   final String id;
   final String name;
   final List<Subject> subjects;
@@ -61,7 +61,7 @@ class Class {
       subjectTeachers: (map['subjectTeachers'] as List?)
               ?.cast<Map>()
               .map<SubjectTeachers>(
-                  (e) => SubjectTeachers.fromMap(e.cast<String, dynamic>()),)
+                  (e) => SubjectTeachers.fromMap(e.cast<String, dynamic>()))
               .toList() ??
           [],
       classTeacher:
@@ -99,4 +99,16 @@ class Class {
       classTeacher: classTeacher ?? this.classTeacher,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        ...subjects,
+        ...subjectTeachers,
+        ...students,
+        classCaptain,
+        assistantClassCaptain,
+        classTeacher,
+      ];
 }

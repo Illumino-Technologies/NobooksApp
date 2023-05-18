@@ -6,12 +6,12 @@ abstract class FakeClasses {
     ss2,
     ss3,
   ];
-  static Class ss2 = Class(
+  static final Class ss2 = Class(
     id: 'ss-2-x',
     name: 'SS 2',
     subjects: FakeSubjects.subjects,
     classTeacher: FakeUsers.mrAkpan,
-    students: [],
+    students: const [],
     subjectTeachers: FakeSubjects.subjects.map((e) {
       return SubjectTeachers(
         subject: e,
@@ -20,12 +20,12 @@ abstract class FakeClasses {
     }).toList(),
   );
 
-  static Class ss3 = Class(
+  static final Class ss3 = Class(
     id: 'uniqueString-x-ss3',
     name: 'SS 3',
     subjects: FakeSubjects.subjects,
     classTeacher: FakeUsers.mrOgunyemi,
-    students: [],
+    students: const [],
     subjectTeachers: FakeSubjects.subjects.map((e) {
       return SubjectTeachers(
         subject: e,

@@ -56,7 +56,7 @@ class _AvailableSubjectWidget extends StatelessWidget {
               child: SizedBox(
                 height: 260.h,
                 child: ListView.separated(
-                  separatorBuilder: (_, __)=>16.boxWidth,
+                  separatorBuilder: (_, __) => 16.boxWidth,
                   scrollDirection: Axis.horizontal,
                   itemCount: subjectNotes[currentSubject]!.length,
                   itemBuilder: (context, index) {

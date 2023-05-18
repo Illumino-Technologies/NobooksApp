@@ -9,6 +9,12 @@ part 'note_sync_logic_interface.dart';
 
 part 'note_sync_object.dart';
 
+/// (note synchronization works using a [Queue<NoteSyncObject>] such that, it
+/// checks the queue for the most recent item on it, and then carries out the
+/// action stipulated there, if the note closes before a successful
+/// synchronization is carried out, once the user opens the note again,
+/// the stored Queue will be fetched and the appropriate synchronization
+/// carried out according to it.
 class NoteSyncLogic
     with BasicErrorHandlerMixin
     implements NoteSyncLogicInterface {

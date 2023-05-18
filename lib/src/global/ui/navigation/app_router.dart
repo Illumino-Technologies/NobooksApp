@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/features_barrel.dart';
-import 'package:nobook/src/features/records/ui/record_page/view/record_page.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 
 part 'app_route.dart';
@@ -69,6 +68,28 @@ final GoRouter _router = GoRouter(
               builder: (context, state) {
                 return AssignmentScreen(
                   assignment: state.extra as Assignment,
+                );
+              },
+            ),
+          ],
+        ),
+        GoRoute(
+          path: AppRoute.assessmentListing.path,
+          name: AppRoute.assessmentListing.name,
+          builder: (context, state) {
+            return const AssessmentsPage();
+          },
+          routes: [
+            GoRoute(
+              parentNavigatorKey: _navigationKey,
+              path: AppRoute.assessmentDetail.path,
+              name: AppRoute.assessmentDetail.name,
+              builder: (context, state) {
+                final (Assessment, AssessmentType) record =
+                    state.extra as (Assessment, AssessmentType);
+                return AssessmentDetailPage(
+                  assessment: record.$1,
+                  type: record.$2,
                 );
               },
             ),
