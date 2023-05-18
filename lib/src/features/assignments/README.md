@@ -5,16 +5,17 @@
 - [x] foundational model(s) and fake data
 - [x] foundational structure
 - [x] documentation
-- [ ] Assignments (assignments listing)
-    - [ ] ui
-    - [ ] data layer
-- [ ] Assignment (assignment details)
-    - [ ] ui layer
-    - [ ] domain layer
-        - [ ] `cache manager`
-    - [ ] data layer
-        - [ ] caching api
-        - [ ] `Data Transfer` api
+- [x] Assignments (assignments listing)
+    - [x] ui
+    - [x] data layer
+- [x] Assignment (assignment details)
+    - [x] ui layer
+    - [x] domain layer
+        - [x] `cache manager`
+    - [x] data layer
+        - [x] caching api
+        - [x] `Data Transfer` api
+- [ ] integrate with backend
 
 ## Introduction
 
