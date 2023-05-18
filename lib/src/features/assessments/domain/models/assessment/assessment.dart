@@ -4,8 +4,6 @@ import 'package:nobook/src/global/domain/models/models_barrel.dart'
     show Subject, TermPeriod;
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-part 'content/assessment_operation.dart';
-
 part 'content/question_type.dart';
 
 class Assessment implements Comparable<Assessment> {
@@ -13,6 +11,7 @@ class Assessment implements Comparable<Assessment> {
   final Subject subject;
   final PaperType paperType;
   final List<AssessmentOperation> assessments;
+
   /// Duration in minutes
   final int duration;
   final DateTime startTime;

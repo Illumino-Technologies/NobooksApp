@@ -92,7 +92,7 @@ class ExamPage extends ConsumerWidget {
                                   ),
                                   4.boxHeight,
                                   Text(
-                                    assessment.paperType.name,
+                                    assessment.paperType.shortName,
                                     style: TextStyles.subHeading.copyWith(
                                       fontSize: 12.sp,
                                       height: 1.33,

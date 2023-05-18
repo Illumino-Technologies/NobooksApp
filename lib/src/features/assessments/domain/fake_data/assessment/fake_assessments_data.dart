@@ -6,30 +6,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 import 'package:nobook/src/features/assignments/domain/fakes/fake_assignments.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
-import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'fake_assessment_preview_data.dart';
 
+part 'fake_assessment_stage_data.dart';
+
 abstract class FakeAssessmentsData {
   /// the questions for each assessment
   static final List<NoteDocument> questionContents =
       FakeAssignmentData.questions;
-
-  /// this simply generates AssessmentOperations (question and answer)
-  static List<AssessmentOperation> getOperations() {
-    return questionContents.map<AssessmentOperation>((question) {
-      return AssessmentOperation(
-        id: UniqueKey().toString(),
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-        question: question,
-        answer: List.empty(growable: true),
-        marks: math.Random().nextInt(10),
-      );
-    }).toList();
-  }
 
   /// Generates a List of Assessments such that
   /// There exists three assessments per subject
@@ -41,12 +28,15 @@ abstract class FakeAssessmentsData {
       FakeSubjects.subjects.map<List<Assessment>>((subject) {
         final int duration = math.Random().nextBool() ? 40 : 30;
         return List<Assessment>.generate(
-          3,
+          2,
           (index) => Assessment(
             id: UniqueKey().toString(),
             subject: subject,
             paperType: PaperType.values[index],
-            assessments: getOperations(),
+            assessments:
+                _FakeAssessmentStageData.generateAssessmentOperationsBy(
+              PaperType.values[index],
+            ),
             duration: duration,
             startTime: startTime,
             endTime: startTime.copyAdd(minute: duration),

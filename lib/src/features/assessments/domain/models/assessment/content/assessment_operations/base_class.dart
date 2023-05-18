@@ -1,4 +1,9 @@
-part of '../assessment.dart';
+import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
+
+part 'multiple_choice_asssessment_operation.dart';
+
+part 'theory_assessment_operation.dart';
 
 /// This class encapsulates the data of an assessment primarily namely:
 /// - question
@@ -6,12 +11,12 @@ part of '../assessment.dart';
 /// - marks attached to a question
 ///
 /// The object of this class is what will carry the answer the user gives
-class AssessmentOperation {
+sealed class AssessmentOperation {
   final String id;
   final DateTime createdAt;
   final DateTime updatedAt;
   final NoteDocument question;
-  final NoteDocument answer;
+  final dynamic answer;
   final int? marks;
 
   const AssessmentOperation({
@@ -28,44 +33,19 @@ class AssessmentOperation {
     DateTime? createdAt,
     DateTime? updatedAt,
     NoteDocument? question,
-    NoteDocument? answer,
+    dynamic answer,
     int? marks,
-  }) {
-    return AssessmentOperation(
-      id: id ?? this.id,
-      createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
-      question: question ?? this.question,
-      answer: answer ?? this.answer,
-      marks: marks ?? this.marks,
-    );
-  }
+  });
 
-  factory AssessmentOperation.fromMap(Map<String, dynamic> map) {
-    return AssessmentOperation(
-      id: map['id'] as String,
-      marks: map['marks'] as int?,
-      createdAt: UtilFunctions.dateTimeFromMap(map['createdAt'])!,
-      updatedAt: UtilFunctions.dateTimeFromMap(map['updatedAt'])!,
-      question: UtilFunctions.noteDocumentFromList(
-        (map['question'] as List).cast(),
-      ),
-      answer: UtilFunctions.noteDocumentFromList(
-        (map['answer'] as List).cast(),
-      ),
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'marks': marks,
-      'createdAt': createdAt.toIso8601String(),
-      'updatedAt': updatedAt.toIso8601String(),
-      'question': question.toSerializerList(),
-      'answer': answer.toSerializerList(),
+  static AssessmentOperation fromMap(Map<String, dynamic> map) {
+    return switch (map) {
+      {'options': _} => MultipleChoiceAssessmentOperation.fromMap(map),
+      {'answer': NoteDocument _} => TheoryAssessmentOperation.fromMap(map),
+      _ => throw Exception('Invalid map'),
     };
   }
+
+  Map<String, dynamic> toMap();
 
   @override
   bool operator ==(Object other) =>
