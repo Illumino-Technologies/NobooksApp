@@ -1,11 +1,10 @@
-import 'package:equatable/equatable.dart';
 import 'package:nobook/src/global/domain/fakes/grading_system/fake_grading_system.dart';
 import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/utils/constants/constants_barrel.dart';
 
 part 'subject_teacher.dart';
 
-class Class extends Equatable {
+class Class {
   final String id;
   final String name;
   final List<Subject> subjects;
@@ -62,8 +61,7 @@ class Class extends Equatable {
       subjectTeachers: (map['subjectTeachers'] as List?)
               ?.cast<Map>()
               .map<SubjectTeachers>(
-                (e) => SubjectTeachers.fromMap(e.cast<String, dynamic>()),
-              )
+                  (e) => SubjectTeachers.fromMap(e.cast<String, dynamic>()))
               .toList() ??
           [],
       classTeacher:
@@ -103,14 +101,27 @@ class Class extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        id,
-        name,
-        ...subjects,
-        ...subjectTeachers,
-        ...students,
-        classCaptain,
-        assistantClassCaptain,
-        classTeacher,
-      ];
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Class &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          name == other.name &&
+          subjects == other.subjects &&
+          classCaptain == other.classCaptain &&
+          assistantClassCaptain == other.assistantClassCaptain &&
+          classTeacher == other.classTeacher &&
+          subjectTeachers == other.subjectTeachers &&
+          students == other.students;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      name.hashCode ^
+      subjects.hashCode ^
+      classCaptain.hashCode ^
+      assistantClassCaptain.hashCode ^
+      classTeacher.hashCode ^
+      subjectTeachers.hashCode ^
+      students.hashCode;
 }

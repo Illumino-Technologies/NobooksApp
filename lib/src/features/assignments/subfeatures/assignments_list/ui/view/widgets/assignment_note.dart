@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router_flow/go_router_flow.dart';
-import 'package:intl/intl.dart';
-import 'package:nobook/src/features/assignments/assignments_barrel.dart';
-import 'package:nobook/src/global/global_barrel.dart';
-import 'package:nobook/src/utils/function/utility_functions_barrel.dart';
+part of '../assignments_page.dart';
 
 class AssignmentNoteWidget extends StatelessWidget {
   const AssignmentNoteWidget({
