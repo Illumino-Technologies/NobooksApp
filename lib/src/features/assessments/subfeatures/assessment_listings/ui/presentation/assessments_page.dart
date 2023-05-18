@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
+import 'package:nobook/src/features/assessments/subfeatures/assessment_listings/ui/presentation/widgets/exam.dart';
 import 'package:nobook/src/features/assessments/subfeatures/assessment_listings/ui/presentation/widgets/test.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
@@ -129,7 +130,11 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                                     assessmentsBySubject: assessmentsBySubject,
                                     availableSubjects: availableSubjects,
                                   )
-                                : Container();
+                                : ExamPage(
+                                    assessmentsBySubject: assessmentsBySubject,
+                                    availableSubjects: availableSubjects,
+                                  );
+                                
                           },
                         )
                       ],
