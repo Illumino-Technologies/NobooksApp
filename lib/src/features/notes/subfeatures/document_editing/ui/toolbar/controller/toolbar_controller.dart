@@ -34,7 +34,7 @@ class NoteDocumentController extends ChangeNotifier {
     if (!drawingController.initialized) drawingController.initialize();
     drawingController.initialize();
 
-    if (noteDocument != null) _setControllersFromNote(noteDocument);
+    _setControllersFromNote(noteDocument ?? this.noteDocument);
     _setDefaultColor();
     _initialized = true;
   }
