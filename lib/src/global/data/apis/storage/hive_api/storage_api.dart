@@ -18,7 +18,6 @@ class StorageApi<T>
     await Hive.openBox<String>(StorageKey.token.box);
     await Hive.openBox<Map>(StorageKey.user.box);
     await Hive.openBox<List>(StorageKey.noteMod.box);
-    await Hive.openBox<Map>(StorageKey.assignment.box);
     await Hive.openBox<Map>(StorageKey.note.box);
     await Hive.openBox<List>(
       StorageKey.noteSyncQueue.box,

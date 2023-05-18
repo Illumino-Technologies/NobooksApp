@@ -1,4 +1,10 @@
-part of '../assignments_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nobook/src/features/assignments/assignments_barrel.dart';
+import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/widgets/assignment_note.dart';
+import 'package:nobook/src/global/global_barrel.dart';
+import 'package:nobook/src/utils/function/utility_functions_barrel.dart';
+
 class AvailableAssignmentWidget extends StatelessWidget {
   const AvailableAssignmentWidget({
     required this.currentAssignmentSubject,

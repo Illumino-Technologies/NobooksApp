@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router_flow/go_router_flow.dart';
-import 'package:intl/intl.dart';
 import 'package:nobook/src/features/assignments/assignments_barrel.dart';
-import 'package:nobook/src/features/assignments/domain/fakes/fake_assignments.dart';
+import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/widgets/available_assignment.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
-
-part 'widgets/assignment_note.dart';
-
-part 'widgets/available_assignment.dart';
 
 class AssignmentsPage extends ConsumerStatefulWidget {
   const AssignmentsPage({super.key});
@@ -48,7 +42,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       Text(
+                      Text(
                         'Your Assignments',
                         style: TextStyles.headline2.copyWith(
                           fontSize: 28.sp,
@@ -127,7 +121,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                                 // mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SubjectWidget(
-                                    subject: FakeAssignments
+                                    subject: FakeAssignmentData
                                         .assignments[index].subject,
                                     boxSize: 60.r,
                                     fontSize: 30.sp,
@@ -135,7 +129,7 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                                   10.boxWidth,
                                   Expanded(
                                     child: Text(
-                                      FakeAssignments
+                                      FakeAssignmentData
                                           .assignments[index].subject.name,
                                       style: TextStyles.paragraph1.asSemibold,
                                     ),

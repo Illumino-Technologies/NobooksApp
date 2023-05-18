@@ -8,7 +8,7 @@ class CardWidgets2 extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    return const SizedBox(
+    return SizedBox(
       height: 280,
       width: 694,
       child: Column(
@@ -17,14 +17,14 @@ class CardWidgets2 extends ConsumerWidget {
           SizedBox(
             height: 20,
           ),
-          ReusableTileWidget2(),
+          const ReusableTileWidget2(),
           // SizedBox(
           //   height: 15.h,
           // ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: [
+              children: const [
                 ReuseableCard(
                   title: 'Economics',
                   subTitle: 'Demand and Supply',
