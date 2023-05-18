@@ -45,9 +45,7 @@ abstract class FakeAssessmentsData {
           (index) => Assessment(
             id: UniqueKey().toString(),
             subject: subject,
-            paperType: math.Random().nextBool()
-                ? PaperType.theory
-                : PaperType.multipleChoice,
+            paperType: PaperType.values[index],
             assessments: getOperations(),
             duration: duration,
             startTime: startTime,

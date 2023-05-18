@@ -12,7 +12,7 @@ StateNotifierProvider<RecordsNotifier, RecordsState> _recordsNotifierProvider =
 );
 
 class RecordsNotifier extends StateNotifier<RecordsState>
-    with RiverpodUtilsMixin, BasicErrorHandlerMixin {
+    with RiverpodUtilsMixin<RecordsState>, BasicErrorHandlerMixin {
   final RecordsSourceInterface _source;
   final ClassRepoInterface _classRepo;
   final StateNotifierProviderRef _ref;

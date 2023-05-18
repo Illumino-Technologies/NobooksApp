@@ -84,15 +84,18 @@ class AssessmentPreviewPage extends StatelessWidget {
           Container(
             alignment: Alignment.bottomRight,
             padding: EdgeInsets.only(bottom: 32.h, right: 32.w),
-            child: DenseButton(
-              width: 241.w,
-              height: 48.h,
+            child: MaterialButton(
+              highlightElevation: 0,
+              focusElevation: 0,
+              elevation: 0,
+              color: AppColors.blue500,
               onPressed: () {
                 context.pushReplacementNamed(
                   AppRoute.assessmentStage.name,
                   extra: assessment,
                 );
               },
+              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
               child: Text(
                 'Proceed to examination',
                 style: TextStyles.paragraph3.copyWith(
