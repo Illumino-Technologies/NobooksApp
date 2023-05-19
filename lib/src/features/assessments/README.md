@@ -24,10 +24,18 @@ Requirements:
         - [ ] State management (should depend on assessment data layer)
     - [x] Data
         - [x] Repository (should store the list of assessments)
-- [ ] Assessment detail
+- [ ] Assessment stage
     - [ ] UI
-        - [ ] Presentation
-        - [ ] State management (should depend on assessment data layer)
+    - [ ] State management (should depend on assessment data layer)
+       - [x] Multiple choice
+          - [x] Presentation
+          - [x] State management
+       - [ ] Theory
+          - [ ] Presentation
+          - [ ] State management
+       - [ ] Assessment review
+          - [ ] Presentation
+          - [ ] State management
 
 User flow: Assessments listing
 
