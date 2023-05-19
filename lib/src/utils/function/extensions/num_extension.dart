@@ -4,6 +4,8 @@ extension NumExtension on num {
   ///returns value * (percentage/100)
   double percent(num percentage) => (this * (percentage / 100)).toDouble();
 
+  double get l => h > w ? h.toDouble() : w.toDouble();
+
   SizedBox get boxHeight => SizedBox(
         height: h.toDouble(),
         width: 0,

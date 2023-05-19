@@ -37,7 +37,7 @@ abstract final class _FakeAssessmentStageData {
             ..initialize()
             ..setDeltasToTextWithMetadata(),
         ]),
-        answer: 1,
+        answer: null,
         marks: 1,
         options: mcqOptions,
       );

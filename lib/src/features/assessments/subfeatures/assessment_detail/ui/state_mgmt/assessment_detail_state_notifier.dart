@@ -19,13 +19,10 @@ class AssessmentStageNotifier extends StateNotifier<AssessmentStageState> {
   static StateNotifierProvider<AssessmentStageNotifier, AssessmentStageState>
       get provider => _provider;
 
-  void refreshNotifier([Assessment? assessment]) {
+  static void refreshNotifier(Assessment assessment) {
     _provider =
         StateNotifierProvider<AssessmentStageNotifier, AssessmentStageState>(
-      (ref) => assessment == null
-          ? AssessmentStageNotifier()
-          : (AssessmentStageNotifier()
-            ..initializeData(state.assessment ?? assessment)),
+      (ref) => AssessmentStageNotifier()..initializeData(assessment),
     );
   }
 

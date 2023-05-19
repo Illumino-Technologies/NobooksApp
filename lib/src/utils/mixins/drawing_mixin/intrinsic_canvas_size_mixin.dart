@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/notes/notes_barrel.dart'
     show NoteDocumentController, DrawingsExentension;
 
-mixin IntrinsicCanvasSizeMixin on State {
+mixin IntrinsicCanvasSizeMixin<Widget extends StatefulWidget> on State<Widget> {
   NoteDocumentController get controller;
 
   double get extraWidth => 50.w;
@@ -13,10 +13,15 @@ mixin IntrinsicCanvasSizeMixin on State {
   late Size canvasSize = Size(extraWidth, extraHeight);
 
   void computeDrawingSize() {
-    if (controller.drawingController.drawings.isEmpty) return;
+    if (controller.drawingController.drawings.isEmpty) {
+      canvasSize = Size(extraWidth, extraHeight);
+      return;
+    }
 
     Size size =
         controller.drawingController.drawings.computeCanvasSizeByOffets();
+
+    print('canvas size: $size');
 
     if (size == Size.zero) return;
     size = Size(
@@ -28,8 +33,8 @@ mixin IntrinsicCanvasSizeMixin on State {
   }
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     computeDrawingSize();
   }
 }

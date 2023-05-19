@@ -7,6 +7,8 @@ final class MultipleChoiceAssessmentOperation extends AssessmentOperation {
   @override
   int? get answer => _answer;
 
+  int? get mcqAnswer => _answer;
+
   MultipleChoiceAssessmentOperation({
     required super.id,
     required super.createdAt,
