@@ -97,6 +97,7 @@ class _AssessmentStagePageState extends ConsumerState<AssessmentStagePage> {
                         scrollController: _scrollController,
                         assessment: assessment,
                       ),
+                    PaperType.theory => TheoryStageView(assessment: assessment),
                     _ => Container(),
                   },
                 ),

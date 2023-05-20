@@ -11,8 +11,6 @@ final class MultipleChoiceAssessmentOperation extends AssessmentOperation {
 
   MultipleChoiceAssessmentOperation({
     required super.id,
-    required super.createdAt,
-    required super.updatedAt,
     required super.question,
     int? answer,
     required super.marks,
@@ -20,12 +18,13 @@ final class MultipleChoiceAssessmentOperation extends AssessmentOperation {
   })  : _answer = answer,
         super(answer: answer);
 
+  @override
+  int get totalMarks => marks ?? 0;
+
   factory MultipleChoiceAssessmentOperation.fromMap(Map<String, dynamic> map) {
     return MultipleChoiceAssessmentOperation(
       id: map['id'] as String,
       marks: map['marks'] as int?,
-      createdAt: UtilFunctions.dateTimeFromMap(map['createdAt'])!,
-      updatedAt: UtilFunctions.dateTimeFromMap(map['updatedAt'])!,
       question: UtilFunctions.noteDocumentFromList(
         (map['question'] as List).cast(),
       ),
@@ -41,8 +40,6 @@ final class MultipleChoiceAssessmentOperation extends AssessmentOperation {
   @override
   MultipleChoiceAssessmentOperation copyWith({
     String? id,
-    DateTime? createdAt,
-    DateTime? updatedAt,
     NoteDocument? question,
     dynamic answer,
     int? marks,
@@ -50,8 +47,6 @@ final class MultipleChoiceAssessmentOperation extends AssessmentOperation {
   }) {
     return MultipleChoiceAssessmentOperation(
       id: id ?? this.id,
-      createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
       question: question ?? this.question,
       answer: answer ?? this.answer,
       options: options ?? this.options,
@@ -64,8 +59,6 @@ final class MultipleChoiceAssessmentOperation extends AssessmentOperation {
     return {
       'id': id,
       'marks': marks,
-      'createdAt': createdAt.toIso8601String(),
-      'updatedAt': updatedAt.toIso8601String(),
       'question': question.toSerializerList(),
       'options': options.map((e) => e.toSerializerList()).toList(),
       'answer': answer,

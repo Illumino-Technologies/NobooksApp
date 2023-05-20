@@ -5,6 +5,8 @@ part 'multiple_choice_asssessment_operation.dart';
 
 part 'theory_assessment_operation.dart';
 
+part 'theory_assessment_operation_leaf.dart';
+
 /// This class encapsulates the data of an assessment primarily namely:
 /// - question
 /// - answer
@@ -13,16 +15,12 @@ part 'theory_assessment_operation.dart';
 /// The object of this class is what will carry the answer the user gives
 sealed class AssessmentOperation {
   final String id;
-  final DateTime createdAt;
-  final DateTime updatedAt;
   final NoteDocument question;
   final dynamic answer;
   final int? marks;
 
   const AssessmentOperation({
     required this.id,
-    required this.createdAt,
-    required this.updatedAt,
     required this.question,
     required this.answer,
     required this.marks,
@@ -30,8 +28,6 @@ sealed class AssessmentOperation {
 
   AssessmentOperation copyWith({
     String? id,
-    DateTime? createdAt,
-    DateTime? updatedAt,
     NoteDocument? question,
     dynamic answer,
     int? marks,
@@ -45,6 +41,8 @@ sealed class AssessmentOperation {
     };
   }
 
+  int get totalMarks;
+
   Map<String, dynamic> toMap();
 
   @override
@@ -53,8 +51,6 @@ sealed class AssessmentOperation {
       other is AssessmentOperation &&
           runtimeType == other.runtimeType &&
           id == other.id &&
-          createdAt == other.createdAt &&
-          updatedAt == other.updatedAt &&
           question == other.question &&
           answer == other.answer &&
           marks == other.marks;
@@ -62,8 +58,6 @@ sealed class AssessmentOperation {
   @override
   int get hashCode =>
       id.hashCode ^
-      createdAt.hashCode ^
-      updatedAt.hashCode ^
       question.hashCode ^
       answer.hashCode ^
       marks.hashCode;

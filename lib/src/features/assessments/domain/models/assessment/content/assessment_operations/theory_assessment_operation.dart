@@ -2,26 +2,37 @@ part of 'base_class.dart';
 
 final class TheoryAssessmentOperation extends AssessmentOperation {
   final NoteDocument _answer;
+  final List<TheoryAssessmentOperationLeaf> subOperations;
 
   @override
   NoteDocument get answer => _answer;
 
+  @override
+  int get totalMarks =>
+      (marks ?? 0) +
+      subOperations.fold<int>(
+        0,
+        (previousValue, element) => previousValue + element.totalMarks,
+      );
+
   const TheoryAssessmentOperation({
     required super.id,
-    required super.createdAt,
-    required super.updatedAt,
     required super.question,
     required NoteDocument answer,
     required super.marks,
+    required this.subOperations,
   })  : _answer = answer,
         super(answer: answer);
 
   factory TheoryAssessmentOperation.fromMap(Map<String, dynamic> map) {
     return TheoryAssessmentOperation(
       id: map['id'] as String,
+      subOperations: map['subOperations'] == null
+          ? []
+          : (map['subOperations'] as List).map((e) {
+              return TheoryAssessmentOperationLeaf.fromMap(e);
+            }).toList(),
       marks: map['marks'] as int?,
-      createdAt: UtilFunctions.dateTimeFromMap(map['createdAt'])!,
-      updatedAt: UtilFunctions.dateTimeFromMap(map['updatedAt'])!,
       question: UtilFunctions.noteDocumentFromList(
         (map['question'] as List).cast(),
       ),
@@ -34,19 +45,17 @@ final class TheoryAssessmentOperation extends AssessmentOperation {
   @override
   TheoryAssessmentOperation copyWith({
     String? id,
-    DateTime? createdAt,
-    DateTime? updatedAt,
     NoteDocument? question,
+    List<TheoryAssessmentOperationLeaf>? subOperations,
     dynamic answer,
     int? marks,
   }) {
     return TheoryAssessmentOperation(
       id: id ?? this.id,
-      createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
-      question: question ?? this.question,
+      question: question ?? List.from(this.question),
       answer: answer ?? this.answer,
       marks: marks ?? this.marks,
+      subOperations: subOperations ?? List.from(this.subOperations),
     );
   }
 
@@ -55,10 +64,9 @@ final class TheoryAssessmentOperation extends AssessmentOperation {
     return {
       'id': id,
       'marks': marks,
-      'createdAt': createdAt.toIso8601String(),
-      'updatedAt': updatedAt.toIso8601String(),
       'question': question.toSerializerList(),
       'answer': answer.toSerializerList(),
+      'subOperations': subOperations.map((e) => e.toMap()).toList(),
     };
   }
 }

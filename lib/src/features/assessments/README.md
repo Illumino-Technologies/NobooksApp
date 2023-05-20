@@ -10,7 +10,7 @@ Things to note:
     - `Assessment` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/assessment.dart)
     - `AssessmentType` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment_type/assessment_type.dart)
     - `AssessmentOperation` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/content/assessment_operation.dart)
-    - `PaperType` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/content/question_type.dart)
+    - `Paper` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/content/question_type.dart)
 
 Requirements:
 
