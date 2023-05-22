@@ -7,9 +7,7 @@ import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 
 // import 'package:nobook/src/global/domain/models/models_barrel.dart';
 import 'package:nobook/src/global/global_barrel.dart';
-
-// import 'package:nobook/src/utils/function/extensions/extensions.dart';
-import 'package:nobook/src/utils/function/utility_functions_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 class TestPage extends ConsumerWidget {
   const TestPage({
@@ -52,11 +50,16 @@ class TestPage extends ConsumerWidget {
                   final Assessment assessment =
                       assessmentsBySubject[subject]![index];
                   return InkWell(
-                    onTap: () {
-                      context.goNamed(
-                        AppRoute.assessmentPreview.name,
-                        extra: assessment,
-                      );
+                    onTap: switch (assessment.paperType) {
+                      PaperType.multipleChoice => () => context.goNamed(
+                            AppRoute.assessmentPreview.name,
+                            extra: assessment,
+                          ),
+                      PaperType.theory => () => context.goNamed(
+                            AppRoute.theoryAssessmentQuestions.name,
+                            extra: assessment,
+                          ),
+                      _ => throw (Failure(message: 'Invalid Paper Type')),
                     },
                     child: Container(
                       height: 160.h,

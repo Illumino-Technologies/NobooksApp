@@ -1,9 +1,9 @@
 part of '../assessment_preview_page.dart';
 
-class _TitleWidget extends ConsumerWidget {
+class TitleWidget extends ConsumerWidget {
   final Assessment assessment;
 
-  const _TitleWidget({
+  const TitleWidget({
     required this.assessment,
     Key? key,
   }) : super(key: key);

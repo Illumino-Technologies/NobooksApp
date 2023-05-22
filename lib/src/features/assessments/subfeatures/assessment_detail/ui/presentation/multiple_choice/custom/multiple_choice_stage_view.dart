@@ -1,17 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nobook/src/features/assessments/assessments_barrel.dart';
-import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
-import 'package:nobook/src/global/global_barrel.dart';
-import 'package:nobook/src/utils/mixins/drawing_mixin/intrinsic_canvas_size_mixin.dart';
-import 'package:nobook/src/utils/utils_barrel.dart';
-
-part 'assessment_operation_item.dart';
-
-part 'option_view.dart';
-
-part 'question_view.dart';
+part of '../multiple_choice_assessment_stage_page.dart';
 
 class MultipleChoiceView extends ConsumerWidget {
   final Assessment assessment;

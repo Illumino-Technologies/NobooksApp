@@ -48,7 +48,7 @@ class AssessmentPreviewPage extends StatelessWidget {
                     Center(
                       child: Column(
                         children: [
-                          _TitleWidget(assessment: assessment),
+                          TitleWidget(assessment: assessment),
                           16.boxHeight,
                           Divider(
                             color: AppColors.neutral50,
@@ -56,7 +56,7 @@ class AssessmentPreviewPage extends StatelessWidget {
                             height: 1.sp,
                           ),
                           16.boxHeight,
-                          _InfoRow(assessment: assessment),
+                          InfoRow(assessment: assessment),
                         ],
                       ),
                     ),
@@ -91,7 +91,7 @@ class AssessmentPreviewPage extends StatelessWidget {
               color: AppColors.blue500,
               onPressed: () {
                 context.pushReplacementNamed(
-                  AppRoute.assessmentStage.name,
+                  AppRoute.multipleChoiceAssessmentStage.name,
                   extra: assessment,
                 );
               },

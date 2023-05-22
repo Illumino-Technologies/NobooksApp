@@ -1,4 +1,4 @@
-part of 'multiple_choice_stage_view.dart';
+part of '../multiple_choice_assessment_stage_page.dart';
 
 class _QuestionView extends StatefulWidget {
   final int index;

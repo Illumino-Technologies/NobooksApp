@@ -11,7 +11,9 @@ enum AppRoute {
   assessmentListing('/assessments'),
 
   ///This takes in a parameter of type [Assessment]
-  assessmentStage('assessment-stage'),
+  multipleChoiceAssessmentStage('m-c-assessment-stage'),
+  theoryAssessmentQuestions('theory-assessment-questions'),
+  theoryAssessmentStage('theory-assessment-stage'),
   assessmentPreview('assessment-preview'),
   record('/record'),
   forum('/forum'),

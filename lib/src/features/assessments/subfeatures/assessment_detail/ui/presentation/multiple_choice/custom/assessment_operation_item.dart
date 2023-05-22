@@ -1,4 +1,4 @@
-part of 'multiple_choice_stage_view.dart';
+part of '../multiple_choice_assessment_stage_page.dart';
 
 class _MCQOperationItem extends ConsumerWidget {
   final int index;
@@ -65,8 +65,5 @@ class _MCQOperationItem extends ConsumerWidget {
     );
   }
 
-
-  void effectChange(WidgetRef ref){
-
-  }
+  void effectChange(WidgetRef ref) {}
 }

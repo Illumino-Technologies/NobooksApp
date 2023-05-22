@@ -88,16 +88,40 @@ final GoRouter _router = GoRouter(
                   assessment: (state.extra as Assessment),
                 );
               },
-            ),
-            GoRoute(
-              parentNavigatorKey: _navigationKey,
-              path: AppRoute.assessmentStage.path,
-              name: AppRoute.assessmentStage.name,
-              builder: (context, state) {
-                return AssessmentStagePage(
-                  assessment: (state.extra as Assessment),
-                );
-              },
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _navigationKey,
+                  path: AppRoute.multipleChoiceAssessmentStage.path,
+                  name: AppRoute.multipleChoiceAssessmentStage.name,
+                  builder: (context, state) {
+                    return MultipleChoiceAssessmentStagePage(
+                      assessment: (state.extra as Assessment),
+                    );
+                  },
+                ),
+                GoRoute(
+                  parentNavigatorKey: _navigationKey,
+                  path: AppRoute.theoryAssessmentQuestions.path,
+                  name: AppRoute.theoryAssessmentQuestions.name,
+                  builder: (context, state) {
+                    return TheoryQuestionsPage(
+                      assessment: (state.extra as Assessment),
+                    );
+                  },
+                  routes: [
+                    GoRoute(
+                      parentNavigatorKey: _navigationKey,
+                      path: AppRoute.theoryAssessmentStage.path,
+                      name: AppRoute.theoryAssessmentStage.name,
+                      builder: (context, state) {
+                        return TheoryStagePage(
+                          assessment: (state.extra as Assessment),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
