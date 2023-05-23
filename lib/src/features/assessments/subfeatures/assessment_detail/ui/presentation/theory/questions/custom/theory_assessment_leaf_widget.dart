@@ -34,39 +34,42 @@ class _TheoryAssessmentLeafWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          children: [
-            Text(
-              '(${Values.lowerAlphas[widget.index]})',
-              style: TextStyles.subHeading.copyWith(
-                color: AppColors.neutral600,
+    return RawMaterialButton(
+      onPressed: widget.onPressed,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Text(
+                '(${Values.lowerAlphas[widget.index]})',
+                style: TextStyles.subHeading.copyWith(
+                  color: AppColors.neutral600,
+                ),
               ),
-            ),
-            24.boxWidth,
-            Expanded(
-              child: DocumentEditorCanvas(
-                readOnly: true,
-                canvasSize: canvasSize,
-                controller: controller,
+              24.boxWidth,
+              Expanded(
+                child: DocumentEditorCanvas(
+                  readOnly: true,
+                  canvasSize: canvasSize,
+                  controller: controller,
+                ),
               ),
-            ),
-          ],
-        ),
-        if (operation.marks != null)
-          Container(
-            margin: EdgeInsets.only(right: 44.w),
-            alignment: Alignment.centerRight,
-            child: Text(
-              '(${operation.marks} mark${operation.marks?.pluralValue})',
-              style: TextStyles.paragraph2
-                  .withColor(AppColors.neutral500)
-                  .asSemibold,
-            ),
+            ],
           ),
-      ],
+          if (operation.marks != null)
+            Container(
+              margin: EdgeInsets.only(right: 44.w),
+              alignment: Alignment.centerRight,
+              child: Text(
+                '(${operation.marks} mark${operation.marks?.pluralValue})',
+                style: TextStyles.paragraph2
+                    .withColor(AppColors.neutral500)
+                    .asSemibold,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

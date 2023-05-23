@@ -13,7 +13,7 @@ import 'dart:async';
 ///
 mixin TimerMixin {
   late final StreamController<Duration> _timerSub =
-      StreamController<Duration>();
+      StreamController<Duration>.broadcast();
 
   ///in seconds
   int get timerDuration;

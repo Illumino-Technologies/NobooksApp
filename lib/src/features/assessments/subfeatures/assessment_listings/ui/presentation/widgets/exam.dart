@@ -5,18 +5,18 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:intl/intl.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
-import 'package:nobook/src/global/ui/colors/app_colors.dart';
-import 'package:nobook/src/global/ui/navigation/app_router.dart';
-import 'package:nobook/src/global/ui/text/text_styles.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/utils/function/extensions/extensions.dart';
 import 'package:nobook/src/utils/function/utility_functions_barrel.dart';
 
 class ExamPage extends ConsumerWidget {
-  const ExamPage({required this.assessmentsBySubject, required this.availableSubjects, super.key});
+  const ExamPage(
+      {required this.assessmentsBySubject,
+      required this.availableSubjects,
+      super.key});
 
   final Map<Subject, List<Assessment>> assessmentsBySubject;
   final List<Subject> availableSubjects;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView.separated(
@@ -48,12 +48,10 @@ class ExamPage extends ConsumerWidget {
                   final Assessment assessment =
                       assessmentsBySubject[subject]![index];
                   return InkWell(
-                    onTap: () {
-                      context.goNamed(
-                        AppRoute.assessmentPreview.name,
-                        extra: assessment,
-                      );
-                    },
+                    onTap: () => context.goNamed(
+                      AppRoute.assessmentPreview.name,
+                      extra: assessment,
+                    ),
                     child: Container(
                       height: 160.h,
                       width: 160.w,

@@ -114,8 +114,18 @@ final GoRouter _router = GoRouter(
                       path: AppRoute.theoryAssessmentStage.path,
                       name: AppRoute.theoryAssessmentStage.name,
                       builder: (context, state) {
+                        final int index = int.parse(
+                          state.params['operationIndex'].toString(),
+                        );
+
+                        final int? subOperationIndex = int.tryParse(
+                          state.queryParams['subOperationIndex'].toString(),
+                        );
+
                         return TheoryStagePage(
-                          assessment: (state.extra as Assessment),
+                          assessment: state.extra as Assessment,
+                          operationIndex: index,
+                          subOperationIndex: subOperationIndex,
                         );
                       },
                     ),

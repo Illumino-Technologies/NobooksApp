@@ -50,17 +50,10 @@ class TestPage extends ConsumerWidget {
                   final Assessment assessment =
                       assessmentsBySubject[subject]![index];
                   return InkWell(
-                    onTap: switch (assessment.paperType) {
-                      PaperType.multipleChoice => () => context.goNamed(
-                            AppRoute.assessmentPreview.name,
-                            extra: assessment,
-                          ),
-                      PaperType.theory => () => context.goNamed(
-                            AppRoute.theoryAssessmentQuestions.name,
-                            extra: assessment,
-                          ),
-                      _ => throw (Failure(message: 'Invalid Paper Type')),
-                    },
+                    onTap: () => context.goNamed(
+                      AppRoute.assessmentPreview.name,
+                      extra: assessment,
+                    ),
                     child: Container(
                       height: 160.h,
                       width: 160.w,

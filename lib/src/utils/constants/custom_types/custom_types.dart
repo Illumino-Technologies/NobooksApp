@@ -1,4 +1,7 @@
 import 'dart:math';
 
-part 'range.dart';
 part 'gradings.dart';
+
+part 'pair.dart';
+
+part 'range.dart';

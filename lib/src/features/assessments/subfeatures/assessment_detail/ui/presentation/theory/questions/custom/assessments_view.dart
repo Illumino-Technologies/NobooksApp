@@ -8,6 +8,21 @@ class _AssessmentsView extends StatelessWidget {
     required this.assessment,
   }) : super(key: key);
 
+  void navigateToStage(
+    BuildContext context, {
+    required int operationIndex,
+    int? subOperationIndex,
+  }) {
+    context.goNamed(
+      AppRoute.theoryAssessmentStage.name,
+      extra: assessment,
+      params: {'operationIndex': operationIndex.toString()},
+      queryParams: {
+        'subOperationIndex': subOperationIndex.toString(),
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -21,7 +36,7 @@ class _AssessmentsView extends StatelessWidget {
           return _TheoryAssessmentWidget(
             index: index,
             operation: assessmentOperation,
-            onPressed: () {},
+            onPressed: () => navigateToStage(context, operationIndex: index),
           );
         }
 
@@ -54,7 +69,12 @@ class _AssessmentsView extends StatelessWidget {
                             subOperation,
                           ),
                           operation: subOperation,
-                          onPressed: () {},
+                          onPressed: () => navigateToStage(
+                            context,
+                            operationIndex: index,
+                            subOperationIndex: assessmentOperation.subOperations
+                                .indexOf(subOperation),
+                          ),
                           key: UniqueKey(),
                         ),
                       ),

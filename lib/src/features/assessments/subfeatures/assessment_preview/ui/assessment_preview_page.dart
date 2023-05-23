@@ -5,9 +5,8 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
-import 'package:nobook/src/global/domain/logics/school_manager/school_notifier.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/utils/function/extensions/extensions.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'custom/assessment_instructions.dart';
 
@@ -89,11 +88,16 @@ class AssessmentPreviewPage extends StatelessWidget {
               focusElevation: 0,
               elevation: 0,
               color: AppColors.blue500,
-              onPressed: () {
-                context.pushReplacementNamed(
-                  AppRoute.multipleChoiceAssessmentStage.name,
-                  extra: assessment,
-                );
+              onPressed: switch (assessment.paperType) {
+                PaperType.multipleChoice => () => context.goNamed(
+                      AppRoute.multipleChoiceAssessmentStage.name,
+                      extra: assessment,
+                    ),
+                PaperType.theory => () => context.goNamed(
+                      AppRoute.theoryAssessmentQuestions.name,
+                      extra: assessment,
+                    ),
+                _ => throw (Failure(message: 'Invalid Paper Type')),
               },
               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
               child: Text(

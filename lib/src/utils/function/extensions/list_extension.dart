@@ -42,6 +42,11 @@ extension ListExtension<E> on List<E> {
     }
   }
 
+  int? indexOfOrNull(E element) {
+    final int index = indexOf(element);
+    return index == -1 ? null : index;
+  }
+
   void replaceWhere(Iterable<E> replacement, bool Function(E element) test) {
     int index = indexWhere(test);
 
