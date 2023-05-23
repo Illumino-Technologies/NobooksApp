@@ -37,6 +37,7 @@ class _TheoryAssessmentOperationLeafItemState
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ToolBarWidget(controller: controller),
         32.boxHeight,

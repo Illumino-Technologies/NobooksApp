@@ -38,7 +38,6 @@ class _QuestionViewState extends State<_QuestionView>
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -65,30 +64,31 @@ class _QuestionViewState extends State<_QuestionView>
           ),
         ),
         24.boxWidth,
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AbsorbPointer(
-              child: FocusScope(
-                canRequestFocus: false,
-                child: DocumentEditorCanvas(
-                  canvasSize: canvasSize,
-                  controller: controller,
-                ),
-              ),
-            ),
-            if (operation.marks != null)
-              Container(
-                alignment: Alignment.centerRight,
-                margin: EdgeInsets.only(right: 44.w),
-                child: Text(
-                  '${operation.marks} mark${operation.marks?.pluralValue}}',
-                  style: TextStyles.subHeading.copyWith(
-                    color: AppColors.neutral600,
+        Expanded(
+          child: Column(
+            children: [
+              AbsorbPointer(
+                child: FocusScope(
+                  canRequestFocus: false,
+                  child: DocumentEditorCanvas(
+                    canvasSize: canvasSize,
+                    controller: controller,
                   ),
                 ),
               ),
-          ],
+              if (operation.marks != null)
+                Container(
+                  alignment: Alignment.centerRight,
+                  margin: EdgeInsets.only(right: 44.w),
+                  child: Text(
+                    '${operation.marks} mark${operation.marks?.pluralValue}',
+                    style: TextStyles.subHeading.copyWith(
+                      color: AppColors.neutral600,
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ],
     );

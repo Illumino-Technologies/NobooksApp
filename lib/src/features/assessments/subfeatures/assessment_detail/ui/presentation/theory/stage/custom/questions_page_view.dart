@@ -107,19 +107,14 @@ class _QuestionPageViewState extends State<_QuestionPageView> {
             },
           ),
         ),
-        ListenableBuilder(
-          listenable: controller,
-          builder: (context) {
-            return AssessmentSelector(
-              onChanged: changePage,
-              currentItem: operationMap.keys.toList().indexOfOrNull(
-                        widget.initialIndices,
-                      ) ??
-                  controller.page?.toInt() ??
-                  0,
-              length: operationMap.length,
-            );
-          },
+        AssessmentSelector(
+          onChanged: changePage,
+          currentItem: operationMap.keys.toList().indexOfOrNull(
+                    widget.initialIndices,
+                  ) ??
+              controller.page?.toInt() ??
+              0,
+          length: operationMap.length,
         ),
       ],
     );
