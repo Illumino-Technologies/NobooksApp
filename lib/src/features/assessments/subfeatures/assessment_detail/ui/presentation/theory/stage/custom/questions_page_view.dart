@@ -1,6 +1,6 @@
 part of '../theory_stage_page.dart';
 
-class _QuestionPageView extends StatefulWidget {
+class _QuestionPageView extends ConsumerStatefulWidget {
   final Assessment assessment;
   final OperationIndices initialIndices;
 
@@ -11,11 +11,11 @@ class _QuestionPageView extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<_QuestionPageView> createState() => _QuestionPageViewState();
+  ConsumerState createState() => __QuestionPageViewState();
 }
 
-class _QuestionPageViewState extends State<_QuestionPageView> {
-  late final List<TheoryAssessmentOperation> operations =
+class __QuestionPageViewState extends ConsumerState<_QuestionPageView> {
+  late List<TheoryAssessmentOperation> operations =
       widget.assessment.assessments.cast();
   final Map<OperationIndices, AssessmentOperation> operationMap = {};
 
@@ -71,7 +71,19 @@ class _QuestionPageViewState extends State<_QuestionPageView> {
   }
 
   void changePage(int page) {
+    refreshPages(page);
     controller.jumpToPage(page);
+  }
+
+  void refreshPages(int pageIndex) {
+    operations = List.from(
+      ref
+          .read(AssessmentStageNotifier.provider)
+          .assessment!
+          .assessments
+          .cast<TheoryAssessmentOperation>(),
+    );
+    splitList();
   }
 
   @override

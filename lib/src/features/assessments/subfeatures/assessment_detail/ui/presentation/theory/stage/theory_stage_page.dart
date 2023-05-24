@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide ListenableBuilder;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
@@ -19,7 +20,7 @@ part 'custom/theory_assessment_operation_leaf_item.dart';
 
 typedef OperationIndices = ({int operationIndex, int? subIndex});
 
-class TheoryStagePage extends StatefulWidget {
+class TheoryStagePage extends ConsumerStatefulWidget {
   final Assessment assessment;
   final int operationIndex;
   final int? subOperationIndex;
@@ -32,18 +33,22 @@ class TheoryStagePage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<TheoryStagePage> createState() => _TheoryStagePageState();
+  ConsumerState createState() => _TheoryStagePageState();
 }
 
-class _TheoryStagePageState extends State<TheoryStagePage> {
+class _TheoryStagePageState extends ConsumerState<TheoryStagePage> {
   late final Assessment assessment = widget.assessment;
   late final int operationIndex = widget.operationIndex;
   late final int? subOperationIndex = widget.subOperationIndex;
 
   @override
+  void initState() {
+    super.initState();
+    AssessmentStageNotifier.refreshNotifier(assessment);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final List<TheoryAssessmentOperation> operations =
-        assessment.assessments.cast();
     return Scaffold(
       body: SafeArea(
         child: Padding(

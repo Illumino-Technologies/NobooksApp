@@ -61,21 +61,6 @@ class NoteDocumentController extends ChangeNotifier {
   }
 
   void drawingControllerListener() {
-    // print(
-    //     'last - last operation: ${drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation}');
-    // print(
-    //     'last - first operation: ${drawingController.drawings.lastOrNull?.deltas.firstOrNull?.operation}');
-    //
-    // print(
-    //     'first - last operation: ${drawingController.drawings.firstOrNull?.deltas.lastOrNull?.operation}');
-    // print(
-    //     'first - first operation: ${drawingController.drawings.firstOrNull?.deltas.firstOrNull?.operation}');
-
-    print(
-        'first point: ${drawingController.drawings.lastOrNull?.deltas.firstOrNull?.point}');
-    print(
-        'last point: ${drawingController.drawings.lastOrNull?.deltas.lastOrNull?.point}');
-
     if (drawingController.drawingMode == DrawingMode.erase) {
       if (drawingController.drawings.lastOrNull?.deltas.lastOrNull?.operation ==
           DrawingOperation.end) {
@@ -110,7 +95,6 @@ class NoteDocumentController extends ChangeNotifier {
   late final List<DocumentEditingController> cache = [];
 
   void setDrawingController(DrawingController controller) {
-    print('set drawing controller called');
     drawingController = controller;
     notifyListeners();
   }
