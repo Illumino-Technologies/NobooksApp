@@ -14,13 +14,26 @@ part 'custom/info_row.dart';
 
 part 'custom/title_widget.dart';
 
-class AssessmentPreviewPage extends StatelessWidget {
+class AssessmentPreviewPage extends ConsumerStatefulWidget {
   final Assessment assessment;
 
   const AssessmentPreviewPage({
     Key? key,
     required this.assessment,
   }) : super(key: key);
+
+  @override
+  ConsumerState createState() => _AssessmentPreviewPageState();
+}
+
+class _AssessmentPreviewPageState extends ConsumerState<AssessmentPreviewPage> {
+  @override
+  void initState() {
+    super.initState();
+    AssessmentStageNotifier.refreshNotifier(assessment);
+  }
+
+  Assessment get assessment => widget.assessment;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +56,7 @@ class AssessmentPreviewPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    40.boxHeight,
                     32.boxHeight,
                     Center(
                       child: Column(

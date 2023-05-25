@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
+import 'package:nobook/src/features/assessments/subfeatures/assessment_detail/ui/presentation/utils/timer_widget.dart';
 import 'package:nobook/src/features/assignments/subfeatures/assignment/ui/view/custom/custom_scrollable/multi_point_scroll_view.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
@@ -28,7 +29,7 @@ class TheoryStagePage extends ConsumerStatefulWidget {
   const TheoryStagePage({
     Key? key,
     required this.assessment,
-    required this.operationIndex,
+    this.operationIndex = 0,
     this.subOperationIndex,
   }) : super(key: key);
 
@@ -55,9 +56,6 @@ class _TheoryStagePageState extends ConsumerState<TheoryStagePage> {
           padding: EdgeInsets.symmetric(horizontal: 40.w),
           child: Column(
             children: [
-              24.boxHeight,
-              24.boxHeight,
-              24.boxHeight,
               Expanded(
                 child: _QuestionPageView(
                   assessment: assessment,
@@ -74,7 +72,3 @@ class _TheoryStagePageState extends ConsumerState<TheoryStagePage> {
     );
   }
 }
-
-// theory assessment page view
-// theory assessment operation item
-// theory assessment operation leaf item

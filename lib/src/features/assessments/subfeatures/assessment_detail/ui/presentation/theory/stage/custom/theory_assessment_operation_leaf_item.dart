@@ -32,10 +32,10 @@ class _TheoryAssessmentOperationLeafItemState
   late final OperationIndices index = widget.indices;
 
   @override
-  double get extraWidth => 0.w;
+  double get extraWidth => 50.w;
 
   @override
-  double get extraHeight => 0.h;
+  double get extraHeight => 50.h;
 
   @override
   void initState() {

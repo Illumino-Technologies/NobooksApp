@@ -67,12 +67,16 @@ class __QuestionPageViewState extends ConsumerState<_QuestionPageView> {
   @override
   void dispose() {
     controller.dispose();
+    currentPageNotifier.dispose();
     super.dispose();
   }
+
+  final ValueNotifier<int> currentPageNotifier = ValueNotifier<int>(0);
 
   void changePage(int page) {
     refreshPages(page);
     controller.jumpToPage(page);
+    currentPageNotifier.value = page;
   }
 
   void refreshPages(int pageIndex) {
@@ -90,6 +94,29 @@ class __QuestionPageViewState extends ConsumerState<_QuestionPageView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        24.boxHeight,
+        Row(
+          children: [
+            const AssessmentTimerWidget(),
+            const Spacer(),
+            ValueListenableBuilder<int>(
+              valueListenable: currentPageNotifier,
+              builder: (_, value, __) {
+                return Text(
+                  'Question ${'${value + 1}'.padLeft(
+                    2,
+                    '0',
+                  )} of ${'${operationMap.length}'.padLeft(2, '0')}',
+                  style: TextStyles.subHeading.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.blue500,
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+        24.boxHeight,
         Expanded(
           child: PageView.builder(
             controller: controller,
@@ -130,5 +157,13 @@ class __QuestionPageViewState extends ConsumerState<_QuestionPageView> {
         ),
       ],
     );
+  }
+
+  int getControllerPage() {
+    try {
+      return controller.page!.toInt();
+    } catch (e) {
+      return 0;
+    }
   }
 }

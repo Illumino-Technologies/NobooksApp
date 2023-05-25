@@ -1,6 +1,6 @@
 part of '../assessment_detail_state_notifier.dart';
 
-class AssessmentArenaState extends AssessmentStageState with TimerMixin {
+class AssessmentArenaState extends AssessmentStageState {
   final Assessment? _assessment;
 
   AssessmentArenaState({
@@ -28,7 +28,4 @@ class AssessmentArenaState extends AssessmentStageState with TimerMixin {
       error: error ?? this.error,
     );
   }
-
-  @override
-  int get timerDuration => assessment.duration * 60;
 }

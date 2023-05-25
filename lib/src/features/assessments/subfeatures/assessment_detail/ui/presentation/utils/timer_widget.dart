@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:nobook/src/features/assessments/assessments_barrel.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nobook/src/features/assessments/subfeatures/assessment_detail/ui/state_mgmt/timer_state/timer_state_notifier.dart';
+import 'package:nobook/src/global/global_barrel.dart';
+import 'package:nobook/src/utils/function/extensions/extensions.dart';
 
-class AssessmentTimerWidget extends StatefulWidget {
-  const AssessmentTimerWidget({Key? key}) : super(key: key);
+class AssessmentTimerWidget extends ConsumerStatefulWidget {
+  const AssessmentTimerWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<AssessmentTimerWidget> createState() => _AssessmentTimerWidgetState();
+  ConsumerState createState() => _AssessmentTimerWidgetState();
 }
 
-class _AssessmentTimerWidgetState extends State<AssessmentTimerWidget> {
+class _AssessmentTimerWidgetState extends ConsumerState<AssessmentTimerWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-      ],
+    return TimerWidget(
+      timer: ref.read(TimerStateNotifier.provider!.notifier).stream,
+      timerDuration: ref.read(TimerStateNotifier.provider!),
+      leadingText: '',
+      textStyle: TextStyles.subHeading.asSemibold.withColor(AppColors.blue500),
     );
   }
 }

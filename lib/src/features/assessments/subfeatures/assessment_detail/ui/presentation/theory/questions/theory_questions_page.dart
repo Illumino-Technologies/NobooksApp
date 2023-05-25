@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
+import 'package:nobook/src/features/assessments/subfeatures/assessment_detail/ui/state_mgmt/timer_state/timer_state_notifier.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
@@ -33,6 +34,7 @@ class _TheoryQuestionsPageState extends State<TheoryQuestionsPage> {
   void initState() {
     super.initState();
     AssessmentStageNotifier.refreshNotifier(assessment);
+    TimerStateNotifier.refreshNotifier(assessment.duration);
   }
 
   @override
@@ -51,6 +53,20 @@ class _TheoryQuestionsPageState extends State<TheoryQuestionsPage> {
           padding: EdgeInsets.symmetric(horizontal: 40.w),
           child: Column(
             children: [
+              40.boxHeight,
+              Row(
+                children: [
+                  const AssessmentTimerWidget(),
+                  const Spacer(),
+                  Text(
+                    'List of Questions',
+                    style: TextStyles.subHeading.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.blue500,
+                    ),
+                  ),
+                ],
+              ),
               40.boxHeight,
               Text(
                 'Tap a question to start answering. Your answers will appear '

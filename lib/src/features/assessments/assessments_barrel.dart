@@ -4,6 +4,7 @@ export 'package:nobook/src/features/assessments/domain/models/assessment/assessm
 export 'package:nobook/src/features/assessments/domain/models/assessment/content/assessment_operations/base_class.dart';
 export 'package:nobook/src/features/assessments/domain/models/assessment_type/assessment_type.dart';
 export 'package:nobook/src/features/assessments/subfeatures/assessment_detail/assessment_detail_barrel.dart';
+export 'package:nobook/src/features/assessments/subfeatures/assessment_detail/ui/presentation/utils/timer_widget.dart';
 export 'package:nobook/src/features/assessments/subfeatures/assessment_listings/data/repository/assessment_repository.dart';
 export 'package:nobook/src/features/assessments/subfeatures/assessment_listings/ui/presentation/assessments_page.dart';
 export 'package:nobook/src/features/assessments/subfeatures/assessment_preview/ui/assessment_preview_page.dart';
