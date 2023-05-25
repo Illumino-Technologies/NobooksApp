@@ -34,7 +34,7 @@ class _TheoryQuestionsPageState extends State<TheoryQuestionsPage> {
   void initState() {
     super.initState();
     AssessmentStageNotifier.refreshNotifier(assessment);
-    TimerStateNotifier.refreshNotifier(assessment.duration);
+    AssessmentTimerStateNotifier.refreshNotifier(assessment.duration);
   }
 
   @override
@@ -47,50 +47,53 @@ class _TheoryQuestionsPageState extends State<TheoryQuestionsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ScrollbarWrapper(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40.w),
-          child: Column(
-            children: [
-              40.boxHeight,
-              Row(
-                children: [
-                  const AssessmentTimerWidget(),
-                  const Spacer(),
-                  Text(
-                    'List of Questions',
-                    style: TextStyles.subHeading.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.blue500,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: ScrollbarWrapper(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40.w),
+            child: Column(
+              children: [
+                40.boxHeight,
+                Row(
+                  children: [
+                    const AssessmentTimerWidget(),
+                    const Spacer(),
+                    Text(
+                      'List of Questions',
+                      style: TextStyles.subHeading.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.blue500,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              40.boxHeight,
-              Text(
-                'Tap a question to start answering. Your answers will appear '
-                'below each question after answering them.',
-                style: TextStyles.headline6.copyWith(
-                  fontSize: 16.sp,
-                  height: 1.5,
-                  color: AppColors.neutral400,
+                  ],
                 ),
-              ),
-              40.boxHeight,
-              TitleWidget(assessment: assessment),
-              16.boxHeight,
-              Divider(
-                height: 2.h,
-                thickness: 2.h,
-                color: AppColors.neutral50,
-              ),
-              16.boxHeight,
-              InfoRow(assessment: assessment),
-              Expanded(
-                child: _AssessmentsView(assessment: assessment),
-              ),
-            ],
+                40.boxHeight,
+                Text(
+                  'Tap a question to start answering. Your answers will appear '
+                  'below each question after answering them.',
+                  style: TextStyles.headline6.copyWith(
+                    fontSize: 16.sp,
+                    height: 1.5,
+                    color: AppColors.neutral400,
+                  ),
+                ),
+                40.boxHeight,
+                TitleWidget(assessment: assessment),
+                16.boxHeight,
+                Divider(
+                  height: 2.h,
+                  thickness: 2.h,
+                  color: AppColors.neutral50,
+                ),
+                16.boxHeight,
+                InfoRow(assessment: assessment),
+                Expanded(
+                  child: _AssessmentsView(assessment: assessment),
+                ),
+              ],
+            ),
           ),
         ),
       ),

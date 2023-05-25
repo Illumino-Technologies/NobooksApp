@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
+import 'package:nobook/src/features/assessments/subfeatures/assessment_detail/ui/state_mgmt/timer_state/timer_state_notifier.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
-import 'package:nobook/src/utils/mixins/drawing_mixin/intrinsic_canvas_size_mixin.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'custom/assessment_operation_item.dart';
@@ -38,6 +38,7 @@ class _AssessmentStagePageState
   void initState() {
     super.initState();
     AssessmentStageNotifier.refreshNotifier(assessment);
+    AssessmentTimerStateNotifier.refreshNotifier(assessment.duration);
   }
 
   @override
@@ -59,11 +60,7 @@ class _AssessmentStagePageState
                 32.boxHeight,
                 Row(
                   children: [
-                    Container(
-                      width: 82.w,
-                      height: 24.h,
-                      color: AppColors.blue500,
-                    ),
+                    const AssessmentTimerWidget(),
                     const Spacer(),
                     Container(
                       padding: EdgeInsets.symmetric(

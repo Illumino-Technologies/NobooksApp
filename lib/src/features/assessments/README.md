@@ -30,9 +30,9 @@ Requirements:
        - [x] Multiple choice
           - [x] Presentation
           - [x] State management
-       - [ ] Theory
-          - [ ] Presentation
-          - [ ] State management
+       - [x] Theory
+          - [x] Presentation
+          - [x] State management
        - [ ] Assessment review
           - [ ] Presentation
           - [ ] State management

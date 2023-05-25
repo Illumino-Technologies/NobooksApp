@@ -17,8 +17,8 @@ class _AssessmentTimerWidgetState extends ConsumerState<AssessmentTimerWidget> {
   @override
   Widget build(BuildContext context) {
     return TimerWidget(
-      timer: ref.read(TimerStateNotifier.provider!.notifier).stream,
-      timerDuration: ref.read(TimerStateNotifier.provider!),
+      timer: ref.read(AssessmentTimerStateNotifier.provider!.notifier).stream,
+      timerDuration: ref.read(AssessmentTimerStateNotifier.provider!),
       leadingText: '',
       textStyle: TextStyles.subHeading.asSemibold.withColor(AppColors.blue500),
     );

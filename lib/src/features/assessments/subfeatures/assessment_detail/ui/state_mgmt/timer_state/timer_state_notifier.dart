@@ -3,28 +3,30 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-part 'timer_state.dart';
 
-StateNotifierProvider<TimerStateNotifier, Duration>? _provider;
+StateNotifierProvider<AssessmentTimerStateNotifier, Duration>? _provider;
 
-class TimerStateNotifier extends StateNotifier<Duration> {
+class AssessmentTimerStateNotifier extends StateNotifier<Duration> {
   final Duration initialDuration;
   Timer? _timer;
 
-  TimerStateNotifier({
+  AssessmentTimerStateNotifier({
     required int minuteDuration,
-  })  : initialDuration = Duration(minutes: minuteDuration),
+  })
+      : initialDuration = Duration(minutes: minuteDuration),
         super(Duration(minutes: minuteDuration));
 
-  static StateNotifierProvider<TimerStateNotifier, Duration>
-      get requireProvider => _provider!;
+  static StateNotifierProvider<AssessmentTimerStateNotifier, Duration>
+  get requireProvider => _provider!;
 
-  static StateNotifierProvider<TimerStateNotifier, Duration>? get provider =>
+  static StateNotifierProvider<AssessmentTimerStateNotifier, Duration>? get provider =>
       _provider!;
 
   static void refreshNotifier(int minuteDuration) {
-    _provider = StateNotifierProvider<TimerStateNotifier, Duration>(
-      (ref) => TimerStateNotifier(minuteDuration: minuteDuration)..start(),
+    _provider = StateNotifierProvider<AssessmentTimerStateNotifier, Duration>(
+          (ref) =>
+      AssessmentTimerStateNotifier(minuteDuration: minuteDuration)
+        ..start(),
     );
   }
 
