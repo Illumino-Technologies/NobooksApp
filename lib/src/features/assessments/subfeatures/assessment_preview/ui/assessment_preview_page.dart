@@ -115,7 +115,7 @@ class _AssessmentPreviewPageState extends ConsumerState<AssessmentPreviewPage> {
               },
               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
               child: Text(
-                'Proceed to examination',
+                'Proceed to ${assessment.type.longName.toLowerCase()}',
                 style: TextStyles.paragraph3.copyWith(
                   height: 1.333,
                   fontWeight: FontWeight.w600,

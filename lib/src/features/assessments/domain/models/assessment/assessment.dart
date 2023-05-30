@@ -19,6 +19,7 @@ class Assessment implements Comparable<Assessment> {
   final TermPeriod term;
   final String session;
   final AssessmentType type;
+  final bool submitted;
   final NoteDocument assessmentInstructions;
   final NoteDocument assessmentConduct;
   final NoteDocument studentDeclaration;
@@ -39,6 +40,7 @@ class Assessment implements Comparable<Assessment> {
     required this.assessmentConduct,
     required this.studentDeclaration,
     required this.assessmentNumber,
+    required this.submitted,
   });
 
   int? get totalMark {
@@ -67,6 +69,7 @@ class Assessment implements Comparable<Assessment> {
       'assessmentConduct': assessmentConduct.toSerializerList(),
       'studentDeclaration': studentDeclaration.toSerializerList(),
       'assessmentNumber': assessmentNumber,
+      'submitted': submitted
     };
   }
 
@@ -97,13 +100,14 @@ class Assessment implements Comparable<Assessment> {
         map['studentDeclaration'],
       ),
       assessmentNumber: map['assessmentNumber'] as int?,
+      submitted: map['submitted'] as bool,
     );
   }
 
   Assessment copyWith({
     String? id,
     Subject? subject,
-    PaperType? examType,
+    PaperType? paperType,
     List<AssessmentOperation>? assessments,
     int? duration,
     DateTime? startTime,
@@ -116,11 +120,12 @@ class Assessment implements Comparable<Assessment> {
     NoteDocument? assessmentInstructions,
     NoteDocument? assessmentConduct,
     NoteDocument? studentDeclaration,
+    bool? submitted,
   }) {
     return Assessment(
       id: id ?? this.id,
       subject: subject ?? this.subject,
-      paperType: examType ?? this.paperType,
+      paperType: paperType ?? this.paperType,
       assessments: assessments ?? this.assessments,
       duration: duration ?? this.duration,
       startTime: startTime ?? this.startTime,
@@ -133,6 +138,7 @@ class Assessment implements Comparable<Assessment> {
           assessmentInstructions ?? this.assessmentInstructions,
       assessmentConduct: assessmentConduct ?? this.assessmentConduct,
       studentDeclaration: studentDeclaration ?? this.studentDeclaration,
+      submitted: submitted ?? this.submitted,
     );
   }
 

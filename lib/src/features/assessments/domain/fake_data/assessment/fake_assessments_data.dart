@@ -30,6 +30,7 @@ abstract class FakeAssessmentsData {
         return List<Assessment>.generate(
           2,
           (index) => Assessment(
+            submitted: false,
             id: UniqueKey().toString(),
             subject: subject,
             paperType: PaperType.values[index],
