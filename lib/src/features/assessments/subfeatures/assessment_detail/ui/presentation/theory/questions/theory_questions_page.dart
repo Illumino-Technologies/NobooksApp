@@ -37,7 +37,7 @@ class _TheoryQuestionsPageState extends ConsumerState<TheoryQuestionsPage> {
       assessment.duration,
       sureToRefresh: AssessmentTimerStateNotifier.provider == null
           ? true
-          : !ref.read(AssessmentTimerStateNotifier.provider!.notifier).isActive,
+          : !ref.read(AssessmentTimerStateNotifier.provider!.notifier).isOngoing,
     );
 
     manualListenerSubscription = ref.listenManual(

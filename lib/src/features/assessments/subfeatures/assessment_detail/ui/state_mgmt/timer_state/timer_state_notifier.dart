@@ -8,7 +8,7 @@ class AssessmentTimerStateNotifier extends StateNotifier<Duration> {
   final Duration initialDuration;
   Timer? _timer;
 
-  bool get isActive => _timer?.isActive ?? false;
+  bool get isOngoing => _timer?.isActive ?? false;
 
   AssessmentTimerStateNotifier({
     required int minuteDuration,
@@ -47,6 +47,7 @@ class AssessmentTimerStateNotifier extends StateNotifier<Duration> {
   @override
   void dispose() {
     _timer?.cancel();
+    _provider = null;
     super.dispose();
   }
 }

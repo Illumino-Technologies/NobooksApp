@@ -122,16 +122,23 @@ class _AssessmentPreviewPageState extends ConsumerState<AssessmentPreviewPage> {
                 focusElevation: 0,
                 elevation: 0,
                 color: AppColors.blue500,
-                onPressed: switch (assessment.paperType) {
-                  PaperType.multipleChoice => () => context.goNamed(
+                onPressed: () {
+                  if (AssessmentTimerStateNotifier.provider != null) {
+                    if (!ref.read(
+                          AssessmentTimerStateNotifier.requireProvider.notifier,
+                        ).isOngoing) return;
+                  }
+                  return switch (assessment.paperType) {
+                    PaperType.multipleChoice => context.goNamed(
                         AppRoute.multipleChoiceAssessmentStage.name,
                         extra: assessment,
                       ),
-                  PaperType.theory => () => context.goNamed(
+                    PaperType.theory => context.goNamed(
                         AppRoute.theoryAssessmentQuestions.name,
                         extra: assessment,
                       ),
-                  _ => throw (Failure(message: 'Invalid Paper Type')),
+                    _ => throw (Failure(message: 'Invalid Paper Type')),
+                  };
                 },
                 padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
                 child: Text(

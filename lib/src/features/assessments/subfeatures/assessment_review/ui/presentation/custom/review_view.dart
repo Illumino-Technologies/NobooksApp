@@ -1,15 +1,15 @@
 part of '../assessment_review_page.dart';
 
 class _ReviewView extends ConsumerWidget {
-  final Assessment assessment;
 
   const _ReviewView({
     Key? key,
-    required this.assessment,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final Assessment assessment =
+        ref.watch(AssessmentStageNotifier.provider).assessment!;
     return Stack(
       children: [
         SingleChildScrollView(

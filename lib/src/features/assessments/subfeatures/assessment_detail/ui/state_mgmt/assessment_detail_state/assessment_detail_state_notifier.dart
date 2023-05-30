@@ -31,6 +31,8 @@ class AssessmentStageNotifier extends StateNotifier<AssessmentStageState> {
   }
 
   void updateAssessment(Assessment assessment) {
+    print(
+        'answered assessments: ${assessment.assessments.map((e) => e.answer)}');
     state = state.copyWith(assessment: assessment);
   }
 

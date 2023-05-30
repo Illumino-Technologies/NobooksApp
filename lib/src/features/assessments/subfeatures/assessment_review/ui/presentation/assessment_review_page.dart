@@ -29,18 +29,19 @@ class AssessmentReviewPage extends ConsumerStatefulWidget {
 class _AssessmentReviewPageState extends ConsumerState<AssessmentReviewPage> {
   @override
   Widget build(BuildContext context) {
-
-    final Widget child = Scaffold(
+    const Widget child = Scaffold(
       body: SafeArea(
+        key: ValueKey('assessment review child key'),
         child: ScrollbarWrapper(
-          child: _ReviewView(
-            assessment: widget.assessment,
-          ),
+          child: _ReviewView(),
         ),
       ),
     );
 
-    return ref.read(AssessmentTimerStateNotifier.provider!.notifier).isActive
+    return ref.watch(
+      AssessmentTimerStateNotifier.requireProvider
+          .select((value) => value.inSeconds >= 1),
+    )
         ? child
         : WillPopScope(onWillPop: () async => false, child: child);
   }

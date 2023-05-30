@@ -22,7 +22,8 @@ class MultipleChoiceView extends ConsumerWidget {
         itemBuilder: (context, index) => _MCQOperationItem(
           index: index,
           key: ValueKey(
-            '${assessment.assessments[index].id} ${index + 1} ${assessment.assessments[index].answer}',
+            '${assessment.assessments[index].id} ${index + 1}'
+            ' ${assessment.assessments[index].answer}',
           ),
         ),
       ),
