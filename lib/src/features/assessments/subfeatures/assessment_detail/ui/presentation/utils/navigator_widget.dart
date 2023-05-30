@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
@@ -77,7 +78,7 @@ enum NavigatorBarPage {
   const NavigatorBarPage(this.name, this.route);
 }
 
-class AssessmentNavigatorBar extends StatelessWidget {
+class AssessmentNavigatorBar extends ConsumerWidget {
   final Assessment assessment;
   final NavigatorBarPage page;
 
@@ -101,13 +102,21 @@ class AssessmentNavigatorBar extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
         IconButton(
           onPressed: page.isFirstIndex(assessment)
               ? null
-              : () => page.popToPrevious(context, assessment),
+              : () {
+                  if (page.isLastIndex(assessment)) {
+                    if (ref
+                            .read(AssessmentTimerStateNotifier.requireProvider)
+                            .inSeconds <=
+                        1) return;
+                  }
+                  page.popToPrevious(context, assessment);
+                },
           icon: SvgPicture.asset(
             VectorAssets.arrowLeft,
             color: page.isFirstIndex(assessment) ? AppColors.neutral400 : null,

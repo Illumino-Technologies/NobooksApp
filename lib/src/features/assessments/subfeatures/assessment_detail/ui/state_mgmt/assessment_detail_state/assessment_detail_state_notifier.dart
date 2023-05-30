@@ -8,11 +8,14 @@ part 'states/base_state.dart';
 
 StateNotifierProvider<AssessmentStageNotifier, AssessmentStageState> _provider =
     StateNotifierProvider<AssessmentStageNotifier, AssessmentStageState>(
-  (ref) => AssessmentStageNotifier(),
+  (ref) => AssessmentStageNotifier(ref: ref),
 );
 
 class AssessmentStageNotifier extends StateNotifier<AssessmentStageState> {
+  final Ref ref;
+
   AssessmentStageNotifier({
+    required this.ref,
     Assessment? assessment,
   }) : super(AssessmentArenaState());
 
@@ -22,7 +25,7 @@ class AssessmentStageNotifier extends StateNotifier<AssessmentStageState> {
   static void refreshNotifier(Assessment assessment) {
     _provider =
         StateNotifierProvider<AssessmentStageNotifier, AssessmentStageState>(
-      (ref) => AssessmentStageNotifier()..initializeData(assessment),
+      (ref) => AssessmentStageNotifier(ref: ref)..initializeData(assessment),
     );
   }
 
@@ -31,6 +34,11 @@ class AssessmentStageNotifier extends StateNotifier<AssessmentStageState> {
   }
 
   void updateAssessment(Assessment assessment) {
+    if (AssessmentTimerStateNotifier.provider == null) return;
+    if (ref.read(AssessmentTimerStateNotifier.requireProvider).inSeconds <= 1) {
+      return;
+    }
+
     state = state.copyWith(assessment: assessment);
   }
 
