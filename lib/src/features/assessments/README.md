@@ -10,7 +10,7 @@ Things to note:
     - `Assessment` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/assessment.dart)
     - `AssessmentType` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment_type/assessment_type.dart)
     - `AssessmentOperation` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/content/assessment_operation.dart)
-    - `QuestionType` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/content/question_type.dart)
+    - `Paper` [link](https://github.com/Illumino-Technologies/NobooksApp/blob/feat-assessments/lib/src/features/assessments/domain/models/assessment/content/question_type.dart)
 
 Requirements:
 
@@ -24,10 +24,18 @@ Requirements:
         - [ ] State management (should depend on assessment data layer)
     - [x] Data
         - [x] Repository (should store the list of assessments)
-- [ ] Assessment detail
-    - [ ] UI
-        - [ ] Presentation
-        - [ ] State management (should depend on assessment data layer)
+- [x] Assessment stage
+    - [x] UI
+    - [x] State management (should depend on assessment data layer)
+       - [x] Multiple choice
+          - [x] Presentation
+          - [x] State management
+       - [x] Theory
+          - [x] Presentation
+          - [x] State management
+       - [x] Assessment review
+          - [x] Presentation
+          - [x] State management
 
 User flow: Assessments listing
 

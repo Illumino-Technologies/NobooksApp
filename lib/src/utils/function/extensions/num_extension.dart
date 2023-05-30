@@ -4,6 +4,8 @@ extension NumExtension on num {
   ///returns value * (percentage/100)
   double percent(num percentage) => (this * (percentage / 100)).toDouble();
 
+  double get l => max(h, w);
+
   SizedBox get boxHeight => SizedBox(
         height: h.toDouble(),
         width: 0,
@@ -13,6 +15,11 @@ extension NumExtension on num {
         height: 0,
         width: w.toDouble(),
       );
+
+  String get pluralValue {
+    if (this == 1) return '';
+    return 's';
+  }
 
   String toOrdinal() {
     final int number = toInt();

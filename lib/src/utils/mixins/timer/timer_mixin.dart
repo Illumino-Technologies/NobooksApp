@@ -1,11 +1,19 @@
 import 'dart:async';
 
-///mixin for adding timer to state or screens
+/// A mixin for adding timer to state or screens
 ///e.g when there's a reset password otp timer
+///
+/// Add it to your immutable state class like so:
+///   class PasswordState extends AuthState with TimerMixin {
+///   ...
+///
+///   @override
+///   timerDuration => 30; //in seconds
+///   }
 ///
 mixin TimerMixin {
   late final StreamController<Duration> _timerSub =
-      StreamController<Duration>();
+      StreamController<Duration>.broadcast();
 
   ///in seconds
   int get timerDuration;

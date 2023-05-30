@@ -5,7 +5,6 @@ import 'package:nobook/src/features/notes/subfeatures/document_editing/base/cont
 import 'package:nobook/src/utils/utils_barrel.dart';
 
 abstract class UtilFunctions {
-
   static NoteDocument noteDocumentFromList(List data) {
     final NoteDocument document = [];
     for (final Map noteData in data) {
@@ -74,7 +73,8 @@ abstract class UtilFunctions {
     return colorIndex / (colors.length - 1);
   }
 
-  static DateTime? dateTimeFromMap(dynamic data, {
+  static DateTime? dateTimeFromMap(
+    dynamic data, {
     bool mustReturnData = false,
     DateTime? fallBack,
   }) {
@@ -87,45 +87,42 @@ abstract class UtilFunctions {
     return (DateTime.tryParse(data) ?? fallbackDateTime).toLocal();
   }
 
-
   static String formatDateAndTime(DateTime dateTime) {
-    final String time = intl.DateFormat
-        .jm()
-        .format(dateTime)
-        .toLowerCase()
-        .removeAllSpaces;
-    final String dateDay = intl.DateFormat
-        .d()
-        .format(dateTime)
-        .withNumberOrdinal;
+    final String time =
+        intl.DateFormat.jm().format(dateTime).toLowerCase().removeAllSpaces;
+    final String dateDay =
+        intl.DateFormat.d().format(dateTime).withNumberOrdinal;
     final String dateMY = intl.DateFormat.yMMMM().format(dateTime);
     return '$time, $dateDay $dateMY';
   }
 
-
-  static String formatLongDate(DateTime date, [String monthSeparator = ' ',]) {
-    final String dateDay = intl.DateFormat
-        .d()
-        .format(date)
-        .withNumberOrdinal;
+  static String formatLongDate(
+    DateTime date, [
+    String monthSeparator = ' ',
+  ]) {
+    final String dateDay = intl.DateFormat.d().format(date).withNumberOrdinal;
     final String month = intl.DateFormat.MMMM().format(date);
     final String year = intl.DateFormat.y().format(date);
     return '$dateDay $month$monthSeparator$year';
   }
 
-  static String formatDate(DateTime date, {
+  static String formatDate(
+    DateTime date, {
     String separator = ' / ',
   }) {
-    return '${date.day.toString().padLeft(2, '0')}$separator${date.month
-        .toString().padLeft(2, '0')}$separator${date.year}';
+    return '${date.day.toString().padLeft(2, '0')}$separator${date.month.toString().padLeft(2, '0')}$separator${date.year}';
   }
 
   static String formatMinutesDuration(Duration duration) {
     final int inSeconds = duration.inSeconds;
     final int seconds = inSeconds % 60;
+    final int hour = inSeconds ~/ 3600;
     final int minutes = inSeconds ~/ 60;
 
-    return '${'$minutes'.padLeft(2, '0')}:${'$seconds'.padLeft(2, '0')}';
+    return
+        '${'$hour'.padLeft(2, '0')}:'
+        '${'$minutes'.padLeft(2, '0')}:'
+        '${'$seconds'.padLeft(2, '0')}';
   }
 
   static String? phoneNumberBodyFrom(String phoneNumber) {
@@ -133,31 +130,38 @@ abstract class UtilFunctions {
     String phoneNumberBody = phoneNumber.length > 10
         ? phoneNumber.substring((phoneNumber.length - 10), phoneNumber.length)
         : '';
-    if (phoneNumberBody
-        .trim()
-        .isEmpty) return null;
+    if (phoneNumberBody.trim().isEmpty) return null;
 
-    final List<String> chars = phoneNumberBody.chars..insert(3, ' ')..insert(
-        8, ' ',);
+    final List<String> chars = phoneNumberBody.chars
+      ..insert(3, ' ')
+      ..insert(
+        8,
+        ' ',
+      );
     phoneNumberBody = chars.join();
 
-    return phoneNumberBody
-        .trim()
-        .nullIfEmpty;
+    return phoneNumberBody.trim().nullIfEmpty;
   }
 
-  static String formatTime(DateTime time, [bool addMeridian = true,]) {
+  static String formatTime(
+    DateTime time, [
+    bool addMeridian = true,
+  ]) {
     final String hour = time.hour.toString().padLeft(2, '0');
     final String minute = time.minute.toString().padLeft(2, '0');
-    final String meridian = addMeridian ? time.hour < 12 ? 'am' : 'pm' : '';
+    final String meridian = addMeridian
+        ? time.hour < 12
+            ? 'am'
+            : 'pm'
+        : '';
     return '$hour:$minute$meridian';
   }
 
   static ThemeMode themeModeFromName(String name) {
     name = name.trim();
     assert(
-    ThemeMode.values.containsWhere((value) => value.name != name),
-    'name: $name is not a ThemeMode',
+      ThemeMode.values.containsWhere((value) => value.name != name),
+      'name: $name is not a ThemeMode',
     );
     return ThemeMode.values.firstWhere((element) => element.name == name);
   }

@@ -46,5 +46,7 @@ abstract class VectorAssets {
   static const String triangleIcon = 'assets/vectors/triangle_icon.svg';
   static const String arrowRight = 'assets/vectors/arrow_right.svg';
   static const String arrowLeft = 'assets/vectors/arrow_left.svg';
+  static const String thickArrowRight = 'assets/vectors/thick_arrow_right.svg';
+  static const String thickArrowLeft = 'assets/vectors/thick_arrow_left.svg';
   static const String _icon = 'assets/vectors/_icon.svg';
 }

@@ -42,6 +42,11 @@ extension ListExtension<E> on List<E> {
     }
   }
 
+  int? indexOfOrNull(E element) {
+    final int index = indexOf(element);
+    return index == -1 ? null : index;
+  }
+
   void replaceWhere(Iterable<E> replacement, bool Function(E element) test) {
     int index = indexWhere(test);
 
@@ -165,6 +170,8 @@ extension NullableListExtension<E> on List<E>? {
   bool get isNullOrEmpty => this == null || (this?.isEmpty ?? true);
 
   bool get isNotNullOrEmpty => this != null || (this?.isNotEmpty ?? false);
+
+  bool get isNotNullNorEmpty => this != null && (this?.isNotEmpty ?? false);
 
   List<E>? get nullIfEmpty => (this?.isEmpty ?? true) ? null : this;
 }

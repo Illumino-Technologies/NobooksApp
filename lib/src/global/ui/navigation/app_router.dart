@@ -81,17 +81,67 @@ final GoRouter _router = GoRouter(
           },
           routes: [
             GoRoute(
-              parentNavigatorKey: _navigationKey,
-              path: AppRoute.assessmentDetail.path,
-              name: AppRoute.assessmentDetail.name,
+              path: AppRoute.assessmentPreview.path,
+              name: AppRoute.assessmentPreview.name,
               builder: (context, state) {
-                final (Assessment, AssessmentType) record =
-                    state.extra as (Assessment, AssessmentType);
-                return AssessmentDetailPage(
-                  assessment: record.$1,
-                  type: record.$2,
+                return AssessmentPreviewPage(
+                  assessment: (state.extra as Assessment),
                 );
               },
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _navigationKey,
+                  path: AppRoute.multipleChoiceAssessmentStage.path,
+                  name: AppRoute.multipleChoiceAssessmentStage.name,
+                  builder: (context, state) {
+                    return MultipleChoiceAssessmentStagePage(
+                      assessment: (state.extra as Assessment),
+                    );
+                  },
+                ),
+                GoRoute(
+                  parentNavigatorKey: _navigationKey,
+                  path: AppRoute.theoryAssessmentQuestions.path,
+                  name: AppRoute.theoryAssessmentQuestions.name,
+                  builder: (context, state) {
+                    return TheoryQuestionsPage(
+                      assessment: (state.extra as Assessment),
+                    );
+                  },
+                  routes: [
+                    GoRoute(
+                      parentNavigatorKey: _navigationKey,
+                      path: AppRoute.theoryAssessmentStage.path,
+                      name: AppRoute.theoryAssessmentStage.name,
+                      builder: (context, state) {
+                        final int? index = int.tryParse(
+                          state.params['operationIndex'].toString(),
+                        );
+
+                        final int? subOperationIndex = int.tryParse(
+                          state.queryParams['subOperationIndex'].toString(),
+                        );
+
+                        return TheoryStagePage(
+                          assessment: state.extra as Assessment,
+                          operationIndex: index ?? 0,
+                          subOperationIndex: subOperationIndex ?? 0,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  parentNavigatorKey: _navigationKey,
+                  path: AppRoute.assessmentReview.path,
+                  name: AppRoute.assessmentReview.name,
+                  builder: (context, state) {
+                    return AssessmentReviewPage(
+                      assessment: (state.extra as Assessment),
+                    );
+                  },
+                ),
+              ],
             ),
           ],
         ),

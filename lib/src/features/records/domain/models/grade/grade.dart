@@ -1,4 +1,3 @@
-import 'package:nobook/src/features/records/domain/models/grade/term_period.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/utils/constants/constants_barrel.dart';
 import 'package:nobook/src/utils/function/extensions/extensions.dart';
@@ -22,13 +21,14 @@ class Grade {
   final double examPercent;
   final TermPeriod term;
 
-  double? get ca => ((caScores?.fold<double>(
-                0,
-                (previousValue, element) => element + previousValue,
-              ) ?? 0) /
-          caPercent).nullIfZero;
+  double? get _totalCa => caScores?.fold<double>(
+        0,
+        (previousValue, element) => element + previousValue,
+      );
 
-  double? get exam => ((examScore ?? 0) / examPercent).nullIfZero;
+  double? get ca => _totalCa;
+
+  double? get exam => examScore;
 
   double? get total => ((ca ?? 0) + (exam ?? 0)).nullIfZero;
 

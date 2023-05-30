@@ -8,12 +8,17 @@ enum AppRoute {
   noteDetailPage('note-detail-page'),
   assignments('/assignments'),
   assignment('assignment'),
-  assessmentListing('/assessment-listing'),
+  assessmentListing('/assessments'),
 
-  ///This takes in a record parameter of type `(Assessment, AssessmentType)`
-  assessmentDetail('assessment-detail'),
+  ///This takes in a parameter of type [Assessment]
+  multipleChoiceAssessmentStage('m-c-assessment-stage'),
+  theoryAssessmentQuestions('theory-assessment-questions'),
+  theoryAssessmentStage(
+    'theory-assessment-stage:operationIndex',
+  ),
+  assessmentPreview('assessment-preview'),
+  assessmentReview('assessment-review'),
   record('/record'),
-  testAndExam('/test-and-exam'),
   forum('/forum'),
   arena('/arena'),
   invalid(''),

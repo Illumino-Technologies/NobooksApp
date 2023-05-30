@@ -1,6 +1,6 @@
 part of '../nobooks_scaffold.dart';
 
-class _NavDrawer extends StatefulWidget {
+class _NavDrawer extends ConsumerStatefulWidget {
   final ValueChanged<NavItem> onNavItemChanged;
 
   const _NavDrawer({
@@ -9,10 +9,10 @@ class _NavDrawer extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<_NavDrawer> createState() => _NavDrawerState();
+  ConsumerState createState() => _NavDrawerState();
 }
 
-class _NavDrawerState extends State<_NavDrawer> {
+class _NavDrawerState extends ConsumerState<_NavDrawer> {
   bool itemShowIconOnly = false;
 
   Future<void> slideOpenWidgets() async {
@@ -112,9 +112,18 @@ class _NavDrawerState extends State<_NavDrawer> {
     super.dispose();
   }
 
-  void onItemSelected(NavItem item) {
-    // if (item == selectedItemNotifier.value) return;
-    widget.onNavItemChanged(item);
-    selectedItemNotifier.value = item;
+  void onItemSelected(NavItem destination) {
+    if (destination == selectedItemNotifier.value) return;
+    if (!canPopFromOngoingAssessment() && destination != NavItem.testAndExams) {
+      return;
+    }
+    widget.onNavItemChanged(destination);
+    selectedItemNotifier.value = destination;
+  }
+
+  bool canPopFromOngoingAssessment() {
+    if (AssessmentTimerStateNotifier.provider == null) return true;
+
+    return ref.read(AssessmentStageNotifier.provider).assessment!.submitted;
   }
 }
