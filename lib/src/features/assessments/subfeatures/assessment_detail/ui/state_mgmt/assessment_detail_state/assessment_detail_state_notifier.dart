@@ -33,4 +33,6 @@ class AssessmentStageNotifier extends StateNotifier<AssessmentStageState> {
   void updateAssessment(Assessment assessment) {
     state = state.copyWith(assessment: assessment);
   }
+
+  Future<void> submit() async {}
 }

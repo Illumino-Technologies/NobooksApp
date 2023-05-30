@@ -45,7 +45,6 @@ class _TheoryStagePageState extends ConsumerState<TheoryStagePage> {
   @override
   void initState() {
     super.initState();
-    AssessmentStageNotifier.refreshNotifier(assessment);
   }
 
   @override

@@ -7,6 +7,7 @@ abstract class ErrorMessages {
 
   static const String couldNotFetchData = 'Could Not Fetch Data';
   static const String anErrorOccurred = 'An Error Occurred';
+  static const String somethingWentWrong = 'Something went wrong';
   static const String unknownErrorRetry = 'Something went wrong, '
       'please try again';
   static const String requestUnsuccessful = 'Request unsuccessful';

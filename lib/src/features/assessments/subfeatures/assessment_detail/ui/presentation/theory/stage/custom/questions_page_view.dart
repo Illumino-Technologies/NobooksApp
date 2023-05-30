@@ -99,6 +99,11 @@ class __QuestionPageViewState extends ConsumerState<_QuestionPageView> {
           children: [
             const AssessmentTimerWidget(),
             const Spacer(),
+            AssessmentNavigatorBar(
+              assessment: widget.assessment,
+              page: NavigatorBarPage.questions,
+            ),
+            const Spacer(),
             ValueListenableBuilder<int>(
               valueListenable: currentPageNotifier,
               builder: (_, value, __) {

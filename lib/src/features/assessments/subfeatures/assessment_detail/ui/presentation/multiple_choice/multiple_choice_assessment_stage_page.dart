@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/assessments/assessments_barrel.dart';
-import 'package:nobook/src/features/assessments/subfeatures/assessment_detail/ui/state_mgmt/timer_state/timer_state_notifier.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/document_editing_barrel.dart';
 import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
@@ -37,75 +37,99 @@ class _AssessmentStagePageState
   @override
   void initState() {
     super.initState();
-    AssessmentStageNotifier.refreshNotifier(assessment);
-    AssessmentTimerStateNotifier.refreshNotifier(assessment.duration);
+    AssessmentTimerStateNotifier.refreshNotifier(
+      assessment.duration,
+      sureToRefresh: AssessmentTimerStateNotifier.provider == null
+          ? true
+          : !ref.read(AssessmentTimerStateNotifier.provider!.notifier).isActive,
+    );
+
+    manualListenerSubscription = ref.listenManual(
+      AssessmentTimerStateNotifier.requireProvider.select(
+        (value) => value.inSeconds,
+      ),
+      timerListener,
+    );
+  }
+
+  late final ProviderSubscription<int> manualListenerSubscription;
+
+  void timerListener(
+    int? previousSecondDuration,
+    int secondDuration,
+  ) {
+    final int assessmentDuration = assessment.duration * 60;
+    if (secondDuration >= (assessmentDuration - 1)) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        context.goNamed(
+          AppRoute.assessmentReview.name,
+          extra: ref.read(AssessmentStageNotifier.provider).assessment!,
+        );
+      });
+    }
   }
 
   @override
   void dispose() {
+    manualListenerSubscription.close();
     _scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32.w),
-            child: Column(
-              children: [
-                32.boxHeight,
-                Row(
-                  children: [
-                    const AssessmentTimerWidget(),
-                    const Spacer(),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 12.w,
-                        vertical: 8.h,
-                      ),
-                      color: AppColors.blue500,
-                      child: Text(
-                        assessment.paperType.shortName,
-                        style: TextStyles.paragraph3.copyWith(
-                          color: AppColors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                32.boxHeight,
-                Row(
-                  children: [
-                    Text(
-                      assessment.subject.name,
-                      style: TextStyles.headline4.copyWith(
-                        color: AppColors.neutral500,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      UtilFunctions.formatLongDate(DateTime.now()),
-                      style: TextStyles.footer.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.neutral400,
-                      ),
-                    ),
-                  ],
-                ),
-                24.boxHeight,
-                Expanded(
-                  child: MultipleChoiceView(
-                    scrollController: _scrollController,
-                    assessment: assessment,
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32.w),
+          child: Column(
+            children: [
+              32.boxHeight,
+              Row(
+                children: [
+                  const AssessmentTimerWidget(),
+                  const Spacer(),
+                  AssessmentNavigatorBar(
+                    assessment: widget.assessment,
+                    page: NavigatorBarPage.multipleChoiceQuestions,
                   ),
+                  const Spacer(),
+                  Text(
+                    'Multiple choice',
+                    style: TextStyles.subHeading.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.blue500,
+                    ),
+                  ),
+                ],
+              ),
+              32.boxHeight,
+              Row(
+                children: [
+                  Text(
+                    assessment.subject.name,
+                    style: TextStyles.headline4.copyWith(
+                      color: AppColors.neutral500,
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    UtilFunctions.formatLongDate(DateTime.now()),
+                    style: TextStyles.footer.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.neutral400,
+                    ),
+                  ),
+                ],
+              ),
+              24.boxHeight,
+              Expanded(
+                child: MultipleChoiceView(
+                  scrollController: _scrollController,
+                  assessment: assessment,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

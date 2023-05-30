@@ -171,5 +171,7 @@ extension NullableListExtension<E> on List<E>? {
 
   bool get isNotNullOrEmpty => this != null || (this?.isNotEmpty ?? false);
 
+  bool get isNotNullNorEmpty => this != null && (this?.isNotEmpty ?? false);
+
   List<E>? get nullIfEmpty => (this?.isEmpty ?? true) ? null : this;
 }

@@ -17,6 +17,7 @@ enum AppRoute {
     'theory-assessment-stage:operationIndex',
   ),
   assessmentPreview('assessment-preview'),
+  assessmentReview('assessment-review'),
   record('/record'),
   forum('/forum'),
   arena('/arena'),

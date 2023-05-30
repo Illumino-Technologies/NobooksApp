@@ -121,10 +121,11 @@ class _SelectorItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 32.w,
-      height: 32.h,
+      width: 32.l,
+      height: 32.l,
       alignment: Alignment.center,
       decoration: BoxDecoration(
+        borderRadius: Ui.allBorderRadius(4.l),
         color: selected ? AppColors.neutral500 : null,
         border: selected
             ? null

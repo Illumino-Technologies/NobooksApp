@@ -131,6 +131,16 @@ final GoRouter _router = GoRouter(
                     ),
                   ],
                 ),
+                GoRoute(
+                  parentNavigatorKey: _navigationKey,
+                  path: AppRoute.assessmentReview.path,
+                  name: AppRoute.assessmentReview.name,
+                  builder: (context, state) {
+                    return AssessmentReviewPage(
+                      assessment: (state.extra as Assessment),
+                    );
+                  },
+                ),
               ],
             ),
           ],
