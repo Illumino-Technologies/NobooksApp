@@ -64,6 +64,12 @@ class _ReviewView extends ConsumerWidget {
                     .submit()
                     .then((value) {
                   context.goNamed(AppRoute.dashboard.name);
+                }).onError((error, stackTrace) {
+                  Ui.showErrorSnackbar(
+                    error is Failure
+                        ? error.message ?? error.toString()
+                        : error.toString(),
+                  );
                 });
               },
               color: AppColors.blue500,
