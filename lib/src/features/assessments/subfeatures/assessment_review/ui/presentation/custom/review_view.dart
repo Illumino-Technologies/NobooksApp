@@ -1,7 +1,6 @@
 part of '../assessment_review_page.dart';
 
 class _ReviewView extends ConsumerWidget {
-
   const _ReviewView({
     Key? key,
   }) : super(key: key);
@@ -52,8 +51,21 @@ class _ReviewView extends ConsumerWidget {
             child: MaterialButton(
               elevation: 0,
               highlightElevation: 0,
-              onPressed:
-                  ref.read(AssessmentStageNotifier.provider.notifier).submit,
+              onPressed: () {
+                final Assessment assessment_ =
+                    ref.read(AssessmentStageNotifier.provider).assessment!;
+
+                if (assessment_.hasNoAnswers) {
+                  Ui.showErrorSnackbar(ErrorMessages.noAnswerProvided);
+                  return;
+                }
+                ref
+                    .read(AssessmentStageNotifier.provider.notifier)
+                    .submit()
+                    .then((value) {
+                  context.goNamed(AppRoute.dashboard.name);
+                });
+              },
               color: AppColors.blue500,
               padding: EdgeInsets.symmetric(horizontal: 56.w, vertical: 12.h),
               shape: RoundedRectangleBorder(

@@ -124,10 +124,13 @@ class _AssessmentPreviewPageState extends ConsumerState<AssessmentPreviewPage> {
                 color: AppColors.blue500,
                 onPressed: () {
                   if (AssessmentTimerStateNotifier.provider != null) {
-                    if (!ref.read(
+                    if (!ref
+                        .read(
                           AssessmentTimerStateNotifier.requireProvider.notifier,
-                        ).isOngoing) return;
+                        )
+                        .isOngoing) return;
                   }
+
                   return switch (assessment.paperType) {
                     PaperType.multipleChoice => context.goNamed(
                         AppRoute.multipleChoiceAssessmentStage.name,

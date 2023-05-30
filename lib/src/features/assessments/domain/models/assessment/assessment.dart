@@ -6,6 +6,8 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 
 part 'content/paper_type.dart';
 
+part 'utils/assessment_extension.dart';
+
 class Assessment implements Comparable<Assessment> {
   final String id;
   final Subject subject;

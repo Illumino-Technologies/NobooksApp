@@ -33,6 +33,10 @@ abstract class Ui {
     );
   }
 
+  static void showErrorSnackbar(String message){
+    //TODO: implement
+  }
+
   static Widget imageLoadingBuilder(
     BuildContext context,
     Widget child,

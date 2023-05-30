@@ -29,4 +29,9 @@ abstract class ErrorMessages {
   static const String networkNoteSyncFailure = 'Network-Note-Sync-Failure';
   static const String serverError = 'Server Error';
   static const String clientError = 'Client Error';
+
+
+
+
+  static const String noAnswerProvided = 'You cannot submit an empty assessment';
 }
