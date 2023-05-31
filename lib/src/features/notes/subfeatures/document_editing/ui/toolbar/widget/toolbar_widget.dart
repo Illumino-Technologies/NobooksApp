@@ -10,15 +10,9 @@ import 'package:nobook/src/features/notes/subfeatures/document_editing/ui/toolba
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-part 'custom/color_wheel_dialog.dart';
+part 'custom/color_selector.dart';
 
 part 'custom/extracted_widgets.dart';
-
-part 'custom/hue_slider.dart';
-
-part 'custom/knob.dart';
-
-part 'custom/main_color_slider.dart';
 
 part 'custom/selector_overlay.dart';
 
@@ -30,7 +24,6 @@ part 'custom/tool_bar_item_widget.dart';
 
 part 'custom/toolbar_item_button.dart';
 
-part 'custom/transparency_slider.dart';
 
 class ToolBarWidget extends StatefulWidget {
   final NoteDocumentController controller;
