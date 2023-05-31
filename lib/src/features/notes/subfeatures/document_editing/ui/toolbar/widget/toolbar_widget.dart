@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
@@ -18,6 +19,8 @@ part 'custom/hue_slider.dart';
 part 'custom/knob.dart';
 
 part 'custom/main_color_slider.dart';
+
+part 'custom/selector_overlay.dart';
 
 part 'custom/shape_selector_dialog.dart';
 
@@ -62,90 +65,62 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Align(
       alignment: Alignment.topCenter,
-      children: [
-        Container(
-          width: 902.w,
-          // height: 128.h,
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: Ui.allBorderRadius(8),
-          ),
-          child: ValueListenableBuilder<DocumentEditorType>(
-            valueListenable: documentEditorTypeNotifier,
-            builder: (_, documentEditorType, __) {
-              return ValueListenableBuilder<List<ToolBarItem>>(
-                valueListenable: selectedItemsNotifier,
-                builder: (_, selectedItems, __) {
-                  return ChangeNotifierBuilder<NoteDocumentController>(
-                    listenable: controller,
-                    builder: (_, controllerValue) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 24.w,
-                          vertical: 16.h,
-                        ),
-                        child: Column(
-                          children: [
-                            FirstToolbarRow(
-                              documentEditorType: documentEditorType,
-                              selectedItems: selectedItems,
-                              topItems: topItems,
-                              onSelected: onSelected,
-                              controllerValue: controllerValue,
-                            ),
-                            11.boxHeight,
-                            const Divider(
-                              color: AppColors.neutral50,
-                              height: 1,
-                              thickness: 1,
-                            ),
-                            11.boxHeight,
-                            SecondToolbarRow(
-                              documentEditorType: documentEditorType,
-                              selectedItems: selectedItems,
-                              bottomItems: bottomItems,
-                              onSelected: onSelected,
-                              controllerValue: controllerValue,
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                },
-              );
-            },
-          ),
+      child: Container(
+        width: 902.w,
+        // height: 128.h,
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: Ui.allBorderRadius(8),
         ),
-        32.boxWidth,
-        Align(
-          alignment: Alignment.centerRight,
-          child: ValueListenableBuilder<ToolItemSelector>(
-            valueListenable: toolItemSelectorNotifier,
-            builder: (_, selector, __) {
-              switch (selector) {
-                case ToolItemSelector.shape:
-                  return ShapeSelector(
-                    onClose: closeToolItemSelector,
-                    shape: controller.drawingController.shape,
-                    onChanged: onShapeChanged,
-                  );
-                case ToolItemSelector.color:
-                  return ColorSelector(
-                    onClose: closeToolItemSelector,
-                    color: controller.color,
-                    onChanged: onColorChanged,
-                  );
-                case ToolItemSelector.none:
-                default:
-                  return const SizedBox.shrink();
-              }
-            },
-          ),
+        child: ValueListenableBuilder<DocumentEditorType>(
+          valueListenable: documentEditorTypeNotifier,
+          builder: (_, documentEditorType, __) {
+            return ValueListenableBuilder<List<ToolBarItem>>(
+              valueListenable: selectedItemsNotifier,
+              builder: (_, selectedItems, __) {
+                return ChangeNotifierBuilder<NoteDocumentController>(
+                  listenable: controller,
+                  builder: (_, controllerValue) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24.w,
+                        vertical: 16.h,
+                      ),
+                      child: Column(
+                        children: [
+                          FirstToolbarRow(
+                            documentEditorType: documentEditorType,
+                            selectedItems: selectedItems,
+                            topItems: topItems,
+                            onSelected: onSelected,
+                            controllerValue: controllerValue,
+                          ),
+                          11.boxHeight,
+                          const Divider(
+                            color: AppColors.neutral50,
+                            height: 1,
+                            thickness: 1,
+                          ),
+                          11.boxHeight,
+                          SecondToolbarRow(
+                            documentEditorType: documentEditorType,
+                            selectedItems: selectedItems,
+                            bottomItems: bottomItems,
+                            onSelected: onSelected,
+                            controllerValue: controllerValue,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+            );
+          },
         ),
-      ],
+      ),
     );
   }
 
@@ -203,8 +178,53 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
     controller.undo();
   }
 
+  OverlayEntry? selectorEntry;
+
   void showSelector(ToolItemSelector selector) {
-    toolItemSelectorNotifier.value = selector;
+    if (selectorEntry != null) removeOverlayEntry();
+
+    if (selector == ToolItemSelector.none) return removeOverlayEntry();
+
+    selectorEntry = OverlayEntry(
+      builder: (context) => SelectorOverlay(
+        builder: (context) {
+          return switch (selector) {
+            ToolItemSelector.color => ColorSelector(
+                onClose: () {
+                  if (selectedItemsNotifier.value.contains(ToolBarItem.color)) {
+                    selectedItemsNotifier.value =
+                        List.from(selectedItemsNotifier.value)
+                          ..remove(ToolBarItem.color);
+                  }
+                  removeOverlayEntry();
+                },
+                color: controller.color,
+                onChanged: onColorChanged,
+              ),
+            ToolItemSelector.shape => ShapeSelector(
+                onClose: () {
+                  if (selectedItemsNotifier.value
+                      .contains(ToolBarItem.shapes)) {
+                    selectedItemsNotifier.value =
+                        List.from(selectedItemsNotifier.value)
+                          ..remove(ToolBarItem.shapes);
+                  }
+                  removeOverlayEntry();
+                },
+                shape: controller.drawingController.shape,
+                onChanged: onShapeChanged,
+              ),
+            _ => const SizedBox.shrink(),
+          };
+        },
+      ),
+    );
+    Overlay.of(context).insert(selectorEntry!);
+  }
+
+  void removeOverlayEntry() {
+    selectorEntry?.remove();
+    selectorEntry = null;
   }
 
   void handlePenSelected() {
@@ -227,9 +247,8 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   void handleSelectedItemReselected(ToolBarItem item) {
-    if (item == ToolBarItem.shapes &&
-        toolItemSelectorNotifier.value == ToolItemSelector.shape) {
-      closeToolItemSelector();
+    if (item == ToolBarItem.color || item == ToolBarItem.shapes) {
+      removeOverlayEntry();
     }
 
     if (DocumentEditorType.drawing.toolBarItems.contains(item)) {
@@ -244,12 +263,11 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   void onSelected(ToolBarItem item) {
+    print('selected item: $item');
     if (item == ToolBarItem.undo) return undo();
     if (item == ToolBarItem.redo) return redo();
 
     if (item == ToolBarItem.pen) return handlePenSelected();
-
-    if (item == ToolBarItem.color) return showSelector(ToolItemSelector.color);
 
     if (documentEditorTypeNotifier.value == DocumentEditorType.text &&
         DocumentEditorType.text.toolBarItems.contains(item)) {
@@ -262,6 +280,7 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       handleSelectedItemReselected(item);
       return;
     }
+    if (item == ToolBarItem.color) showSelector(ToolItemSelector.color);
 
     if (item == ToolBarItem.table) {
       documentEditorTypeNotifier.value = DocumentEditorType.table;
@@ -280,10 +299,8 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       case DocumentEditorType.general:
         return;
       case DocumentEditorType.drawing:
-        {
-          performDrawingAction(item);
-          continue continuation;
-        }
+        performDrawingAction(item);
+        continue continuation;
       continuation:
       case DocumentEditorType.math:
       case DocumentEditorType.table:
@@ -386,6 +403,7 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   };
 
   void performDrawingAction(ToolBarItem item) {
+    print('perform drawing action');
     if (toolbarItemToDrawingMode[item] == null) return;
     final DrawingMode drawingAction = toolbarItemToDrawingMode[item]!;
     controller.drawingController.changeDrawingMode(drawingAction);
@@ -404,16 +422,10 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
     DocumentEditorType.drawing,
   );
 
-  final ValueNotifier<ToolItemSelector> toolItemSelectorNotifier =
-      ValueNotifier<ToolItemSelector>(
-    ToolItemSelector.none,
-  );
-
   @override
   void dispose() {
     super.dispose();
     selectedItemsNotifier.dispose();
-    toolItemSelectorNotifier.dispose();
     documentEditorTypeNotifier.dispose();
   }
 }
