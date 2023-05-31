@@ -17,10 +17,6 @@ class ColorSelector extends StatefulWidget {
 }
 
 class _ColorSelectorState extends State<ColorSelector> {
-  void onChanged(Color color) {
-    print('color: $color');
-  }
-
   @override
   Widget build(BuildContext context) {
     final bool isPortrait =
@@ -63,7 +59,7 @@ class _ColorSelectorState extends State<ColorSelector> {
               hexInputBar: false,
               pickerAreaHeightPercent: 0.70,
               labelTypes: const [],
-              pickerColor: Color(0xff152df3),
+              pickerColor: widget.color,
               onColorChanged: widget.onChanged,
             ),
           ),
