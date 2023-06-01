@@ -255,7 +255,6 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   void onSelected(ToolBarItem item) {
-    print('selected item: $item');
     if (item == ToolBarItem.undo) return undo();
     if (item == ToolBarItem.redo) return redo();
 
@@ -395,7 +394,6 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   };
 
   void performDrawingAction(ToolBarItem item) {
-    print('perform drawing action');
     if (toolbarItemToDrawingMode[item] == null) return;
     final DrawingMode drawingAction = toolbarItemToDrawingMode[item]!;
     controller.drawingController.changeDrawingMode(drawingAction);
