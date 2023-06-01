@@ -12,6 +12,7 @@ enum DocumentEditorType {
     ToolBarItem.pen,
     ToolBarItem.table,
     ToolBarItem.equation,
+    ToolBarItem.color,
   ]),
   text([
     ToolBarItem.alignLeft,
@@ -20,7 +21,6 @@ enum DocumentEditorType {
     ToolBarItem.bold,
     ToolBarItem.italic,
     ToolBarItem.underline,
-    ToolBarItem.color,
     ToolBarItem.subscript,
     ToolBarItem.superscript,
   ]),
@@ -30,7 +30,6 @@ enum DocumentEditorType {
     ToolBarItem.eraser,
     ToolBarItem.pen,
     ToolBarItem.roughPaper,
-    ToolBarItem.color,
   ]),
   math([
     ToolBarItem.equation,

@@ -260,18 +260,19 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
 
     if (item == ToolBarItem.pen) return handlePenSelected();
 
+    if (selectedItemsNotifier.value.contains(item)) {
+      handleSelectedItemReselected(item);
+      return;
+    }
+
     if (documentEditorTypeNotifier.value == DocumentEditorType.text &&
         DocumentEditorType.text.toolBarItems.contains(item)) {
       return performTextEditingActionOn(item);
     }
 
-    if (item == ToolBarItem.roughPaper) return controller.toggleRoughPaper();
-
-    if (selectedItemsNotifier.value.contains(item)) {
-      handleSelectedItemReselected(item);
-      return;
-    }
     if (item == ToolBarItem.color) showSelector(ToolItemSelector.color);
+
+    if (item == ToolBarItem.roughPaper) return controller.toggleRoughPaper();
 
     if (item == ToolBarItem.table) {
       documentEditorTypeNotifier.value = DocumentEditorType.table;
@@ -308,7 +309,7 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   void performTextEditingActionOn(ToolBarItem item) {
     switch (item) {
       case ToolBarItem.color:
-        // TODO: Handle this case.
+        showSelector(ToolItemSelector.color);
         break;
       case ToolBarItem.alignLeft:
         controller.textController.changeAlignment(TextAlign.left);
@@ -350,7 +351,8 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   void onColorChanged(Color color) {
-    controller.dispatchColorChange(color);
+    controller.textController.changeColor(color);
+    // controller.dispatchColorChange(color);
   }
 
   void onShapeChanged(Shape shape) {
@@ -395,8 +397,11 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
 
   void performDrawingAction(ToolBarItem item) {
     if (toolbarItemToDrawingMode[item] == null) return;
+
     final DrawingMode drawingAction = toolbarItemToDrawingMode[item]!;
+
     controller.drawingController.changeDrawingMode(drawingAction);
+
     if (drawingAction == DrawingMode.shape) {
       showSelector(ToolItemSelector.shape);
     }
