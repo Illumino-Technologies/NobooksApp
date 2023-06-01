@@ -6,10 +6,12 @@ class SecondaryDrawingsPainter extends CustomPainter {
   final List<Drawing> drawings;
   final DrawingPainter<ShapeDrawing> shapeDrawingPainter;
   final DrawingPainter<SketchDrawing> sketchDrawingPainter;
+  final DrawingPainter<LineDrawing> lineDrawingPainter;
 
   const SecondaryDrawingsPainter({
     required this.shapeDrawingPainter,
     required this.sketchDrawingPainter,
+    required this.lineDrawingPainter,
     required this.drawings,
   });
 
@@ -22,6 +24,13 @@ class SecondaryDrawingsPainter extends CustomPainter {
             canvas,
             size,
             drawing as ShapeDrawing,
+          );
+          break;
+        case LineDrawing:
+          lineDrawingPainter.paintDrawing(
+            canvas,
+            size,
+            drawing as LineDrawing,
           );
           break;
         case SketchDrawing:

@@ -1,6 +1,6 @@
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/drawing_barrel.dart';
 
-class SketchDrawing extends Drawing {
+final class SketchDrawing extends Drawing {
   SketchDrawing({
     required super.deltas,
     super.metadata,

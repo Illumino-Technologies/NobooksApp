@@ -1,4 +1,5 @@
 export 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/model/drawing_model_barrel.dart';
+export 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/sub_features/line_drawing/line_drawing_barrel.dart';
 export 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/sub_features/shape_drawing/painters/shape_painter.dart';
 export 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/sub_features/shape_drawing/shape_drawing_barrel.dart';
 export 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/sub_features/sketch_drawing/sketch_drawing_barrel.dart';

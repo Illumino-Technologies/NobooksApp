@@ -52,6 +52,10 @@ class DrawingController extends DocumentEditingController {
           deltas: [],
           metadata: shapeMetadata,
         ),
+      DrawingMode.line => LineDrawing(
+          deltas: [],
+          metadata: lineMetadata,
+        ),
       _ => SketchDrawing(
           deltas: [],
           metadata: sketchMetadata,
@@ -186,6 +190,14 @@ class DrawingController extends DocumentEditingController {
     notifyOfSignificantUpdate();
   }
 
+  void changeStrokeWidth(double strokeWidth) {
+    sketchMetadata = sketchMetadata.copyWith(strokeWidth: strokeWidth);
+    shapeMetadata = shapeMetadata.copyWith(strokeWidth: strokeWidth);
+    lineMetadata = lineMetadata.copyWith(strokeWidth: strokeWidth);
+    // notifyListeners();
+    notifyOfSignificantUpdate();
+  }
+
   void changeEraseMode(EraseMode mode) {
     if (eraser.mode == mode) return;
     eraser = eraser.copyWith(mode: mode);
@@ -194,7 +206,6 @@ class DrawingController extends DocumentEditingController {
   }
 
   void changeDrawings(Drawings drawings) {
-    print('change drawings called');
     if (drawings.isEmpty) {
       changeDrawingMode(_actionStack.lastOrNull ?? DrawingMode.sketch);
     }
@@ -205,7 +216,6 @@ class DrawingController extends DocumentEditingController {
   void draw(DrawingDelta delta) {
     Drawings drawings = List.from(_drawings);
     if (delta.operation == DrawingOperation.start) {
-      print('this identifier: $hashCode');
       startDrawing();
     }
     Drawing? drawing = currentlyActiveDrawing;
@@ -302,12 +312,14 @@ class DrawingController extends DocumentEditingController {
   }
 
   Drawing _drawLine(DrawingDelta delta, Drawing drawing) {
-    // TODO: implement _drawLine
-    throw UnimplementedError();
+    drawing = drawing.copyWith(
+      deltas: List.from(drawing.deltas)..add(delta),
+      metadata: drawing.metadata,
+    );
+    return drawing;
   }
 
   Drawing _drawShape(DrawingDelta delta, Drawing drawing) {
-    print('delta: $delta');
     final Drawing drawnDrawings = drawing.copyWith(
       deltas: List.from(drawing.deltas)..add(delta),
     );
