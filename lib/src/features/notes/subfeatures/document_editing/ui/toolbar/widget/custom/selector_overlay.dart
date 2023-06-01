@@ -67,31 +67,34 @@ class HandleBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onPanUpdate: (details) {
-        onPanUpdate(details.delta);
-      },
-      onPanEnd: (details) => onPanEnd(),
-      child: Container(
-        width: 150.w,
-        color: AppColors.neutral100,
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: Column(
-          children: [
-            6.boxHeight,
-            const Divider(
-              height: 0.5,
-              thickness: 0.5,
-              color: AppColors.black,
-            ),
-            4.boxHeight,
-            const Divider(
-              height: 0.5,
-              thickness: 0.5,
-              color: AppColors.black,
-            ),
-            6.boxHeight,
-          ],
+    return MouseRegion(
+      cursor: SystemMouseCursors.grab,
+      child: GestureDetector(
+        onPanUpdate: (details) {
+          onPanUpdate(details.delta);
+        },
+        onPanEnd: (details) => onPanEnd(),
+        child: Container(
+          width: 150.w,
+          color: AppColors.neutral100,
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: Column(
+            children: [
+              6.boxHeight,
+              const Divider(
+                height: 0.5,
+                thickness: 0.5,
+                color: AppColors.black,
+              ),
+              4.boxHeight,
+              const Divider(
+                height: 0.5,
+                thickness: 0.5,
+                color: AppColors.black,
+              ),
+              6.boxHeight,
+            ],
+          ),
         ),
       ),
     );

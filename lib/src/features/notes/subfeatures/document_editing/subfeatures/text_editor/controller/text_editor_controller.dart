@@ -402,6 +402,7 @@ class _TextEditorController extends TextEditingController {
     final TextMetadata changedMetadata = (metadata ?? defaultMetadata).copyWith(
       color: color,
     );
+    metadata = changedMetadata;
     changeStyleOnSelectionChange(
       changedMetadata: changedMetadata,
       change: TextMetadataChange.fontStyle,
