@@ -24,7 +24,6 @@ part 'custom/tool_bar_item_widget.dart';
 
 part 'custom/toolbar_item_button.dart';
 
-
 class ToolBarWidget extends StatefulWidget {
   final NoteDocumentController controller;
 

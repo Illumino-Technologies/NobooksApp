@@ -5,12 +5,14 @@ class _SecondaryCanvas extends StatelessWidget {
   final bool readOnly;
   final DrawingPainter<ShapeDrawing> shapeDrawingPainter;
   final DrawingPainter<SketchDrawing> sketchDrawingPainter;
+  final DrawingPainter<LineDrawing> lineDrawingPainter;
 
   const _SecondaryCanvas({
     Key? key,
     required this.controller,
     required this.shapeDrawingPainter,
     required this.sketchDrawingPainter,
+    required this.lineDrawingPainter,
     required this.readOnly,
   }) : super(key: key);
 
@@ -28,6 +30,7 @@ class _SecondaryCanvas extends StatelessWidget {
           painter: SecondaryDrawingsPainter(
             shapeDrawingPainter: shapeDrawingPainter,
             sketchDrawingPainter: sketchDrawingPainter,
+            lineDrawingPainter: lineDrawingPainter,
             drawings: controller.drawings,
           ),
         );

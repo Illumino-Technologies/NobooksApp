@@ -41,6 +41,7 @@ class _DrawingCanvasState extends State<DrawingCanvas> {
             child: _SecondaryCanvas(
               readOnly: widget.readOnly,
               controller: controller,
+              lineDrawingPainter: const LineDrawingPainter(),
               shapeDrawingPainter: const ShapePainter(),
               sketchDrawingPainter: const SketchPainter(),
             ),
@@ -51,6 +52,7 @@ class _DrawingCanvasState extends State<DrawingCanvas> {
               width: xDrawingBounds,
               child: _PrimaryCanvas(
                 controller: controller,
+                lineDrawingPainter: const LineDrawingPainter(),
                 shapeDrawingPainter: const ShapePainter(),
                 sketchDrawingPainter: const SketchPainter(),
               ),

@@ -2,7 +2,7 @@ import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatur
     show Drawing, DrawingDelta, DrawingMetadata, Shape;
 import 'package:nobook/src/features/notes/subfeatures/document_editing/subfeatures/drawing/model/drawing_model_barrel.dart';
 
-class ShapeDrawing extends Drawing {
+final class ShapeDrawing extends Drawing {
   final Shape shape;
 
   ShapeDrawing({

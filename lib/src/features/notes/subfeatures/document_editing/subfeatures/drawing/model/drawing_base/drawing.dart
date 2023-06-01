@@ -6,7 +6,7 @@ part 'actionables/drawing_mode.dart';
 
 part 'drawing_type.dart';
 
-abstract class Drawing with EquatableMixin {
+abstract base class Drawing with EquatableMixin {
   final List<DrawingDelta> deltas;
   final DrawingMetadata? metadata;
 
@@ -34,6 +34,7 @@ abstract class Drawing with EquatableMixin {
       }(),
       "Shape cannot be null when constructing a [ShapeDrawing] object",
     );
+
     switch (T) {
       case ShapeDrawing:
         return ShapeDrawing(
