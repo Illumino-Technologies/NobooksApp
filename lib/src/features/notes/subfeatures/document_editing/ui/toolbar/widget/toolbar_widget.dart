@@ -352,8 +352,7 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
   }
 
   void onColorChanged(Color color) {
-    controller.textController.changeColor(color);
-    // controller.dispatchColorChange(color);
+    controller.dispatchColorChange(color);
   }
 
   void onShapeChanged(Shape shape) {
