@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -270,7 +271,7 @@ class _ToolBarWidgetState extends State<ToolBarWidget> {
       return performTextEditingActionOn(item);
     }
 
-    if (item == ToolBarItem.color) showSelector(ToolItemSelector.color);
+    if (item == ToolBarItem.color) return showSelector(ToolItemSelector.color);
 
     if (item == ToolBarItem.roughPaper) return controller.toggleRoughPaper();
 
