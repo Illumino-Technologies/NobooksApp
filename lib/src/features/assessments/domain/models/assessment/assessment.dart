@@ -13,7 +13,6 @@ class Assessment implements Comparable<Assessment> {
   final Subject subject;
   final PaperType paperType;
   final List<AssessmentOperation> assessments;
-
   /// Duration in minutes
   final int duration;
   final DateTime startTime;
