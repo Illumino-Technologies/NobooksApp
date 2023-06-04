@@ -18,22 +18,9 @@ class AssignmentState {
 
     final List<NoteDocumentController> newAnswerControllers = [];
 
-    for (final AssignmentOperation question in _assignment!.questions) {
-      final bool questionAnswerHasContent = assignment.answers
-              ?.containsWhere((value) => value.serialId == question.serialId) ??
-          false;
-      if (questionAnswerHasContent) {
-        newAnswerControllers.add(
-          assignment.answers!
-              .firstWhere((element) => element.serialId == question.serialId)
-              .newInitializedController,
-        );
-        continue;
-      }
+    for (final AssignmentOperation operation in _assignment!.operations) {
       newAnswerControllers.add(
-        NoteDocumentController(
-          noteDocument: [],
-        ),
+        NoteDocumentController(noteDocument: operation.answer)..initialize(),
       );
     }
 

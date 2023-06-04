@@ -18,17 +18,19 @@ class _AssignmentPageViewState extends ConsumerState<AssignmentPageView> {
   int currentIndex = 0;
 
   void setCurrentIndexToMostRecent() {
-    final List<AssignmentOperation>? copy = assignment.answers?.copy;
+    final List<AssignmentOperation> copy = assignment.operations.copy;
     if (copy.isNullOrEmpty) return;
 
-    copy!.sort(
+    copy.sort(
       (a, b) {
-        if (a.updatedAt.isBefore(b.updatedAt)) return -1;
-        if (a.updatedAt.isAfter(b.updatedAt)) return 1;
+        if (a.updatedAt.isAfter(b.updatedAt)) return -1;
+        if (a.updatedAt.isBefore(b.updatedAt)) return 1;
         return 0;
       },
     );
     currentIndex = copy.lastIndex;
+    print('currentIndex: $currentIndex');
+    print('copy length: ${copy.length}');
   }
 
   @override
@@ -38,7 +40,7 @@ class _AssignmentPageViewState extends ConsumerState<AssignmentPageView> {
   }
 
   void onNextPressed() {
-    if (currentIndex == assignment.questions.length - 1) return;
+    if (currentIndex == assignment.operations.length - 1) return;
     setState(() {
       currentIndex++;
     });
@@ -65,7 +67,7 @@ class _AssignmentPageViewState extends ConsumerState<AssignmentPageView> {
           onNextPressed: onNextPressed,
           onPreviousPressed: onPreviousPressed,
           currentIndex: currentIndex,
-          questionLength: assignment.questions.length,
+          questionLength: assignment.operations.length,
         ),
         Consumer(
           builder: (context, ref, child) {
@@ -73,15 +75,15 @@ class _AssignmentPageViewState extends ConsumerState<AssignmentPageView> {
               padding: EdgeInsets.only(top: 66.h),
               child: Builder(
                 builder: (context) {
-                  final AssignmentOperation question =
-                      assignment.questions[currentIndex];
+                  print('current index: $currentIndex');
+                  print('assignment length: ${assignment.operations.length}');
+                  final AssignmentOperation operation =
+                      assignment.operations[currentIndex];
+
                   return _QuestionAnswerView(
                     assignment: assignment,
-                    key: ValueKey('question answer view ${question.serialId}'),
-                    question: question,
-                    answer: assignment.answers?.firstWhereOrNull(
-                      (element) => element.serialId == question.serialId,
-                    ),
+                    key: ValueKey('question answer view ${operation.id}'),
+                    operation: operation,
                     answerController: ref
                         .read(AssignmentStateNotifier.provider)
                         .answerControllers[currentIndex],

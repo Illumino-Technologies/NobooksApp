@@ -2,17 +2,15 @@ part of '../assignment_screen.dart';
 
 class _QuestionAnswerView extends ConsumerStatefulWidget {
   final Assignment assignment;
-  final AssignmentOperation question;
-  final AssignmentOperation? answer;
+  final AssignmentOperation operation;
 
   final NoteDocumentController answerController;
 
   const _QuestionAnswerView({
     Key? key,
-    required this.question,
+    required this.operation,
     required this.answerController,
     required this.assignment,
-    this.answer,
   }) : super(key: key);
 
   @override
@@ -65,7 +63,7 @@ class _QuestionAnswerViewState extends ConsumerState<_QuestionAnswerView> {
                       ),
                     ],
                   ),
-                  _QuestionView(question: widget.question),
+                  _QuestionView(question: widget.operation),
                   const Divider(
                     color: AppColors.grey100,
                     height: 1,
