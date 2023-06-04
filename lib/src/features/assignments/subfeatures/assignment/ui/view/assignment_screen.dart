@@ -33,19 +33,12 @@ class _AssignmentScreenState extends ConsumerState<AssignmentScreen> {
   @override
   void initState() {
     super.initState();
+    AssignmentStateNotifier.resetAssignmentProviderWith(widget.assignment);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(AssignmentStateNotifier.provider.notifier).initializeAssignment(
-            widget.assignment,
-          );
-      ref
-          .read(AssignmentStateNotifier.provider.notifier)
-          .resetAssignmentProvider();
-    });
   }
 
   @override

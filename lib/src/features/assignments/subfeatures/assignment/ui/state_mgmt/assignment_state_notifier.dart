@@ -18,24 +18,27 @@ class AssignmentStateNotifier extends StateNotifier<AssignmentState>
 
   AssignmentStateNotifier({
     AssignmentsCacheManager? assignmentsCacheManager,
+    Assignment? assignment,
+    List<NoteDocumentController>? controllers,
   })  : _assignmentsCacheManager =
             assignmentsCacheManager ?? AssignmentsCacheManager(),
         super(
           AssignmentState(
-            answerControllers: List.empty(growable: true),
-            assignment: null,
+            answerControllers: controllers ?? [],
+            assignment: assignment,
           ),
         );
 
   static StateNotifierProvider<AssignmentStateNotifier, AssignmentState>
       get provider => _assignmentStateNotifierProvider;
 
-  void resetAssignmentProvider() {
+  static void resetAssignmentProviderWith(Assignment assignment) {
     _assignmentStateNotifierProvider =
         StateNotifierProvider<AssignmentStateNotifier, AssignmentState>(
-      (ref) => AssignmentStateNotifier()
-        ..initializeAssignment(state.assignment)
-        ..fetchAssignment(),
+      (ref) => AssignmentStateNotifier(
+        assignment: assignment,
+        controllers: _setAnswerControllersOffOf(assignment),
+      ),
     );
   }
 
@@ -71,35 +74,30 @@ class AssignmentStateNotifier extends StateNotifier<AssignmentState>
     final NoteDocumentController currentAssignmentController =
         state.answerControllers[currentAnswerIndex];
 
-    final AssignmentOperation answer =
-        state.assignment.answers?.firstWhereOrNull(
-              (element) =>
-                  element.serialId ==
-                  state.assignment.questions[currentAnswerIndex].serialId,
-            ) ??
-            AssignmentOperation.create(
-              serialId: state.assignment.questions[currentAnswerIndex].serialId,
-              content: currentAssignmentController.noteDocument,
-            );
-
-    final List<AssignmentOperation> answers = List.from(
-      state.assignment.answers ?? [],
+    final List<AssignmentOperation> operations = List.from(
+      state.assignment.operations,
     );
-    if (answers.isEmpty) {
-      answers.add(answer);
-    } else {
-      final bool replaced = answers.tryReplaceWhere([answer], (element) {
-        return element.serialId == answer.serialId;
-      });
-      if (!replaced) {
-        answers.add(answer);
-      }
-    }
+    operations[currentAnswerIndex] = operations[currentAnswerIndex]
+        .copyWith(question: currentAssignmentController.noteDocument);
 
     final Assignment assignment = state.assignment.copyWith(
-      answers: answers,
+      operations: operations,
     );
 
     await _assignmentsCacheManager.storeAssignment(assignment);
+  }
+
+  static List<NoteDocumentController> _setAnswerControllersOffOf(
+    Assignment assignment,
+  ) {
+    final List<NoteDocumentController> answerControllers = [];
+
+    for (final AssignmentOperation operation in assignment.operations) {
+      answerControllers.add(
+        NoteDocumentController(noteDocument: operation.answer)..initialize(),
+      );
+    }
+
+    return answerControllers;
   }
 }

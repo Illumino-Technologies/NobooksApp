@@ -14,16 +14,16 @@ class _QuestionView extends StatefulWidget {
 
 class _QuestionViewState extends State<_QuestionView> {
   late NoteDocumentController controller = NoteDocumentController(
-    noteDocument: widget.question.content,
-  )..initialize(noteDocument: widget.question.content);
+    noteDocument: widget.question.question,
+  )..initialize(noteDocument: widget.question.question);
 
   @override
   void didUpdateWidget(covariant _QuestionView oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.question.content == widget.question.content) return;
+    if (oldWidget.question.question == widget.question.question) return;
     controller = NoteDocumentController(
-      noteDocument: widget.question.content,
-    )..initialize(noteDocument: widget.question.content);
+      noteDocument: widget.question.question,
+    )..initialize(noteDocument: widget.question.question);
   }
 
   Size canvasSize = Size(double.infinity, 50.h);

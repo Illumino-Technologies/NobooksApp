@@ -9,8 +9,7 @@ class Assignment {
   final Subject subject;
   final String topic;
   final Teacher teacher;
-  final List<AssignmentOperation> questions;
-  final List<AssignmentOperation>? answers;
+  final List<AssignmentOperation> operations;
   final DateTime createdDate;
   final DateTime submissionDate;
 
@@ -21,8 +20,7 @@ class Assignment {
     required this.subject,
     required this.topic,
     required this.teacher,
-    required this.questions,
-    required this.answers,
+    required this.operations,
     required this.createdDate,
     required this.submissionDate,
   });
@@ -33,10 +31,7 @@ class Assignment {
         subject = Subject.fromMap(map['subject']),
         topic = map['topic'],
         teacher = Teacher.fromMap(map['teacher']),
-        questions = map['questions'].map<NoteDocument>((e) {
-          return UtilFunctions.noteDocumentFromList(e as List);
-        }).toList(),
-        answers = map['answers']?.map<NoteDocument>((e) {
+        operations = map['questions'].map<NoteDocument>((e) {
           return UtilFunctions.noteDocumentFromList(e as List);
         }).toList(),
         createdDate = UtilFunctions.dateTimeFromMap(map['createdDate'])!,
@@ -48,8 +43,7 @@ class Assignment {
       'subject': subject.toMap(),
       'topic': topic,
       'teacher': teacher.toMap(),
-      'questions': questions.map((e) => e.toMap()).toList(),
-      'answers': answers?.map((e) => e.toMap()).toList(),
+      'questions': operations.map((e) => e.toMap()).toList(),
       'createdDate': createdDate.toIso8601String(),
       'submissionDate': submissionDate.toIso8601String(),
     };
@@ -61,8 +55,7 @@ class Assignment {
     Subject? subject,
     String? topic,
     Teacher? teacher,
-    List<AssignmentOperation>? questions,
-    List<AssignmentOperation>? answers,
+    List<AssignmentOperation>? operations,
     DateTime? createdDate,
     DateTime? submissionDate,
   }) {
@@ -71,8 +64,7 @@ class Assignment {
       subject: subject ?? this.subject,
       topic: topic ?? this.topic,
       teacher: teacher ?? this.teacher,
-      questions: questions ?? this.questions,
-      answers: answers ?? this.answers,
+      operations: operations ?? this.operations,
       createdDate: createdDate ?? this.createdDate,
       submissionDate: submissionDate ?? this.submissionDate,
     );
