@@ -15,7 +15,7 @@ class TopBar extends ConsumerStatefulWidget {
 class _TopBarState extends ConsumerState<TopBar> {
   @override
   Widget build(BuildContext context) {
-    final User? user = ref.watch(StudentNotifier.provider);
+    final User? user = ref.watch(StudentManager.provider);
     return Container(
       color: AppColors.white,
       child: Row(

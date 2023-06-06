@@ -46,7 +46,7 @@ class TableColumn extends ConsumerWidget {
               column.getGradeTextForValue(
                 e,
                 (grades.indexOf(e) + 1).toString(),
-                ref.read(StudentNotifier.provider)!,
+                ref.read(StudentManager.provider)!,
               ),
               textAlign: column == GradeTableColumn.subject
                   ? TextAlign.start

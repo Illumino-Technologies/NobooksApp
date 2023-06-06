@@ -54,7 +54,7 @@ class RecordsNotifier extends StateNotifier<RecordsState>
   }
 
   Future<void> _fetchClass() async {
-    final String studentId = _ref.read(StudentNotifier.provider)!.id;
+    final String studentId = _ref.read(StudentManager.provider)!.id;
     final List<Class> classes = await _classRepo.fetchClassesIfEmpty(
       studentId,
     );
@@ -105,7 +105,7 @@ class RecordsNotifier extends StateNotifier<RecordsState>
     if (shouldLoad) notifyLoading();
     await fetchAllGrades(shouldLoad: shouldLoad);
     await _classRepo.fetchStudentClasses(
-      _ref.read(StudentNotifier.provider)!.id,
+      _ref.read(StudentManager.provider)!.id,
       fetchAFresh: true,
     );
     await _fetchClass();
