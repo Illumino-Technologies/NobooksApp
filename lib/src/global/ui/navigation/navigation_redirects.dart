@@ -5,7 +5,20 @@ abstract class NavigationRedirects {
     BuildContext context,
     GoRouterState state,
   ) async {
-    //TODO: implement
+    // TODO: implement
+    final String token = TokenManager.token ?? '';
+    final String location = state.location;
+    final String locationPath = '/${location.split('/').lastOrNull ?? ''}';
+
+    print('location $location | location Path: $locationPath');
+
+    if (token.isEmpty) {
+      if (locationPath == AppRoute.splash.path) {
+        return null;
+      }
+      return AppRoute.splash.path;
+    }
+
     return null;
   }
 }

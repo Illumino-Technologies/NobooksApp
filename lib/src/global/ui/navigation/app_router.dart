@@ -24,6 +24,13 @@ final GoRouter _router = GoRouter(
   navigatorKey: _navigationKey,
   redirect: NavigationRedirects.baseRedirect,
   routes: [
+    GoRoute(
+      path: AppRoute.splash.path,
+      name: AppRoute.splash.name,
+      builder: (context, state) {
+        return const SplashScreen();
+      },
+    ),
     ShellRoute(
       navigatorKey: _shellRouteKey,
       builder: (context, state, child) => HomeScreen(
