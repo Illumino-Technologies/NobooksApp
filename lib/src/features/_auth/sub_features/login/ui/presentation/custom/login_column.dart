@@ -54,18 +54,8 @@ class _LoginColumnState extends ConsumerState<_LoginColumn> {
         SizedBox(height: 24.l),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 96.l),
-          child: TextFormField(
+          child: PasswordAuthField(
             onChanged: onPasswordChanged,
-            style: TextStyles.paragraph2.copyWith(
-              fontSize: 16.spMax,
-              height: 1.5,
-            ),
-            decoration: Ui.authFieldDecoration('Password').copyWith(
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 24.l,
-                vertical: 12.l,
-              ),
-            ),
           ),
         ),
         SizedBox(height: 32.l),
