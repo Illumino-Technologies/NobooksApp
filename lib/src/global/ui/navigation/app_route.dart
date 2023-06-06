@@ -2,10 +2,15 @@ part of 'app_router.dart';
 
 enum AppRoute {
   splash('/'),
-  dashboard('/'),
+
+  login('/login'),
+
+  dashboard('/dashboard'),
+
   note('/note'),
   notePage('note-page'),
   noteDetailPage('note-detail-page'),
+
   assignments('/assignments'),
   assignment('assignment'),
   assessmentListing('/assessments'),

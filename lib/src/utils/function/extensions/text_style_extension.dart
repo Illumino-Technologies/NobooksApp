@@ -9,6 +9,8 @@ extension TextStyleExtension on TextStyle {
 
   TextStyle get asSemibold => copyWith(fontWeight: FontWeight.w600);
 
+  TextStyle get asNormal => copyWith(fontWeight: FontWeight.w400);
+
   TextStyle get asBold => copyWith(fontWeight: FontWeight.w700);
 
   TextStyle withSize(double fontSize) => copyWith(fontSize: fontSize);

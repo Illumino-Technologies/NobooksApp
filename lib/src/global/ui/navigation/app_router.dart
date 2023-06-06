@@ -31,6 +31,13 @@ final GoRouter _router = GoRouter(
         return const SplashScreen();
       },
     ),
+    GoRoute(
+      path: AppRoute.login.path,
+      name: AppRoute.login.name,
+      builder: (context, state) {
+        return const LoginScreen();
+      },
+    ),
     ShellRoute(
       navigatorKey: _shellRouteKey,
       builder: (context, state, child) => HomeScreen(

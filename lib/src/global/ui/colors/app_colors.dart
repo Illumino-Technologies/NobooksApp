@@ -223,6 +223,8 @@ abstract class AppColors {
   ///#000000
   static const Color black = Color(0xFF000000);
 
+  static const Color black5 = Color(0x0D000000);
+
   ///#000000 0%
   static const Color transparent = Color(0x00000000);
 

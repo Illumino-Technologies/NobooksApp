@@ -16,7 +16,7 @@ abstract class NavigationRedirects {
       if (locationPath == AppRoute.splash.path) {
         return null;
       }
-      return AppRoute.splash.path;
+      return AppRoute.login.path;
     }
 
     return null;
