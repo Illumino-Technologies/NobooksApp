@@ -6,10 +6,14 @@ import 'package:nobook/src/utils/utils_barrel.dart';
 
 class PasswordAuthField extends StatefulWidget {
   final ValueChanged<String> onChanged;
+  final String hintText;
+  final FormFieldValidator<String>? validator;
 
   const PasswordAuthField({
     Key? key,
     required this.onChanged,
+    this.validator,
+    this.hintText = 'Password',
   }) : super(key: key);
 
   @override
@@ -33,8 +37,11 @@ class _PasswordAuthFieldState extends State<PasswordAuthField> {
         fontSize: 16.spMax,
         height: 1.5,
       ),
+      validator: widget.validator,
       obscureText: !visible,
-      decoration: Ui.authFieldDecoration('Password').copyWith(
+      autovalidateMode:
+          widget.validator == null ? null : AutovalidateMode.onUserInteraction,
+      decoration: Ui.authFieldDecoration(widget.hintText).copyWith(
         suffixIcon: IconButton(
           onPressed: toggleVisibility,
           icon: SvgPicture.asset(

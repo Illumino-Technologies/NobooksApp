@@ -223,6 +223,10 @@ abstract class AppColors {
   ///#000000
   static const Color black = Color(0xFF000000);
 
+  ///#000000 2%
+  static const Color black2 = Color(0x02000000);
+
+  ///#000000 5%
   static const Color black5 = Color(0x0D000000);
 
   ///#000000 0%

@@ -1,4 +1,4 @@
-part of 'login_state_notifier.dart';
+part of 'forgot_password_state_notifier.dart';
 
 class ForgotPasswordState extends RiverpodStateWithStatus {
   const ForgotPasswordState({

@@ -3,18 +3,18 @@ import 'package:nobook/src/features/_auth/auth_feature_barrel.dart';
 import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-part 'login_state.dart';
+part 'forgot_password_state.dart';
 
 StateNotifierProvider<ForgotPasswordStateNotifier, ForgotPasswordState>?
     _provider;
 
 class ForgotPasswordStateNotifier extends StateNotifier<ForgotPasswordState>
     with BasicErrorHandlerMixin, RiverpodUtilsMixin {
-  final AuthSourceInterface _authSource;
+  final ForgotPasswordRepoInterface _repo;
 
   ForgotPasswordStateNotifier({
-    required AuthSourceInterface source,
-  })  : _authSource = source,
+    required ForgotPasswordRepoInterface repo,
+  })  : _repo = repo,
         super(const ForgotPasswordState());
 
   static StateNotifierProvider<ForgotPasswordStateNotifier, ForgotPasswordState>
@@ -31,7 +31,7 @@ class ForgotPasswordStateNotifier extends StateNotifier<ForgotPasswordState>
     _provider =
         StateNotifierProvider<ForgotPasswordStateNotifier, ForgotPasswordState>(
       (ref) => ForgotPasswordStateNotifier(
-        source: FakeAuthSource(),
+        repo: ForgotPasswordRepository(authSource: FakeAuthSource()),
       ),
     );
   }
@@ -47,9 +47,9 @@ class ForgotPasswordStateNotifier extends StateNotifier<ForgotPasswordState>
 
   Future<void> _resetPassword(String password) async {
     notifyLoading();
-    final String studentID = StudentManager.student!.id;
-    await _authSource.changePassword(
-      studentId: studentID,
+    final String studentID = (await StudentManager.requireStudent).id;
+    await _repo.changePassword(
+      studentID: studentID,
       password: password,
     );
     notifySuccess();

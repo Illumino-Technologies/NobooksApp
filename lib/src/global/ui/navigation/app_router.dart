@@ -45,6 +45,13 @@ final GoRouter _router = GoRouter(
             return const RequestLoginScreen();
           },
         ),
+        GoRoute(
+          path: AppRoute.changePassword.path,
+          name: AppRoute.changePassword.name,
+          builder: (context, state) {
+            return const ForgotPasswordScreen();
+          },
+        ),
       ],
     ),
     ShellRoute(

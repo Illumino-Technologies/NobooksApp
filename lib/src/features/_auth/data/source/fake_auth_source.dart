@@ -25,11 +25,12 @@ class FakeAuthSource implements AuthSourceInterface {
   }
 
   @override
-  Future<void> changePassword({
+  Future<String> changePassword({
     required String studentId,
     required String password,
   }) async {
     await Future.delayed(delay);
+    return 'my_random_token_aldsfjalsdjkfa_asfdasasdf_adsfas_!#!@fdada';
   }
 
   @override

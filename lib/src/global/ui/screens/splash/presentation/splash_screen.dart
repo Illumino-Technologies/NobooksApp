@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router_flow/go_router_flow.dart';
@@ -40,6 +41,12 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       context.goNamed(next.name);
     });
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        toolbarHeight: 0,
+        backgroundColor: AppColors.blue300,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+      ),
       backgroundColor: AppColors.blue300,
       body: Center(
         child: Column(

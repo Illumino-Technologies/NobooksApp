@@ -9,7 +9,7 @@ abstract interface class AuthSourceInterface {
     required String password,
   });
 
-  Future<void> changePassword({
+  Future<String> changePassword({
     required String studentId,
     required String password,
   });
