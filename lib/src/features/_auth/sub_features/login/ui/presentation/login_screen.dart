@@ -34,6 +34,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        toolbarHeight: 0,
+        backgroundColor: AppColors.backgroundGrey,
+      ),
       backgroundColor: AppColors.backgroundGrey,
       body: Center(
         child: FittedBox(

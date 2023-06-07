@@ -22,41 +22,18 @@ class _LoginColumnState extends ConsumerState<_RequestLoginColumn> {
         ),
         SizedBox(height: 40.l),
         Text(
-          'Login to your account',
+          'Request login details',
           style: TextStyles.headline4.asNormal.copyWith(
             height: 1.32,
+            fontSize: 32.spMax,
             color: AppColors.neutral500,
           ),
         ),
         SizedBox(height: 32.l),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 96.l),
-          child: Consumer(
-            builder: (context, consumerRef, child) {
-              return DropdownButtonHideUnderline(
-                child: DropdownButtonFormField<School>(
-                  items: consumerRef
-                      .watch(RequestLoginStateNotifier.provider)
-                      .schools
-                      .map((e) {
-                    return DropdownMenuItem<School>(
-                      child: SizedBox(
-                        width: 200.l,
-                        child: Text(
-                          e.name,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyles.paragraph2.copyWith(
-                            fontSize: 16.spMax,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: onChanged,
-                ),
-              );
-            },
+          child: _SchoolDropdown(
+            onChanged: onSchoolChanged,
           ),
         ),
         SizedBox(height: 24.l),
@@ -93,6 +70,19 @@ class _LoginColumnState extends ConsumerState<_RequestLoginColumn> {
             ),
           ),
         ),
+        SizedBox(height: 8.l),
+        Container(
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.symmetric(horizontal: 96.l),
+          child: Text(
+            'We will send your login details to this email address.',
+            style: TextStyles.paragraph2.copyWith(
+              color: AppColors.neutral500,
+              fontSize: 12.spMax,
+              height: 1.33,
+            ),
+          ),
+        ),
         SizedBox(height: 32.l),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 96.l),
@@ -124,7 +114,7 @@ class _LoginColumnState extends ConsumerState<_RequestLoginColumn> {
           onTap: () => context.pop(),
           child: RichText(
             text: TextSpan(
-              text: 'Forgotten or don’t have login details?',
+              text: 'Already have login details?',
               style: TextStyles.paragraph2.copyWith(
                 color: AppColors.neutral500,
                 fontSize: 16.spMax,
@@ -132,7 +122,7 @@ class _LoginColumnState extends ConsumerState<_RequestLoginColumn> {
               ),
               children: [
                 TextSpan(
-                  text: ' Request now',
+                  text: ' Login now',
                   style: TextStyles.paragraph2.copyWith(
                     color: AppColors.blue500,
                     fontWeight: FontWeight.w700,
@@ -150,7 +140,6 @@ class _LoginColumnState extends ConsumerState<_RequestLoginColumn> {
   }
 
   void searchForSchool(String value) {
-    if (value == null) return;
     ref
         .read(RequestLoginStateNotifier.provider.notifier)
         .fetchSchoolsByQuery(searchQuery: value);
@@ -158,7 +147,7 @@ class _LoginColumnState extends ConsumerState<_RequestLoginColumn> {
 
   School? school;
 
-  void onChanged(School? value) {
+  void onSchoolChanged(School? value) {
     if (value == null) return;
     school = value;
   }

@@ -54,6 +54,12 @@ abstract final class Ui {
           color: AppColors.neutral200,
         ),
       ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4.l),
+        borderSide: const BorderSide(
+          color: AppColors.neutral200,
+        ),
+      ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(4.l),
         borderSide: const BorderSide(

@@ -1,6 +1,5 @@
 part of '../multiple_choice_assessment_stage_page.dart';
 
-
 class _OptionView extends StatefulWidget {
   final int index;
   final NoteDocument option;

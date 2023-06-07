@@ -16,10 +16,12 @@ abstract class VectorAssets {
   static const String recordIcon = 'assets/vectors/record.svg';
   static const String logoSmall = 'assets/vectors/empty_logo.svg';
   static const String notification = 'assets/vectors/notification.svg';
-  static const String circledChevronRight = 'assets/vectors/circled_chevron_right.svg';
+  static const String circledChevronRight =
+      'assets/vectors/circled_chevron_right.svg';
   static const String splashImage = 'assets/vectors/splash_image.svg';
   static const String quillEyeClosed = 'assets/vectors/quill_eye_closed.svg';
   static const String quillEye = 'assets/vectors/quill_eye.svg';
+  static const String arrowDown = 'assets/vectors/arrow_down.svg';
 
   static const String fourFigTableIcon = 'assets/vectors/4ft_icon.svg';
   static const String alignCenterIcon = 'assets/vectors/align_center_icon.svg';

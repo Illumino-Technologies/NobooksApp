@@ -1,15 +1,17 @@
+import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/_auth/auth_feature_barrel.dart';
+import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
-import '../../../../../../global/domain/domain_barrel.dart';
-
 part 'custom/request_login_column.dart';
+
+part 'custom/school_dropdown.dart';
 
 class RequestLoginScreen extends ConsumerStatefulWidget {
   const RequestLoginScreen({

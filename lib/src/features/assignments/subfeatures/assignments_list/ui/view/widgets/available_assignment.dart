@@ -1,4 +1,5 @@
 part of '../assignments_page.dart';
+
 class AvailableAssignmentWidget extends StatelessWidget {
   const AvailableAssignmentWidget({
     required this.currentAssignmentSubject,

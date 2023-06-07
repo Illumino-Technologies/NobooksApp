@@ -41,7 +41,9 @@ class _AssessmentStagePageState
       assessment.duration,
       sureToRefresh: AssessmentTimerStateNotifier.provider == null
           ? true
-          : !ref.read(AssessmentTimerStateNotifier.provider!.notifier).isOngoing,
+          : !ref
+              .read(AssessmentTimerStateNotifier.provider!.notifier)
+              .isOngoing,
     );
 
     manualListenerSubscription = ref.listenManual(

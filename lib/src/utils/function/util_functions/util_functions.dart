@@ -119,8 +119,7 @@ abstract class UtilFunctions {
     final int hour = inSeconds ~/ 3600;
     final int minutes = inSeconds ~/ 60;
 
-    return
-        '${'$hour'.padLeft(2, '0')}:'
+    return '${'$hour'.padLeft(2, '0')}:'
         '${'$minutes'.padLeft(2, '0')}:'
         '${'$seconds'.padLeft(2, '0')}';
   }

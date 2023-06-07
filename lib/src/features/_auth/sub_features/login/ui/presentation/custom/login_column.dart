@@ -98,7 +98,7 @@ class _LoginColumnState extends ConsumerState<_LoginColumn> {
         SizedBox(height: 16.l),
         InkWell(
           onTap: () {
-            context.goNamed(AppRoute.changePassword.name);
+            context.goNamed(AppRoute.requestLogin.name);
           },
           child: RichText(
             text: TextSpan(

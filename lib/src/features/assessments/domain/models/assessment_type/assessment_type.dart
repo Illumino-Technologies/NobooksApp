@@ -6,7 +6,6 @@ enum AssessmentType {
   test('test_api_path', 'Test'),
   ;
 
-
   final String apiPath;
   final String longName;
 
