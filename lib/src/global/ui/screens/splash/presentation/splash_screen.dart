@@ -27,7 +27,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     Future.microtask(
-      () => Future.delayed(const Duration(milliseconds: 10), () {
+      () => Future.delayed(const Duration(milliseconds: 50), () {
         ref.read(SplashStateNotifier.provider.notifier).navigateToNext();
       }),
     );
@@ -36,7 +36,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(SplashStateNotifier.provider, (previous, next) {
-      if(previous == next) return;
+      if (previous == next || !mounted) return;
       context.goNamed(next.name);
     });
     return Scaffold(

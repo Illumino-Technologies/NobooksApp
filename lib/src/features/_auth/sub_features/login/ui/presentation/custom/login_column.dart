@@ -96,25 +96,30 @@ class _LoginColumnState extends ConsumerState<_LoginColumn> {
           ),
         ),
         SizedBox(height: 16.l),
-        RichText(
-          text: TextSpan(
-            text: 'Forgotten or don’t have login details?',
-            style: TextStyles.paragraph2.copyWith(
-              color: AppColors.neutral500,
-              fontSize: 16.spMax,
-              height: 1.5,
-            ),
-            children: [
-              TextSpan(
-                text: ' Request now',
-                style: TextStyles.paragraph2.copyWith(
-                  color: AppColors.blue500,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16.spMax,
-                  height: 1.5,
-                ),
+        InkWell(
+          onTap: () {
+            context.goNamed(AppRoute.requestLogin.name);
+          },
+          child: RichText(
+            text: TextSpan(
+              text: 'Forgotten or don’t have login details?',
+              style: TextStyles.paragraph2.copyWith(
+                color: AppColors.neutral500,
+                fontSize: 16.spMax,
+                height: 1.5,
               ),
-            ],
+              children: [
+                TextSpan(
+                  text: ' Request now',
+                  style: TextStyles.paragraph2.copyWith(
+                    color: AppColors.blue500,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.spMax,
+                    height: 1.5,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         SizedBox(height: 48.l),
@@ -142,6 +147,7 @@ class _LoginColumnState extends ConsumerState<_LoginColumn> {
   }
 
   Future<void> login() async {
+    FocusScope.of(context).unfocus();
     await ref.read(LoginStateNotifier.provider.notifier).login(
           personalID: personalID,
           password: password,

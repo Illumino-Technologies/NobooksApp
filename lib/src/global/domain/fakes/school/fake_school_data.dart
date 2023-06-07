@@ -17,4 +17,23 @@ abstract class FakeSchoolData {
     mission: 'To provide quality education to all students',
     timetables: FakeTimetable.timetables,
   );
+
+  static School get _newSchool => School(
+        id: UniqueKey().toString(),
+        name: 'CLEMMY HIGH SCHOOL',
+        shortName: 'CHS',
+        email: 'clemmyhigh@school.com',
+        contactNumber: '+2341224234234',
+        address: 'Some random Place, Some random place',
+        logo: NetworkAssets.randomLogo,
+        motto: 'Education for all',
+        vision: 'To be the best school in the world',
+        mission: 'To provide quality education to all students',
+        timetables: FakeTimetable.timetables,
+      );
+
+  static List<School> schools = List.generate(
+    10,
+    (index) => _newSchool,
+  );
 }

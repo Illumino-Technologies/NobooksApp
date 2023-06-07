@@ -37,6 +37,15 @@ final GoRouter _router = GoRouter(
       builder: (context, state) {
         return const LoginScreen();
       },
+      routes: [
+        GoRoute(
+          path: AppRoute.requestLogin.path,
+          name: AppRoute.requestLogin.name,
+          builder: (context, state) {
+            return const RequestLoginScreen();
+          },
+        ),
+      ],
     ),
     ShellRoute(
       navigatorKey: _shellRouteKey,

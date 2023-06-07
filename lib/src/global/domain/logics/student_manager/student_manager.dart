@@ -8,7 +8,7 @@ part 'private.dart';
 
 StateNotifierProvider<_StudentNotifier, Student?>? _provider;
 
-class StudentManager {
+abstract final class StudentManager {
   static final _StudentNotifier _notifier = _StudentNotifier(null);
 
   static StateNotifierProvider<_StudentNotifier, Student?> get provider {
