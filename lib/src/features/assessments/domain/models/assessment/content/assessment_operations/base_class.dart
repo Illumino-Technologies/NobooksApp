@@ -57,8 +57,5 @@ sealed class AssessmentOperation {
 
   @override
   int get hashCode =>
-      id.hashCode ^
-      question.hashCode ^
-      answer.hashCode ^
-      marks.hashCode;
+      id.hashCode ^ question.hashCode ^ answer.hashCode ^ marks.hashCode;
 }

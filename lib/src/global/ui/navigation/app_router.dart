@@ -24,6 +24,36 @@ final GoRouter _router = GoRouter(
   navigatorKey: _navigationKey,
   redirect: NavigationRedirects.baseRedirect,
   routes: [
+    GoRoute(
+      path: AppRoute.splash.path,
+      name: AppRoute.splash.name,
+      builder: (context, state) {
+        return const SplashScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoute.login.path,
+      name: AppRoute.login.name,
+      builder: (context, state) {
+        return const LoginScreen();
+      },
+      routes: [
+        GoRoute(
+          path: AppRoute.requestLogin.path,
+          name: AppRoute.requestLogin.name,
+          builder: (context, state) {
+            return const RequestLoginScreen();
+          },
+        ),
+        GoRoute(
+          path: AppRoute.changePassword.path,
+          name: AppRoute.changePassword.name,
+          builder: (context, state) {
+            return const ForgotPasswordScreen();
+          },
+        ),
+      ],
+    ),
     ShellRoute(
       navigatorKey: _shellRouteKey,
       builder: (context, state, child) => HomeScreen(

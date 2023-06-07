@@ -11,7 +11,5 @@ enum PaperType {
   final String text;
   final String shortName;
 
-
-
   const PaperType(this.text, this.shortName);
 }

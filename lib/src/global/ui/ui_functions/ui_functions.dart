@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/global/global_barrel.dart';
+import 'package:nobook/src/utils/utils_barrel.dart';
 
-abstract class Ui {
+abstract final class Ui {
   static BorderRadius allBorderRadius(double radius) => BorderRadius.all(
         Radius.circular(radius),
       );
@@ -33,7 +35,41 @@ abstract class Ui {
     );
   }
 
-  static void showErrorSnackbar(String message){
+  static InputDecoration authFieldDecoration(String hintText) {
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: TextStyles.paragraph2.copyWith(
+        fontSize: 16.spMax,
+        height: 1.5,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4.l),
+        borderSide: const BorderSide(
+          color: AppColors.neutral200,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4.l),
+        borderSide: const BorderSide(
+          color: AppColors.neutral200,
+        ),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4.l),
+        borderSide: const BorderSide(
+          color: AppColors.neutral200,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4.l),
+        borderSide: const BorderSide(
+          color: AppColors.neutral200,
+        ),
+      ),
+    );
+  }
+
+  static void showErrorSnackbar(String message) {
     //TODO: implement
   }
 

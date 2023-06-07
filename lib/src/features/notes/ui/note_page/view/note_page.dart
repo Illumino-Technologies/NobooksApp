@@ -106,7 +106,6 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
                                     );
                                   },
                                 ),
-                                
                                 ValueListenableBuilder(
                                   valueListenable: isPersonalNotifier,
                                   builder: (context, value, child) {

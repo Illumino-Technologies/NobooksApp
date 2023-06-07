@@ -10,7 +10,7 @@ class InfoRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Student student = ref.watch(StudentNotifier.provider)!;
+    final Student student = ref.watch(StudentManager.provider)!;
     return Wrap(
       spacing: 76.w,
       children: [
@@ -33,15 +33,14 @@ class InfoRow extends ConsumerWidget {
       ],
     );
   }
-  
-  String durationToHours(int duration){
+
+  String durationToHours(int duration) {
     final int hours = duration ~/ 60;
     final int minutes = duration % 60;
-    if(minutes == 0) return '$hours hr${hours.pluralValue}';
-    if(hours == 0) return '$minutes min${minutes.pluralValue}';
+    if (minutes == 0) return '$hours hr${hours.pluralValue}';
+    if (hours == 0) return '$minutes min${minutes.pluralValue}';
     return '$hours hr${hours.pluralValue} $minutes min${minutes.pluralValue}';
   }
-  
 }
 
 class _Item extends StatelessWidget {
