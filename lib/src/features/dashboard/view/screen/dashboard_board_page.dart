@@ -111,7 +111,8 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Center(
+                child: Align(
+                  alignment: Alignment.centerLeft,
                   child: Container(
                     width: 694,
                     height: 433,

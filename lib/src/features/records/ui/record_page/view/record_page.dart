@@ -48,19 +48,17 @@ class _RecordPageState extends ConsumerState<RecordPage> {
       });
     }
     ref.read(RecordsNotifier.provider.notifier).dispose();
-    await ref
-        .read(
-          RecordsNotifier.newProvider(
-            source: FakeRecordsSource(),
-            classRepo: ClassRepository.new_(source: FakeClassSource()),
-          ).notifier,
-        )
-        .initializeNotifier();
+    RecordsNotifier.newProvider(
+      source: FakeRecordsSource(),
+      classRepo: ClassRepository.new_(source: FakeClassSource()),
+    );
+    await Future.delayed(const Duration(milliseconds: 10));
+    ref.read(RecordsNotifier.provider.notifier).initializeNotifier();
   }
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     initializeProvider();
   }
 

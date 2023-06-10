@@ -56,8 +56,6 @@ class _SubjectsSideTab extends StatelessWidget {
                       children: [
                         SubjectWidget(
                           subject: FakeSubjects.subjects[index],
-                          boxSize: 60.r,
-                          fontSize: 30.sp,
                         ),
                         10.boxWidth,
                         Expanded(
