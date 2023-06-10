@@ -13,7 +13,7 @@ abstract class UtilFunctions {
     return document;
   }
 
-  static DoubleRange doubleRangefromList(List<double> list) {
+  static DoubleRange doubleRangeFromList(List<double> list) {
     return (val1: list[0], val2: list[1]);
   }
 

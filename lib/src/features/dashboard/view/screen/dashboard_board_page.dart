@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nobook/src/features/dashboard/dashboard_barrel.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
+import 'package:nobook/src/features/features_barrel.dart';
+import 'package:nobook/src/features/notes/model/note_list.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
@@ -41,37 +43,36 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Text(
-                    'Veiw all >',
-                    style: TextStyle(
-                      color: Colors.blue[500],
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                  InkWell(
+                    onTap: () {
+                      context.goNamed(AppRoute.note.name);
+                    },
+                    child: const Text(
+                      'View all >',
+                      style: TextStyle(
+                        color: AppColors.blue500,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
               ),
-
+              24.boxHeight,
               SizedBox(
-                height: context.screenHeight * 0.25,
-                child: ListView.builder(
-                  itemCount: FakeDashboardData.dashBoard.length,
+                height: 160.h,
+                child: ListView.separated(
+                  itemCount: FakeNotes.allNotes.length,
                   scrollDirection: Axis.horizontal,
+                  separatorBuilder: (context, index) => 16.boxWidth,
                   itemBuilder: (context, index) {
-                    return ReuseableCard(
-                      firstImage: FakeDashboardData.dashBoard[index].firstImage,
-                      secondImage:
-                          FakeDashboardData.dashBoard[index].secondImage,
-                      title: FakeDashboardData.dashBoard[index].title,
-                      subTitle: FakeDashboardData.dashBoard[index].subTitle,
-                      bottomsubTitle:
-                          FakeDashboardData.dashBoard[index].bottomsubTitle,
-                      bottomtitle:
-                          FakeDashboardData.dashBoard[index].bottomtitle,
+                    return SubjectNoteWidget(
+                      currentNote: FakeNotes.allNotes[index],
                     );
                   },
                 ),
               ),
+              32.boxHeight,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -84,7 +85,7 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
                     ),
                   ),
                   Text(
-                    'Veiw all >',
+                    'View all >',
                     style: TextStyle(
                       color: Colors.blue[500],
                       fontSize: 12,
@@ -93,23 +94,16 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
                   ),
                 ],
               ),
-
+              24.boxHeight,
               SizedBox(
                 height: context.screenHeight * 0.25,
-                child: ListView.builder(
-                  itemCount: FakeDashboardData.dashBoard.length,
+                child: ListView.separated(
+                  itemCount: FakeAssignmentData.assignments.length,
                   scrollDirection: Axis.horizontal,
+                  separatorBuilder: (context, index) => 16.boxWidth,
                   itemBuilder: (context, index) {
-                    return ReuseableCard(
-                      firstImage: FakeDashboardData.dashBoard[index].firstImage,
-                      secondImage:
-                          FakeDashboardData.dashBoard[index].secondImage,
-                      title: FakeDashboardData.dashBoard[index].title,
-                      subTitle: FakeDashboardData.dashBoard[index].subTitle,
-                      bottomsubTitle:
-                          FakeDashboardData.dashBoard[index].bottomsubTitle,
-                      bottomtitle:
-                          FakeDashboardData.dashBoard[index].bottomtitle,
+                    return AssignmentNoteWidget(
+                      currentAssignment: FakeAssignmentData.assignments[index],
                     );
                   },
                 ),

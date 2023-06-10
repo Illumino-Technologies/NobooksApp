@@ -9,6 +9,8 @@ import 'package:nobook/src/global/domain/domain_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
+part 'custom/drop_down_overlay_widget.dart';
+
 part 'custom/request_login_column.dart';
 
 part 'custom/school_dropdown.dart';
