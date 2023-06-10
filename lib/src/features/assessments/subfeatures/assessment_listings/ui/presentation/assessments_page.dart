@@ -194,8 +194,6 @@ class _AssessmentsPageState extends State<AssessmentsPage> {
                                 children: [
                                   SubjectWidget(
                                     subject: availableSubjects[index],
-                                    boxSize: 60.r,
-                                    fontSize: 30.sp,
                                   ),
                                   10.boxWidth,
                                   Expanded(
