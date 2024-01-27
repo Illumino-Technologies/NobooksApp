@@ -40,8 +40,7 @@ class SketchPainter extends DrawingPainter<SketchDrawing> {
     switch (drawingDelta.operation) {
       case DrawingOperation.start:
         paint.color = drawingDelta.metadata?.color ??
-            drawing.metadata?.color ??
-            paint.color;
+            drawing.metadata?.color ?? paint.color;
         paint.strokeWidth = drawingDelta.metadata?.strokeWidth ??
             drawing.metadata?.strokeWidth ??
             paint.strokeWidth;
@@ -63,13 +62,13 @@ class SketchPainter extends DrawingPainter<SketchDrawing> {
 
           if (drawing.deltas.isFirst(drawingDelta)) break;
 
-          // final PointDouble previousPoint =
-          //     drawing.deltas[drawing.deltas.indexOf(drawingDelta) - 1].point;
-          // canvas.drawLine(
-          //   previousPoint.toOffset,
-          //   drawingDelta.point.toOffset,
-          //   paint,
-          // );
+          final PointDouble previousPoint =
+              drawing.deltas[drawing.deltas.indexOf(drawingDelta) - 1].point;
+          canvas.drawLine(
+            previousPoint.toOffset,
+            drawingDelta.point.toOffset,
+            paint,
+          );
 
           path.lineTo(drawingDelta.point.x, drawingDelta.point.y);
 

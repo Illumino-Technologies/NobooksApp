@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,11 +28,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    Future.microtask(
-      () => Future.delayed(const Duration(milliseconds: 50), () {
-        ref.read(SplashStateNotifier.provider.notifier).navigateToNext();
-      }),
-    );
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(SplashStateNotifier.provider.notifier).navigateToNext();
+    });
   }
 
   @override

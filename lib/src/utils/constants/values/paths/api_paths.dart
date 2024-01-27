@@ -1,5 +1,5 @@
 abstract class ApiPaths {
-  static const String _baseUrl = '';
+  static const String _baseUrl = 'https://nobooks.onrender.com/api';
 
   static const String login = "$_baseUrl/login";
   static const String records = "$_baseUrl/student/records";
