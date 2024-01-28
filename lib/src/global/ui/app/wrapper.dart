@@ -10,8 +10,6 @@ class NobooksWidgetInitializer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProviderScope(
-      child: child,
-    );
+    return ProviderScope(child: child);
   }
 }

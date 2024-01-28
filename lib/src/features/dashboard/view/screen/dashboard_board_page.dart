@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:nobook/src/features/dashboard/view/widgets/dashboar_widget.dart';
-import 'package:nobook/src/features/dashboard/view/widgets/reusable_cardWidget.dart';
 import 'package:nobook/src/features/features_barrel.dart';
 import 'package:nobook/src/features/notes/model/note_list.dart';
+import 'package:nobook/src/global/data/data_sources/general/general_source.dart';
+import 'package:nobook/src/global/global_barrel.dart';
 import 'package:nobook/src/global/ui/ui_barrel.dart';
 import 'package:nobook/src/utils/utils_barrel.dart';
 
@@ -29,7 +30,6 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              //YMargin(10),
               const DashboardWidget(),
               20.boxHeight,
               Row(
@@ -45,7 +45,8 @@ class _DashboardScreenState extends ConsumerState<DashboardBoardPage> {
                   ),
                   InkWell(
                     onTap: () {
-                      context.goNamed(AppRoute.note.name);
+                      GeneralSourceImpl(NetworkApi().client).uploadMockData();
+                      // context.goNamed(AppRoute.note.name);
                     },
                     child: const Text(
                       'View all >',

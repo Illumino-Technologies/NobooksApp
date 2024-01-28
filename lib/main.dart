@@ -6,6 +6,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageApi.initialize();
   NetworkApi();
+  TokenManager.storeToken('balablu blu blu');
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
