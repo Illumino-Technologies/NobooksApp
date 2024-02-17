@@ -136,4 +136,8 @@ Layers are:
   codebase
 - Understand how dart mixins, extensions, super enums, and the new recors, work to make so you can
   flow easily with the
-  project. 
+  project.
+
+# Contributor Agreement
+
+- As a contributor to No'Books, you might be required to fork aor commit to this repo. Please, note that you are not allowed to use any of the codes or ideas of the codes or project as whole outside this project. Additionally, you are not allowed to, in any way, copy or reiterate any of No'Books's ideas or concepts outside of this project.
