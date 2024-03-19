@@ -149,14 +149,20 @@ class Eraser {
         drawingToBeErased.deltas.removeAt(0);
       }
       drawings.replace(drawingTobeErasedCopy, [drawingToBeErased]);
+
     } else if (drawingToBeErased.deltas.isLast(erasedDelta)) {
+
       final int length = drawingToBeErased.deltas.length;
+
       drawingToBeErased.deltas[length - 2] = drawingToBeErased
           .deltas[length - 2]
           .copyWith(operation: DrawingOperation.end);
+
       drawingToBeErased.deltas.removeLast();
+
       drawings.replace(drawingTobeErasedCopy, [drawingToBeErased]);
     } else {
+
       drawingToBeErased.deltas[erasedDeltaIndex - 1] = drawingToBeErased
           .deltas[erasedDeltaIndex - 1]
           .copyWith(operation: DrawingOperation.end);

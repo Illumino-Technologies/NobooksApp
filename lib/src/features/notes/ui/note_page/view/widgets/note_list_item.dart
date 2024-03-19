@@ -10,60 +10,82 @@ class NoteListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 20.w,
+    return InkWell(
+      onTap: () => context.goNamed(
+        AppRoute.noteDetailPage.name,
+        extra: currentNote,
       ),
-      width: 160.w,
-      decoration: const BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(8),
+      child: Container(
+        width: 160.w,
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: Ui.allBorderRadius(8),
+          boxShadow: const [
+            BoxShadow(
+              color: AppColors.black5,
+              blurRadius: 5,
+              offset: Offset(0, 2),
+            ),
+          ],
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(
-          10,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            16.boxHeight,
-            SubjectWidget(
+            SubjectWidget.small(
               subject: currentNote.subject,
-              boxSize: 40.r,
-              fontSize: 25.sp,
             ),
-            20.boxHeight,
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    currentNote.topic,
-                    style: TextStyles.headline3.withSize(14.sp),
+            16.boxHeight,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  currentNote.subject.name,
+                  style: TextStyles.paragraph3.copyWith(
+                    color: AppColors.neutral500,
+                    fontWeight: FontWeight.w700,
                   ),
-                  8.boxHeight,
-                  Text(
-                    // currentNote.noteBody.isEmpty,
-                    'Hello there',
-                    style: TextStyles.headline4.withSize(12.sp),
+                ),
+                4.boxHeight,
+                Text(
+                  // currentNote.noteBody.isEmpty,
+                  currentNote.topic,
+                  style: TextStyles.paragraph2.copyWith(
+                    fontSize: 12.spMax,
+                    color: AppColors.neutral300,
+                    height: 1.333,
                   ),
-                  40.boxHeight,
-                  Text(
-                    DateFormat.yMEd().add_jms().format(
-                          currentNote.createdAt,
-                        ),
-                    style: TextStyles.headline4.withSize(12.sp).copyWith(
-                          color: AppColors.neutral400,
-                        ),
+                ),
+                32.boxHeight,
+                Text(
+                  formatDate(),
+                  style: TextStyles.headline4.copyWith(
+                    height: 1.5,
+                    fontSize: 8.spMax,
+                    color: AppColors.neutral200,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  String formatDate() {
+    final DateTime date = currentNote.createdAt;
+    final int day = date.day;
+    final String month = DateFormat.MMMM().format(date);
+    final int year = currentNote.createdAt.year;
+
+    final String time = DateFormat.jmz()
+        .format(date)
+        .toLowerCase()
+        .split(':')
+        .map((e) => e.padLeft(2, '0'))
+        .join(':');
+
+    return '${day.toOrdinal()} $month, $year • $time';
   }
 }

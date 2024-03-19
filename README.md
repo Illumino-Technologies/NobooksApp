@@ -134,7 +134,7 @@ Layers are:
 
 - Go through the [utils](lib/src/utils) and [global](lib/src/global) folder before working on this
   codebase
-- Understand how dart mixins, extensions, super enums, and the new recors, work to make so you can
+- Understand how dart mixins, extensions, super enums, and the new records, work to make so you can
   flow easily with the
   project.
 

@@ -128,8 +128,6 @@ class _AssignmentPageState extends ConsumerState<AssignmentsPage> {
                                   SubjectWidget(
                                     subject: FakeAssignmentData
                                         .assignments[index].subject,
-                                    boxSize: 60.r,
-                                    fontSize: 30.sp,
                                   ),
                                   10.boxWidth,
                                   Expanded(

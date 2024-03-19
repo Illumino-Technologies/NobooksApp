@@ -48,7 +48,7 @@ class _TopBarState extends ConsumerState<TopBar> {
                 ),
                 InkWell(
                   child: Image.asset(
-                    user?.profilePhoto ?? '',
+                    user?.profilePhoto ?? Assets.profileImage,
                   ),
                 ),
               ],

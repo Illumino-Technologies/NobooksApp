@@ -65,7 +65,7 @@ abstract base class Drawing with EquatableMixin {
       case DrawingType.sketch:
         return SketchDrawing.fromMap(map);
       case DrawingType.line:
-        // TODO: Handle this case.
+        return LineDrawing.fromMap(map);
         break;
     }
     //TODO: Change

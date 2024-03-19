@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nobook/src/features/dashboard/dashboard_barrel.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -9,14 +10,17 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
-  bool expand = true;
-
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        DashboardBoardPage(),
-        DashboardCalender(),
+        const Expanded(
+          child: DashboardBoardPage(),
+        ),
+        SizedBox(
+          width: 320.w,
+          child: const DashboardCalender(),
+        ),
       ],
     );
   }

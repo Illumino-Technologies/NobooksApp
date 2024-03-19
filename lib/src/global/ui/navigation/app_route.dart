@@ -10,7 +10,6 @@ enum AppRoute {
   dashboard('/dashboard'),
 
   note('/note'),
-  notePage('note-page'),
   noteDetailPage('note-detail-page'),
 
   assignments('/assignments'),

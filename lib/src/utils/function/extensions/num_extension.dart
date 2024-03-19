@@ -6,6 +6,8 @@ extension NumExtension on num {
 
   double get l => max(h, w);
 
+  double get s => min(h, w);
+
   SizedBox get boxHeight => SizedBox(
         height: h.toDouble(),
         width: 0,
