@@ -140,4 +140,4 @@ Layers are:
 
 # Contributor Agreement
 
-- As a contributor to No'Book, you might be required to fork aor commit to this repo. Please, note that you are not allowed to use any of the codes or ideas of the codes or project as whole outside this project. Additionally, you are not allowed to, in any way, copy or reiterate any of No'Book's ideas or concepts outside of this project.
+- As a contributor to No'Book, you might be required to fork or commit to this repo. Please, note that you are not allowed to use any of the codes or ideas of the codes or project as whole outside this project. Additionally, you are not allowed to, in any way, copy or reiterate any of No'Book's ideas or concepts outside of this project.
